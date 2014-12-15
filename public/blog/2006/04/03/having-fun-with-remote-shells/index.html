@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>Having Fun With Remote Shells &middot; </title>
+
+  
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/poole.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde-x.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/styles.css">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link href="/favicon.png" rel="icon">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Life Beyond Rails &middot; " />
+
+  <meta name="description" content="Your default page description">
+  <meta name="keywords" content="your,default,page,keywords">
+  <link rel="author" href="http://plus.google.com/Your%20Google&#43;%20profile%20ID">
+</head>
+<body class="theme-base-0b">
+
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <img src="http://www.gravatar.com/avatar/e00d9254088a9db2e1875fc324402e2c?s=200" alt="gravatar">
+      <h1></h1>
+      <p class="lead">Codesmith by day, Airsculptor by night.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://life.beyondrails.com/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="https://github.com/parasquid">GitHub</a></li>
+      
+      
+      
+      <li class="sidebar-nav-item"><a href="https://twitter.com/parasquid">Twitter</a></li>
+    </ul>
+
+    <p>Copyright &copy; 2014 <a href="http://life.beyondrails.com/license">License</a><br/>
+       Powered by <a href="http://hugo.spf13.com">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+<div class="content container">
+  <div class="post">
+    <h1>Having Fun With Remote Shells</h1>
+    <span class="post-date">Apr 3, 2006 &middot; 2 minute read &middot; <a href="http://life.beyondrails.com/blog/2006/04/03/having-fun-with-remote-shells/#disqus_thread">Comments</a>
+    </span>
+    <p>I just bought a VPS (virtual private server) a couple of days ago, and I&rsquo;m enjoying tinkering with it. It&rsquo;s not the most powerful beast though; it only has 64MB RAM and 128MB swap. I won&rsquo;t say the name of the company I&rsquo;m subscribed to since my box isn&rsquo;t exactly the bastion of security, but you should be able to discern the shell provider from how I describe my escapades :D</p>
+
+<p>The most important lesson I&rsquo;ve learned while playing sysadmin is: learn how to take notes. I had to take down, reload, reboot, reconfigure, and do it over and over again during the last couple of days. In the end, I settled for a no-frills Ubuntu Breezy, and decided to just scrap the webmin idea and learn how to hand-configure the daemons myself. But everything would have been much easier from the start had I taken down notes. Now I have them, and should I need to reinstall the thing (hope I do not) I have a copy of it :)</p>
+
+<p>I&rsquo;ll post it here too just in case I lose that piece pf paper (which I&rsquo;m expecting is going to happen).</p>
+
+<ul>
+<li>Disable root SSH login: nano /etc/ssh/sshd_config</li>
+<li>Create a normal user account: useradd -m -s /bin/bash -g users username</li>
+<li>Create a password for normal user account: passwd username</li>
+<li>Add username to list of sudoers: visudo</li>
+<li>Test account and sudo access, then remove root login: sudo passwd root -l</li>
+<li>Relog as normal user and restart the SSH daemon: /etc/init.d/ssh restart</li>
+<li>Add /bin/false to /etc/shells</li>
+<li>Update apt-get package list: sudo apt-get update</li>
+<li>Upgrade the whole system to the latest programs: sudo apt-get dist-upgrade</li>
+</ul>
+
+<p>That should take care of the initial setup.</p>
+
+<p>Now what am I using the remote shell for? Since I still haven&rsquo;t figured out how to configure a webserver, I&rsquo;m currently running my bot on it ^_^ Here are the steps I did:</p>
+
+<ul>
+<li>Install an ftp daemon: sudo apt-get install vsftpd</li>
+<li>Configure ftp daemon to accept uploads: sudo nano /etc/vsftpd.conf
+
+<ul>
+<li>anonymous_enable=NO</li>
+<li>local_enable=YES</li>
+<li>write_enable=YES</li>
+</ul></li>
+<li>Restart ftp daemon: sudo /etc/init.d/vsftpd restart</li>
+<li>Install GNU Screen: sudo apt-get install screen</li>
+<li>Install compilers and development headers: sudo apt-get install build-essential</li>
+<li>Install subversion: sudo apt-get install subversion</li>
+<li>Install development headers for readline: sudo apt-get install libreadline5-dev</li>
+<li>FTP over configuration files from local computer</li>
+<li>Placeholder for the webserver stuff (Yay! It works~)</li>
+</ul>
+
+<p><a href="http://rimuhosting.com/howto/virtualhosting.jsp">http://rimuhosting.com/howto/virtualhosting.jsp</a></p>
+
+<p>libapache2-mod-php5</p>
+
+<p>php5-mysql</p>
+
+<p>phpyadmin</p>
+
+<p>So far, that&rsquo;s all I&rsquo;ve done. I&rsquo;ll be updating this page when I do more with my box.</p>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "parasquid";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "parasquid";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://life.beyondrails.com/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script>
+  var _gaq=[['_setAccount','Your Google Analytics tracking code'],['_trackPageview']];
+  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+  g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+  s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+
+</body>
+</html>

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Linux on Life Beyond Rails</title>
-    <link>http://localhost:1313/categories/linux/</link>
+    <link>http://life.beyondrails.com/categories/linux/</link>
     <description>Recent content in Linux on Life Beyond Rails</description>
     <generator>Hugo -- gohugo.io</generator>
     
     
     
     <lastBuildDate>Sun, 03 Aug 2014 00:00:00 UTC</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://life.beyondrails.com/categories/linux/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Setup and Configuration of my Machines</title>
-      <link>http://localhost:1313/blog/2014/08/03/setup-and-configuration-of-my-machines/</link>
+      <link>http://life.beyondrails.com/blog/2014/08/03/setup-and-configuration-of-my-machines/</link>
       <pubDate>Sun, 03 Aug 2014 00:00:00 UTC</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/08/03/setup-and-configuration-of-my-machines/</guid>
+      <guid>http://life.beyondrails.com/blog/2014/08/03/setup-and-configuration-of-my-machines/</guid>
       <description>
 
 &lt;div class=&#34;info info&#34; data-title=&#34;Work In Progress&#34;&gt;

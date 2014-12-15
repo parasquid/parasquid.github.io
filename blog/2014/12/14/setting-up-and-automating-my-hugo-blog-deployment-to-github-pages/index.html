@@ -130,10 +130,13 @@ echo &quot;life.beyondrails.com&quot; &gt; public/CNAME
 
 <p>Again I refered back to the hugo documentation on <a href="http://gohugo.io/tutorials/github_pages_blog/">setting up hugo for guthub hosting</a> and I used it as the basis for my own deployment script.</p>
 
-<p>My workflow however is unlike the any of the trhee recommended workflows (more like a hybrid):
-- I do use Github pages, but as a Personal/Organization page. That means my repository is at parasquid/parasquid.github.io
-- Instead of two repositories, I prefer to have a single repository containing both the source files and the cooked files.
-- Because I&rsquo;m using Github Pages for Personal/Organization I need to have the cooked pages inside the master branch. I had to modify the deployment script a little bit to ensure that my sources remain in the source branch, the subtree is located at the master branch (prefixed with public), and that all the pushing and pulling are seamless so it&rsquo;s all automatic (and there&rsquo;s no need for manual merging).</p>
+<p>My workflow however is unlike the any of the trhee recommended workflows (more like a hybrid):</p>
+
+<ul>
+<li>I do use Github pages, but as a Personal/Organization page. That means my repository is at parasquid/parasquid.github.io</li>
+<li>Instead of two repositories, I prefer to have a single repository containing both the source files and the cooked files.</li>
+<li>Because I&rsquo;m using Github Pages for Personal/Organization I need to have the cooked pages inside the master branch. I had to modify the deployment script a little bit to ensure that my sources remain in the source branch, the subtree is located at the master branch (prefixed with public), and that all the pushing and pulling are seamless so it&rsquo;s all automatic (and there&rsquo;s no need for manual merging).</li>
+</ul>
 
 <p>In the end I went for a <code>git subtree pull</code> before regenerating the blog. <strong>And never trying to touch the master branch.</strong></p>
 

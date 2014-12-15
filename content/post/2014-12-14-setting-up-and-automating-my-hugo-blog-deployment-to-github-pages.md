@@ -63,6 +63,7 @@ echo "life.beyondrails.com" > public/CNAME
 Again I refered back to the hugo documentation on [setting up hugo for guthub hosting](http://gohugo.io/tutorials/github_pages_blog/) and I used it as the basis for my own deployment script.
 
 My workflow however is unlike the any of the trhee recommended workflows (more like a hybrid):
+
 - I do use Github pages, but as a Personal/Organization page. That means my repository is at parasquid/parasquid.github.io
 - Instead of two repositories, I prefer to have a single repository containing both the source files and the cooked files.
 - Because I'm using Github Pages for Personal/Organization I need to have the cooked pages inside the master branch. I had to modify the deployment script a little bit to ensure that my sources remain in the source branch, the subtree is located at the master branch (prefixed with public), and that all the pushing and pulling are seamless so it's all automatic (and there's no need for manual merging).

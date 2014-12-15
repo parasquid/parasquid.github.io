@@ -9,8 +9,6 @@ categories: [meta]
 
 I'm currently moving my blog posts (and collecting all my blog entries from various blogging platforms) and putting them into Hugo. In case you're wondering how I've set mine up, here's a guide of what I've done.
 
-&nbsp;
-
 <!--more-->
 
 ## Choosing the hosting platform

@@ -8,13 +8,13 @@
     
     
     
-    <lastBuildDate>Sun, 14 Dec 2014 07:16:31 -0800</lastBuildDate>
+    <lastBuildDate>Sun, 14 Dec 2014 07:16:31 PST</lastBuildDate>
     <atom:link href="http://life.beyondrails.com/categories/meta/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Setting Up and Automating my Hugo Blog Deployment to Github Pages</title>
       <link>http://life.beyondrails.com/blog/2014/12/14/setting-up-and-automating-my-hugo-blog-deployment-to-github-pages/</link>
-      <pubDate>Sun, 14 Dec 2014 07:16:31 -0800</pubDate>
+      <pubDate>Sun, 14 Dec 2014 07:16:31 PST</pubDate>
       
       <guid>http://life.beyondrails.com/blog/2014/12/14/setting-up-and-automating-my-hugo-blog-deployment-to-github-pages/</guid>
       <description>
@@ -169,7 +169,7 @@ git subtree push --prefix=public\
     <item>
       <title>Redoing my Blogs</title>
       <link>http://life.beyondrails.com/blog/2014/12/12/redoing-my-blogs/</link>
-      <pubDate>Fri, 12 Dec 2014 12:25:29 -0800</pubDate>
+      <pubDate>Fri, 12 Dec 2014 12:25:29 PST</pubDate>
       
       <guid>http://life.beyondrails.com/blog/2014/12/12/redoing-my-blogs/</guid>
       <description>&lt;p&gt;Yet again I&amp;rsquo;ve ported my blog into yet another blogging platform - &lt;a href=&#34;http://gohugo.io/&#34;&gt;Hugo&lt;/a&gt;. I feel so strongly that I&amp;rsquo;d be staying for quite some time on this platform that I&amp;rsquo;ve been porting over all my other posts in all my other various blogs over here.&lt;/p&gt;

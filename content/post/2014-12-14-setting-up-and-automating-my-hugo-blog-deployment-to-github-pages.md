@@ -71,10 +71,10 @@ In the end I went for a `git subtree pull` before regenerating the blog. **And n
 
 However, the `git subtree` command is only present in the 1.7.11 version of git. Ubuntu Precise (12.04) only comes with 1.7.9.5 so in order to use this, a [PPA](https://launchpad.net/~git-core/+archive/ubuntu/ppa) must be installed:
 
-<code>
+<pre>
   deb http://ppa.launchpad.net/git-core/ppa/ubuntu precise main
   deb-src http://ppa.launchpad.net/git-core/ppa/ubuntu precise main
-</code>
+</pre>
 
 While trying to do deployment I ran into numerous problems with errors like:
 

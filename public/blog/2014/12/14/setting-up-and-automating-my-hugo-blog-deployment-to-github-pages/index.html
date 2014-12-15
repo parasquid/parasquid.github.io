@@ -139,10 +139,10 @@ echo &quot;life.beyondrails.com&quot; &gt; public/CNAME
 
 <p>However, the <code>git subtree</code> command is only present in the 1.7.11 version of git. Ubuntu Precise (12.04) only comes with 1.7.9.5 so in order to use this, a <a href="https://launchpad.net/~git-core/+archive/ubuntu/ppa">PPA</a> must be installed:</p>
 
-<p><code>
-  deb <a href="http://ppa.launchpad.net/git-core/ppa/ubuntu">http://ppa.launchpad.net/git-core/ppa/ubuntu</a> precise main
-  deb-src <a href="http://ppa.launchpad.net/git-core/ppa/ubuntu">http://ppa.launchpad.net/git-core/ppa/ubuntu</a> precise main
-</code></p>
+<pre>
+  deb http://ppa.launchpad.net/git-core/ppa/ubuntu precise main
+  deb-src http://ppa.launchpad.net/git-core/ppa/ubuntu precise main
+</pre>
 
 <p>While trying to do deployment I ran into numerous problems with errors like:</p>
 

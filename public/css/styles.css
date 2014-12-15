@@ -2,6 +2,13 @@
   max-width: 42em;
 }
 
+@media all and (max-width: 420px) {
+  .sidebar-about {
+    max-width: 12em;
+    margin: 0 auto;
+  }
+}
+
 div.summary {
   margin-top: 1em;
 }

@@ -24,7 +24,7 @@ params:
   highlight: "sunburst"
 
   # Displays under the author name in the sidebar, keep it short.
-  tagline: "Codesmith by day, Airsculptor by night."
+  tagline: "Codesmith by day. Airsculptor by night."
 
   # Metadata used to drive integrations.
   googleAuthorship: "Your Google+ profile ID"

@@ -10,15 +10,15 @@
   <title>Running PrivatePub/Faye Standalone in Heroku for Free &middot; </title>
 
   
-  <link rel="stylesheet" href="http://life.beyondrails.com/css/poole.css">
-  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde.css">
-  <link rel="stylesheet" href="http://life.beyondrails.com/css/poole-overrides.css">
-  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde-overrides.css">
-  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde-x.css">
-  <link rel="stylesheet" href="http://life.beyondrails.com/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="http://localhost:1313/css/poole.css">
+  <link rel="stylesheet" href="http://localhost:1313/css/hyde.css">
+  <link rel="stylesheet" href="http://localhost:1313/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://localhost:1313/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://localhost:1313/css/hyde-x.css">
+  <link rel="stylesheet" href="http://localhost:1313/css/highlight/sunburst.css">
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
 
-  <link rel="stylesheet" href="http://life.beyondrails.com/css/styles.css">
+  <link rel="stylesheet" href="http://localhost:1313/css/styles.css">
 
   
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
@@ -38,11 +38,11 @@
     <div class="sidebar-about">
       <img src="http://www.gravatar.com/avatar/e00d9254088a9db2e1875fc324402e2c?s=200" alt="gravatar">
       <h1></h1>
-      <p class="lead">Codesmith by day, Airsculptor by night.</p>
+      <p class="lead">Codesmith by day. Airsculptor by night.</p>
     </div>
 
     <ul class="sidebar-nav">
-      <li class="sidebar-nav-item"><a href="http://life.beyondrails.com/">Blog</a></li>
+      <li class="sidebar-nav-item"><a href="http://localhost:1313/">Blog</a></li>
       
     </ul>
 
@@ -54,7 +54,7 @@
       <li class="sidebar-nav-item"><a href="https://twitter.com/parasquid">Twitter</a></li>
     </ul>
 
-    <p>Copyright &copy; 2014 <a href="http://life.beyondrails.com/license">License</a><br/>
+    <p>Copyright &copy; 2014 <a href="http://localhost:1313/license">License</a><br/>
        Powered by <a href="http://hugo.spf13.com">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
   </div>
 </div>
@@ -62,7 +62,7 @@
 <div class="content container">
   <div class="post">
     <h1>Running PrivatePub/Faye Standalone in Heroku for Free</h1>
-    <span class="post-date">May 25, 2013 &middot; 3 minute read &middot; <a href="http://life.beyondrails.com/blog/2013/05/25/running-privatepub/faye-standalone-in-heroku-for-free/#disqus_thread">Comments</a>
+    <span class="post-date">May 25, 2013 &middot; 3 minute read &middot; <a href="http://localhost:1313/blog/2013/05/25/running-privatepub/faye-standalone-in-heroku-for-free/#disqus_thread">Comments</a>
     </span>
     <p><a href="https://github.com/ryanb/private_pub">PrivatePub</a> is an awesome gem by the renowned Ryan Bates of <a href="http://railscasts.com/">Railscast</a> fame. It provides an easy way to use Faye as a pubsub provider. Watch this <a href="http://railscasts.com/episodes/316-private-pub">episode</a> to see it in action.</p>
 
@@ -154,7 +154,7 @@ var disqus_shortname = "parasquid";
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
-<script src="http://life.beyondrails.com/js/highlight.pack.js"></script>
+<script src="http://localhost:1313/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <script>
@@ -164,5 +164,8 @@ var disqus_shortname = "parasquid";
   s.parentNode.insertBefore(g,s)}(document,'script'));
 </script>
 
-</body>
+<script>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':1313/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
 </html>

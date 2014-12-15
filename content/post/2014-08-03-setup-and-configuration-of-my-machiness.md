@@ -1,7 +1,7 @@
 ---
 title: "Setup and Configuration of my Machines"
 date: 2014-08-03
-categories: [ubuntu, linux]
+categories: [ubuntu, linux, hardware]
 draft: false
 ---
 {{% ribbonp info "Work In Progress" %}}

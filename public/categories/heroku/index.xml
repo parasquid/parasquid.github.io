@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Heroku on Life Beyond Rails</title>
+    <link>http://localhost:1313/categories/heroku/</link>
+    <description>Recent content in Heroku on Life Beyond Rails</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+    
+    
+    <lastBuildDate>Sat, 25 May 2013 00:00:00 UTC</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/heroku/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Running PrivatePub/Faye Standalone in Heroku for Free</title>
+      <link>http://localhost:1313/blog/2013/05/25/running-privatepub/faye-standalone-in-heroku-for-free/</link>
+      <pubDate>Sat, 25 May 2013 00:00:00 UTC</pubDate>
+      
+      <guid>http://localhost:1313/blog/2013/05/25/running-privatepub/faye-standalone-in-heroku-for-free/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://github.com/ryanb/private_pub&#34;&gt;PrivatePub&lt;/a&gt; is an awesome gem by the renowned Ryan Bates of &lt;a href=&#34;http://railscasts.com/&#34;&gt;Railscast&lt;/a&gt; fame. It provides an easy way to use Faye as a pubsub provider. Watch this &lt;a href=&#34;http://railscasts.com/episodes/316-private-pub&#34;&gt;episode&lt;/a&gt; to see it in action.&lt;/p&gt;
+
+&lt;p&gt;You don&amp;rsquo;t have to bundle the gem with a Rails application though; you can deploy PrivatePub standalone as a rack application in Heroku. This allows you to run PrivatePub in a web dyno instead of a worker, allowing for easier maintenance (separation of repositories/codebases) and as a side effect, save on hosting costs.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.heroku.com/&#34;&gt;Heroku&lt;/a&gt; is well known in the Ruby and Rails community for being the top-of-the-mind platform when it comes to cloud hosting. One of the biggest benefits of Heroku for developers is that they provide &amp;ndash; per application &amp;ndash; your &lt;a href=&#34;https://devcenter.heroku.com/categories/billing&#34;&gt;first web dyno&lt;/a&gt; for free. It&amp;rsquo;s great for trying out new ideas and services without having to shell out money for a hosting provider.&lt;/p&gt;
+
+&lt;p&gt;Heroku supports a &lt;a href=&#34;https://devcenter.heroku.com/categories/language-support&#34;&gt;number of languages&lt;/a&gt; (including Ruby) and a number of deployment options. What we&amp;rsquo;re interested here is the &lt;a href=&#34;https://devcenter.heroku.com/articles/ruby-support#rack-applications&#34;&gt;Rack application depoyment&lt;/a&gt; capbility.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;# config.ru
+# Run with: rackup private_pub.ru -s thin -E production
+require &amp;quot;bundler/setup&amp;quot;
+require &amp;quot;yaml&amp;quot;
+require &amp;quot;faye&amp;quot;
+require &amp;quot;private_pub&amp;quot;
+
+Faye::WebSocket.load_adapter(&#39;thin&#39;)
+
+PrivatePub.load_config(
+  File.expand_path(
+    &amp;quot;../config/private_pub.yml&amp;quot;, __FILE__
+  ), &#39;production&#39;
+)
+run PrivatePub.faye_app
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;# config/private_pub.yml
+development:
+  server: &amp;quot;http://localhost:9292/faye&amp;quot;
+  secret_token: &amp;quot;secret&amp;quot;
+test:
+  server: &amp;quot;http://localhost:9292/faye&amp;quot;
+  secret_token: &amp;quot;secret&amp;quot;
+production:
+  server: &amp;quot;http://example.com/faye&amp;quot;
+  secret_token: &amp;quot;secret&amp;quot;
+  signature_expiration: 3600 # one hour
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;# Gemfile
+source &#39;https://rubygems.org&#39;
+ruby &amp;quot;2.0.0&amp;quot;
+
+gem &#39;faye&#39;
+gem &#39;private_pub&#39;
+gem &#39;thin&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;These three files are really all you need to start your PrivatePub standalone server in heroku. You&amp;rsquo;ll notice a few changes from the original instructions.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;rails g private_pub:install&lt;/code&gt; will create a &lt;code&gt;private_pub.ru&lt;/code&gt; rackup file in your app folder. Since heroku by default will define a web process type at deploy time with the following parameters:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;web: bundle exec thin start -R config.ru -e $RACK_ENV -p $PORT
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I simply renamed the file to &lt;code&gt;config.ru&lt;/code&gt;. You don&amp;rsquo;t need the rest of the Rails application to run PrivatePub (but you still need Rails to use the client portions).&lt;/p&gt;
+
+&lt;p&gt;One caveat: Rack and Faye doesn&amp;rsquo;t play well with &lt;a href=&#34;https://github.com/faye/faye/issues/25#issuecomment-375678&#34;&gt;running the server in development mode&lt;/a&gt;. So if you&amp;rsquo;re developing locally, you&amp;rsquo;d need to make sure you pass in &lt;code&gt;-E production&lt;/code&gt; to thin. You&amp;rsquo;d also most likely need to copy the same &lt;code&gt;secret_token&lt;/code&gt; for the &lt;code&gt;development&lt;/code&gt; and &lt;code&gt;production&lt;/code&gt; environments.&lt;/p&gt;
+
+&lt;p&gt;The second line of the &lt;code&gt;Gemfile&lt;/code&gt; is a &lt;code&gt;bundler&lt;/code&gt; directive only available in version 1.2.0 and above. This is used by &lt;a href=&#34;https://devcenter.heroku.com/articles/ruby-versions&#34;&gt;Heroku&lt;/a&gt; (and even by &lt;a href=&#34;https://github.com/wayneeseguin/rvm/issues/1517#issuecomment-15007730&#34;&gt;rvm&lt;/a&gt;) to select the ruby version they will use for your environment. I prefer to make sure my deployment target mimics my development environment as much as possible so I throw that in there.&lt;/p&gt;
+
+&lt;p&gt;Another caveat: Heroku does not support WebSockets yet, so Faye will fallback to long-polling. This may or may not be a deal breaker, as this is in fact a desirable behavior &amp;ndash; long-polling ensures that your application is supported even by not-so-current browsers.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

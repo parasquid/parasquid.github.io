@@ -1,6 +1,7 @@
 ---
 date: 2006-04-03
 title: Having Fun With Remote Shells
+categories: [devops]
 ---
 
 I just bought a VPS (virtual private server) a couple of days ago, and I'm enjoying tinkering with it. It's not the most powerful beast though; it only has 64MB RAM and 128MB swap. I won't say the name of the company I'm subscribed to since my box isn't exactly the bastion of security, but you should be able to discern the shell provider from how I describe my escapades :D

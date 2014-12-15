@@ -10,22 +10,22 @@
   <title>Ruby &middot; </title>
 
   
-  <link rel="stylesheet" href="http://life.beyondrails.com/css/poole.css">
-  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde.css">
-  <link rel="stylesheet" href="http://life.beyondrails.com/css/poole-overrides.css">
-  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde-overrides.css">
-  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde-x.css">
-  <link rel="stylesheet" href="http://life.beyondrails.com/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="http://localhost:1313/css/poole.css">
+  <link rel="stylesheet" href="http://localhost:1313/css/hyde.css">
+  <link rel="stylesheet" href="http://localhost:1313/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://localhost:1313/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://localhost:1313/css/hyde-x.css">
+  <link rel="stylesheet" href="http://localhost:1313/css/highlight/sunburst.css">
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
 
-  <link rel="stylesheet" href="http://life.beyondrails.com/css/styles.css">
+  <link rel="stylesheet" href="http://localhost:1313/css/styles.css">
 
   
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
   <link href="/favicon.png" rel="icon">
 
   
-  <link href="http://life.beyondrails.com/categories/ruby/index.xml" rel="alternate" type="application/rss+xml" title="Life Beyond Rails &middot; " />
+  <link href="http://localhost:1313/categories/ruby/index.xml" rel="alternate" type="application/rss+xml" title="Life Beyond Rails &middot; " />
 
   <meta name="description" content="Your default page description">
   <meta name="keywords" content="your,default,page,keywords">
@@ -42,7 +42,7 @@
     </div>
 
     <ul class="sidebar-nav">
-      <li class="sidebar-nav-item"><a href="http://life.beyondrails.com/">Blog</a></li>
+      <li class="sidebar-nav-item"><a href="http://localhost:1313/">Blog</a></li>
       
     </ul>
 
@@ -54,7 +54,7 @@
       <li class="sidebar-nav-item"><a href="https://twitter.com/parasquid">Twitter</a></li>
     </ul>
 
-    <p>Copyright &copy; 2014 <a href="http://life.beyondrails.com/license">License</a><br/>
+    <p>Copyright &copy; 2014 <a href="http://localhost:1313/license">License</a><br/>
        Powered by <a href="http://hugo.spf13.com">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
   </div>
 </div>
@@ -62,17 +62,25 @@
 <div class="content container">
   <ul class="posts">
   
-    <li><a href="http://life.beyondrails.com/blog/2014/03/04/ruby-and-blocks/">Ruby and Blocks</a>
+    <li><a href="http://localhost:1313/blog/2014/03/04/ruby-and-blocks/">Ruby and Blocks</a>
     
     &middot;
     
-    <a class="label" href="http://life.beyondrails.com/categories/ruby">ruby</a><a class="label" href="http://life.beyondrails.com/categories/basics">basics</a>
+    <a class="label" href="http://localhost:1313/categories/ruby">ruby</a><a class="label" href="http://localhost:1313/categories/basics">basics</a>
     </span>
     &middot; <time>Mar 4, 2014</time></li>
   
+    <li><a href="http://localhost:1313/blog/2013/05/25/running-privatepub/faye-standalone-in-heroku-for-free/">Running PrivatePub/Faye Standalone in Heroku for Free</a>
+    
+    &middot;
+    
+    <a class="label" href="http://localhost:1313/categories/devops">devops</a><a class="label" href="http://localhost:1313/categories/ruby">ruby</a><a class="label" href="http://localhost:1313/categories/heroku">heroku</a>
+    </span>
+    &middot; <time>May 25, 2013</time></li>
+  
   </ul>
 </div>
-<script src="http://life.beyondrails.com/js/highlight.pack.js"></script>
+<script src="http://localhost:1313/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <script>
@@ -82,5 +90,8 @@
   s.parentNode.insertBefore(g,s)}(document,'script'));
 </script>
 
-</body>
+<script>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':1313/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
 </html>

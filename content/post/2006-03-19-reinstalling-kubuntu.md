@@ -1,6 +1,7 @@
 ---
 date: 2006-03-19 
 title: Reinstalling Kubuntu
+categories: [linux, devops]
 ---
 
 My data drive had some corruption as regards its file system tree, and i was forced to rebuild it. I figured I'll just reinstall Kubuntu too since I inadverdently installed Ubuntu Desktop, which kinda doubled the applications I have on the menu.

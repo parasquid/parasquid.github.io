@@ -1,8 +1,8 @@
-+++
-date = "2012-01-23"
-title = "My Development Setup"
-
-+++
+---
+date: 2012-01-23
+title: My Development Setup
+categories: [hardware]
+---
 
 At [Mindvalley](http://www.mindvalley.com/) employees can have any kind of hardware/software they want, provided that they can prove it is necessary for the work they’re doing, or at least it increases their productivity. In my case, I opted for the setup as seen here (picture courtesy of my colleague):
 

@@ -1,6 +1,7 @@
 ---
 title: "Running PrivatePub/Faye Standalone in Heroku for Free"
 date: 2013-05-25
+categories: [devops, ruby, heroku]
 ---
 
 [PrivatePub](https://github.com/ryanb/private_pub) is an awesome gem by the renowned Ryan Bates of [Railscast](http://railscasts.com/) fame. It provides an easy way to use Faye as a pubsub provider. Watch this [episode](http://railscasts.com/episodes/316-private-pub) to see it in action.

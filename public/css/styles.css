@@ -6,6 +6,18 @@ div.summary {
   margin-top: 1em;
 }
 
+.post-date a.label {
+  display: block;
+  float: right;
+  margin-top: 0.25em;
+}
+
+ul.posts li a.label {
+  display: inline;
+  float: none;
+  margin-top: 0.25em;
+}
+
 div.info {
   position: relative;
   background: #a5dee4;

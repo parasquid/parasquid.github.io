@@ -1,7 +1,7 @@
 ---
 title: "Sticky Users"
 date: "2011-12-29"
-categories: 
+categories: [marketing]
 ---
 
 [Someone](https://www.facebook.com/groups/webcamp/341435632535194/) at WebcampKL asked for help with regard to his mobile budgeting app. Initially the discussion was about validating assumptions, but later on an important issue was raised: why would someone want to use your app, and what would make the user come back for more?

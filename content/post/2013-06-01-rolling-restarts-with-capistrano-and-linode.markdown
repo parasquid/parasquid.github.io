@@ -1,7 +1,7 @@
 ---
 title: "Rolling Restarts with Capistrano and Linode"
 date: 2013-06-01
-category: devops
+categories: [devops]
 ---
 
 Here I show how to perform a rolling restart using Capistrano, and making sure that the load balancer (in this case Linode) properly reroutes traffic to the still-running servers while the others are being restarted.

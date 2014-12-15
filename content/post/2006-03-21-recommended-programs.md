@@ -1,6 +1,7 @@
 ---
 date: 2006-03-21
 title: Recommended Programs
+categories: [software]
 ---
 
 While mucking around my computer and generally getting bored, I found a few neat programs to install. They're really cool, and your Linux computer shouldn't be without them :)

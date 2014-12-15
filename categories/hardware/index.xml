@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hardware on Life Beyond Rails</title>
-    <link>http://localhost:1313/categories/hardware/</link>
+    <link>http://life.beyondrails.com/categories/hardware/</link>
     <description>Recent content in Hardware on Life Beyond Rails</description>
     <generator>Hugo -- gohugo.io</generator>
     
     
     
     <lastBuildDate>Sun, 03 Aug 2014 00:00:00 UTC</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/hardware/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://life.beyondrails.com/categories/hardware/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Setup and Configuration of my Machines</title>
-      <link>http://localhost:1313/blog/2014/08/03/setup-and-configuration-of-my-machines/</link>
+      <link>http://life.beyondrails.com/blog/2014/08/03/setup-and-configuration-of-my-machines/</link>
       <pubDate>Sun, 03 Aug 2014 00:00:00 UTC</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/08/03/setup-and-configuration-of-my-machines/</guid>
+      <guid>http://life.beyondrails.com/blog/2014/08/03/setup-and-configuration-of-my-machines/</guid>
       <description>
 
 &lt;div class=&#34;info info&#34; data-title=&#34;Work In Progress&#34;&gt;
@@ -57,10 +57,10 @@
     
     <item>
       <title>My Development Setup</title>
-      <link>http://localhost:1313/blog/2012/01/23/my-development-setup/</link>
+      <link>http://life.beyondrails.com/blog/2012/01/23/my-development-setup/</link>
       <pubDate>Mon, 23 Jan 2012 00:00:00 UTC</pubDate>
       
-      <guid>http://localhost:1313/blog/2012/01/23/my-development-setup/</guid>
+      <guid>http://life.beyondrails.com/blog/2012/01/23/my-development-setup/</guid>
       <description>
 
 &lt;p&gt;At &lt;a href=&#34;http://www.mindvalley.com/&#34;&gt;Mindvalley&lt;/a&gt; employees can have any kind of hardware/software they want, provided that they can prove it is necessary for the work they’re doing, or at least it increases their productivity. In my case, I opted for the setup as seen here (picture courtesy of my colleague):&lt;/p&gt;

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ruby on Life Beyond Rails</title>
-    <link>http://localhost:1313/categories/ruby/</link>
+    <link>http://life.beyondrails.com/categories/ruby/</link>
     <description>Recent content in Ruby on Life Beyond Rails</description>
     <generator>Hugo -- gohugo.io</generator>
     
     
     
     <lastBuildDate>Tue, 04 Mar 2014 00:00:00 UTC</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/ruby/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://life.beyondrails.com/categories/ruby/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Ruby and Blocks</title>
-      <link>http://localhost:1313/blog/2014/03/04/ruby-and-blocks/</link>
+      <link>http://life.beyondrails.com/blog/2014/03/04/ruby-and-blocks/</link>
       <pubDate>Tue, 04 Mar 2014 00:00:00 UTC</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/03/04/ruby-and-blocks/</guid>
+      <guid>http://life.beyondrails.com/blog/2014/03/04/ruby-and-blocks/</guid>
       <description>
 
 &lt;p&gt;One of the most often used and ironically least understood concepts in the Ruby programming language is the block. If you&amp;rsquo;ve used one of the Enumerable mixed-in objects, you&amp;rsquo;ve encountered the block syntax.&lt;/p&gt;
@@ -225,10 +225,10 @@ end
     
     <item>
       <title>Running PrivatePub/Faye Standalone in Heroku for Free</title>
-      <link>http://localhost:1313/blog/2013/05/25/running-privatepub/faye-standalone-in-heroku-for-free/</link>
+      <link>http://life.beyondrails.com/blog/2013/05/25/running-privatepub/faye-standalone-in-heroku-for-free/</link>
       <pubDate>Sat, 25 May 2013 00:00:00 UTC</pubDate>
       
-      <guid>http://localhost:1313/blog/2013/05/25/running-privatepub/faye-standalone-in-heroku-for-free/</guid>
+      <guid>http://life.beyondrails.com/blog/2013/05/25/running-privatepub/faye-standalone-in-heroku-for-free/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://github.com/ryanb/private_pub&#34;&gt;PrivatePub&lt;/a&gt; is an awesome gem by the renowned Ryan Bates of &lt;a href=&#34;http://railscasts.com/&#34;&gt;Railscast&lt;/a&gt; fame. It provides an easy way to use Faye as a pubsub provider. Watch this &lt;a href=&#34;http://railscasts.com/episodes/316-private-pub&#34;&gt;episode&lt;/a&gt; to see it in action.&lt;/p&gt;
 
 &lt;p&gt;You don&amp;rsquo;t have to bundle the gem with a Rails application though; you can deploy PrivatePub standalone as a rack application in Heroku. This allows you to run PrivatePub in a web dyno instead of a worker, allowing for easier maintenance (separation of repositories/codebases) and as a side effect, save on hosting costs.&lt;/p&gt;

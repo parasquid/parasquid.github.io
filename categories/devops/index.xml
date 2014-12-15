@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Devops on Life Beyond Rails</title>
-    <link>http://localhost:1313/categories/devops/</link>
+    <link>http://life.beyondrails.com/categories/devops/</link>
     <description>Recent content in Devops on Life Beyond Rails</description>
     <generator>Hugo -- gohugo.io</generator>
     
     
     
     <lastBuildDate>Sat, 01 Jun 2013 00:00:00 UTC</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/devops/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://life.beyondrails.com/categories/devops/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Rolling Restarts with Capistrano and Linode</title>
-      <link>http://localhost:1313/blog/2013/06/01/rolling-restarts-with-capistrano-and-linode/</link>
+      <link>http://life.beyondrails.com/blog/2013/06/01/rolling-restarts-with-capistrano-and-linode/</link>
       <pubDate>Sat, 01 Jun 2013 00:00:00 UTC</pubDate>
       
-      <guid>http://localhost:1313/blog/2013/06/01/rolling-restarts-with-capistrano-and-linode/</guid>
+      <guid>http://life.beyondrails.com/blog/2013/06/01/rolling-restarts-with-capistrano-and-linode/</guid>
       <description>&lt;p&gt;Here I show how to perform a rolling restart using Capistrano, and making sure that the load balancer (in this case Linode) properly reroutes traffic to the still-running servers while the others are being restarted.&lt;/p&gt;
 
 &lt;div class=&#34;info warning&#34; data-title=&#34;WARNING&#34;&gt;
@@ -207,10 +207,10 @@ end
     
     <item>
       <title>Running PrivatePub/Faye Standalone in Heroku for Free</title>
-      <link>http://localhost:1313/blog/2013/05/25/running-privatepub/faye-standalone-in-heroku-for-free/</link>
+      <link>http://life.beyondrails.com/blog/2013/05/25/running-privatepub/faye-standalone-in-heroku-for-free/</link>
       <pubDate>Sat, 25 May 2013 00:00:00 UTC</pubDate>
       
-      <guid>http://localhost:1313/blog/2013/05/25/running-privatepub/faye-standalone-in-heroku-for-free/</guid>
+      <guid>http://life.beyondrails.com/blog/2013/05/25/running-privatepub/faye-standalone-in-heroku-for-free/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://github.com/ryanb/private_pub&#34;&gt;PrivatePub&lt;/a&gt; is an awesome gem by the renowned Ryan Bates of &lt;a href=&#34;http://railscasts.com/&#34;&gt;Railscast&lt;/a&gt; fame. It provides an easy way to use Faye as a pubsub provider. Watch this &lt;a href=&#34;http://railscasts.com/episodes/316-private-pub&#34;&gt;episode&lt;/a&gt; to see it in action.&lt;/p&gt;
 
 &lt;p&gt;You don&amp;rsquo;t have to bundle the gem with a Rails application though; you can deploy PrivatePub standalone as a rack application in Heroku. This allows you to run PrivatePub in a web dyno instead of a worker, allowing for easier maintenance (separation of repositories/codebases) and as a side effect, save on hosting costs.&lt;/p&gt;
@@ -277,10 +277,10 @@ gem &#39;thin&#39;
     
     <item>
       <title>Having Fun With Remote Shells</title>
-      <link>http://localhost:1313/blog/2006/04/03/having-fun-with-remote-shells/</link>
+      <link>http://life.beyondrails.com/blog/2006/04/03/having-fun-with-remote-shells/</link>
       <pubDate>Mon, 03 Apr 2006 00:00:00 UTC</pubDate>
       
-      <guid>http://localhost:1313/blog/2006/04/03/having-fun-with-remote-shells/</guid>
+      <guid>http://life.beyondrails.com/blog/2006/04/03/having-fun-with-remote-shells/</guid>
       <description>&lt;p&gt;I just bought a VPS (virtual private server) a couple of days ago, and I&amp;rsquo;m enjoying tinkering with it. It&amp;rsquo;s not the most powerful beast though; it only has 64MB RAM and 128MB swap. I won&amp;rsquo;t say the name of the company I&amp;rsquo;m subscribed to since my box isn&amp;rsquo;t exactly the bastion of security, but you should be able to discern the shell provider from how I describe my escapades :D&lt;/p&gt;
 
 &lt;p&gt;The most important lesson I&amp;rsquo;ve learned while playing sysadmin is: learn how to take notes. I had to take down, reload, reboot, reconfigure, and do it over and over again during the last couple of days. In the end, I settled for a no-frills Ubuntu Breezy, and decided to just scrap the webmin idea and learn how to hand-configure the daemons myself. But everything would have been much easier from the start had I taken down notes. Now I have them, and should I need to reinstall the thing (hope I do not) I have a copy of it :)&lt;/p&gt;
@@ -335,10 +335,10 @@ gem &#39;thin&#39;
     
     <item>
       <title>Reinstalling Kubuntu</title>
-      <link>http://localhost:1313/blog/2006/03/19/reinstalling-kubuntu/</link>
+      <link>http://life.beyondrails.com/blog/2006/03/19/reinstalling-kubuntu/</link>
       <pubDate>Sun, 19 Mar 2006 00:00:00 UTC</pubDate>
       
-      <guid>http://localhost:1313/blog/2006/03/19/reinstalling-kubuntu/</guid>
+      <guid>http://life.beyondrails.com/blog/2006/03/19/reinstalling-kubuntu/</guid>
       <description>&lt;p&gt;My data drive had some corruption as regards its file system tree, and i was forced to rebuild it. I figured I&amp;rsquo;ll just reinstall Kubuntu too since I inadverdently installed Ubuntu Desktop, which kinda doubled the applications I have on the menu.&lt;/p&gt;
 
 &lt;p&gt;Here are some of the things I did in order to remind myself in case my system crashes again:&lt;/p&gt;

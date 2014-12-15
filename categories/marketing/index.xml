@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Marketing on Life Beyond Rails</title>
-    <link>http://life.beyondrails.com/categories/marketing/</link>
+    <link>http://localhost:1313/categories/marketing/</link>
     <description>Recent content in Marketing on Life Beyond Rails</description>
     <generator>Hugo -- gohugo.io</generator>
     
     
     
     <lastBuildDate>Tue, 12 Feb 2013 00:00:00 UTC</lastBuildDate>
-    <atom:link href="http://life.beyondrails.com/categories/marketing/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/categories/marketing/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>A Smartphone is not a Phone</title>
-      <link>http://life.beyondrails.com/blog/2013/02/12/a-smartphone-is-not-a-phone/</link>
+      <link>http://localhost:1313/blog/2013/02/12/a-smartphone-is-not-a-phone/</link>
       <pubDate>Tue, 12 Feb 2013 00:00:00 UTC</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2013/02/12/a-smartphone-is-not-a-phone/</guid>
+      <guid>http://localhost:1313/blog/2013/02/12/a-smartphone-is-not-a-phone/</guid>
       <description>&lt;p&gt;I&amp;rsquo;ve seen a number of commenters (mostly from the US) arguing that people look funny holding a 5-inch phone/tablet at the side of their heads, while being surprised at how well they&amp;rsquo;ve sold so far (especially in Asia).&lt;/p&gt;
 
 &lt;p&gt;I think it&amp;rsquo;s because those that got these &amp;ldquo;giant phones&amp;rdquo; have subconsciously realised the obvious: their smart phone isn&amp;rsquo;t a phone. It&amp;rsquo;s actually a computer that happens to have phone-like functionalities. After all, the only difference Skype has over regular cellular voice services is the medium.&lt;/p&gt;
@@ -29,10 +29,10 @@
     
     <item>
       <title>Writing History on Your Own Terms</title>
-      <link>http://life.beyondrails.com/blog/2013/02/05/writing-history-on-your-own-terms/</link>
+      <link>http://localhost:1313/blog/2013/02/05/writing-history-on-your-own-terms/</link>
       <pubDate>Tue, 05 Feb 2013 00:00:00 UTC</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2013/02/05/writing-history-on-your-own-terms/</guid>
+      <guid>http://localhost:1313/blog/2013/02/05/writing-history-on-your-own-terms/</guid>
       <description>&lt;p&gt;HTC just posted a brilliant blog entry titled &amp;ldquo;&lt;a href=&#34;http://blog.htc.com/2013/02/a-brief-history-of-photography/&#34;&gt;A Brief History of Photography&lt;/a&gt;.&amp;rdquo; It&amp;rsquo;s a short infographic that details the experience of photographic technology from two centuries ago until the present.&lt;/p&gt;
 
 &lt;p&gt;What&amp;rsquo;s really clever is that they&amp;rsquo;ve inserted themselves in history. The message is subtle yet clear: HTC will become part of this particular retelling of history.&lt;/p&gt;
@@ -42,6 +42,22 @@
 &lt;p&gt;The challenge then is finding out which niche or genre that is, and making sure the mark you leave behind is indelible, (enough that people will take the history you&amp;rsquo;re making as the canonical one) cementing your place in the timeline.&lt;/p&gt;
 
 &lt;p&gt;You or your product may not be around forever, but the history you&amp;rsquo;ve contributed to is an inexpensive path to immortality.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Sticky Users</title>
+      <link>http://localhost:1313/blog/2011/12/29/sticky-users/</link>
+      <pubDate>Thu, 29 Dec 2011 00:00:00 UTC</pubDate>
+      
+      <guid>http://localhost:1313/blog/2011/12/29/sticky-users/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://www.facebook.com/groups/webcamp/341435632535194/&#34;&gt;Someone&lt;/a&gt; at WebcampKL asked for help with regard to his mobile budgeting app. Initially the discussion was about validating assumptions, but later on an important issue was raised: why would someone want to use your app, and what would make the user come back for more?&lt;/p&gt;
+
+&lt;p&gt;There is, in fact a very simple way to get your users sticking by the your product during alpha without alienating them later on when you are ready for launch: make them pay a token amount, and once your product gets gold, waive their fees (for life, if it’s a subscription). Why does this work?&lt;/p&gt;
+
+&lt;p&gt;There are many subtle psychological triggers in effect here, but the most powerful would be the &lt;a href=&#34;http://youarenotsosmart.com/2011/03/25/the-sunk-cost-fallacy/&#34;&gt;Sunk Cost fallacy&lt;/a&gt;. Asking them to pay even just a token amount (my suggestion was $1) is powerful enough to make them want to continue using your app and forgive its faults. This is also very similar to &lt;a href=&#34;http://www.fripp.com/art.of_influence.html&#34;&gt;Cialdini’s Commitment and Consistency&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Somewhat related would be the &lt;a href=&#34;http://youarenotsosmart.com/2010/07/27/anchoring-effect/&#34;&gt;Anchoring effect&lt;/a&gt;. By not making the alpha release free for testers, current and future customers are now used to expecting that the app is not for free. When the product launches, future customers are more likely to pay for the usage of the app.&lt;/p&gt;
 </description>
     </item>
     

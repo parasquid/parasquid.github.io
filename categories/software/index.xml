@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Software on Life Beyond Rails</title>
+    <link>http://localhost:1313/categories/software/</link>
+    <description>Recent content in Software on Life Beyond Rails</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+    
+    
+    <lastBuildDate>Tue, 21 Mar 2006 00:00:00 UTC</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/software/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Recommended Programs</title>
+      <link>http://localhost:1313/blog/2006/03/21/recommended-programs/</link>
+      <pubDate>Tue, 21 Mar 2006 00:00:00 UTC</pubDate>
+      
+      <guid>http://localhost:1313/blog/2006/03/21/recommended-programs/</guid>
+      <description>&lt;p&gt;While mucking around my computer and generally getting bored, I found a few neat programs to install. They&amp;rsquo;re really cool, and your Linux computer shouldn&amp;rsquo;t be without them :)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://adblock.mozdev.org/&#34;&gt;Firefox AdBlocker&lt;/a&gt; - blocks ads from websites. Definitely heaven sent, as browsing becomes faster without all those ads being loaded (the extension dynamically modifies the page to comment out the ads, so they don&amp;rsquo;t get rendered). You can get to choose which ones to block too. Get the AdBlocker and teach those popup advertisers a lesson.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://yakuake.uv.ro/&#34;&gt;Yakuake&lt;/a&gt; - cool konsole for KDE. Anyone who had played quake before would recognize the interface. No need to reserve a space for the taskbar entry in the main panel. Plus, a terminal emulator is just one keypress away :)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://packages.debian.org/stable/games/kworldclock&#34;&gt;kde WorldClock&lt;/a&gt; - nice way to impress your friends by showing you are a &amp;ldquo;Citizen of the World.&amp;rdquo; Set this as your desktop background and you&amp;rsquo;ll immediately know if it&amp;rsquo;s day or night in a particular region of the Earth.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

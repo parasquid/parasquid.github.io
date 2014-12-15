@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hardware on Life Beyond Rails</title>
+    <link>http://localhost:1313/categories/hardware/</link>
+    <description>Recent content in Hardware on Life Beyond Rails</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+    
+    
+    <lastBuildDate>Sun, 03 Aug 2014 00:00:00 UTC</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/hardware/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Setup and Configuration of my Machines</title>
+      <link>http://localhost:1313/blog/2014/08/03/setup-and-configuration-of-my-machines/</link>
+      <pubDate>Sun, 03 Aug 2014 00:00:00 UTC</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/08/03/setup-and-configuration-of-my-machines/</guid>
+      <description>
+
+&lt;div class=&#34;info info&#34; data-title=&#34;Work In Progress&#34;&gt;
+  &lt;p&gt;I&amp;rsquo;m still in the middle of writing this article, and I probably will be always updating this.&lt;/p&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;I&amp;rsquo;ve just recently (re)installed Linux on my Acer V5 122p. Had to fiddle around with UEFI settings thinking to preserve my Windows 8.1 partition, but eventually I had to bite the bullet. I wiped the whole partition clean and turned off UEFI so my installation would be a lot simpler.&lt;/p&gt;
+
+&lt;p&gt;I ended up installing PeppermintOS which is a very lightweight distribution. After installing a few updates, the system was snappy and fast. I started to install the usual apps and configuration I normally use, when I realized I don&amp;rsquo;t have a document to use as a reference. I&amp;rsquo;ve been mostly doing stuff through memory and through Googling as soon as I encounter the problem or need.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s the blogpost to rectify that, as well as give you a glimpse as to how I like my machine setup and configured :)&lt;/p&gt;
+
+&lt;h2 id=&#34;setup-natural-scrolling:e9c0cc0211eea1041c321177ca84bcda&#34;&gt;Setup natural scrolling&lt;/h2&gt;
+
+&lt;p&gt;Ever since I got my Macbook Air 2010 upgraded to Lion, I&amp;rsquo;ve been a fan of what Apple called &amp;ldquo;natural scrolling.&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.andybarratt.co.uk/lion-like-scrolling-on-ubuntu-inverse-scrolling-on-linux&#34;&gt;http://www.andybarratt.co.uk/lion-like-scrolling-on-ubuntu-inverse-scrolling-on-linux&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;setup-sublime-text:e9c0cc0211eea1041c321177ca84bcda&#34;&gt;Setup Sublime Text&lt;/h2&gt;
+
+&lt;p&gt;I know I should start learning Emacs, but Sublime Text (and before that, Textmate) had always been my editor of choice. That might change in the near future though :)&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.webupd8.org/20&#34;&gt;Ubuntu PPA&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;sublime-text-settings:e9c0cc0211eea1041c321177ca84bcda&#34;&gt;Sublime Text settings&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://sublime.wbond.net/installation&#34;&gt;Package control&lt;/a&gt;
+&amp;hellip;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;key-management:e9c0cc0211eea1041c321177ca84bcda&#34;&gt;Key management&lt;/h2&gt;
+
+&lt;p&gt;Yes, I keep my private key in Dropbox. I know many people would say that this is a security risk (and it is) but the keys that I do keep in Dropbox are only those with access to non-critical remote systems that I own. I run some rtorrent download boxes as well as some application servers that I use for quickly testing out application ideas.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>My Development Setup</title>
+      <link>http://localhost:1313/blog/2012/01/23/my-development-setup/</link>
+      <pubDate>Mon, 23 Jan 2012 00:00:00 UTC</pubDate>
+      
+      <guid>http://localhost:1313/blog/2012/01/23/my-development-setup/</guid>
+      <description>
+
+&lt;p&gt;At &lt;a href=&#34;http://www.mindvalley.com/&#34;&gt;Mindvalley&lt;/a&gt; employees can have any kind of hardware/software they want, provided that they can prove it is necessary for the work they’re doing, or at least it increases their productivity. In my case, I opted for the setup as seen here (picture courtesy of my colleague):&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://instagr.am/p/h_EQp/&#34;&gt;&lt;img src=&#34;http://distilleryimage1.s3.amazonaws.com/8bd5621a40f411e180c9123138016265_7.jpg&#34; alt=&#34;Look, Ma! Four eyes!!&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;(the blank monitor on the left was an Ubuntu VM on screensaver mode)&lt;/p&gt;
+
+&lt;h2 id=&#34;a-brief-history-of-my-development-machines:23f4fb3f2f832c13ebfbe2c9c8736fb8&#34;&gt;A Brief History of my Development Machines&lt;/h2&gt;
+
+&lt;p&gt;Before I describe the whole setup, allow me to provide a bit of a backgrounder. Vishen – Mindvalley’s CEO – has decreed that every employee be issued a Mac, be it a MacBook/MacBook Pro/MacBook Air/Mac Pro (yes, we have four of those). Only in special cases does the company get anything other than a Mac. Not only are employees to be A-players, they have to be cool and look cool as well :)&lt;/p&gt;
+
+&lt;p&gt;Before my setup, I used to use a MacBook Air 2010 for development (and before that, a MacBook Pro 2010). The only person in the company that uses something other than a mac is Calvin (he runs Linux on a Dell XPS laptop). All’s well and good, but then when Mindvalley experienced a renaissance and shifted from merely being an internet marketing company into a internet services company, Calvin and I realized that our current workhorses are insufficient for the kind of work we will be doing.&lt;/p&gt;
+
+&lt;p&gt;And so we went about trying to get a quote for some hardware. I preferred the Mac type of environment (I loved my MacBook Air) so I thought maybe I’d get the newer MacBook Pro 2011. Calvin, of course isn’t restricted to Apple hardware since he prefers to develop on Linux anyway. That was well and good, but I when it was time to do the requisition email, I noticed that my machine was waaaay pricier than his, and I had lower specs. It was then that I had an idea.&lt;/p&gt;
+
+&lt;p&gt;“What if,” I thought to myself, “I can convince Vishen to get me a fast non-Apple desktop computer to save on price, then install Macintosh on it to somewhat retain the standard?” Long story short, I got my hackintosh (my very first, and it was quite an adventure making it). I have a sweet machine and I don’t have to unlearn and relearn my way through the OS.&lt;/p&gt;
+
+&lt;h2 id=&#34;the-pivot:23f4fb3f2f832c13ebfbe2c9c8736fb8&#34;&gt;The Pivot&lt;/h2&gt;
+
+&lt;p&gt;Fast forward to a lazy Friday afternoon when the Apple software updater prompted me to install a few software updates. I’ve been working with Macs for so long that it was second nature to me to install software updates without thinking about it. Needless to say, during my next reboot, my Mac sputtered during the boot sequence.&lt;/p&gt;
+
+&lt;p&gt;Now before all this, when I first started my foray into the forbidden world of Hackintoshes, I thought to myself that it would be such a waste if I couldn’t play any of the nice games on my machine. So I installed Windows 7 as a dual-boot option (we had a few unused licenses lying around). It was fortunate that I had this setup, because when the Mac OS refused to boot, I was still able to do basic stuff (like email and skype and some cloud-related tasks – thank you Google Docs!) with the Windows portion.&lt;/p&gt;
+
+&lt;p&gt;One lucky side effect of being in Windows was that I can actually use both the discrete graphics card and the onboard graphics processor at the same time - giving me the ability to use four monitors concurrently. I wasn’t able to do that with the Hackintosh; I was limited to just two screens (three if I use a DVI-USB adapter but the screen refresh on that monitor is too low for comfort). I realized that maybe I might enjoy this nice side effect, if only I can get a decent development environment set up.&lt;/p&gt;
+
+&lt;h2 id=&#34;making-it-work:23f4fb3f2f832c13ebfbe2c9c8736fb8&#34;&gt;Making it Work&lt;/h2&gt;
+
+&lt;p&gt;Everyone knows that Windows isn’t the best environment to do web development. There are lots of things that I missed when I was in a unix-like environment like that with the Mac – a sane terminal and shell, development headers, web servers, and generally a dev environment that is close to that in production.&lt;/p&gt;
+
+&lt;p&gt;What would be the best way to have such an environment? Make one in a virtual machine of course.&lt;/p&gt;
+
+&lt;p&gt;I installed Ubuntu 10.04 in VirtualBox (we use 10.04 in production as well, so that’s perfect because when I deploy I know I can mimic the same packages I’ve been using). In order to access the vm, I also installed cygwin (but I mostly just use the ssh cygwin provides). That solves the issue of the shell – I have bash inside screen and I get the benefits of multiplexing and tab completion – but still I’m stuck with the horrible terminal. So I also got XMing and ran gnome-terminal off the XServer. Bit by bit I’m getting the benefits of a Unix environment – almost there.&lt;/p&gt;
+
+&lt;p&gt;My editor of choice is NetBeans (I’ll explain why in a future post) and I’d prefer to run it inside Windows - running NetBeans inside Ubuntu isn’t that pretty and is pretty clunky with copy-paste. I thought I’d just be able to use VirtualBox’s shared folder capabilities, but when I tried that I realized that the Windows filesystem doesn’t respect the file permissions – all files become 777. In order to preserve the file permissions while still being able to run my editor natively (outside the VM) I used &lt;a href=&#34;http://www.expandrive.com/&#34;&gt;ExpanDrive&lt;/a&gt; to mount my VM’s filesystem through SSH. It’s $40 well spent – I tried using some free ssh filesystem software like &lt;a href=&#34;http://dokan-dev.net/en/&#34;&gt;Dokan&lt;/a&gt; but wasn’t able to make it work.&lt;/p&gt;
+
+&lt;p&gt;To wrap things up, I used port forwarding to expose port 3000 and port 80 from the guest to the host. That way, I can run the servers from Ubuntu while still being able to access them from a native browser. Take note that Webrick is slow when run this way – you’d need to disable reverse lookups as seen in this &lt;a href=&#34;https://gist.github.com/1524036&#34;&gt;gist&lt;/a&gt; to speed it up, or just use thin.&lt;/p&gt;
+
+&lt;h2 id=&#34;summary:23f4fb3f2f832c13ebfbe2c9c8736fb8&#34;&gt;Summary&lt;/h2&gt;
+
+&lt;p&gt;I think the setup is pretty sweet, and I have no complaints so far (aside from having to relearn my shortcut keys). I have a Windows machine that I don’t have to reboot for gaming, and I’m able to have a development environment very close to what we have on our production machines.&lt;/p&gt;
+
+&lt;p&gt;The ability to use four monitors was also very productive. I have NetBeans running on the left most monitor, the middle left monitor is for my terminal (with shells being multiplexed by screen), middle right is for the current site preview, and the far right is for viewing documentation. I think four screens is just right – any more and I’d be confused where to look at (maybe one more small monitor for and extra console output?)&lt;/p&gt;
+
+&lt;p&gt;One additional advantage of this setup is that the whole thing is in files. That means when I get to upgrade my machine in the future, I don’t have to redo my environment – it’s in a VM so I just transplant the required files and that’s it. What I’m planning to do next is to get extra space in DropBox or &lt;a href=&#34;https://www.insynchq.com/&#34;&gt;Insync&lt;/a&gt; and put the VM image on it. I should be able to access everything from my different workstations, as long as I keep to the discipline of suspending or shutting down the VM whenever I leave.&lt;/p&gt;
+
+&lt;p&gt;What do you think of this setup? Any suggestions how to improve on this? Would love to hear how you would solve this if you called the shots :)&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Linux on Life Beyond Rails</title>
-    <link>http://life.beyondrails.com/categories/linux/</link>
+    <link>http://localhost:1313/categories/linux/</link>
     <description>Recent content in Linux on Life Beyond Rails</description>
     <generator>Hugo -- gohugo.io</generator>
     
     
     
     <lastBuildDate>Sun, 03 Aug 2014 00:00:00 UTC</lastBuildDate>
-    <atom:link href="http://life.beyondrails.com/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/categories/linux/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Setup and Configuration of my Machines</title>
-      <link>http://life.beyondrails.com/blog/2014/08/03/setup-and-configuration-of-my-machines/</link>
+      <link>http://localhost:1313/blog/2014/08/03/setup-and-configuration-of-my-machines/</link>
       <pubDate>Sun, 03 Aug 2014 00:00:00 UTC</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2014/08/03/setup-and-configuration-of-my-machines/</guid>
+      <guid>http://localhost:1313/blog/2014/08/03/setup-and-configuration-of-my-machines/</guid>
       <description>
 
 &lt;div class=&#34;info info&#34; data-title=&#34;Work In Progress&#34;&gt;
@@ -52,6 +52,26 @@
 &lt;h2 id=&#34;key-management:e9c0cc0211eea1041c321177ca84bcda&#34;&gt;Key management&lt;/h2&gt;
 
 &lt;p&gt;Yes, I keep my private key in Dropbox. I know many people would say that this is a security risk (and it is) but the keys that I do keep in Dropbox are only those with access to non-critical remote systems that I own. I run some rtorrent download boxes as well as some application servers that I use for quickly testing out application ideas.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Reinstalling Kubuntu</title>
+      <link>http://localhost:1313/blog/2006/03/19/reinstalling-kubuntu/</link>
+      <pubDate>Sun, 19 Mar 2006 00:00:00 UTC</pubDate>
+      
+      <guid>http://localhost:1313/blog/2006/03/19/reinstalling-kubuntu/</guid>
+      <description>&lt;p&gt;My data drive had some corruption as regards its file system tree, and i was forced to rebuild it. I figured I&amp;rsquo;ll just reinstall Kubuntu too since I inadverdently installed Ubuntu Desktop, which kinda doubled the applications I have on the menu.&lt;/p&gt;
+
+&lt;p&gt;Here are some of the things I did in order to remind myself in case my system crashes again:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Make a dos partition writable - the options in fstab for the partition should be: user,exec,rw,umask=000 0 0&lt;/li&gt;
+&lt;li&gt;Get Automatix and install some of the necessary non-free software&lt;/li&gt;
+&lt;li&gt;Install packages used for compiling source code: sudo apt-get install build-essential&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I&amp;rsquo;ll add to the list as I walk through the rebuilding of my settings.&lt;/p&gt;
 </description>
     </item>
     

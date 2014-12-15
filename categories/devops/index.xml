@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Devops on Life Beyond Rails</title>
+    <link>http://localhost:1313/categories/devops/</link>
+    <description>Recent content in Devops on Life Beyond Rails</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+    
+    
+    <lastBuildDate>Sat, 01 Jun 2013 00:00:00 UTC</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/devops/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Rolling Restarts with Capistrano and Linode</title>
+      <link>http://localhost:1313/blog/2013/06/01/rolling-restarts-with-capistrano-and-linode/</link>
+      <pubDate>Sat, 01 Jun 2013 00:00:00 UTC</pubDate>
+      
+      <guid>http://localhost:1313/blog/2013/06/01/rolling-restarts-with-capistrano-and-linode/</guid>
+      <description>&lt;p&gt;Here I show how to perform a rolling restart using Capistrano, and making sure that the load balancer (in this case Linode) properly reroutes traffic to the still-running servers while the others are being restarted.&lt;/p&gt;
+
+&lt;div class=&#34;info warning&#34; data-title=&#34;WARNING&#34;&gt;
+  &lt;p&gt;I&amp;rsquo;m still ironing out a few bugs for the rolling deployments. The issue appears to be that Capistrano executes &lt;code&gt;deploy:create_symlink&lt;/code&gt; in parallel so the apps still experience downtime before the restart happens. The concept itself is sound but the code is not yet production ready!!&lt;/p&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;It is generally recommended in high-availability setups (usually with a cluster of machines behind a proxy or a load balancer) to perform a rolling restart of the services. Restarting all of your services at the same time will generally cause downtime for your users, and depending on your use case this situation is not very desirable.&lt;/p&gt;
+
+&lt;p&gt;However, Capistrano by default runs tasks in parallel and it mostly isn&amp;rsquo;t obvious how to perform capistrano tasks serially with all of your hosts. Furthermore, communication with the load balancer during the restart is vital to proactively stop incoming connections to the application server being restarted.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;# config/deploy.rb
+namespace :deploy do
+  task :restart, :roles =&amp;gt; :app, except: { no_release: true } do
+    if self.roles[:app].count == 1
+      run &amp;quot;/etc/init.d/rainbows_#{application} restart&amp;quot;
+    else
+      self.roles[:app].each do |host|
+        # execute a rolling restart
+        address = &amp;quot;#{host.options[:private_ip]}:80&amp;quot;
+        label = &#39;NodebalancerConfiguration&#39;
+        api = LinodeApi.new
+
+        puts &amp;quot;rejecting connections for #{address}&amp;quot;
+        api.reject_connections_from_node_with_label_and_address(label, address)
+
+        puts &amp;quot;performing restart&amp;quot;
+        run &amp;quot;/etc/init.d/rainbows_#{application} restart&amp;quot;, hosts: host
+
+        puts &amp;quot;accepting connections for #{address}&amp;quot;
+        api.accept_connections_from_node_with_label_and_address(label, address)
+
+        puts &amp;quot;sleeping for 90 seconds to allow for status propagation&amp;quot;
+        sleep(90)
+      end
+    end
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;# config/deploy/production.rb
+server &#39;10.0.0.2&#39;, :web, :app, private_ip: &#39;192.168.0.1&#39;
+server &#39;10.0.0.3&#39;, :web, :app, private_ip: &#39;192.168.0.2&#39;
+server &#39;10.0.0.4&#39;, :web, :app, private_ip: &#39;192.168.0.3&#39;
+server &#39;10.0.0.5&#39;, :db, no_release: true, primary: true
+set :port, 20022
+set :server_name, &#39;your.domain.com&#39;
+set :branch, &#39;production&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;# lib/linode_api.rb
+class LinodeApi
+  require &#39;linode&#39;
+  LINODE_API_KEY =  ENV[&#39;LINODE_API_KEY&#39;]
+  def initialize
+    @l = Linode.new(api_key: LINODE_API_KEY)
+  end
+
+  def first_nodebalancer_id_with_label(label)
+    @l.nodebalancer.list.select{|n| n.label == label}.first.nodebalancerid
+  end
+
+  def first_config_id_with_label(label)
+    nodebalancer_id = first_nodebalancer_id_with_label(label)
+    @l.nodebalancer.config.list(:NODEBALANCERID =&amp;gt; nodebalancer_id).first.configid
+  end
+
+  def first_node_id_with_label_and_address(label, address)
+    config_id = first_config_id_with_label(label)
+    @l.nodebalancer.node.list(:ConfigID =&amp;gt; config_id).select{|n| n.address == address}.first.nodeid
+  end
+
+  def reject_connections_from_node_with_label_and_address(label, address)
+    node_id = first_node_id_with_label_and_address(label, address)
+    @l.nodebalancer.node.update(:NodeID =&amp;gt; node_id, :Mode =&amp;gt; &#39;reject&#39;)
+  end
+
+  def accept_connections_from_node_with_label_and_address(label, address)
+    node_id = first_node_id_with_label_and_address(label, address)
+    @l.nodebalancer.node.update(:NodeID =&amp;gt; node_id, :Mode =&amp;gt; &#39;accept&#39;)
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;# Gemfile
+group :development do
+  gem &#39;capistrano&#39;
+  gem &#39;capistrano-ext&#39;
+  gem &#39;linode&#39;
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.linode.com/api/nodebalancer&#34;&gt;https://www.linode.com/api/nodebalancer&lt;/a&gt; - documentation for the linode nodebalancer api&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/rick/linode&#34;&gt;https://github.com/rick/linode&lt;/a&gt; - linode gem that wraps the linode api&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The default &lt;a href=&#34;http://capitate.rubyforge.org/recipes/deploy.html#deploy:restart&#34;&gt;capistrano deploy:restart&lt;/a&gt; recipe is a &lt;a href=&#34;https://github.com/capistrano/capistrano/blob/master/lib/capistrano/recipes/deploy.rb#L357&#34;&gt;blank task&lt;/a&gt; that you have to override depending on your application server&amp;rsquo;s needs. For example, Passenger users would need to &lt;code&gt;touch tmp/restart.txt&lt;/code&gt; and in my case, I have a custom &lt;code&gt;init.d&lt;/code&gt; script that I can call to restart my application.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s walk through the deployment recipe.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;if self.roles[:app].count == 1
+  run &amp;quot;/etc/init.d/rainbows_#{application} restart&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The &lt;code&gt;self.roles&lt;/code&gt; hash contains the different &lt;a href=&#34;http://stackoverflow.com/questions/1155218/what-exactly-is-a-role-in-capistrano&#34;&gt;roles&lt;/a&gt; you have defined in your deployment file. In this case, we&amp;rsquo;re only interested in the &lt;code&gt;:app&lt;/code&gt; role (i.e. we want to limit our script to only the servers we tagged as having &lt;code&gt;:app&lt;/code&gt; role).&lt;/p&gt;
+
+&lt;p&gt;In this case, if there is only one &lt;code&gt;:app&lt;/code&gt; defined (which usually is the case &amp;ndash; as in mine &amp;ndash; for staging servers) it makes no sense to do a rolling restarts since there is nothing to roll. There will be downtime when the single server restarts, so we might as well optimize this usecase away by calling the restart script directly.&lt;/p&gt;
+
+&lt;p&gt;Note that this line: &lt;code&gt;run &amp;quot;/etc/init.d/rainbows_#{application} restart&amp;quot;&lt;/code&gt; when called by itself with no arguments will cause the task to run in parallel.&lt;/p&gt;
+
+&lt;p&gt;How do you know if a task is being run in parallel? Take a look at your deployment logs:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;tristan (master)$ cap production deploy
+  * 2013-06-01 15:31:48 executing `production&#39;
+    triggering start callbacks for `deploy&#39;
+  * 2013-06-01 15:31:48 executing `multistage:ensure&#39;
+  * 2013-06-01 15:31:48 executing `deploy&#39;
+  * 2013-06-01 15:31:48 executing `deploy:update&#39;
+ ** transaction: start
+  * 2013-06-01 15:31:48 executing `deploy:update_code&#39;
+    triggering before callbacks for `deploy:update_code&#39;
+  * 2013-06-01 15:31:48 executing `sidekiq:quiet&#39;
+  * executing multiple commands in parallel
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Capistrano will inform you that it will be executing the task in parallel (in this case, the task is &lt;code&gt;sidekiq:quiet&lt;/code&gt;)&lt;/p&gt;
+
+&lt;p&gt;In order to deploy in serial, we have to loop through the hosts:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;else
+  self.roles[:app].each do |host|
+    # execute a rolling restart
+    address = &amp;quot;#{host.options[:private_ip]}:80&amp;quot;
+    label = &#39;OathkeeperTest&#39;
+    api = LinodeApi.new
+
+    puts &amp;quot;rejecting connections for #{address}&amp;quot;
+    api.reject_connections_from_node_with_label_and_address(label, address)
+
+    puts &amp;quot;performing restart&amp;quot;
+    run &amp;quot;/etc/init.d/rainbows_#{application} restart&amp;quot;, hosts: host
+
+    puts &amp;quot;accepting connections for #{address}&amp;quot;
+    api.accept_connections_from_node_with_label_and_address(label, address)
+
+    puts &amp;quot;sleeping for 90 seconds to allow for status propagation&amp;quot;
+    sleep(90)
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We&amp;rsquo;ll get back to the &lt;code&gt;address&lt;/code&gt; and &lt;code&gt;label&lt;/code&gt; variables later when we discuss the linode api. For now, all we need to know is that the api can update the nodebalancer configuration to reject and accept connections.&lt;/p&gt;
+
+&lt;p&gt;Our deployment pattern then looks like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;reject&lt;/code&gt; &lt;code&gt;-&amp;gt;&lt;/code&gt; &lt;code&gt;restart&lt;/code&gt; &lt;code&gt;-&amp;gt;&lt;/code&gt; &lt;code&gt;accept&lt;/code&gt; &lt;code&gt;-&amp;gt;&lt;/code&gt; &lt;code&gt;sleep&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Then it goes on to the next server for the same cycle. This allows us to maintain application availability: before the app goes down to restart, the node balancer stops accepting connections, then will start accepting connections again after a restart. Due to the way the Linode Nodebalancer system works, updating the node to accept doesn&amp;rsquo;t begin accepting connections from users until it can verify that the host is up and able to process requests.&lt;/p&gt;
+
+&lt;p&gt;You might notice that in the server definitions I&amp;rsquo;ve added the option &lt;code&gt;private_ip&lt;/code&gt;. When defining a host, you are able to add custom options that can be later be retrieved. That&amp;rsquo;s what we are doing in this line:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;address = &amp;quot;#{host.options[:private_ip]}:80&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Why do I need to pass in the private IP of the host? This is because in the linode api, there is no real connection between the concept of a server and an address a nodebalancer points to.&lt;/p&gt;
+
+&lt;p&gt;Hence, we have to go in a rather round-about way to figure out which node to modify to reject/accept connections. The most reliable way I&amp;rsquo;ve found is to use the configuration label and the private IP address to locate the node configuration.&lt;/p&gt;
+
+&lt;p&gt;You&amp;rsquo;re going to need your linode api key that can be generated in your Linode &lt;a href=&#34;https://manager.linode.com/profile/&#34;&gt;My Profile&lt;/a&gt; page. Here we set it as an environment variable as a security measure. We also use the &lt;code&gt;linode&lt;/code&gt; gem to make requests to the linode api. Lastly, we wrap the whole thing into a simple object to abstract out the nittygritty of dealing with the api.&lt;/p&gt;
+
+&lt;p&gt;The meat of this wrapper object is contained in these methods:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;def reject_connections_from_node_with_label_and_address(label, address)
+  node_id = first_node_id_with_label_and_address(label, address)
+  @l.nodebalancer.node.update(:NodeID =&amp;gt; node_id, :Mode =&amp;gt; &#39;reject&#39;)
+end
+
+def accept_connections_from_node_with_label_and_address(label, address)
+  node_id = first_node_id_with_label_and_address(label, address)
+  @l.nodebalancer.node.update(:NodeID =&amp;gt; node_id, :Mode =&amp;gt; &#39;accept&#39;)
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Given a label and an address, they will hunt down the nodebalancer configuration that matches those parameters and update it to reject or accept connections.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Running PrivatePub/Faye Standalone in Heroku for Free</title>
+      <link>http://localhost:1313/blog/2013/05/25/running-privatepub/faye-standalone-in-heroku-for-free/</link>
+      <pubDate>Sat, 25 May 2013 00:00:00 UTC</pubDate>
+      
+      <guid>http://localhost:1313/blog/2013/05/25/running-privatepub/faye-standalone-in-heroku-for-free/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://github.com/ryanb/private_pub&#34;&gt;PrivatePub&lt;/a&gt; is an awesome gem by the renowned Ryan Bates of &lt;a href=&#34;http://railscasts.com/&#34;&gt;Railscast&lt;/a&gt; fame. It provides an easy way to use Faye as a pubsub provider. Watch this &lt;a href=&#34;http://railscasts.com/episodes/316-private-pub&#34;&gt;episode&lt;/a&gt; to see it in action.&lt;/p&gt;
+
+&lt;p&gt;You don&amp;rsquo;t have to bundle the gem with a Rails application though; you can deploy PrivatePub standalone as a rack application in Heroku. This allows you to run PrivatePub in a web dyno instead of a worker, allowing for easier maintenance (separation of repositories/codebases) and as a side effect, save on hosting costs.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.heroku.com/&#34;&gt;Heroku&lt;/a&gt; is well known in the Ruby and Rails community for being the top-of-the-mind platform when it comes to cloud hosting. One of the biggest benefits of Heroku for developers is that they provide &amp;ndash; per application &amp;ndash; your &lt;a href=&#34;https://devcenter.heroku.com/categories/billing&#34;&gt;first web dyno&lt;/a&gt; for free. It&amp;rsquo;s great for trying out new ideas and services without having to shell out money for a hosting provider.&lt;/p&gt;
+
+&lt;p&gt;Heroku supports a &lt;a href=&#34;https://devcenter.heroku.com/categories/language-support&#34;&gt;number of languages&lt;/a&gt; (including Ruby) and a number of deployment options. What we&amp;rsquo;re interested here is the &lt;a href=&#34;https://devcenter.heroku.com/articles/ruby-support#rack-applications&#34;&gt;Rack application depoyment&lt;/a&gt; capbility.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;# config.ru
+# Run with: rackup private_pub.ru -s thin -E production
+require &amp;quot;bundler/setup&amp;quot;
+require &amp;quot;yaml&amp;quot;
+require &amp;quot;faye&amp;quot;
+require &amp;quot;private_pub&amp;quot;
+
+Faye::WebSocket.load_adapter(&#39;thin&#39;)
+
+PrivatePub.load_config(
+  File.expand_path(
+    &amp;quot;../config/private_pub.yml&amp;quot;, __FILE__
+  ), &#39;production&#39;
+)
+run PrivatePub.faye_app
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;# config/private_pub.yml
+development:
+  server: &amp;quot;http://localhost:9292/faye&amp;quot;
+  secret_token: &amp;quot;secret&amp;quot;
+test:
+  server: &amp;quot;http://localhost:9292/faye&amp;quot;
+  secret_token: &amp;quot;secret&amp;quot;
+production:
+  server: &amp;quot;http://example.com/faye&amp;quot;
+  secret_token: &amp;quot;secret&amp;quot;
+  signature_expiration: 3600 # one hour
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;# Gemfile
+source &#39;https://rubygems.org&#39;
+ruby &amp;quot;2.0.0&amp;quot;
+
+gem &#39;faye&#39;
+gem &#39;private_pub&#39;
+gem &#39;thin&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;These three files are really all you need to start your PrivatePub standalone server in heroku. You&amp;rsquo;ll notice a few changes from the original instructions.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;rails g private_pub:install&lt;/code&gt; will create a &lt;code&gt;private_pub.ru&lt;/code&gt; rackup file in your app folder. Since heroku by default will define a web process type at deploy time with the following parameters:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;web: bundle exec thin start -R config.ru -e $RACK_ENV -p $PORT
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I simply renamed the file to &lt;code&gt;config.ru&lt;/code&gt;. You don&amp;rsquo;t need the rest of the Rails application to run PrivatePub (but you still need Rails to use the client portions).&lt;/p&gt;
+
+&lt;p&gt;One caveat: Rack and Faye doesn&amp;rsquo;t play well with &lt;a href=&#34;https://github.com/faye/faye/issues/25#issuecomment-375678&#34;&gt;running the server in development mode&lt;/a&gt;. So if you&amp;rsquo;re developing locally, you&amp;rsquo;d need to make sure you pass in &lt;code&gt;-E production&lt;/code&gt; to thin. You&amp;rsquo;d also most likely need to copy the same &lt;code&gt;secret_token&lt;/code&gt; for the &lt;code&gt;development&lt;/code&gt; and &lt;code&gt;production&lt;/code&gt; environments.&lt;/p&gt;
+
+&lt;p&gt;The second line of the &lt;code&gt;Gemfile&lt;/code&gt; is a &lt;code&gt;bundler&lt;/code&gt; directive only available in version 1.2.0 and above. This is used by &lt;a href=&#34;https://devcenter.heroku.com/articles/ruby-versions&#34;&gt;Heroku&lt;/a&gt; (and even by &lt;a href=&#34;https://github.com/wayneeseguin/rvm/issues/1517#issuecomment-15007730&#34;&gt;rvm&lt;/a&gt;) to select the ruby version they will use for your environment. I prefer to make sure my deployment target mimics my development environment as much as possible so I throw that in there.&lt;/p&gt;
+
+&lt;p&gt;Another caveat: Heroku does not support WebSockets yet, so Faye will fallback to long-polling. This may or may not be a deal breaker, as this is in fact a desirable behavior &amp;ndash; long-polling ensures that your application is supported even by not-so-current browsers.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Having Fun With Remote Shells</title>
+      <link>http://localhost:1313/blog/2006/04/03/having-fun-with-remote-shells/</link>
+      <pubDate>Mon, 03 Apr 2006 00:00:00 UTC</pubDate>
+      
+      <guid>http://localhost:1313/blog/2006/04/03/having-fun-with-remote-shells/</guid>
+      <description>&lt;p&gt;I just bought a VPS (virtual private server) a couple of days ago, and I&amp;rsquo;m enjoying tinkering with it. It&amp;rsquo;s not the most powerful beast though; it only has 64MB RAM and 128MB swap. I won&amp;rsquo;t say the name of the company I&amp;rsquo;m subscribed to since my box isn&amp;rsquo;t exactly the bastion of security, but you should be able to discern the shell provider from how I describe my escapades :D&lt;/p&gt;
+
+&lt;p&gt;The most important lesson I&amp;rsquo;ve learned while playing sysadmin is: learn how to take notes. I had to take down, reload, reboot, reconfigure, and do it over and over again during the last couple of days. In the end, I settled for a no-frills Ubuntu Breezy, and decided to just scrap the webmin idea and learn how to hand-configure the daemons myself. But everything would have been much easier from the start had I taken down notes. Now I have them, and should I need to reinstall the thing (hope I do not) I have a copy of it :)&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ll post it here too just in case I lose that piece pf paper (which I&amp;rsquo;m expecting is going to happen).&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Disable root SSH login: nano /etc/ssh/sshd_config&lt;/li&gt;
+&lt;li&gt;Create a normal user account: useradd -m -s /bin/bash -g users username&lt;/li&gt;
+&lt;li&gt;Create a password for normal user account: passwd username&lt;/li&gt;
+&lt;li&gt;Add username to list of sudoers: visudo&lt;/li&gt;
+&lt;li&gt;Test account and sudo access, then remove root login: sudo passwd root -l&lt;/li&gt;
+&lt;li&gt;Relog as normal user and restart the SSH daemon: /etc/init.d/ssh restart&lt;/li&gt;
+&lt;li&gt;Add /bin/false to /etc/shells&lt;/li&gt;
+&lt;li&gt;Update apt-get package list: sudo apt-get update&lt;/li&gt;
+&lt;li&gt;Upgrade the whole system to the latest programs: sudo apt-get dist-upgrade&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;That should take care of the initial setup.&lt;/p&gt;
+
+&lt;p&gt;Now what am I using the remote shell for? Since I still haven&amp;rsquo;t figured out how to configure a webserver, I&amp;rsquo;m currently running my bot on it ^_^ Here are the steps I did:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Install an ftp daemon: sudo apt-get install vsftpd&lt;/li&gt;
+&lt;li&gt;Configure ftp daemon to accept uploads: sudo nano /etc/vsftpd.conf
+
+&lt;ul&gt;
+&lt;li&gt;anonymous_enable=NO&lt;/li&gt;
+&lt;li&gt;local_enable=YES&lt;/li&gt;
+&lt;li&gt;write_enable=YES&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Restart ftp daemon: sudo /etc/init.d/vsftpd restart&lt;/li&gt;
+&lt;li&gt;Install GNU Screen: sudo apt-get install screen&lt;/li&gt;
+&lt;li&gt;Install compilers and development headers: sudo apt-get install build-essential&lt;/li&gt;
+&lt;li&gt;Install subversion: sudo apt-get install subversion&lt;/li&gt;
+&lt;li&gt;Install development headers for readline: sudo apt-get install libreadline5-dev&lt;/li&gt;
+&lt;li&gt;FTP over configuration files from local computer&lt;/li&gt;
+&lt;li&gt;Placeholder for the webserver stuff (Yay! It works~)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://rimuhosting.com/howto/virtualhosting.jsp&#34;&gt;http://rimuhosting.com/howto/virtualhosting.jsp&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;libapache2-mod-php5&lt;/p&gt;
+
+&lt;p&gt;php5-mysql&lt;/p&gt;
+
+&lt;p&gt;phpyadmin&lt;/p&gt;
+
+&lt;p&gt;So far, that&amp;rsquo;s all I&amp;rsquo;ve done. I&amp;rsquo;ll be updating this page when I do more with my box.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Reinstalling Kubuntu</title>
+      <link>http://localhost:1313/blog/2006/03/19/reinstalling-kubuntu/</link>
+      <pubDate>Sun, 19 Mar 2006 00:00:00 UTC</pubDate>
+      
+      <guid>http://localhost:1313/blog/2006/03/19/reinstalling-kubuntu/</guid>
+      <description>&lt;p&gt;My data drive had some corruption as regards its file system tree, and i was forced to rebuild it. I figured I&amp;rsquo;ll just reinstall Kubuntu too since I inadverdently installed Ubuntu Desktop, which kinda doubled the applications I have on the menu.&lt;/p&gt;
+
+&lt;p&gt;Here are some of the things I did in order to remind myself in case my system crashes again:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Make a dos partition writable - the options in fstab for the partition should be: user,exec,rw,umask=000 0 0&lt;/li&gt;
+&lt;li&gt;Get Automatix and install some of the necessary non-free software&lt;/li&gt;
+&lt;li&gt;Install packages used for compiling source code: sudo apt-get install build-essential&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I&amp;rsquo;ll add to the list as I walk through the rebuilding of my settings.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

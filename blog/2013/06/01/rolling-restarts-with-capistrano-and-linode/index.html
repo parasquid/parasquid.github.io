@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>Rolling Restarts with Capistrano and Linode &middot; </title>
+
+  
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/poole.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde-x.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/styles.css">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link href="/favicon.png" rel="icon">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Life Beyond Rails &middot; " />
+
+  <meta name="description" content="Your default page description">
+  <meta name="keywords" content="your,default,page,keywords">
+  <link rel="author" href="http://plus.google.com/Your%20Google&#43;%20profile%20ID">
+</head>
+<body class="theme-base-0b">
+
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <img src="http://www.gravatar.com/avatar/e00d9254088a9db2e1875fc324402e2c?s=200" alt="gravatar">
+      <h1></h1>
+      <p class="lead">Codesmith by day, Airsculptor by night.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://life.beyondrails.com/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="https://github.com/parasquid">GitHub</a></li>
+      
+      
+      
+      <li class="sidebar-nav-item"><a href="https://twitter.com/parasquid">Twitter</a></li>
+    </ul>
+
+    <p>Copyright &copy; 2014 <a href="http://life.beyondrails.com/license">License</a><br/>
+       Powered by <a href="http://hugo.spf13.com">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+<div class="content container">
+  <div class="post">
+    <h1>Rolling Restarts with Capistrano and Linode</h1>
+    <span class="post-date">Jun 1, 2013 &middot; 6 minute read &middot; <a href="http://life.beyondrails.com/blog/2013/06/01/rolling-restarts-with-capistrano-and-linode/#disqus_thread">Comments</a>
+    </span>
+    <p>Here I show how to perform a rolling restart using Capistrano, and making sure that the load balancer (in this case Linode) properly reroutes traffic to the still-running servers while the others are being restarted.</p>
+
+<div class="info warning" data-title="WARNING">
+  <p>I&rsquo;m still ironing out a few bugs for the rolling deployments. The issue appears to be that Capistrano executes <code>deploy:create_symlink</code> in parallel so the apps still experience downtime before the restart happens. The concept itself is sound but the code is not yet production ready!!</p>
+
+</div>
+
+<p>It is generally recommended in high-availability setups (usually with a cluster of machines behind a proxy or a load balancer) to perform a rolling restart of the services. Restarting all of your services at the same time will generally cause downtime for your users, and depending on your use case this situation is not very desirable.</p>
+
+<p>However, Capistrano by default runs tasks in parallel and it mostly isn&rsquo;t obvious how to perform capistrano tasks serially with all of your hosts. Furthermore, communication with the load balancer during the restart is vital to proactively stop incoming connections to the application server being restarted.</p>
+
+<pre><code class="language-ruby"># config/deploy.rb
+namespace :deploy do
+  task :restart, :roles =&gt; :app, except: { no_release: true } do
+    if self.roles[:app].count == 1
+      run &quot;/etc/init.d/rainbows_#{application} restart&quot;
+    else
+      self.roles[:app].each do |host|
+        # execute a rolling restart
+        address = &quot;#{host.options[:private_ip]}:80&quot;
+        label = 'NodebalancerConfiguration'
+        api = LinodeApi.new
+
+        puts &quot;rejecting connections for #{address}&quot;
+        api.reject_connections_from_node_with_label_and_address(label, address)
+
+        puts &quot;performing restart&quot;
+        run &quot;/etc/init.d/rainbows_#{application} restart&quot;, hosts: host
+
+        puts &quot;accepting connections for #{address}&quot;
+        api.accept_connections_from_node_with_label_and_address(label, address)
+
+        puts &quot;sleeping for 90 seconds to allow for status propagation&quot;
+        sleep(90)
+      end
+    end
+  end
+end
+</code></pre>
+
+<pre><code class="language-ruby"># config/deploy/production.rb
+server '10.0.0.2', :web, :app, private_ip: '192.168.0.1'
+server '10.0.0.3', :web, :app, private_ip: '192.168.0.2'
+server '10.0.0.4', :web, :app, private_ip: '192.168.0.3'
+server '10.0.0.5', :db, no_release: true, primary: true
+set :port, 20022
+set :server_name, 'your.domain.com'
+set :branch, 'production'
+</code></pre>
+
+<pre><code class="language-ruby"># lib/linode_api.rb
+class LinodeApi
+  require 'linode'
+  LINODE_API_KEY =  ENV['LINODE_API_KEY']
+  def initialize
+    @l = Linode.new(api_key: LINODE_API_KEY)
+  end
+
+  def first_nodebalancer_id_with_label(label)
+    @l.nodebalancer.list.select{|n| n.label == label}.first.nodebalancerid
+  end
+
+  def first_config_id_with_label(label)
+    nodebalancer_id = first_nodebalancer_id_with_label(label)
+    @l.nodebalancer.config.list(:NODEBALANCERID =&gt; nodebalancer_id).first.configid
+  end
+
+  def first_node_id_with_label_and_address(label, address)
+    config_id = first_config_id_with_label(label)
+    @l.nodebalancer.node.list(:ConfigID =&gt; config_id).select{|n| n.address == address}.first.nodeid
+  end
+
+  def reject_connections_from_node_with_label_and_address(label, address)
+    node_id = first_node_id_with_label_and_address(label, address)
+    @l.nodebalancer.node.update(:NodeID =&gt; node_id, :Mode =&gt; 'reject')
+  end
+
+  def accept_connections_from_node_with_label_and_address(label, address)
+    node_id = first_node_id_with_label_and_address(label, address)
+    @l.nodebalancer.node.update(:NodeID =&gt; node_id, :Mode =&gt; 'accept')
+  end
+end
+</code></pre>
+
+<pre><code class="language-ruby"># Gemfile
+group :development do
+  gem 'capistrano'
+  gem 'capistrano-ext'
+  gem 'linode'
+end
+</code></pre>
+
+<ul>
+<li><a href="https://www.linode.com/api/nodebalancer">https://www.linode.com/api/nodebalancer</a> - documentation for the linode nodebalancer api</li>
+<li><a href="https://github.com/rick/linode">https://github.com/rick/linode</a> - linode gem that wraps the linode api</li>
+</ul>
+
+<p>The default <a href="http://capitate.rubyforge.org/recipes/deploy.html#deploy:restart">capistrano deploy:restart</a> recipe is a <a href="https://github.com/capistrano/capistrano/blob/master/lib/capistrano/recipes/deploy.rb#L357">blank task</a> that you have to override depending on your application server&rsquo;s needs. For example, Passenger users would need to <code>touch tmp/restart.txt</code> and in my case, I have a custom <code>init.d</code> script that I can call to restart my application.</p>
+
+<p>Let&rsquo;s walk through the deployment recipe.</p>
+
+<pre><code class="language-ruby">if self.roles[:app].count == 1
+  run &quot;/etc/init.d/rainbows_#{application} restart&quot;
+</code></pre>
+
+<p>The <code>self.roles</code> hash contains the different <a href="http://stackoverflow.com/questions/1155218/what-exactly-is-a-role-in-capistrano">roles</a> you have defined in your deployment file. In this case, we&rsquo;re only interested in the <code>:app</code> role (i.e. we want to limit our script to only the servers we tagged as having <code>:app</code> role).</p>
+
+<p>In this case, if there is only one <code>:app</code> defined (which usually is the case &ndash; as in mine &ndash; for staging servers) it makes no sense to do a rolling restarts since there is nothing to roll. There will be downtime when the single server restarts, so we might as well optimize this usecase away by calling the restart script directly.</p>
+
+<p>Note that this line: <code>run &quot;/etc/init.d/rainbows_#{application} restart&quot;</code> when called by itself with no arguments will cause the task to run in parallel.</p>
+
+<p>How do you know if a task is being run in parallel? Take a look at your deployment logs:</p>
+
+<pre><code>tristan (master)$ cap production deploy
+  * 2013-06-01 15:31:48 executing `production'
+    triggering start callbacks for `deploy'
+  * 2013-06-01 15:31:48 executing `multistage:ensure'
+  * 2013-06-01 15:31:48 executing `deploy'
+  * 2013-06-01 15:31:48 executing `deploy:update'
+ ** transaction: start
+  * 2013-06-01 15:31:48 executing `deploy:update_code'
+    triggering before callbacks for `deploy:update_code'
+  * 2013-06-01 15:31:48 executing `sidekiq:quiet'
+  * executing multiple commands in parallel
+</code></pre>
+
+<p>Capistrano will inform you that it will be executing the task in parallel (in this case, the task is <code>sidekiq:quiet</code>)</p>
+
+<p>In order to deploy in serial, we have to loop through the hosts:</p>
+
+<pre><code class="language-ruby">else
+  self.roles[:app].each do |host|
+    # execute a rolling restart
+    address = &quot;#{host.options[:private_ip]}:80&quot;
+    label = 'OathkeeperTest'
+    api = LinodeApi.new
+
+    puts &quot;rejecting connections for #{address}&quot;
+    api.reject_connections_from_node_with_label_and_address(label, address)
+
+    puts &quot;performing restart&quot;
+    run &quot;/etc/init.d/rainbows_#{application} restart&quot;, hosts: host
+
+    puts &quot;accepting connections for #{address}&quot;
+    api.accept_connections_from_node_with_label_and_address(label, address)
+
+    puts &quot;sleeping for 90 seconds to allow for status propagation&quot;
+    sleep(90)
+  end
+end
+</code></pre>
+
+<p>We&rsquo;ll get back to the <code>address</code> and <code>label</code> variables later when we discuss the linode api. For now, all we need to know is that the api can update the nodebalancer configuration to reject and accept connections.</p>
+
+<p>Our deployment pattern then looks like this:</p>
+
+<p><code>reject</code> <code>-&gt;</code> <code>restart</code> <code>-&gt;</code> <code>accept</code> <code>-&gt;</code> <code>sleep</code></p>
+
+<p>Then it goes on to the next server for the same cycle. This allows us to maintain application availability: before the app goes down to restart, the node balancer stops accepting connections, then will start accepting connections again after a restart. Due to the way the Linode Nodebalancer system works, updating the node to accept doesn&rsquo;t begin accepting connections from users until it can verify that the host is up and able to process requests.</p>
+
+<p>You might notice that in the server definitions I&rsquo;ve added the option <code>private_ip</code>. When defining a host, you are able to add custom options that can be later be retrieved. That&rsquo;s what we are doing in this line:</p>
+
+<pre><code class="language-ruby">address = &quot;#{host.options[:private_ip]}:80&quot;
+</code></pre>
+
+<p>Why do I need to pass in the private IP of the host? This is because in the linode api, there is no real connection between the concept of a server and an address a nodebalancer points to.</p>
+
+<p>Hence, we have to go in a rather round-about way to figure out which node to modify to reject/accept connections. The most reliable way I&rsquo;ve found is to use the configuration label and the private IP address to locate the node configuration.</p>
+
+<p>You&rsquo;re going to need your linode api key that can be generated in your Linode <a href="https://manager.linode.com/profile/">My Profile</a> page. Here we set it as an environment variable as a security measure. We also use the <code>linode</code> gem to make requests to the linode api. Lastly, we wrap the whole thing into a simple object to abstract out the nittygritty of dealing with the api.</p>
+
+<p>The meat of this wrapper object is contained in these methods:</p>
+
+<pre><code class="language-ruby">def reject_connections_from_node_with_label_and_address(label, address)
+  node_id = first_node_id_with_label_and_address(label, address)
+  @l.nodebalancer.node.update(:NodeID =&gt; node_id, :Mode =&gt; 'reject')
+end
+
+def accept_connections_from_node_with_label_and_address(label, address)
+  node_id = first_node_id_with_label_and_address(label, address)
+  @l.nodebalancer.node.update(:NodeID =&gt; node_id, :Mode =&gt; 'accept')
+end
+</code></pre>
+
+<p>Given a label and an address, they will hunt down the nodebalancer configuration that matches those parameters and update it to reject or accept connections.</p>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "parasquid";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "parasquid";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://life.beyondrails.com/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script>
+  var _gaq=[['_setAccount','Your Google Analytics tracking code'],['_trackPageview']];
+  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+  g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+  s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+
+</body>
+</html>

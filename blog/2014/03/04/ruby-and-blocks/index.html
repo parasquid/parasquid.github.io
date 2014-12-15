@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>Ruby and Blocks &middot; </title>
+
+  
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/poole.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde-x.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/styles.css">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link href="/favicon.png" rel="icon">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Life Beyond Rails &middot; " />
+
+  <meta name="description" content="Your default page description">
+  <meta name="keywords" content="your,default,page,keywords">
+  <link rel="author" href="http://plus.google.com/Your%20Google&#43;%20profile%20ID">
+</head>
+<body class="theme-base-0b">
+
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <img src="http://www.gravatar.com/avatar/e00d9254088a9db2e1875fc324402e2c?s=200" alt="gravatar">
+      <h1></h1>
+      <p class="lead">Codesmith by day, Airsculptor by night.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://life.beyondrails.com/">Blog</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="https://github.com/parasquid">GitHub</a></li>
+      
+      
+      
+      <li class="sidebar-nav-item"><a href="https://twitter.com/parasquid">Twitter</a></li>
+    </ul>
+
+    <p>Copyright &copy; 2014 <a href="http://life.beyondrails.com/license">License</a><br/>
+       Powered by <a href="http://hugo.spf13.com">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+<div class="content container">
+  <div class="post">
+    <h1>Ruby and Blocks</h1>
+    <span class="post-date">Mar 4, 2014 &middot; 5 minute read &middot; <a href="http://life.beyondrails.com/blog/2014/03/04/ruby-and-blocks/#disqus_thread">Comments</a>
+    
+    <br/>
+    
+    <a class="label" href="http://life.beyondrails.com/categories/ruby">ruby</a><a class="label" href="http://life.beyondrails.com/categories/basics">basics</a>
+    </span>
+    
+
+<p>One of the most often used and ironically least understood concepts in the Ruby programming language is the block. If you&rsquo;ve used one of the Enumerable mixed-in objects, you&rsquo;ve encountered the block syntax.</p>
+
+<p>For example:</p>
+
+<pre><code class="language-ruby">array = [1, 2, 3, 4, 5]
+
+# returns all the odd numbers of the array
+array.delete_if { |e| e.even? }
+
+#  =&gt; [1, 3, 5]
+</code></pre>
+
+<p>Or the more common:</p>
+
+<pre><code class="language-ruby">array = [1, 2, 3, 4, 5]
+
+# prints out all of the array's elements
+array.each do |element|
+  puts element
+end
+
+# 1
+# 2
+# 3
+# 4
+# 5
+#  =&gt; [1, 2, 3, 4, 5]    
+</code></pre>
+
+<p>Ruby blocks also enable a lot of the functional programming DSL such as:</p>
+
+<pre><code class="language-ruby">array = [1, 2, 3, 4, 5]
+
+# returns the sum of the squares of each element of the array
+array.map { |e| e ** 2 }.reduce(:+)
+
+#  =&gt; 55
+</code></pre>
+
+<p>Robert Sosinski has written a really awesome <a href="http://www.robertsosinski.com/2008/12/21/understanding-ruby-blocks-procs-and-lambdas/">tutorial</a> about ruby blocks and I&rsquo;m encouraging you to go through it.</p>
+
+<p>All of these however are just skimming over the power of blocks. Sure, they&rsquo;re good for eye candy &ndash; we won&rsquo;t be able to use such an elegant looping syntax without the use of blocks, but it&rsquo;s not just another way to loop over a collection!</p>
+
+<p>In fact, blocks (and its related concepts Procs and lambdas) enable a very important programming concept: <a href="http://en.wikipedia.org/wiki/Loose_coupling">loose coupling.</a> For instance, suppose you do:</p>
+
+<pre><code class="language-ruby">def print_name
+  puts &quot;Hello there. I've got your name:&quot;
+  yield
+end
+
+print_name do
+  puts &quot;Tristan&quot;
+end
+
+# Hello there. I've got your name:
+# Tristan
+#  =&gt; nil
+</code></pre>
+
+<p>I could just have as easily done this:</p>
+
+<pre><code class="language-ruby">def print_name(name)
+  puts &quot;Hello there. I've got your name:&quot;
+  puts name
+end
+
+print_name(&quot;Tristan&quot;)
+
+# Hello there. I've got your name:
+# Tristan
+#  =&gt; nil
+</code></pre>
+
+<p>Which does exactly the same thing.</p>
+
+<p>Well not exactly, because with the second example, the method explicitly defined that the name be printed out to STDOUT whereas in the first example, I could have done:</p>
+
+<pre><code class="language-ruby">print_name do
+  File.open(local_filename, 'w') {|f| f.write(name) }
+end
+</code></pre>
+
+<p>Which writes the name into a file. I could have just as easily logged it using <code>Rails.logger</code>, or sent it over a TCP Socket, or save it in a database entry (granted <code>print_name</code> is a bad method name for this purpose, but hey &ndash; with great power comes great responsibility).</p>
+
+<p>Rob Sobers had an epiphany that many people seeking to understand blocks have had. As mentioned in Rob&rsquo;s <a href="http://robsobers.com/struggle-ruby-blocks/">article</a>, you are an active participant in the method you&rsquo;re calling. The method is basically doing a cop-out and telling you &ldquo;hey, I&rsquo;m gonna do this and this but I&rsquo;m giving you the option to also do something else while I&rsquo;m doing that (which I heavily encourage you to do so because you&rsquo;re actually doing the heavy lifting)&rdquo;</p>
+
+<p>This allows you to be quite flexible when you&rsquo;re writing reusable code or libraries, of which you don&rsquo;t really know (or care) what the client code would do. That&rsquo;s the case for the <a href="https://github.com/parasquid/snoopka">Snoopka Gem</a> I wrote, which does the work of connecting to a Kafka stream but defers the processing of the messages to client code.</p>
+
+<pre><code class="language-ruby">puts 'Starting the Kafka listener'
+
+listener = Snoopka::Listener.new host: &quot;localhost&quot;, port: 9092
+
+handler = Handler.new
+listener.add_observer 'test', &amp;handler
+# or alternatively you can also do
+#
+# listener.add_observer 'test' do |message|
+#   puts &quot;your handler code here&quot;
+#   puts message
+# end
+
+loop do
+  listener.consume
+end
+</code></pre>
+
+<p>Here is another neat way to use blocks in your code. Have you ever written a migration script or Rakefile and you wanted to know how long it will take at a particular point in time? There&rsquo;s this gem called <a href="https://github.com/jfelchner/ruby-progressbar">ProgressBar</a> that does exactly that. I&rsquo;ll show you how to make your task so that it will pipe in information to ProgressBar in order for it to display cool stuff.</p>
+
+<p>This code is, by the way, lifted from production code (of course the implementation details have been mocked out; tangentially, the ability to mock things out is one side-effect of good programming design, but that&rsquo;s a topic for another day):</p>
+
+<p>``` ruby tasks/migration.rb
+module Tasks
+  class Migration
+    def self.migrate_all(offset=0,limit=(Tasks::Lead.count - offset))
+      Tasks::Lead.offsetted_entries.each do |lead|
+        migrate_lead(lead)
+        yield lead if block_given?
+      end
+    end</p>
+
+<pre><code>def self.migrate_lead(m_lead)
+  # mocked response
+  # originally copied over the lead from MongoDB to Postgres
+  sleep(rand(1..200)/100)
+end
+</code></pre>
+
+<p>end
+end</p>
+
+<pre><code>
+``` ruby tasks/lead.rb
+module Tasks
+  class Lead
+    def self.count
+      offsetted_entries.count
+    end
+
+    def self.offsetted_entries(skip=0, offset=0)
+      # mocked response
+      # originally returns leads from the database with a particular
+      # skip and offset
+      return 1..100
+    end
+  end
+end
+</code></pre>
+
+<p>``` ruby Rakefile
+namespace :migrations do
+  desc &lsquo;migrate entries from old mongodb database to postgresql&rsquo;
+  task :migrate_from_mongodb_to_postgres =&gt; :environment do
+    progress = ProgressBar.create title: &lsquo;Leads&rsquo;,
+      total: Tasks::Lead.count,
+      :format =&gt; &lsquo;%a |%b&gt;&gt;%i| %p%% %t %c of %C %e&rsquo;</p>
+
+<pre><code>Tasks::Migration.migrate_all { progress.increment }
+
+progress.finish
+</code></pre>
+
+<p>end
+end
+```</p>
+
+<p>You can also get this code from <a href="https://github.com/mindvalley/code_kata">github</a>.</p>
+
+<p>Blocks are Ruby constructs that provide a very clean and elegant way to provide flexibility to your code. Do you have any other ideas on how to improve your code using blocks?</p>
+
+<hr />
+
+<h3 id="updates:c6fd1b7f2af77a517bd0dcfda401330a">Updates</h3>
+
+<p>I presented this topic to the KL Ruby Brigade meetup in Kuala Lumpur, Malaysia. There have been a few questions after the presentation and I&rsquo;ll try to address them here:</p>
+
+<ul>
+<li>Q: What&rsquo;s the difference between a block and a Proc?</li>
+</ul>
+
+<p>A: I think <a href="http://www.robertsosinski.com/2008/12/21/understanding-ruby-blocks-procs-and-lambdas/">Robert</a> will explain this a lot more comprehensively. In a nutshell: a block and a Proc are conceptually similar but a Proc gives you a handle that allows you to reuse the block later on, whereas a block is similar to an anonymous function in Java or C# (you define them inline and you can&rsquo;t refer to them again later on).</p>
+
+<ul>
+<li>Q: What&rsquo;s the difference between the <code>{}</code> syntax and the <code>do...end</code> syntax?</li>
+</ul>
+
+<p>A: This has bitten me and many of my colleagues, and the answer has to do with binding precedence. This <a href="http://stackoverflow.com/a/5587399">Stackoverflow answer</a> can give you more details. In a nutshell, the <code>{}</code> syntax binds strongly that without parentheses it will bind to the last parameter (in a multi-parameter method) whereas the <code>do...end</code> syntax will always bind to the invocation.</p>
+
+<hr />
+
+<h3 id="further-reading:c6fd1b7f2af77a517bd0dcfda401330a">Further Reading</h3>
+
+<ul>
+<li><a href="http://www.robertsosinski.com/2008/12/21/understanding-ruby-blocks-procs-and-lambdas/">http://www.robertsosinski.com/2008/12/21/understanding-ruby-blocks-procs-and-lambdas/</a></li>
+<li><a href="http://stackoverflow.com/questions/4911353/best-explanation-of-ruby-blocks">http://stackoverflow.com/questions/4911353/best-explanation-of-ruby-blocks</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Loose_coupling">http://en.wikipedia.org/wiki/Loose_coupling</a></li>
+<li><a href="http://robsobers.com/struggle-ruby-blocks/">http://robsobers.com/struggle-ruby-blocks/</a></li>
+<li><a href="https://github.com/jfelchner/ruby-progressbar">https://github.com/jfelchner/ruby-progressbar</a></li>
+<li><a href="https://github.com/mindvalley/code_kata">https://github.com/mindvalley/code_kata</a></li>
+<li><a href="https://github.com/parasquid/snoopka">https://github.com/parasquid/snoopka</a></li>
+<li><a href="http://stackoverflow.com/a/5587399">http://stackoverflow.com/a/5587399</a></li>
+</ul>
+
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "parasquid";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "parasquid";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://life.beyondrails.com/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script>
+  var _gaq=[['_setAccount','Your Google Analytics tracking code'],['_trackPageview']];
+  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+  g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+  s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+
+</body>
+</html>

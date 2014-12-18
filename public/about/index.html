@@ -7,18 +7,18 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-  <title>about &middot; </title>
+  <title>About Me &middot; </title>
 
   
-  <link rel="stylesheet" href="http://life.beyondrails.com/css/poole.css">
-  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde.css">
-  <link rel="stylesheet" href="http://life.beyondrails.com/css/poole-overrides.css">
-  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde-overrides.css">
-  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde-x.css">
-  <link rel="stylesheet" href="http://life.beyondrails.com/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="http://localhost:1313/css/poole.css">
+  <link rel="stylesheet" href="http://localhost:1313/css/hyde.css">
+  <link rel="stylesheet" href="http://localhost:1313/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://localhost:1313/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://localhost:1313/css/hyde-x.css">
+  <link rel="stylesheet" href="http://localhost:1313/css/highlight/sunburst.css">
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
 
-  <link rel="stylesheet" href="http://life.beyondrails.com/css/styles.css">
+  <link rel="stylesheet" href="http://localhost:1313/css/styles.css">
 
   
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
@@ -42,7 +42,9 @@
     </div>
 
     <ul class="sidebar-nav">
-      <li class="sidebar-nav-item"><a href="http://life.beyondrails.com/">Blog</a></li>
+      <li class="sidebar-nav-item"><a href="http://localhost:1313/">Blog</a></li>
+      
+      <li class="sidebar-nav-item"><a href="http://localhost:1313/about/">About Me</a></li>
       
     </ul>
 
@@ -54,23 +56,31 @@
       <li class="sidebar-nav-item"><a href="https://twitter.com/parasquid">Twitter</a></li>
     </ul>
 
-    <p>Copyright &copy; 2014 <a href="http://life.beyondrails.com/license">License</a><br/>
+    <p>Copyright &copy; 2014 <a href="http://localhost:1313/license">License</a><br/>
        Powered by <a href="http://hugo.spf13.com">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
   </div>
 </div>
 
 <div class="content container">
   <div class="post">
-    <h1>about</h1>
+    <h1>About Me</h1>
     
 
-<h3 id="toc_0">Hello there!</h3>
+<h3 id="toc_0">About Me</h3>
 
-<p>Hi there</p>
+<p>Hi, I’m Tristan! I’m a software developer currently living and working in Kuala Lumpur.</p>
+
+<p>I work mostly in Ruby, some HTML/CSS/JS, DevOps and some Go.</p>
+
+<p>My main interest is in server-side technology and massive scalability, but I’ve been known to dabble in native mobile development, user facing web applications and various other projects.</p>
+
+<p>Check out my <a href="https://github.com/parasquid">GitHub page</a> to see what I’ve been up to recently!</p>
+
+<p>(this page was shamelessly stolen from <a href="http://andreimihu.com/about/">http://andreimihu.com/about/</a>)</p>
 
   </div>
 </div>
-<script src="http://life.beyondrails.com/js/highlight.pack.js"></script>
+<script src="http://localhost:1313/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <script>
@@ -89,5 +99,8 @@
   });
 </script>
 
-</body>
+<script>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':1313/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
 </html>

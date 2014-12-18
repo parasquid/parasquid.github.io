@@ -10,15 +10,15 @@
   <title>Getting Data From a Join Table in Rails &middot; </title>
 
   
-  <link rel="stylesheet" href="http://life.beyondrails.com/css/poole.css">
-  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde.css">
-  <link rel="stylesheet" href="http://life.beyondrails.com/css/poole-overrides.css">
-  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde-overrides.css">
-  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde-x.css">
-  <link rel="stylesheet" href="http://life.beyondrails.com/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="http://localhost:1313/css/poole.css">
+  <link rel="stylesheet" href="http://localhost:1313/css/hyde.css">
+  <link rel="stylesheet" href="http://localhost:1313/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://localhost:1313/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://localhost:1313/css/hyde-x.css">
+  <link rel="stylesheet" href="http://localhost:1313/css/highlight/sunburst.css">
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
 
-  <link rel="stylesheet" href="http://life.beyondrails.com/css/styles.css">
+  <link rel="stylesheet" href="http://localhost:1313/css/styles.css">
 
   
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
@@ -42,7 +42,9 @@
     </div>
 
     <ul class="sidebar-nav">
-      <li class="sidebar-nav-item"><a href="http://life.beyondrails.com/">Blog</a></li>
+      <li class="sidebar-nav-item"><a href="http://localhost:1313/">Blog</a></li>
+      
+      <li class="sidebar-nav-item"><a href="http://localhost:1313/about/">About Me</a></li>
       
     </ul>
 
@@ -54,7 +56,7 @@
       <li class="sidebar-nav-item"><a href="https://twitter.com/parasquid">Twitter</a></li>
     </ul>
 
-    <p>Copyright &copy; 2014 <a href="http://life.beyondrails.com/license">License</a><br/>
+    <p>Copyright &copy; 2014 <a href="http://localhost:1313/license">License</a><br/>
        Powered by <a href="http://hugo.spf13.com">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
   </div>
 </div>
@@ -62,7 +64,7 @@
 <div class="content container">
   <div class="post">
     <h1>Getting Data From a Join Table in Rails</h1>
-    <span class="post-date">Aug 19, 2014 &middot; 2 minute read &middot; <a href="http://life.beyondrails.com/blog/2014/08/19/getting-data-from-a-join-table-in-rails/#disqus_thread">Comments</a>
+    <span class="post-date">Aug 19, 2014 &middot; 2 minute read &middot; <a href="http://localhost:1313/blog/2014/08/19/getting-data-from-a-join-table-in-rails/#disqus_thread">Comments</a>
     </span>
     <p>A friend asked in my <a href="https://www.facebook.com/groups/klxrb">Ruby Facebook group</a> about a <a href="https://www.facebook.com/groups/klxrb/permalink/515838138548150/">problem</a> he was having that I feel I&rsquo;ve encountered before (or will be encountering in the future). It&rsquo;s about having to retrieve data taht is associated with a join table.</p>
 
@@ -178,7 +180,7 @@ var disqus_shortname = "parasquid";
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
-<script src="http://life.beyondrails.com/js/highlight.pack.js"></script>
+<script src="http://localhost:1313/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <script>
@@ -197,5 +199,8 @@ var disqus_shortname = "parasquid";
   });
 </script>
 
-</body>
+<script>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':1313/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
 </html>

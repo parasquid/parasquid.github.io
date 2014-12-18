@@ -4,8 +4,6 @@ title: About Me
 menu: main
 ---
 
-### About Me
-
 Hi, I’m Tristan! I’m a software developer currently living and working in Kuala Lumpur.
 
 I work mostly in Ruby, some HTML/CSS/JS, DevOps and some Go.

@@ -3,7 +3,7 @@
   <channel>
       <title>Management on Life Beyond Rails </title>
       <generator uri="https://hugo.spf13.com">Hugo</generator>
-    <link>http://localhost:1313/categories/management/index.xml/</link>
+    <link>http://life.beyondrails.com/categories/management/index.xml/</link>
     
     
     
@@ -11,10 +11,10 @@
     
     <item>
       <title>The Tick-Tock Innovation Model Applied to Agile Methodology</title>
-      <link>http://localhost:1313/blog/2014/12/15/the-tick-tock-innovation-model-applied-to-agile-methodology/</link>
+      <link>http://life.beyondrails.com/blog/2014/12/15/the-tick-tock-innovation-model-applied-to-agile-methodology/</link>
       <pubDate>Mon, 15 Dec 2014 00:00:00 UTC</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/12/15/the-tick-tock-innovation-model-applied-to-agile-methodology/</guid>
+      <guid>http://life.beyondrails.com/blog/2014/12/15/the-tick-tock-innovation-model-applied-to-agile-methodology/</guid>
       <description>&lt;p&gt;You&amp;rsquo;ve probably heard of the &lt;a href=&#34;http://www.intel.com/content/www/us/en/silicon-innovations/intel-tick-tock-model-general.html&#34;&gt;tick-tock model that Intel is using&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;It&amp;rsquo;s a model where every 18 months, there&amp;rsquo;s a new focus on the chip architecture: the tick is a shrinking of the chip (which requires retrofitting their manufacturing process to support the smaller size) and the tock is an upgrade of the architecture itself, using the current manufacturing process.&lt;/p&gt;
@@ -31,10 +31,10 @@
     
     <item>
       <title>How I Hire Developers</title>
-      <link>http://localhost:1313/blog/2014/11/04/how-i-hire-developers/</link>
+      <link>http://life.beyondrails.com/blog/2014/11/04/how-i-hire-developers/</link>
       <pubDate>Tue, 04 Nov 2014 00:00:00 UTC</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/11/04/how-i-hire-developers/</guid>
+      <guid>http://life.beyondrails.com/blog/2014/11/04/how-i-hire-developers/</guid>
       <description>&lt;p&gt;I was invited to pressent at the &lt;a href=&#34;http://www.projectrenaissance.com/technology/kl-ruby-brigade-2&#34;&gt;KL Ruby Brigade&lt;/a&gt; and I thought I shuld mix things around by talking about something not very technical but still very much relevant to the audience.&lt;/p&gt;
 
 &lt;p&gt;Since I&amp;rsquo;m in charge (but saying &amp;ldquo;in-charge&amp;rdquo; is a bit of a misnomer since in Mindvalley we don&amp;rsquo;t really have predefined job descriptions) of the internship program for new tech hires, I figures I should share some of the things I consider when interviewing and hiring people.&lt;/p&gt;

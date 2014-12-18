@@ -3,7 +3,7 @@
   <channel>
       <title>Documentation on Life Beyond Rails </title>
       <generator uri="https://hugo.spf13.com">Hugo</generator>
-    <link>http://localhost:1313/categories/documentation/index.xml/</link>
+    <link>http://life.beyondrails.com/categories/documentation/index.xml/</link>
     
     
     
@@ -11,10 +11,10 @@
     
     <item>
       <title>API Documentation with Grape and Swagger</title>
-      <link>http://localhost:1313/blog/2014/06/01/api-documentation-with-grape-and-swagger/</link>
+      <link>http://life.beyondrails.com/blog/2014/06/01/api-documentation-with-grape-and-swagger/</link>
       <pubDate>Sun, 01 Jun 2014 00:00:00 UTC</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/06/01/api-documentation-with-grape-and-swagger/</guid>
+      <guid>http://life.beyondrails.com/blog/2014/06/01/api-documentation-with-grape-and-swagger/</guid>
       <description>
 
 &lt;div class=&#34;info info&#34; data-title=&#34;TL;DR&#34;&gt;

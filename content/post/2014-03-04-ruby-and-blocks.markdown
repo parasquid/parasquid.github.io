@@ -123,7 +123,8 @@ Here is another neat way to use blocks in your code. Have you ever written a mig
 
 This code is, by the way, lifted from production code (of course the implementation details have been mocked out; tangentially, the ability to mock things out is one side-effect of good programming design, but that's a topic for another day):
 
-``` ruby tasks/migration.rb
+``` ruby
+# tasks/migration.rb
 module Tasks
   class Migration
     def self.migrate_all(offset=0,limit=(Tasks::Lead.count - offset))
@@ -142,7 +143,8 @@ module Tasks
 end
 ```
 
-``` ruby tasks/lead.rb
+``` ruby
+# tasks/lead.rb
 module Tasks
   class Lead
     def self.count
@@ -159,7 +161,8 @@ module Tasks
 end
 ```
 
-``` ruby Rakefile
+``` ruby
+# Rakefile
 namespace :migrations do
   desc 'migrate entries from old mongodb database to postgresql'
   task :migrate_from_mongodb_to_postgres => :environment do

@@ -3,7 +3,7 @@
   <channel>
       <title>Linux on Life Beyond Rails </title>
       <generator uri="https://hugo.spf13.com">Hugo</generator>
-    <link>http://localhost:1313/categories/linux/index.xml/</link>
+    <link>http://life.beyondrails.com/categories/linux/index.xml/</link>
     
     
     
@@ -11,10 +11,10 @@
     
     <item>
       <title>Setup and Configuration of my Machines</title>
-      <link>http://localhost:1313/blog/2014/08/03/setup-and-configuration-of-my-machines/</link>
+      <link>http://life.beyondrails.com/blog/2014/08/03/setup-and-configuration-of-my-machines/</link>
       <pubDate>Sun, 03 Aug 2014 00:00:00 UTC</pubDate>
       
-      <guid>http://localhost:1313/blog/2014/08/03/setup-and-configuration-of-my-machines/</guid>
+      <guid>http://life.beyondrails.com/blog/2014/08/03/setup-and-configuration-of-my-machines/</guid>
       <description>
 
 &lt;div class=&#34;info info&#34; data-title=&#34;Work In Progress&#34;&gt;
@@ -55,10 +55,10 @@
     
     <item>
       <title>Reinstalling Kubuntu</title>
-      <link>http://localhost:1313/blog/2006/03/19/reinstalling-kubuntu/</link>
+      <link>http://life.beyondrails.com/blog/2006/03/19/reinstalling-kubuntu/</link>
       <pubDate>Sun, 19 Mar 2006 00:00:00 UTC</pubDate>
       
-      <guid>http://localhost:1313/blog/2006/03/19/reinstalling-kubuntu/</guid>
+      <guid>http://life.beyondrails.com/blog/2006/03/19/reinstalling-kubuntu/</guid>
       <description>&lt;p&gt;My data drive had some corruption as regards its file system tree, and i was forced to rebuild it. I figured I&amp;rsquo;ll just reinstall Kubuntu too since I inadverdently installed Ubuntu Desktop, which kinda doubled the applications I have on the menu.&lt;/p&gt;
 
 &lt;p&gt;Here are some of the things I did in order to remind myself in case my system crashes again:&lt;/p&gt;

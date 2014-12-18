@@ -3,7 +3,7 @@
   <channel>
       <title>Posts on Life Beyond Rails </title>
       <generator uri="https://hugo.spf13.com">Hugo</generator>
-    <link>http://life.beyondrails.com/post/index.xml/</link>
+    <link>http://localhost:1313/post/index.xml/</link>
     
     
     
@@ -11,10 +11,10 @@
     
     <item>
       <title>The Tick-Tock Innovation Model Applied to Agile Methodology</title>
-      <link>http://life.beyondrails.com/blog/2014/12/15/the-tick-tock-innovation-model-applied-to-agile-methodology/</link>
+      <link>http://localhost:1313/blog/2014/12/15/the-tick-tock-innovation-model-applied-to-agile-methodology/</link>
       <pubDate>Mon, 15 Dec 2014 00:00:00 UTC</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2014/12/15/the-tick-tock-innovation-model-applied-to-agile-methodology/</guid>
+      <guid>http://localhost:1313/blog/2014/12/15/the-tick-tock-innovation-model-applied-to-agile-methodology/</guid>
       <description>&lt;p&gt;You&amp;rsquo;ve probably heard of the &lt;a href=&#34;http://www.intel.com/content/www/us/en/silicon-innovations/intel-tick-tock-model-general.html&#34;&gt;tick-tock model that Intel is using&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;It&amp;rsquo;s a model where every 18 months, there&amp;rsquo;s a new focus on the chip architecture: the tick is a shrinking of the chip (which requires retrofitting their manufacturing process to support the smaller size) and the tock is an upgrade of the architecture itself, using the current manufacturing process.&lt;/p&gt;
@@ -31,10 +31,10 @@
     
     <item>
       <title>Setting Up and Automating my Hugo Blog Deployment to Github Pages</title>
-      <link>http://life.beyondrails.com/blog/2014/12/14/setting-up-and-automating-my-hugo-blog-deployment-to-github-pages/</link>
+      <link>http://localhost:1313/blog/2014/12/14/setting-up-and-automating-my-hugo-blog-deployment-to-github-pages/</link>
       <pubDate>Sun, 14 Dec 2014 07:16:31 -0800</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2014/12/14/setting-up-and-automating-my-hugo-blog-deployment-to-github-pages/</guid>
+      <guid>http://localhost:1313/blog/2014/12/14/setting-up-and-automating-my-hugo-blog-deployment-to-github-pages/</guid>
       <description>
 
 &lt;div class=&#34;info info&#34; data-title=&#34;Work In Progress&#34;&gt;
@@ -69,7 +69,7 @@ git rm --cached $(git ls-files)
 
 # Grab one file from the master branch so we can make a commit
 git checkout source .gitignore
-git commit -m &amp;quot;INIT: initial commit on gh-pages branch&amp;quot;
+git commit -m &amp;quot;INIT: initial commit on master branch&amp;quot;
 git push origin master
 
 # Return to the source branch
@@ -168,7 +168,9 @@ git subtree push --prefix=public\
 	git@github.com:parasquid/parasquid.github.io.git master
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;It&amp;rsquo;s a combination of the initial setup and the default deployment script from the hugo documentation. Now the only downside left (and this is a very minor thing for me) is that post updates take a number of minutes before they are seen live. But I can live with that.&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s a combination of the initial setup and the default deployment script from the hugo documentation. Now the only downside left (and this is a very minor thing for me) is that post updates can take a number of minutes before they are seen live. But I can live with that.&lt;/p&gt;
+
+&lt;p&gt;Also, there will be times when the master branch just won&amp;rsquo;t deploy because of merge conflicts (and there&amp;rsquo;s no way to do a force push on &lt;code&gt;git subtree&lt;/code&gt;). So far all I have to do is to run &lt;code&gt;deploy.sh&lt;/code&gt; one more time and it&amp;rsquo;s all cool.&lt;/p&gt;
 
 &lt;h2 id=&#34;toc_4&#34;&gt;Porting old blog entries to hugo&lt;/h2&gt;
 
@@ -186,10 +188,10 @@ git subtree push --prefix=public\
     
     <item>
       <title>Redoing my Blogs</title>
-      <link>http://life.beyondrails.com/blog/2014/12/12/redoing-my-blogs/</link>
+      <link>http://localhost:1313/blog/2014/12/12/redoing-my-blogs/</link>
       <pubDate>Fri, 12 Dec 2014 12:25:29 -0800</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2014/12/12/redoing-my-blogs/</guid>
+      <guid>http://localhost:1313/blog/2014/12/12/redoing-my-blogs/</guid>
       <description>&lt;p&gt;Yet again I&amp;rsquo;ve ported my blog into yet another blogging platform - &lt;a href=&#34;http://gohugo.io/&#34;&gt;Hugo&lt;/a&gt;. I feel so strongly that I&amp;rsquo;d be staying for quite some time on this platform that I&amp;rsquo;ve been porting over all my other posts in all my other various blogs over here.&lt;/p&gt;
 
 &lt;p&gt;It&amp;rsquo;s quite an interesting blogging platform. It outputs static files, which means hosting options are very cheap with a wide variety of providers.&lt;/p&gt;
@@ -198,10 +200,10 @@ git subtree push --prefix=public\
     
     <item>
       <title>How I Hire Developers</title>
-      <link>http://life.beyondrails.com/blog/2014/11/04/how-i-hire-developers/</link>
+      <link>http://localhost:1313/blog/2014/11/04/how-i-hire-developers/</link>
       <pubDate>Tue, 04 Nov 2014 00:00:00 UTC</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2014/11/04/how-i-hire-developers/</guid>
+      <guid>http://localhost:1313/blog/2014/11/04/how-i-hire-developers/</guid>
       <description>&lt;p&gt;I was invited to pressent at the &lt;a href=&#34;http://www.projectrenaissance.com/technology/kl-ruby-brigade-2&#34;&gt;KL Ruby Brigade&lt;/a&gt; and I thought I shuld mix things around by talking about something not very technical but still very much relevant to the audience.&lt;/p&gt;
 
 &lt;p&gt;Since I&amp;rsquo;m in charge (but saying &amp;ldquo;in-charge&amp;rdquo; is a bit of a misnomer since in Mindvalley we don&amp;rsquo;t really have predefined job descriptions) of the internship program for new tech hires, I figures I should share some of the things I consider when interviewing and hiring people.&lt;/p&gt;
@@ -213,11 +215,105 @@ git subtree push --prefix=public\
     </item>
     
     <item>
+      <title>Getting Data From a Join Table in Rails</title>
+      <link>http://localhost:1313/blog/2014/08/19/getting-data-from-a-join-table-in-rails/</link>
+      <pubDate>Tue, 19 Aug 2014 00:00:00 UTC</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/08/19/getting-data-from-a-join-table-in-rails/</guid>
+      <description>&lt;p&gt;A friend asked in my &lt;a href=&#34;https://www.facebook.com/groups/klxrb&#34;&gt;Ruby Facebook group&lt;/a&gt; about a &lt;a href=&#34;https://www.facebook.com/groups/klxrb/permalink/515838138548150/&#34;&gt;problem&lt;/a&gt; he was having that I feel I&amp;rsquo;ve encountered before (or will be encountering in the future). It&amp;rsquo;s about having to retrieve data taht is associated with a join table.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s the question:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;I have set ActiveRecords models like these&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;script src=&#34;https://gist.github.com/87abbf74e8020ca7e95c.js?file=&#34; type=&#34;text/javascript&#34;&gt;&lt;/script&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;I want to do something like current_user.boards.first.role which I expect to load the membership details of current_user AND the first board. Do you have any idea how can I achieve this? Do you suggest another approach?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;In other words, he wants to be able to get at the &lt;code&gt;current_user&lt;/code&gt;&amp;rsquo;s boards and retrieve the role assigned to the first board.&lt;/p&gt;
+
+&lt;p&gt;At first it was a bit difficult to search google for the corrent keywords, but there&amp;rsquo;s &lt;a href=&#34;http://stackoverflow.com/a/8874831&#34;&gt;StackOverflow&lt;/a&gt; to the rescue. There needs to be a custom SQL select query to expose the role_mask attribute of the join table&lt;/p&gt;
+
+&lt;p&gt;I felt that it was a very interesting question, so I made a sample app for him to show the technique. It can be found here: &lt;a href=&#34;https://github.com/parasquid/reach-into-habtm-example/&#34;&gt;https://github.com/parasquid/reach-into-habtm-example/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For the lazy and impatient:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;# app/models/user.rb
+class User &amp;lt; ActiveRecord::Base
+  has_many :memberships
+  has_many :boards, through: :memberships, :select =&amp;gt; &#39;memberships.role_mask as role_mask&#39;
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;# spec/models/membership_spec.rb
+require &#39;spec_helper&#39;
+
+MAX_USERS = 2
+MAX_BOARDS = 5
+
+describe Membership do
+  context &#39;access through a user instance&#39; do
+    before :each do
+      1.upto MAX_USERS do
+        User.create
+      end
+
+      1.upto MAX_BOARDS do
+        Board.create
+      end
+
+      # associate two boards to the first user
+      user1 = User.first
+      user1.memberships.create(role_mask: 1, board: Board.first)
+      user1.memberships.create(role_mask: 4, board: Board.last)
+
+      # associate two boards to the second user in reverse order
+      user2 = User.last
+      user2.memberships.create(role_mask: 4, board: Board.first)
+      user2.memberships.create(role_mask: 1, board: Board.last)
+    end
+
+    context &#39;first user&#39; do
+      let(:current_user) { User.first }
+
+      it &#39;returns the current user\&#39;s board\&#39;s membership role&#39; do
+        expect(current_user.boards.first.role).to eq :admin
+        expect(current_user.boards.last.role).to eq :member
+      end
+    end
+
+    context &#39;second user&#39; do
+      let(:current_user) { User.last }
+
+      it &#39;returns the current user\&#39;s board\&#39;s membership role&#39; do
+        expect(current_user.boards.first.role).to eq :member
+        expect(current_user.boards.last.role).to eq :admin
+      end
+    end
+
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And of course, as Milad&amp;rsquo;s comment (and the StackOverflow guy) says, the &lt;code&gt;:select&lt;/code&gt; hash is already deprecated in Rails 4 and you&amp;rsquo;d need to do use a lambda instead:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;has_many :boards,
+         -&amp;gt; { select &#39;boards.*, memberships.role_mask as role_mask&#39;},
+         :through =&amp;gt; :memberships
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Setup and Configuration of my Machines</title>
-      <link>http://life.beyondrails.com/blog/2014/08/03/setup-and-configuration-of-my-machines/</link>
+      <link>http://localhost:1313/blog/2014/08/03/setup-and-configuration-of-my-machines/</link>
       <pubDate>Sun, 03 Aug 2014 00:00:00 UTC</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2014/08/03/setup-and-configuration-of-my-machines/</guid>
+      <guid>http://localhost:1313/blog/2014/08/03/setup-and-configuration-of-my-machines/</guid>
       <description>
 
 &lt;div class=&#34;info info&#34; data-title=&#34;Work In Progress&#34;&gt;
@@ -258,10 +354,10 @@ git subtree push --prefix=public\
     
     <item>
       <title>API Documentation with Grape and Swagger</title>
-      <link>http://life.beyondrails.com/blog/2014/06/01/api-documentation-with-grape-and-swagger/</link>
+      <link>http://localhost:1313/blog/2014/06/01/api-documentation-with-grape-and-swagger/</link>
       <pubDate>Sun, 01 Jun 2014 00:00:00 UTC</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2014/06/01/api-documentation-with-grape-and-swagger/</guid>
+      <guid>http://localhost:1313/blog/2014/06/01/api-documentation-with-grape-and-swagger/</guid>
       <description>
 
 &lt;div class=&#34;info info&#34; data-title=&#34;TL;DR&#34;&gt;
@@ -347,10 +443,10 @@ git subtree push --prefix=public\
     
     <item>
       <title>Ruby and Blocks</title>
-      <link>http://life.beyondrails.com/blog/2014/03/04/ruby-and-blocks/</link>
+      <link>http://localhost:1313/blog/2014/03/04/ruby-and-blocks/</link>
       <pubDate>Tue, 04 Mar 2014 00:00:00 UTC</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2014/03/04/ruby-and-blocks/</guid>
+      <guid>http://localhost:1313/blog/2014/03/04/ruby-and-blocks/</guid>
       <description>
 
 &lt;p&gt;One of the most often used and ironically least understood concepts in the Ruby programming language is the block. If you&amp;rsquo;ve used one of the Enumerable mixed-in objects, you&amp;rsquo;ve encountered the block syntax.&lt;/p&gt;
@@ -559,10 +655,10 @@ end
     
     <item>
       <title>Install ruby-2.0.0-p195 on Ubuntu 12.04</title>
-      <link>http://life.beyondrails.com/blog/2013/06/08/install-ruby-2.0.0-p195-on-ubuntu-12.04/</link>
+      <link>http://localhost:1313/blog/2013/06/08/install-ruby-2.0.0-p195-on-ubuntu-12.04/</link>
       <pubDate>Sat, 08 Jun 2013 00:00:00 UTC</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2013/06/08/install-ruby-2.0.0-p195-on-ubuntu-12.04/</guid>
+      <guid>http://localhost:1313/blog/2013/06/08/install-ruby-2.0.0-p195-on-ubuntu-12.04/</guid>
       <description>&lt;p&gt;It&amp;rsquo;s always easier to deal with a ruby binary that&amp;rsquo;s installed server-wide rather than a local user installation (done via &lt;a href=&#34;http://rvm.io/&#34;&gt;rvm&lt;/a&gt; or &lt;a href=&#34;http://rbenv.org/&#34;&gt;rbenv&lt;/a&gt;). Server initialization scripts don&amp;rsquo;t need to do path magic and profile sourcing in order to find the correct binary. Here I how to install ruby-2.0.0-p195 in a way that your system administrator will love you for.&lt;/p&gt;
 
 &lt;p&gt;System administrators maintain their servers like they would maintain a well-tended garden: clean, organized, and everything in its place. It&amp;rsquo;s no surprise then that when we developers start compiling &amp;ldquo;stuff&amp;rdquo; left and right, our sysadmins get annoyed out of their minds.&lt;/p&gt;
@@ -597,10 +693,10 @@ end
     
     <item>
       <title>Rolling Restarts with Capistrano and Linode</title>
-      <link>http://life.beyondrails.com/blog/2013/06/01/rolling-restarts-with-capistrano-and-linode/</link>
+      <link>http://localhost:1313/blog/2013/06/01/rolling-restarts-with-capistrano-and-linode/</link>
       <pubDate>Sat, 01 Jun 2013 00:00:00 UTC</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2013/06/01/rolling-restarts-with-capistrano-and-linode/</guid>
+      <guid>http://localhost:1313/blog/2013/06/01/rolling-restarts-with-capistrano-and-linode/</guid>
       <description>&lt;p&gt;Here I show how to perform a rolling restart using Capistrano, and making sure that the load balancer (in this case Linode) properly reroutes traffic to the still-running servers while the others are being restarted.&lt;/p&gt;
 
 &lt;div class=&#34;info warning&#34; data-title=&#34;WARNING&#34;&gt;
@@ -791,10 +887,10 @@ end
     
     <item>
       <title>Running PrivatePub/Faye Standalone in Heroku for Free</title>
-      <link>http://life.beyondrails.com/blog/2013/05/25/running-privatepub/faye-standalone-in-heroku-for-free/</link>
+      <link>http://localhost:1313/blog/2013/05/25/running-privatepub/faye-standalone-in-heroku-for-free/</link>
       <pubDate>Sat, 25 May 2013 00:00:00 UTC</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2013/05/25/running-privatepub/faye-standalone-in-heroku-for-free/</guid>
+      <guid>http://localhost:1313/blog/2013/05/25/running-privatepub/faye-standalone-in-heroku-for-free/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://github.com/ryanb/private_pub&#34;&gt;PrivatePub&lt;/a&gt; is an awesome gem by the renowned Ryan Bates of &lt;a href=&#34;http://railscasts.com/&#34;&gt;Railscast&lt;/a&gt; fame. It provides an easy way to use Faye as a pubsub provider. Watch this &lt;a href=&#34;http://railscasts.com/episodes/316-private-pub&#34;&gt;episode&lt;/a&gt; to see it in action.&lt;/p&gt;
 
 &lt;p&gt;You don&amp;rsquo;t have to bundle the gem with a Rails application though; you can deploy PrivatePub standalone as a rack application in Heroku. This allows you to run PrivatePub in a web dyno instead of a worker, allowing for easier maintenance (separation of repositories/codebases) and as a side effect, save on hosting costs.&lt;/p&gt;
@@ -861,10 +957,10 @@ gem &#39;thin&#39;
     
     <item>
       <title>A Smartphone is not a Phone</title>
-      <link>http://life.beyondrails.com/blog/2013/02/12/a-smartphone-is-not-a-phone/</link>
+      <link>http://localhost:1313/blog/2013/02/12/a-smartphone-is-not-a-phone/</link>
       <pubDate>Tue, 12 Feb 2013 00:00:00 UTC</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2013/02/12/a-smartphone-is-not-a-phone/</guid>
+      <guid>http://localhost:1313/blog/2013/02/12/a-smartphone-is-not-a-phone/</guid>
       <description>&lt;p&gt;I&amp;rsquo;ve seen a number of commenters (mostly from the US) arguing that people look funny holding a 5-inch phone/tablet at the side of their heads, while being surprised at how well they&amp;rsquo;ve sold so far (especially in Asia).&lt;/p&gt;
 
 &lt;p&gt;I think it&amp;rsquo;s because those that got these &amp;ldquo;giant phones&amp;rdquo; have subconsciously realised the obvious: their smart phone isn&amp;rsquo;t a phone. It&amp;rsquo;s actually a computer that happens to have phone-like functionalities. After all, the only difference Skype has over regular cellular voice services is the medium.&lt;/p&gt;
@@ -877,10 +973,10 @@ gem &#39;thin&#39;
     
     <item>
       <title>Writing History on Your Own Terms</title>
-      <link>http://life.beyondrails.com/blog/2013/02/05/writing-history-on-your-own-terms/</link>
+      <link>http://localhost:1313/blog/2013/02/05/writing-history-on-your-own-terms/</link>
       <pubDate>Tue, 05 Feb 2013 00:00:00 UTC</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2013/02/05/writing-history-on-your-own-terms/</guid>
+      <guid>http://localhost:1313/blog/2013/02/05/writing-history-on-your-own-terms/</guid>
       <description>&lt;p&gt;HTC just posted a brilliant blog entry titled &amp;ldquo;&lt;a href=&#34;http://blog.htc.com/2013/02/a-brief-history-of-photography/&#34;&gt;A Brief History of Photography&lt;/a&gt;.&amp;rdquo; It&amp;rsquo;s a short infographic that details the experience of photographic technology from two centuries ago until the present.&lt;/p&gt;
 
 &lt;p&gt;What&amp;rsquo;s really clever is that they&amp;rsquo;ve inserted themselves in history. The message is subtle yet clear: HTC will become part of this particular retelling of history.&lt;/p&gt;
@@ -895,10 +991,10 @@ gem &#39;thin&#39;
     
     <item>
       <title>My Development Setup</title>
-      <link>http://life.beyondrails.com/blog/2012/01/23/my-development-setup/</link>
+      <link>http://localhost:1313/blog/2012/01/23/my-development-setup/</link>
       <pubDate>Mon, 23 Jan 2012 00:00:00 UTC</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2012/01/23/my-development-setup/</guid>
+      <guid>http://localhost:1313/blog/2012/01/23/my-development-setup/</guid>
       <description>
 
 &lt;p&gt;At &lt;a href=&#34;http://www.mindvalley.com/&#34;&gt;Mindvalley&lt;/a&gt; employees can have any kind of hardware/software they want, provided that they can prove it is necessary for the work they’re doing, or at least it increases their productivity. In my case, I opted for the setup as seen here (picture courtesy of my colleague):&lt;/p&gt;
@@ -951,10 +1047,10 @@ gem &#39;thin&#39;
     
     <item>
       <title>Sticky Users</title>
-      <link>http://life.beyondrails.com/blog/2011/12/29/sticky-users/</link>
+      <link>http://localhost:1313/blog/2011/12/29/sticky-users/</link>
       <pubDate>Thu, 29 Dec 2011 00:00:00 UTC</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2011/12/29/sticky-users/</guid>
+      <guid>http://localhost:1313/blog/2011/12/29/sticky-users/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://www.facebook.com/groups/webcamp/341435632535194/&#34;&gt;Someone&lt;/a&gt; at WebcampKL asked for help with regard to his mobile budgeting app. Initially the discussion was about validating assumptions, but later on an important issue was raised: why would someone want to use your app, and what would make the user come back for more?&lt;/p&gt;
 
 &lt;p&gt;There is, in fact a very simple way to get your users sticking by the your product during alpha without alienating them later on when you are ready for launch: make them pay a token amount, and once your product gets gold, waive their fees (for life, if it’s a subscription). Why does this work?&lt;/p&gt;
@@ -962,64 +1058,6 @@ gem &#39;thin&#39;
 &lt;p&gt;There are many subtle psychological triggers in effect here, but the most powerful would be the &lt;a href=&#34;http://youarenotsosmart.com/2011/03/25/the-sunk-cost-fallacy/&#34;&gt;Sunk Cost fallacy&lt;/a&gt;. Asking them to pay even just a token amount (my suggestion was $1) is powerful enough to make them want to continue using your app and forgive its faults. This is also very similar to &lt;a href=&#34;http://www.fripp.com/art.of_influence.html&#34;&gt;Cialdini’s Commitment and Consistency&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Somewhat related would be the &lt;a href=&#34;http://youarenotsosmart.com/2010/07/27/anchoring-effect/&#34;&gt;Anchoring effect&lt;/a&gt;. By not making the alpha release free for testers, current and future customers are now used to expecting that the app is not for free. When the product launches, future customers are more likely to pay for the usage of the app.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Having Fun With Remote Shells</title>
-      <link>http://life.beyondrails.com/blog/2006/04/03/having-fun-with-remote-shells/</link>
-      <pubDate>Mon, 03 Apr 2006 00:00:00 UTC</pubDate>
-      
-      <guid>http://life.beyondrails.com/blog/2006/04/03/having-fun-with-remote-shells/</guid>
-      <description>&lt;p&gt;I just bought a VPS (virtual private server) a couple of days ago, and I&amp;rsquo;m enjoying tinkering with it. It&amp;rsquo;s not the most powerful beast though; it only has 64MB RAM and 128MB swap. I won&amp;rsquo;t say the name of the company I&amp;rsquo;m subscribed to since my box isn&amp;rsquo;t exactly the bastion of security, but you should be able to discern the shell provider from how I describe my escapades :D&lt;/p&gt;
-
-&lt;p&gt;The most important lesson I&amp;rsquo;ve learned while playing sysadmin is: learn how to take notes. I had to take down, reload, reboot, reconfigure, and do it over and over again during the last couple of days. In the end, I settled for a no-frills Ubuntu Breezy, and decided to just scrap the webmin idea and learn how to hand-configure the daemons myself. But everything would have been much easier from the start had I taken down notes. Now I have them, and should I need to reinstall the thing (hope I do not) I have a copy of it :)&lt;/p&gt;
-
-&lt;p&gt;I&amp;rsquo;ll post it here too just in case I lose that piece pf paper (which I&amp;rsquo;m expecting is going to happen).&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Disable root SSH login: nano /etc/ssh/sshd_config&lt;/li&gt;
-&lt;li&gt;Create a normal user account: useradd -m -s /bin/bash -g users username&lt;/li&gt;
-&lt;li&gt;Create a password for normal user account: passwd username&lt;/li&gt;
-&lt;li&gt;Add username to list of sudoers: visudo&lt;/li&gt;
-&lt;li&gt;Test account and sudo access, then remove root login: sudo passwd root -l&lt;/li&gt;
-&lt;li&gt;Relog as normal user and restart the SSH daemon: /etc/init.d/ssh restart&lt;/li&gt;
-&lt;li&gt;Add /bin/false to /etc/shells&lt;/li&gt;
-&lt;li&gt;Update apt-get package list: sudo apt-get update&lt;/li&gt;
-&lt;li&gt;Upgrade the whole system to the latest programs: sudo apt-get dist-upgrade&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;That should take care of the initial setup.&lt;/p&gt;
-
-&lt;p&gt;Now what am I using the remote shell for? Since I still haven&amp;rsquo;t figured out how to configure a webserver, I&amp;rsquo;m currently running my bot on it ^_^ Here are the steps I did:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Install an ftp daemon: sudo apt-get install vsftpd&lt;/li&gt;
-&lt;li&gt;Configure ftp daemon to accept uploads: sudo nano /etc/vsftpd.conf
-
-&lt;ul&gt;
-&lt;li&gt;anonymous_enable=NO&lt;/li&gt;
-&lt;li&gt;local_enable=YES&lt;/li&gt;
-&lt;li&gt;write_enable=YES&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Restart ftp daemon: sudo /etc/init.d/vsftpd restart&lt;/li&gt;
-&lt;li&gt;Install GNU Screen: sudo apt-get install screen&lt;/li&gt;
-&lt;li&gt;Install compilers and development headers: sudo apt-get install build-essential&lt;/li&gt;
-&lt;li&gt;Install subversion: sudo apt-get install subversion&lt;/li&gt;
-&lt;li&gt;Install development headers for readline: sudo apt-get install libreadline5-dev&lt;/li&gt;
-&lt;li&gt;FTP over configuration files from local computer&lt;/li&gt;
-&lt;li&gt;Placeholder for the webserver stuff (Yay! It works~)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://rimuhosting.com/howto/virtualhosting.jsp&#34;&gt;http://rimuhosting.com/howto/virtualhosting.jsp&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;libapache2-mod-php5&lt;/p&gt;
-
-&lt;p&gt;php5-mysql&lt;/p&gt;
-
-&lt;p&gt;phpyadmin&lt;/p&gt;
-
-&lt;p&gt;So far, that&amp;rsquo;s all I&amp;rsquo;ve done. I&amp;rsquo;ll be updating this page when I do more with my box.&lt;/p&gt;
 </description>
     </item>
     

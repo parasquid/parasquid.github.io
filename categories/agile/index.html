@@ -10,22 +10,22 @@
   <title>Agile &middot; </title>
 
   
-  <link rel="stylesheet" href="http://life.beyondrails.com/css/poole.css">
-  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde.css">
-  <link rel="stylesheet" href="http://life.beyondrails.com/css/poole-overrides.css">
-  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde-overrides.css">
-  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde-x.css">
-  <link rel="stylesheet" href="http://life.beyondrails.com/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="http://localhost:1313/css/poole.css">
+  <link rel="stylesheet" href="http://localhost:1313/css/hyde.css">
+  <link rel="stylesheet" href="http://localhost:1313/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://localhost:1313/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://localhost:1313/css/hyde-x.css">
+  <link rel="stylesheet" href="http://localhost:1313/css/highlight/sunburst.css">
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
 
-  <link rel="stylesheet" href="http://life.beyondrails.com/css/styles.css">
+  <link rel="stylesheet" href="http://localhost:1313/css/styles.css">
 
   
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
   <link href="/favicon.png" rel="icon">
 
   
-  <link href="http://life.beyondrails.com/categories/agile/index.xml/" rel="alternate" type="application/rss+xml" title="Life Beyond Rails &middot; " />
+  <link href="http://localhost:1313/categories/agile/index.xml/" rel="alternate" type="application/rss+xml" title="Life Beyond Rails &middot; " />
 
   <meta name="description" content="">
   <meta name="keywords" content="">
@@ -42,7 +42,7 @@
     </div>
 
     <ul class="sidebar-nav">
-      <li class="sidebar-nav-item"><a href="http://life.beyondrails.com/">Blog</a></li>
+      <li class="sidebar-nav-item"><a href="http://localhost:1313/">Blog</a></li>
       
     </ul>
 
@@ -54,7 +54,7 @@
       <li class="sidebar-nav-item"><a href="https://twitter.com/parasquid">Twitter</a></li>
     </ul>
 
-    <p>Copyright &copy; 2014 <a href="http://life.beyondrails.com/license">License</a><br/>
+    <p>Copyright &copy; 2014 <a href="http://localhost:1313/license">License</a><br/>
        Powered by <a href="http://hugo.spf13.com">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
   </div>
 </div>
@@ -62,17 +62,17 @@
 <div class="content container">
   <ul class="posts">
   
-    <li><a href="http://life.beyondrails.com/blog/2014/12/15/the-tick-tock-innovation-model-applied-to-agile-methodology/">The Tick-Tock Innovation Model Applied to Agile Methodology</a>
+    <li><a href="http://localhost:1313/blog/2014/12/15/the-tick-tock-innovation-model-applied-to-agile-methodology/">The Tick-Tock Innovation Model Applied to Agile Methodology</a>
     
     &middot;
     
-    <a class="label" href="http://life.beyondrails.com/categories/agile">agile</a><a class="label" href="http://life.beyondrails.com/categories/management">management</a>
+    <a class="label" href="http://localhost:1313/categories/agile">agile</a><a class="label" href="http://localhost:1313/categories/management">management</a>
     </span>
     &middot; <time>Dec 15, 2014</time></li>
   
   </ul>
 </div>
-<script src="http://life.beyondrails.com/js/highlight.pack.js"></script>
+<script src="http://localhost:1313/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <script>
@@ -82,5 +82,17 @@
   s.parentNode.insertBefore(g,s)}(document,'script'));
 </script>
 
-</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.2/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+<script>
+  $(document).ready(function(){
+    
+    $(".youtube-player").fitVids();
+  });
+</script>
+
+<script>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':1313/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
 </html>

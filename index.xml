@@ -3,7 +3,7 @@
   <channel>
       <title>Recent Content on Life Beyond Rails </title>
       <generator uri="https://hugo.spf13.com">Hugo</generator>
-    <link>http://life.beyondrails.com/index.xml/</link>
+    <link>http://localhost:1313/index.xml/</link>
     
     
     
@@ -11,10 +11,10 @@
     
     <item>
       <title>The Tick-Tock Innovation Model Applied to Agile Methodology</title>
-      <link>http://life.beyondrails.com/blog/2014/12/15/the-tick-tock-innovation-model-applied-to-agile-methodology/</link>
+      <link>http://localhost:1313/blog/2014/12/15/the-tick-tock-innovation-model-applied-to-agile-methodology/</link>
       <pubDate>Mon, 15 Dec 2014 00:00:00 UTC</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2014/12/15/the-tick-tock-innovation-model-applied-to-agile-methodology/</guid>
+      <guid>http://localhost:1313/blog/2014/12/15/the-tick-tock-innovation-model-applied-to-agile-methodology/</guid>
       <description>&lt;p&gt;You&amp;rsquo;ve probably heard of the &lt;a href=&#34;http://www.intel.com/content/www/us/en/silicon-innovations/intel-tick-tock-model-general.html&#34;&gt;tick-tock model that Intel is using&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;It&amp;rsquo;s a model where every 18 months, there&amp;rsquo;s a new focus on the chip architecture: the tick is a shrinking of the chip (which requires retrofitting their manufacturing process to support the smaller size) and the tock is an upgrade of the architecture itself, using the current manufacturing process.&lt;/p&gt;
@@ -31,10 +31,10 @@
     
     <item>
       <title>Setting Up and Automating my Hugo Blog Deployment to Github Pages</title>
-      <link>http://life.beyondrails.com/blog/2014/12/14/setting-up-and-automating-my-hugo-blog-deployment-to-github-pages/</link>
+      <link>http://localhost:1313/blog/2014/12/14/setting-up-and-automating-my-hugo-blog-deployment-to-github-pages/</link>
       <pubDate>Sun, 14 Dec 2014 07:16:31 -0800</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2014/12/14/setting-up-and-automating-my-hugo-blog-deployment-to-github-pages/</guid>
+      <guid>http://localhost:1313/blog/2014/12/14/setting-up-and-automating-my-hugo-blog-deployment-to-github-pages/</guid>
       <description>
 
 &lt;div class=&#34;info info&#34; data-title=&#34;Work In Progress&#34;&gt;
@@ -188,10 +188,10 @@ git subtree push --prefix=public\
     
     <item>
       <title>Redoing my Blogs</title>
-      <link>http://life.beyondrails.com/blog/2014/12/12/redoing-my-blogs/</link>
+      <link>http://localhost:1313/blog/2014/12/12/redoing-my-blogs/</link>
       <pubDate>Fri, 12 Dec 2014 12:25:29 -0800</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2014/12/12/redoing-my-blogs/</guid>
+      <guid>http://localhost:1313/blog/2014/12/12/redoing-my-blogs/</guid>
       <description>&lt;p&gt;Yet again I&amp;rsquo;ve ported my blog into yet another blogging platform - &lt;a href=&#34;http://gohugo.io/&#34;&gt;Hugo&lt;/a&gt;. I feel so strongly that I&amp;rsquo;d be staying for quite some time on this platform that I&amp;rsquo;ve been porting over all my other posts in all my other various blogs over here.&lt;/p&gt;
 
 &lt;p&gt;It&amp;rsquo;s quite an interesting blogging platform. It outputs static files, which means hosting options are very cheap with a wide variety of providers.&lt;/p&gt;
@@ -200,10 +200,10 @@ git subtree push --prefix=public\
     
     <item>
       <title>about</title>
-      <link>http://life.beyondrails.com/about/</link>
+      <link>http://localhost:1313/about/</link>
       <pubDate>Fri, 12 Dec 2014 12:02:07 -0800</pubDate>
       
-      <guid>http://life.beyondrails.com/about/</guid>
+      <guid>http://localhost:1313/about/</guid>
       <description>
 
 &lt;h3 id=&#34;toc_0&#34;&gt;Hello there!&lt;/h3&gt;
@@ -214,10 +214,10 @@ git subtree push --prefix=public\
     
     <item>
       <title>How I Hire Developers</title>
-      <link>http://life.beyondrails.com/blog/2014/11/04/how-i-hire-developers/</link>
+      <link>http://localhost:1313/blog/2014/11/04/how-i-hire-developers/</link>
       <pubDate>Tue, 04 Nov 2014 00:00:00 UTC</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2014/11/04/how-i-hire-developers/</guid>
+      <guid>http://localhost:1313/blog/2014/11/04/how-i-hire-developers/</guid>
       <description>&lt;p&gt;I was invited to pressent at the &lt;a href=&#34;http://www.projectrenaissance.com/technology/kl-ruby-brigade-2&#34;&gt;KL Ruby Brigade&lt;/a&gt; and I thought I shuld mix things around by talking about something not very technical but still very much relevant to the audience.&lt;/p&gt;
 
 &lt;p&gt;Since I&amp;rsquo;m in charge (but saying &amp;ldquo;in-charge&amp;rdquo; is a bit of a misnomer since in Mindvalley we don&amp;rsquo;t really have predefined job descriptions) of the internship program for new tech hires, I figures I should share some of the things I consider when interviewing and hiring people.&lt;/p&gt;
@@ -230,10 +230,10 @@ git subtree push --prefix=public\
     
     <item>
       <title>Getting Data From a Join Table in Rails</title>
-      <link>http://life.beyondrails.com/blog/2014/08/19/getting-data-from-a-join-table-in-rails/</link>
+      <link>http://localhost:1313/blog/2014/08/19/getting-data-from-a-join-table-in-rails/</link>
       <pubDate>Tue, 19 Aug 2014 00:00:00 UTC</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2014/08/19/getting-data-from-a-join-table-in-rails/</guid>
+      <guid>http://localhost:1313/blog/2014/08/19/getting-data-from-a-join-table-in-rails/</guid>
       <description>&lt;p&gt;A friend asked in my &lt;a href=&#34;https://www.facebook.com/groups/klxrb&#34;&gt;Ruby Facebook group&lt;/a&gt; about a &lt;a href=&#34;https://www.facebook.com/groups/klxrb/permalink/515838138548150/&#34;&gt;problem&lt;/a&gt; he was having that I feel I&amp;rsquo;ve encountered before (or will be encountering in the future). It&amp;rsquo;s about having to retrieve data taht is associated with a join table.&lt;/p&gt;
 
 &lt;p&gt;Here&amp;rsquo;s the question:&lt;/p&gt;
@@ -324,10 +324,10 @@ end
     
     <item>
       <title>Setup and Configuration of my Machines</title>
-      <link>http://life.beyondrails.com/blog/2014/08/03/setup-and-configuration-of-my-machines/</link>
+      <link>http://localhost:1313/blog/2014/08/03/setup-and-configuration-of-my-machines/</link>
       <pubDate>Sun, 03 Aug 2014 00:00:00 UTC</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2014/08/03/setup-and-configuration-of-my-machines/</guid>
+      <guid>http://localhost:1313/blog/2014/08/03/setup-and-configuration-of-my-machines/</guid>
       <description>
 
 &lt;div class=&#34;info info&#34; data-title=&#34;Work In Progress&#34;&gt;
@@ -368,10 +368,10 @@ end
     
     <item>
       <title>API Documentation with Grape and Swagger</title>
-      <link>http://life.beyondrails.com/blog/2014/06/01/api-documentation-with-grape-and-swagger/</link>
+      <link>http://localhost:1313/blog/2014/06/01/api-documentation-with-grape-and-swagger/</link>
       <pubDate>Sun, 01 Jun 2014 00:00:00 UTC</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2014/06/01/api-documentation-with-grape-and-swagger/</guid>
+      <guid>http://localhost:1313/blog/2014/06/01/api-documentation-with-grape-and-swagger/</guid>
       <description>
 
 &lt;div class=&#34;info info&#34; data-title=&#34;TL;DR&#34;&gt;
@@ -411,7 +411,9 @@ end
 
 &lt;p&gt;There was a lightning talk at Red Dot Ruby Conf 2014 as well:&lt;/p&gt;
 
+&lt;div class=&#34;youtube-player&#34;&gt;
 &lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;http://www.youtube.com/embed/lNXa-fjTroE&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;
 
 &lt;hr /&gt;
 
@@ -457,10 +459,10 @@ end
     
     <item>
       <title>Ruby and Blocks</title>
-      <link>http://life.beyondrails.com/blog/2014/03/04/ruby-and-blocks/</link>
+      <link>http://localhost:1313/blog/2014/03/04/ruby-and-blocks/</link>
       <pubDate>Tue, 04 Mar 2014 00:00:00 UTC</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2014/03/04/ruby-and-blocks/</guid>
+      <guid>http://localhost:1313/blog/2014/03/04/ruby-and-blocks/</guid>
       <description>
 
 &lt;p&gt;One of the most often used and ironically least understood concepts in the Ruby programming language is the block. If you&amp;rsquo;ve used one of the Enumerable mixed-in objects, you&amp;rsquo;ve encountered the block syntax.&lt;/p&gt;
@@ -669,10 +671,10 @@ end
     
     <item>
       <title>Install ruby-2.0.0-p195 on Ubuntu 12.04</title>
-      <link>http://life.beyondrails.com/blog/2013/06/08/install-ruby-2.0.0-p195-on-ubuntu-12.04/</link>
+      <link>http://localhost:1313/blog/2013/06/08/install-ruby-2.0.0-p195-on-ubuntu-12.04/</link>
       <pubDate>Sat, 08 Jun 2013 00:00:00 UTC</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2013/06/08/install-ruby-2.0.0-p195-on-ubuntu-12.04/</guid>
+      <guid>http://localhost:1313/blog/2013/06/08/install-ruby-2.0.0-p195-on-ubuntu-12.04/</guid>
       <description>&lt;p&gt;It&amp;rsquo;s always easier to deal with a ruby binary that&amp;rsquo;s installed server-wide rather than a local user installation (done via &lt;a href=&#34;http://rvm.io/&#34;&gt;rvm&lt;/a&gt; or &lt;a href=&#34;http://rbenv.org/&#34;&gt;rbenv&lt;/a&gt;). Server initialization scripts don&amp;rsquo;t need to do path magic and profile sourcing in order to find the correct binary. Here I how to install ruby-2.0.0-p195 in a way that your system administrator will love you for.&lt;/p&gt;
 
 &lt;p&gt;System administrators maintain their servers like they would maintain a well-tended garden: clean, organized, and everything in its place. It&amp;rsquo;s no surprise then that when we developers start compiling &amp;ldquo;stuff&amp;rdquo; left and right, our sysadmins get annoyed out of their minds.&lt;/p&gt;
@@ -707,10 +709,10 @@ end
     
     <item>
       <title>Rolling Restarts with Capistrano and Linode</title>
-      <link>http://life.beyondrails.com/blog/2013/06/01/rolling-restarts-with-capistrano-and-linode/</link>
+      <link>http://localhost:1313/blog/2013/06/01/rolling-restarts-with-capistrano-and-linode/</link>
       <pubDate>Sat, 01 Jun 2013 00:00:00 UTC</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2013/06/01/rolling-restarts-with-capistrano-and-linode/</guid>
+      <guid>http://localhost:1313/blog/2013/06/01/rolling-restarts-with-capistrano-and-linode/</guid>
       <description>&lt;p&gt;Here I show how to perform a rolling restart using Capistrano, and making sure that the load balancer (in this case Linode) properly reroutes traffic to the still-running servers while the others are being restarted.&lt;/p&gt;
 
 &lt;div class=&#34;info warning&#34; data-title=&#34;WARNING&#34;&gt;
@@ -901,10 +903,10 @@ end
     
     <item>
       <title>Running PrivatePub/Faye Standalone in Heroku for Free</title>
-      <link>http://life.beyondrails.com/blog/2013/05/25/running-privatepub/faye-standalone-in-heroku-for-free/</link>
+      <link>http://localhost:1313/blog/2013/05/25/running-privatepub/faye-standalone-in-heroku-for-free/</link>
       <pubDate>Sat, 25 May 2013 00:00:00 UTC</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2013/05/25/running-privatepub/faye-standalone-in-heroku-for-free/</guid>
+      <guid>http://localhost:1313/blog/2013/05/25/running-privatepub/faye-standalone-in-heroku-for-free/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://github.com/ryanb/private_pub&#34;&gt;PrivatePub&lt;/a&gt; is an awesome gem by the renowned Ryan Bates of &lt;a href=&#34;http://railscasts.com/&#34;&gt;Railscast&lt;/a&gt; fame. It provides an easy way to use Faye as a pubsub provider. Watch this &lt;a href=&#34;http://railscasts.com/episodes/316-private-pub&#34;&gt;episode&lt;/a&gt; to see it in action.&lt;/p&gt;
 
 &lt;p&gt;You don&amp;rsquo;t have to bundle the gem with a Rails application though; you can deploy PrivatePub standalone as a rack application in Heroku. This allows you to run PrivatePub in a web dyno instead of a worker, allowing for easier maintenance (separation of repositories/codebases) and as a side effect, save on hosting costs.&lt;/p&gt;
@@ -971,10 +973,10 @@ gem &#39;thin&#39;
     
     <item>
       <title>A Smartphone is not a Phone</title>
-      <link>http://life.beyondrails.com/blog/2013/02/12/a-smartphone-is-not-a-phone/</link>
+      <link>http://localhost:1313/blog/2013/02/12/a-smartphone-is-not-a-phone/</link>
       <pubDate>Tue, 12 Feb 2013 00:00:00 UTC</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2013/02/12/a-smartphone-is-not-a-phone/</guid>
+      <guid>http://localhost:1313/blog/2013/02/12/a-smartphone-is-not-a-phone/</guid>
       <description>&lt;p&gt;I&amp;rsquo;ve seen a number of commenters (mostly from the US) arguing that people look funny holding a 5-inch phone/tablet at the side of their heads, while being surprised at how well they&amp;rsquo;ve sold so far (especially in Asia).&lt;/p&gt;
 
 &lt;p&gt;I think it&amp;rsquo;s because those that got these &amp;ldquo;giant phones&amp;rdquo; have subconsciously realised the obvious: their smart phone isn&amp;rsquo;t a phone. It&amp;rsquo;s actually a computer that happens to have phone-like functionalities. After all, the only difference Skype has over regular cellular voice services is the medium.&lt;/p&gt;
@@ -987,10 +989,10 @@ gem &#39;thin&#39;
     
     <item>
       <title>Writing History on Your Own Terms</title>
-      <link>http://life.beyondrails.com/blog/2013/02/05/writing-history-on-your-own-terms/</link>
+      <link>http://localhost:1313/blog/2013/02/05/writing-history-on-your-own-terms/</link>
       <pubDate>Tue, 05 Feb 2013 00:00:00 UTC</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2013/02/05/writing-history-on-your-own-terms/</guid>
+      <guid>http://localhost:1313/blog/2013/02/05/writing-history-on-your-own-terms/</guid>
       <description>&lt;p&gt;HTC just posted a brilliant blog entry titled &amp;ldquo;&lt;a href=&#34;http://blog.htc.com/2013/02/a-brief-history-of-photography/&#34;&gt;A Brief History of Photography&lt;/a&gt;.&amp;rdquo; It&amp;rsquo;s a short infographic that details the experience of photographic technology from two centuries ago until the present.&lt;/p&gt;
 
 &lt;p&gt;What&amp;rsquo;s really clever is that they&amp;rsquo;ve inserted themselves in history. The message is subtle yet clear: HTC will become part of this particular retelling of history.&lt;/p&gt;
@@ -1005,10 +1007,10 @@ gem &#39;thin&#39;
     
     <item>
       <title>My Development Setup</title>
-      <link>http://life.beyondrails.com/blog/2012/01/23/my-development-setup/</link>
+      <link>http://localhost:1313/blog/2012/01/23/my-development-setup/</link>
       <pubDate>Mon, 23 Jan 2012 00:00:00 UTC</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2012/01/23/my-development-setup/</guid>
+      <guid>http://localhost:1313/blog/2012/01/23/my-development-setup/</guid>
       <description>
 
 &lt;p&gt;At &lt;a href=&#34;http://www.mindvalley.com/&#34;&gt;Mindvalley&lt;/a&gt; employees can have any kind of hardware/software they want, provided that they can prove it is necessary for the work they’re doing, or at least it increases their productivity. In my case, I opted for the setup as seen here (picture courtesy of my colleague):&lt;/p&gt;

@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Linux on Life Beyond Rails</title>
-    <link>http://life.beyondrails.com/categories/linux/</link>
-    <description>Recent content in Linux on Life Beyond Rails</description>
-    <generator>Hugo -- gohugo.io</generator>
+      <title>Linux on Life Beyond Rails </title>
+      <generator uri="https://hugo.spf13.com">Hugo</generator>
+    <link>http://localhost:1313/categories/linux/index.xml/</link>
     
     
     
-    <lastBuildDate>Sun, 03 Aug 2014 00:00:00 UTC</lastBuildDate>
-    <atom:link href="http://life.beyondrails.com/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+    <updated>Sun, 03 Aug 2014 00:00:00 UTC</updated>
     
     <item>
       <title>Setup and Configuration of my Machines</title>
-      <link>http://life.beyondrails.com/blog/2014/08/03/setup-and-configuration-of-my-machines/</link>
+      <link>http://localhost:1313/blog/2014/08/03/setup-and-configuration-of-my-machines/</link>
       <pubDate>Sun, 03 Aug 2014 00:00:00 UTC</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2014/08/03/setup-and-configuration-of-my-machines/</guid>
+      <guid>http://localhost:1313/blog/2014/08/03/setup-and-configuration-of-my-machines/</guid>
       <description>
 
 &lt;div class=&#34;info info&#34; data-title=&#34;Work In Progress&#34;&gt;
@@ -30,26 +28,26 @@
 
 &lt;p&gt;Here&amp;rsquo;s the blogpost to rectify that, as well as give you a glimpse as to how I like my machine setup and configured :)&lt;/p&gt;
 
-&lt;h2 id=&#34;setup-natural-scrolling:e9c0cc0211eea1041c321177ca84bcda&#34;&gt;Setup natural scrolling&lt;/h2&gt;
+&lt;h2 id=&#34;toc_0&#34;&gt;Setup natural scrolling&lt;/h2&gt;
 
 &lt;p&gt;Ever since I got my Macbook Air 2010 upgraded to Lion, I&amp;rsquo;ve been a fan of what Apple called &amp;ldquo;natural scrolling.&amp;rdquo;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://www.andybarratt.co.uk/lion-like-scrolling-on-ubuntu-inverse-scrolling-on-linux&#34;&gt;http://www.andybarratt.co.uk/lion-like-scrolling-on-ubuntu-inverse-scrolling-on-linux&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;setup-sublime-text:e9c0cc0211eea1041c321177ca84bcda&#34;&gt;Setup Sublime Text&lt;/h2&gt;
+&lt;h2 id=&#34;toc_1&#34;&gt;Setup Sublime Text&lt;/h2&gt;
 
 &lt;p&gt;I know I should start learning Emacs, but Sublime Text (and before that, Textmate) had always been my editor of choice. That might change in the near future though :)&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://www.webupd8.org/20&#34;&gt;Ubuntu PPA&lt;/a&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;sublime-text-settings:e9c0cc0211eea1041c321177ca84bcda&#34;&gt;Sublime Text settings&lt;/h3&gt;
+&lt;h3 id=&#34;toc_2&#34;&gt;Sublime Text settings&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://sublime.wbond.net/installation&#34;&gt;Package control&lt;/a&gt;
 &amp;hellip;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;key-management:e9c0cc0211eea1041c321177ca84bcda&#34;&gt;Key management&lt;/h2&gt;
+&lt;h2 id=&#34;toc_3&#34;&gt;Key management&lt;/h2&gt;
 
 &lt;p&gt;Yes, I keep my private key in Dropbox. I know many people would say that this is a security risk (and it is) but the keys that I do keep in Dropbox are only those with access to non-critical remote systems that I own. I run some rtorrent download boxes as well as some application servers that I use for quickly testing out application ideas.&lt;/p&gt;
 </description>
@@ -57,10 +55,10 @@
     
     <item>
       <title>Reinstalling Kubuntu</title>
-      <link>http://life.beyondrails.com/blog/2006/03/19/reinstalling-kubuntu/</link>
+      <link>http://localhost:1313/blog/2006/03/19/reinstalling-kubuntu/</link>
       <pubDate>Sun, 19 Mar 2006 00:00:00 UTC</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2006/03/19/reinstalling-kubuntu/</guid>
+      <guid>http://localhost:1313/blog/2006/03/19/reinstalling-kubuntu/</guid>
       <description>&lt;p&gt;My data drive had some corruption as regards its file system tree, and i was forced to rebuild it. I figured I&amp;rsquo;ll just reinstall Kubuntu too since I inadverdently installed Ubuntu Desktop, which kinda doubled the applications I have on the menu.&lt;/p&gt;
 
 &lt;p&gt;Here are some of the things I did in order to remind myself in case my system crashes again:&lt;/p&gt;

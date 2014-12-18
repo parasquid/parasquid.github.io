@@ -1,22 +1,40 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Life Beyond Rails</title>
-    <link>http://life.beyondrails.com/</link>
-    <description>Recent content on Life Beyond Rails</description>
-    <generator>Hugo -- gohugo.io</generator>
+      <title>Recent Content on Life Beyond Rails </title>
+      <generator uri="https://hugo.spf13.com">Hugo</generator>
+    <link>http://localhost:1313/index.xml/</link>
     
     
     
-    <lastBuildDate>Sun, 14 Dec 2014 07:16:31 PST</lastBuildDate>
-    <atom:link href="http://life.beyondrails.com/index.xml" rel="self" type="application/rss+xml" />
+    <updated>Mon, 15 Dec 2014 00:00:00 UTC</updated>
+    
+    <item>
+      <title>The Tick-Tock Innovation Model Applied to Agile Methodology</title>
+      <link>http://localhost:1313/blog/2014/12/15/the-tick-tock-innovation-model-applied-to-agile-methodology/</link>
+      <pubDate>Mon, 15 Dec 2014 00:00:00 UTC</pubDate>
+      
+      <guid>http://localhost:1313/blog/2014/12/15/the-tick-tock-innovation-model-applied-to-agile-methodology/</guid>
+      <description>&lt;p&gt;You&amp;rsquo;ve probably heard of the &lt;a href=&#34;http://www.intel.com/content/www/us/en/silicon-innovations/intel-tick-tock-model-general.html&#34;&gt;tick-tock model that Intel is using&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;It&amp;rsquo;s a model where every 18 months, there&amp;rsquo;s a new focus on the chip architecture: the tick is a shrinking of the chip (which requires retrofitting their manufacturing process to support the smaller size) and the tock is an upgrade of the architecture itself, using the current manufacturing process.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m trying out a similar model with my team. We&amp;rsquo;ve been very successful with our sprint goals so far, but one thing that I&amp;rsquo;ve seen is that the goals are decided just then and there. Tick-tock is a refinement of the sprint goal determination process.&lt;/p&gt;
+
+&lt;p&gt;With every Tick, the primary focus is on the development of new features (plus business as usual stories, bug fixes etc). With every Tock we spend more time on refactoring, code quality, updating standards, documentation, and cleanup (and of course any new feature that is deemed &amp;ldquo;very urgent that it can&amp;rsquo;t wait another week,&amp;rdquo; as well as bugfixes.&lt;/p&gt;
+
+&lt;p&gt;From the retrospectives, I&amp;rsquo;ve seen that many of my team&amp;rsquo;s speedbumps (which deals mostly with legacy code) come from code that isn&amp;rsquo;t as good quality as we hoped. Every new feature and code that we write is already up to standards, but it&amp;rsquo;s the older code that keeps us from going forward as fast as we can.&lt;/p&gt;
+
+&lt;p&gt;Tick-tock will allow us to maintain an innovation cadence while making sure we start paying our debts before they overwhelm us.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Setting Up and Automating my Hugo Blog Deployment to Github Pages</title>
-      <link>http://life.beyondrails.com/blog/2014/12/14/setting-up-and-automating-my-hugo-blog-deployment-to-github-pages/</link>
-      <pubDate>Sun, 14 Dec 2014 07:16:31 PST</pubDate>
+      <link>http://localhost:1313/blog/2014/12/14/setting-up-and-automating-my-hugo-blog-deployment-to-github-pages/</link>
+      <pubDate>Sun, 14 Dec 2014 07:16:31 -0800</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2014/12/14/setting-up-and-automating-my-hugo-blog-deployment-to-github-pages/</guid>
+      <guid>http://localhost:1313/blog/2014/12/14/setting-up-and-automating-my-hugo-blog-deployment-to-github-pages/</guid>
       <description>
 
 &lt;div class=&#34;info info&#34; data-title=&#34;Work In Progress&#34;&gt;
@@ -26,15 +44,15 @@
 
 &lt;p&gt;I&amp;rsquo;m currently moving my blog posts (and collecting all my blog entries from various blogging platforms) and putting them into Hugo. In case you&amp;rsquo;re wondering how I&amp;rsquo;ve set mine up, here&amp;rsquo;s a guide of what I&amp;rsquo;ve done.&lt;/p&gt;
 
-&lt;h2 id=&#34;choosing-the-hosting-platform:60bb9034dcbf91d2a362f1c22fd4d95c&#34;&gt;Choosing the hosting platform&lt;/h2&gt;
+&lt;h2 id=&#34;toc_0&#34;&gt;Choosing the hosting platform&lt;/h2&gt;
 
-&lt;h2 id=&#34;setting-up-the-blog:60bb9034dcbf91d2a362f1c22fd4d95c&#34;&gt;Setting up the blog&lt;/h2&gt;
+&lt;h2 id=&#34;toc_1&#34;&gt;Setting up the blog&lt;/h2&gt;
 
 &lt;p&gt;sudo aptitude install golang
 sudo aptitude install -y mercurial
 go get -v github.com/spf13/hugo&lt;/p&gt;
 
-&lt;h2 id=&#34;setting-up-the-github-pages:60bb9034dcbf91d2a362f1c22fd4d95c&#34;&gt;Setting up the github pages&lt;/h2&gt;
+&lt;h2 id=&#34;toc_2&#34;&gt;Setting up the github pages&lt;/h2&gt;
 
 &lt;p&gt;There&amp;rsquo;s a really cool guide over at the official &lt;a href=&#34;http://gohugo.io/tutorials/github_pages_blog/&#34;&gt;Hugo documentation&lt;/a&gt; and I advise everyone to check it out.&lt;/p&gt;
 
@@ -75,7 +93,7 @@ touch public/CNAME
 echo &amp;quot;life.beyondrails.com&amp;quot; &amp;gt; public/CNAME
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;scripting-the-deployment:60bb9034dcbf91d2a362f1c22fd4d95c&#34;&gt;Scripting the deployment&lt;/h2&gt;
+&lt;h2 id=&#34;toc_3&#34;&gt;Scripting the deployment&lt;/h2&gt;
 
 &lt;p&gt;Again I refered back to the hugo documentation on &lt;a href=&#34;http://gohugo.io/tutorials/github_pages_blog/&#34;&gt;setting up hugo for guthub hosting&lt;/a&gt; and I used it as the basis for my own deployment script.&lt;/p&gt;
 
@@ -152,15 +170,15 @@ git subtree push --prefix=public\
 
 &lt;p&gt;It&amp;rsquo;s a combination of the initial setup and the default deployment script from the hugo documentation. Now the only downside left (and this is a very minor thing for me) is that post updates take a number of minutes before they are seen live. But I can live with that.&lt;/p&gt;
 
-&lt;h2 id=&#34;porting-old-blog-entries-to-hugo:60bb9034dcbf91d2a362f1c22fd4d95c&#34;&gt;Porting old blog entries to hugo&lt;/h2&gt;
+&lt;h2 id=&#34;toc_4&#34;&gt;Porting old blog entries to hugo&lt;/h2&gt;
 
 &lt;p&gt;I&amp;rsquo;ve blogged on and off for quite some time in various domains and platforms. There really isn&amp;rsquo;t much I can do to automate the importing of the entries. Luckily I only have a handful of published posts, but I probably lost most of my drafts and idea dumps.&lt;/p&gt;
 
-&lt;h2 id=&#34;blogging-workflow:60bb9034dcbf91d2a362f1c22fd4d95c&#34;&gt;Blogging workflow&lt;/h2&gt;
+&lt;h2 id=&#34;toc_5&#34;&gt;Blogging workflow&lt;/h2&gt;
 
 &lt;p&gt;So now that everything&amp;rsquo;s set and deployed, how do I continue writing?&lt;/p&gt;
 
-&lt;h2 id=&#34;questions:60bb9034dcbf91d2a362f1c22fd4d95c&#34;&gt;Questions?&lt;/h2&gt;
+&lt;h2 id=&#34;toc_6&#34;&gt;Questions?&lt;/h2&gt;
 
 &lt;p&gt;If any of the instructions above are confusing, feel free to comment and I&amp;rsquo;ll try my best to answer the question in the comments as well as update the instructions :)&lt;/p&gt;
 </description>
@@ -168,10 +186,10 @@ git subtree push --prefix=public\
     
     <item>
       <title>Redoing my Blogs</title>
-      <link>http://life.beyondrails.com/blog/2014/12/12/redoing-my-blogs/</link>
-      <pubDate>Fri, 12 Dec 2014 12:25:29 PST</pubDate>
+      <link>http://localhost:1313/blog/2014/12/12/redoing-my-blogs/</link>
+      <pubDate>Fri, 12 Dec 2014 12:25:29 -0800</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2014/12/12/redoing-my-blogs/</guid>
+      <guid>http://localhost:1313/blog/2014/12/12/redoing-my-blogs/</guid>
       <description>&lt;p&gt;Yet again I&amp;rsquo;ve ported my blog into yet another blogging platform - &lt;a href=&#34;http://gohugo.io/&#34;&gt;Hugo&lt;/a&gt;. I feel so strongly that I&amp;rsquo;d be staying for quite some time on this platform that I&amp;rsquo;ve been porting over all my other posts in all my other various blogs over here.&lt;/p&gt;
 
 &lt;p&gt;It&amp;rsquo;s quite an interesting blogging platform. It outputs static files, which means hosting options are very cheap with a wide variety of providers.&lt;/p&gt;
@@ -180,13 +198,13 @@ git subtree push --prefix=public\
     
     <item>
       <title>about</title>
-      <link>http://life.beyondrails.com/about/</link>
-      <pubDate>Fri, 12 Dec 2014 12:02:07 PST</pubDate>
+      <link>http://localhost:1313/about/</link>
+      <pubDate>Fri, 12 Dec 2014 12:02:07 -0800</pubDate>
       
-      <guid>http://life.beyondrails.com/about/</guid>
+      <guid>http://localhost:1313/about/</guid>
       <description>
 
-&lt;h3 id=&#34;hello-there:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;Hello there!&lt;/h3&gt;
+&lt;h3 id=&#34;toc_0&#34;&gt;Hello there!&lt;/h3&gt;
 
 &lt;p&gt;Hi there&lt;/p&gt;
 </description>
@@ -194,10 +212,10 @@ git subtree push --prefix=public\
     
     <item>
       <title>How I Hire Developers</title>
-      <link>http://life.beyondrails.com/blog/2014/11/04/how-i-hire-developers/</link>
+      <link>http://localhost:1313/blog/2014/11/04/how-i-hire-developers/</link>
       <pubDate>Tue, 04 Nov 2014 00:00:00 UTC</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2014/11/04/how-i-hire-developers/</guid>
+      <guid>http://localhost:1313/blog/2014/11/04/how-i-hire-developers/</guid>
       <description>&lt;p&gt;I was invited to pressent at the &lt;a href=&#34;http://www.projectrenaissance.com/technology/kl-ruby-brigade-2&#34;&gt;KL Ruby Brigade&lt;/a&gt; and I thought I shuld mix things around by talking about something not very technical but still very much relevant to the audience.&lt;/p&gt;
 
 &lt;p&gt;Since I&amp;rsquo;m in charge (but saying &amp;ldquo;in-charge&amp;rdquo; is a bit of a misnomer since in Mindvalley we don&amp;rsquo;t really have predefined job descriptions) of the internship program for new tech hires, I figures I should share some of the things I consider when interviewing and hiring people.&lt;/p&gt;
@@ -210,10 +228,10 @@ git subtree push --prefix=public\
     
     <item>
       <title>Setup and Configuration of my Machines</title>
-      <link>http://life.beyondrails.com/blog/2014/08/03/setup-and-configuration-of-my-machines/</link>
+      <link>http://localhost:1313/blog/2014/08/03/setup-and-configuration-of-my-machines/</link>
       <pubDate>Sun, 03 Aug 2014 00:00:00 UTC</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2014/08/03/setup-and-configuration-of-my-machines/</guid>
+      <guid>http://localhost:1313/blog/2014/08/03/setup-and-configuration-of-my-machines/</guid>
       <description>
 
 &lt;div class=&#34;info info&#34; data-title=&#34;Work In Progress&#34;&gt;
@@ -227,26 +245,26 @@ git subtree push --prefix=public\
 
 &lt;p&gt;Here&amp;rsquo;s the blogpost to rectify that, as well as give you a glimpse as to how I like my machine setup and configured :)&lt;/p&gt;
 
-&lt;h2 id=&#34;setup-natural-scrolling:e9c0cc0211eea1041c321177ca84bcda&#34;&gt;Setup natural scrolling&lt;/h2&gt;
+&lt;h2 id=&#34;toc_0&#34;&gt;Setup natural scrolling&lt;/h2&gt;
 
 &lt;p&gt;Ever since I got my Macbook Air 2010 upgraded to Lion, I&amp;rsquo;ve been a fan of what Apple called &amp;ldquo;natural scrolling.&amp;rdquo;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://www.andybarratt.co.uk/lion-like-scrolling-on-ubuntu-inverse-scrolling-on-linux&#34;&gt;http://www.andybarratt.co.uk/lion-like-scrolling-on-ubuntu-inverse-scrolling-on-linux&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;setup-sublime-text:e9c0cc0211eea1041c321177ca84bcda&#34;&gt;Setup Sublime Text&lt;/h2&gt;
+&lt;h2 id=&#34;toc_1&#34;&gt;Setup Sublime Text&lt;/h2&gt;
 
 &lt;p&gt;I know I should start learning Emacs, but Sublime Text (and before that, Textmate) had always been my editor of choice. That might change in the near future though :)&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://www.webupd8.org/20&#34;&gt;Ubuntu PPA&lt;/a&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;sublime-text-settings:e9c0cc0211eea1041c321177ca84bcda&#34;&gt;Sublime Text settings&lt;/h3&gt;
+&lt;h3 id=&#34;toc_2&#34;&gt;Sublime Text settings&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://sublime.wbond.net/installation&#34;&gt;Package control&lt;/a&gt;
 &amp;hellip;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;key-management:e9c0cc0211eea1041c321177ca84bcda&#34;&gt;Key management&lt;/h2&gt;
+&lt;h2 id=&#34;toc_3&#34;&gt;Key management&lt;/h2&gt;
 
 &lt;p&gt;Yes, I keep my private key in Dropbox. I know many people would say that this is a security risk (and it is) but the keys that I do keep in Dropbox are only those with access to non-critical remote systems that I own. I run some rtorrent download boxes as well as some application servers that I use for quickly testing out application ideas.&lt;/p&gt;
 </description>
@@ -254,10 +272,10 @@ git subtree push --prefix=public\
     
     <item>
       <title>API Documentation with Grape and Swagger</title>
-      <link>http://life.beyondrails.com/blog/2014/06/01/api-documentation-with-grape-and-swagger/</link>
+      <link>http://localhost:1313/blog/2014/06/01/api-documentation-with-grape-and-swagger/</link>
       <pubDate>Sun, 01 Jun 2014 00:00:00 UTC</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2014/06/01/api-documentation-with-grape-and-swagger/</guid>
+      <guid>http://localhost:1313/blog/2014/06/01/api-documentation-with-grape-and-swagger/</guid>
       <description>
 
 &lt;div class=&#34;info info&#34; data-title=&#34;TL;DR&#34;&gt;
@@ -273,7 +291,7 @@ git subtree push --prefix=public\
 
 &lt;hr /&gt;
 
-&lt;h3 id=&#34;github-sample-application:44ab0cdd991a2d2f1177921dd0009a9c&#34;&gt;Github Sample Application&lt;/h3&gt;
+&lt;h3 id=&#34;toc_0&#34;&gt;Github Sample Application&lt;/h3&gt;
 
 &lt;p&gt;I&amp;rsquo;ve made a sample application which you can refer to here: &lt;a href=&#34;https://github.com/parasquid/grape-swagger-sample-project&#34;&gt;https://github.com/parasquid/grape-swagger-sample-project&lt;/a&gt;. It was based off from another &lt;a href=&#34;http://funonrails.com/2014/03/building-restful-api-using-grape-in-rails/&#34;&gt;grape tutorial&lt;/a&gt; with modifications; see his page for a bit more information.&lt;/p&gt;
 
@@ -287,7 +305,7 @@ git subtree push --prefix=public\
 
 &lt;hr /&gt;
 
-&lt;h3 id=&#34;grape:44ab0cdd991a2d2f1177921dd0009a9c&#34;&gt;Grape&lt;/h3&gt;
+&lt;h3 id=&#34;toc_1&#34;&gt;Grape&lt;/h3&gt;
 
 &lt;p&gt;The self-documenting ability of Grape with Swagger actually consists of three separate gems that work together to provide an endpoint for a UI to consume. The first of these is Grape:&lt;/p&gt;
 
@@ -301,7 +319,7 @@ git subtree push --prefix=public\
 
 &lt;hr /&gt;
 
-&lt;h3 id=&#34;grape-swagger:44ab0cdd991a2d2f1177921dd0009a9c&#34;&gt;Grape Swagger&lt;/h3&gt;
+&lt;h3 id=&#34;toc_2&#34;&gt;Grape Swagger&lt;/h3&gt;
 
 &lt;p&gt;The &lt;a href=&#34;https://github.com/tim-vandecasteele/grape-swagger&#34;&gt;grape-swagger project&lt;/a&gt; has comprehensive instructions on enabling swagger for your Grape API; it&amp;rsquo;s really a no-brainer.&lt;/p&gt;
 
@@ -311,7 +329,7 @@ git subtree push --prefix=public\
 
 &lt;hr /&gt;
 
-&lt;h3 id=&#34;swagger-ui:44ab0cdd991a2d2f1177921dd0009a9c&#34;&gt;Swagger UI&lt;/h3&gt;
+&lt;h3 id=&#34;toc_3&#34;&gt;Swagger UI&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/tim-vandecasteele/grape-swagger/master/test/splines.png&#34; alt=&#34;Swagger UI Screenshot&#34; /&gt;
 &lt;/p&gt;
@@ -327,7 +345,7 @@ git subtree push --prefix=public\
 
 &lt;hr /&gt;
 
-&lt;h3 id=&#34;further-reading:44ab0cdd991a2d2f1177921dd0009a9c&#34;&gt;Further Reading&lt;/h3&gt;
+&lt;h3 id=&#34;toc_4&#34;&gt;Further Reading&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://intridea.github.io/grape/docs/index.html&#34;&gt;http://intridea.github.io/grape/docs/index.html&lt;/a&gt;&lt;/li&gt;
@@ -343,10 +361,10 @@ git subtree push --prefix=public\
     
     <item>
       <title>Ruby and Blocks</title>
-      <link>http://life.beyondrails.com/blog/2014/03/04/ruby-and-blocks/</link>
+      <link>http://localhost:1313/blog/2014/03/04/ruby-and-blocks/</link>
       <pubDate>Tue, 04 Mar 2014 00:00:00 UTC</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2014/03/04/ruby-and-blocks/</guid>
+      <guid>http://localhost:1313/blog/2014/03/04/ruby-and-blocks/</guid>
       <description>
 
 &lt;p&gt;One of the most often used and ironically least understood concepts in the Ruby programming language is the block. If you&amp;rsquo;ve used one of the Enumerable mixed-in objects, you&amp;rsquo;ve encountered the block syntax.&lt;/p&gt;
@@ -520,7 +538,7 @@ end
 
 &lt;hr /&gt;
 
-&lt;h3 id=&#34;updates:c6fd1b7f2af77a517bd0dcfda401330a&#34;&gt;Updates&lt;/h3&gt;
+&lt;h3 id=&#34;toc_0&#34;&gt;Updates&lt;/h3&gt;
 
 &lt;p&gt;I presented this topic to the KL Ruby Brigade meetup in Kuala Lumpur, Malaysia. There have been a few questions after the presentation and I&amp;rsquo;ll try to address them here:&lt;/p&gt;
 
@@ -538,7 +556,7 @@ end
 
 &lt;hr /&gt;
 
-&lt;h3 id=&#34;further-reading:c6fd1b7f2af77a517bd0dcfda401330a&#34;&gt;Further Reading&lt;/h3&gt;
+&lt;h3 id=&#34;toc_1&#34;&gt;Further Reading&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.robertsosinski.com/2008/12/21/understanding-ruby-blocks-procs-and-lambdas/&#34;&gt;http://www.robertsosinski.com/2008/12/21/understanding-ruby-blocks-procs-and-lambdas/&lt;/a&gt;&lt;/li&gt;
@@ -555,10 +573,10 @@ end
     
     <item>
       <title>Install ruby-2.0.0-p195 on Ubuntu 12.04</title>
-      <link>http://life.beyondrails.com/blog/2013/06/08/install-ruby-2.0.0-p195-on-ubuntu-12.04/</link>
+      <link>http://localhost:1313/blog/2013/06/08/install-ruby-2.0.0-p195-on-ubuntu-12.04/</link>
       <pubDate>Sat, 08 Jun 2013 00:00:00 UTC</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2013/06/08/install-ruby-2.0.0-p195-on-ubuntu-12.04/</guid>
+      <guid>http://localhost:1313/blog/2013/06/08/install-ruby-2.0.0-p195-on-ubuntu-12.04/</guid>
       <description>&lt;p&gt;It&amp;rsquo;s always easier to deal with a ruby binary that&amp;rsquo;s installed server-wide rather than a local user installation (done via &lt;a href=&#34;http://rvm.io/&#34;&gt;rvm&lt;/a&gt; or &lt;a href=&#34;http://rbenv.org/&#34;&gt;rbenv&lt;/a&gt;). Server initialization scripts don&amp;rsquo;t need to do path magic and profile sourcing in order to find the correct binary. Here I how to install ruby-2.0.0-p195 in a way that your system administrator will love you for.&lt;/p&gt;
 
 &lt;p&gt;System administrators maintain their servers like they would maintain a well-tended garden: clean, organized, and everything in its place. It&amp;rsquo;s no surprise then that when we developers start compiling &amp;ldquo;stuff&amp;rdquo; left and right, our sysadmins get annoyed out of their minds.&lt;/p&gt;
@@ -588,16 +606,15 @@ end
 &lt;p&gt;Here&amp;rsquo;s the whole script:&lt;/p&gt;
 
 &lt;script src=&#34;https://gist.github.com/5624732.js?file=install-ruby-2-ubuntu.sh&#34; type=&#34;text/javascript&#34;&gt;&lt;/script&gt;
-
 </description>
     </item>
     
     <item>
       <title>Rolling Restarts with Capistrano and Linode</title>
-      <link>http://life.beyondrails.com/blog/2013/06/01/rolling-restarts-with-capistrano-and-linode/</link>
+      <link>http://localhost:1313/blog/2013/06/01/rolling-restarts-with-capistrano-and-linode/</link>
       <pubDate>Sat, 01 Jun 2013 00:00:00 UTC</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2013/06/01/rolling-restarts-with-capistrano-and-linode/</guid>
+      <guid>http://localhost:1313/blog/2013/06/01/rolling-restarts-with-capistrano-and-linode/</guid>
       <description>&lt;p&gt;Here I show how to perform a rolling restart using Capistrano, and making sure that the load balancer (in this case Linode) properly reroutes traffic to the still-running servers while the others are being restarted.&lt;/p&gt;
 
 &lt;div class=&#34;info warning&#34; data-title=&#34;WARNING&#34;&gt;
@@ -788,10 +805,10 @@ end
     
     <item>
       <title>Running PrivatePub/Faye Standalone in Heroku for Free</title>
-      <link>http://life.beyondrails.com/blog/2013/05/25/running-privatepub/faye-standalone-in-heroku-for-free/</link>
+      <link>http://localhost:1313/blog/2013/05/25/running-privatepub/faye-standalone-in-heroku-for-free/</link>
       <pubDate>Sat, 25 May 2013 00:00:00 UTC</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2013/05/25/running-privatepub/faye-standalone-in-heroku-for-free/</guid>
+      <guid>http://localhost:1313/blog/2013/05/25/running-privatepub/faye-standalone-in-heroku-for-free/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://github.com/ryanb/private_pub&#34;&gt;PrivatePub&lt;/a&gt; is an awesome gem by the renowned Ryan Bates of &lt;a href=&#34;http://railscasts.com/&#34;&gt;Railscast&lt;/a&gt; fame. It provides an easy way to use Faye as a pubsub provider. Watch this &lt;a href=&#34;http://railscasts.com/episodes/316-private-pub&#34;&gt;episode&lt;/a&gt; to see it in action.&lt;/p&gt;
 
 &lt;p&gt;You don&amp;rsquo;t have to bundle the gem with a Rails application though; you can deploy PrivatePub standalone as a rack application in Heroku. This allows you to run PrivatePub in a web dyno instead of a worker, allowing for easier maintenance (separation of repositories/codebases) and as a side effect, save on hosting costs.&lt;/p&gt;
@@ -858,10 +875,10 @@ gem &#39;thin&#39;
     
     <item>
       <title>A Smartphone is not a Phone</title>
-      <link>http://life.beyondrails.com/blog/2013/02/12/a-smartphone-is-not-a-phone/</link>
+      <link>http://localhost:1313/blog/2013/02/12/a-smartphone-is-not-a-phone/</link>
       <pubDate>Tue, 12 Feb 2013 00:00:00 UTC</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2013/02/12/a-smartphone-is-not-a-phone/</guid>
+      <guid>http://localhost:1313/blog/2013/02/12/a-smartphone-is-not-a-phone/</guid>
       <description>&lt;p&gt;I&amp;rsquo;ve seen a number of commenters (mostly from the US) arguing that people look funny holding a 5-inch phone/tablet at the side of their heads, while being surprised at how well they&amp;rsquo;ve sold so far (especially in Asia).&lt;/p&gt;
 
 &lt;p&gt;I think it&amp;rsquo;s because those that got these &amp;ldquo;giant phones&amp;rdquo; have subconsciously realised the obvious: their smart phone isn&amp;rsquo;t a phone. It&amp;rsquo;s actually a computer that happens to have phone-like functionalities. After all, the only difference Skype has over regular cellular voice services is the medium.&lt;/p&gt;
@@ -874,10 +891,10 @@ gem &#39;thin&#39;
     
     <item>
       <title>Writing History on Your Own Terms</title>
-      <link>http://life.beyondrails.com/blog/2013/02/05/writing-history-on-your-own-terms/</link>
+      <link>http://localhost:1313/blog/2013/02/05/writing-history-on-your-own-terms/</link>
       <pubDate>Tue, 05 Feb 2013 00:00:00 UTC</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2013/02/05/writing-history-on-your-own-terms/</guid>
+      <guid>http://localhost:1313/blog/2013/02/05/writing-history-on-your-own-terms/</guid>
       <description>&lt;p&gt;HTC just posted a brilliant blog entry titled &amp;ldquo;&lt;a href=&#34;http://blog.htc.com/2013/02/a-brief-history-of-photography/&#34;&gt;A Brief History of Photography&lt;/a&gt;.&amp;rdquo; It&amp;rsquo;s a short infographic that details the experience of photographic technology from two centuries ago until the present.&lt;/p&gt;
 
 &lt;p&gt;What&amp;rsquo;s really clever is that they&amp;rsquo;ve inserted themselves in history. The message is subtle yet clear: HTC will become part of this particular retelling of history.&lt;/p&gt;
@@ -892,10 +909,10 @@ gem &#39;thin&#39;
     
     <item>
       <title>My Development Setup</title>
-      <link>http://life.beyondrails.com/blog/2012/01/23/my-development-setup/</link>
+      <link>http://localhost:1313/blog/2012/01/23/my-development-setup/</link>
       <pubDate>Mon, 23 Jan 2012 00:00:00 UTC</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2012/01/23/my-development-setup/</guid>
+      <guid>http://localhost:1313/blog/2012/01/23/my-development-setup/</guid>
       <description>
 
 &lt;p&gt;At &lt;a href=&#34;http://www.mindvalley.com/&#34;&gt;Mindvalley&lt;/a&gt; employees can have any kind of hardware/software they want, provided that they can prove it is necessary for the work they’re doing, or at least it increases their productivity. In my case, I opted for the setup as seen here (picture courtesy of my colleague):&lt;/p&gt;
@@ -904,7 +921,7 @@ gem &#39;thin&#39;
 
 &lt;p&gt;(the blank monitor on the left was an Ubuntu VM on screensaver mode)&lt;/p&gt;
 
-&lt;h2 id=&#34;a-brief-history-of-my-development-machines:23f4fb3f2f832c13ebfbe2c9c8736fb8&#34;&gt;A Brief History of my Development Machines&lt;/h2&gt;
+&lt;h2 id=&#34;toc_0&#34;&gt;A Brief History of my Development Machines&lt;/h2&gt;
 
 &lt;p&gt;Before I describe the whole setup, allow me to provide a bit of a backgrounder. Vishen – Mindvalley’s CEO – has decreed that every employee be issued a Mac, be it a MacBook/MacBook Pro/MacBook Air/Mac Pro (yes, we have four of those). Only in special cases does the company get anything other than a Mac. Not only are employees to be A-players, they have to be cool and look cool as well :)&lt;/p&gt;
 
@@ -914,7 +931,7 @@ gem &#39;thin&#39;
 
 &lt;p&gt;“What if,” I thought to myself, “I can convince Vishen to get me a fast non-Apple desktop computer to save on price, then install Macintosh on it to somewhat retain the standard?” Long story short, I got my hackintosh (my very first, and it was quite an adventure making it). I have a sweet machine and I don’t have to unlearn and relearn my way through the OS.&lt;/p&gt;
 
-&lt;h2 id=&#34;the-pivot:23f4fb3f2f832c13ebfbe2c9c8736fb8&#34;&gt;The Pivot&lt;/h2&gt;
+&lt;h2 id=&#34;toc_1&#34;&gt;The Pivot&lt;/h2&gt;
 
 &lt;p&gt;Fast forward to a lazy Friday afternoon when the Apple software updater prompted me to install a few software updates. I’ve been working with Macs for so long that it was second nature to me to install software updates without thinking about it. Needless to say, during my next reboot, my Mac sputtered during the boot sequence.&lt;/p&gt;
 
@@ -922,7 +939,7 @@ gem &#39;thin&#39;
 
 &lt;p&gt;One lucky side effect of being in Windows was that I can actually use both the discrete graphics card and the onboard graphics processor at the same time - giving me the ability to use four monitors concurrently. I wasn’t able to do that with the Hackintosh; I was limited to just two screens (three if I use a DVI-USB adapter but the screen refresh on that monitor is too low for comfort). I realized that maybe I might enjoy this nice side effect, if only I can get a decent development environment set up.&lt;/p&gt;
 
-&lt;h2 id=&#34;making-it-work:23f4fb3f2f832c13ebfbe2c9c8736fb8&#34;&gt;Making it Work&lt;/h2&gt;
+&lt;h2 id=&#34;toc_2&#34;&gt;Making it Work&lt;/h2&gt;
 
 &lt;p&gt;Everyone knows that Windows isn’t the best environment to do web development. There are lots of things that I missed when I was in a unix-like environment like that with the Mac – a sane terminal and shell, development headers, web servers, and generally a dev environment that is close to that in production.&lt;/p&gt;
 
@@ -934,7 +951,7 @@ gem &#39;thin&#39;
 
 &lt;p&gt;To wrap things up, I used port forwarding to expose port 3000 and port 80 from the guest to the host. That way, I can run the servers from Ubuntu while still being able to access them from a native browser. Take note that Webrick is slow when run this way – you’d need to disable reverse lookups as seen in this &lt;a href=&#34;https://gist.github.com/1524036&#34;&gt;gist&lt;/a&gt; to speed it up, or just use thin.&lt;/p&gt;
 
-&lt;h2 id=&#34;summary:23f4fb3f2f832c13ebfbe2c9c8736fb8&#34;&gt;Summary&lt;/h2&gt;
+&lt;h2 id=&#34;toc_3&#34;&gt;Summary&lt;/h2&gt;
 
 &lt;p&gt;I think the setup is pretty sweet, and I have no complaints so far (aside from having to relearn my shortcut keys). I have a Windows machine that I don’t have to reboot for gaming, and I’m able to have a development environment very close to what we have on our production machines.&lt;/p&gt;
 
@@ -948,10 +965,10 @@ gem &#39;thin&#39;
     
     <item>
       <title>Sticky Users</title>
-      <link>http://life.beyondrails.com/blog/2011/12/29/sticky-users/</link>
+      <link>http://localhost:1313/blog/2011/12/29/sticky-users/</link>
       <pubDate>Thu, 29 Dec 2011 00:00:00 UTC</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2011/12/29/sticky-users/</guid>
+      <guid>http://localhost:1313/blog/2011/12/29/sticky-users/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://www.facebook.com/groups/webcamp/341435632535194/&#34;&gt;Someone&lt;/a&gt; at WebcampKL asked for help with regard to his mobile budgeting app. Initially the discussion was about validating assumptions, but later on an important issue was raised: why would someone want to use your app, and what would make the user come back for more?&lt;/p&gt;
 
 &lt;p&gt;There is, in fact a very simple way to get your users sticking by the your product during alpha without alienating them later on when you are ready for launch: make them pay a token amount, and once your product gets gold, waive their fees (for life, if it’s a subscription). Why does this work?&lt;/p&gt;
@@ -959,64 +976,6 @@ gem &#39;thin&#39;
 &lt;p&gt;There are many subtle psychological triggers in effect here, but the most powerful would be the &lt;a href=&#34;http://youarenotsosmart.com/2011/03/25/the-sunk-cost-fallacy/&#34;&gt;Sunk Cost fallacy&lt;/a&gt;. Asking them to pay even just a token amount (my suggestion was $1) is powerful enough to make them want to continue using your app and forgive its faults. This is also very similar to &lt;a href=&#34;http://www.fripp.com/art.of_influence.html&#34;&gt;Cialdini’s Commitment and Consistency&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Somewhat related would be the &lt;a href=&#34;http://youarenotsosmart.com/2010/07/27/anchoring-effect/&#34;&gt;Anchoring effect&lt;/a&gt;. By not making the alpha release free for testers, current and future customers are now used to expecting that the app is not for free. When the product launches, future customers are more likely to pay for the usage of the app.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Having Fun With Remote Shells</title>
-      <link>http://life.beyondrails.com/blog/2006/04/03/having-fun-with-remote-shells/</link>
-      <pubDate>Mon, 03 Apr 2006 00:00:00 UTC</pubDate>
-      
-      <guid>http://life.beyondrails.com/blog/2006/04/03/having-fun-with-remote-shells/</guid>
-      <description>&lt;p&gt;I just bought a VPS (virtual private server) a couple of days ago, and I&amp;rsquo;m enjoying tinkering with it. It&amp;rsquo;s not the most powerful beast though; it only has 64MB RAM and 128MB swap. I won&amp;rsquo;t say the name of the company I&amp;rsquo;m subscribed to since my box isn&amp;rsquo;t exactly the bastion of security, but you should be able to discern the shell provider from how I describe my escapades :D&lt;/p&gt;
-
-&lt;p&gt;The most important lesson I&amp;rsquo;ve learned while playing sysadmin is: learn how to take notes. I had to take down, reload, reboot, reconfigure, and do it over and over again during the last couple of days. In the end, I settled for a no-frills Ubuntu Breezy, and decided to just scrap the webmin idea and learn how to hand-configure the daemons myself. But everything would have been much easier from the start had I taken down notes. Now I have them, and should I need to reinstall the thing (hope I do not) I have a copy of it :)&lt;/p&gt;
-
-&lt;p&gt;I&amp;rsquo;ll post it here too just in case I lose that piece pf paper (which I&amp;rsquo;m expecting is going to happen).&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Disable root SSH login: nano /etc/ssh/sshd_config&lt;/li&gt;
-&lt;li&gt;Create a normal user account: useradd -m -s /bin/bash -g users username&lt;/li&gt;
-&lt;li&gt;Create a password for normal user account: passwd username&lt;/li&gt;
-&lt;li&gt;Add username to list of sudoers: visudo&lt;/li&gt;
-&lt;li&gt;Test account and sudo access, then remove root login: sudo passwd root -l&lt;/li&gt;
-&lt;li&gt;Relog as normal user and restart the SSH daemon: /etc/init.d/ssh restart&lt;/li&gt;
-&lt;li&gt;Add /bin/false to /etc/shells&lt;/li&gt;
-&lt;li&gt;Update apt-get package list: sudo apt-get update&lt;/li&gt;
-&lt;li&gt;Upgrade the whole system to the latest programs: sudo apt-get dist-upgrade&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;That should take care of the initial setup.&lt;/p&gt;
-
-&lt;p&gt;Now what am I using the remote shell for? Since I still haven&amp;rsquo;t figured out how to configure a webserver, I&amp;rsquo;m currently running my bot on it ^_^ Here are the steps I did:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Install an ftp daemon: sudo apt-get install vsftpd&lt;/li&gt;
-&lt;li&gt;Configure ftp daemon to accept uploads: sudo nano /etc/vsftpd.conf
-
-&lt;ul&gt;
-&lt;li&gt;anonymous_enable=NO&lt;/li&gt;
-&lt;li&gt;local_enable=YES&lt;/li&gt;
-&lt;li&gt;write_enable=YES&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Restart ftp daemon: sudo /etc/init.d/vsftpd restart&lt;/li&gt;
-&lt;li&gt;Install GNU Screen: sudo apt-get install screen&lt;/li&gt;
-&lt;li&gt;Install compilers and development headers: sudo apt-get install build-essential&lt;/li&gt;
-&lt;li&gt;Install subversion: sudo apt-get install subversion&lt;/li&gt;
-&lt;li&gt;Install development headers for readline: sudo apt-get install libreadline5-dev&lt;/li&gt;
-&lt;li&gt;FTP over configuration files from local computer&lt;/li&gt;
-&lt;li&gt;Placeholder for the webserver stuff (Yay! It works~)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://rimuhosting.com/howto/virtualhosting.jsp&#34;&gt;http://rimuhosting.com/howto/virtualhosting.jsp&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;libapache2-mod-php5&lt;/p&gt;
-
-&lt;p&gt;php5-mysql&lt;/p&gt;
-
-&lt;p&gt;phpyadmin&lt;/p&gt;
-
-&lt;p&gt;So far, that&amp;rsquo;s all I&amp;rsquo;ve done. I&amp;rsquo;ll be updating this page when I do more with my box.&lt;/p&gt;
 </description>
     </item>
     

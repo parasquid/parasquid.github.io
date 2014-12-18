@@ -11,8 +11,8 @@ permalinks:
   post: "/blog/:year/:month/:day/:title/"
 params:
   # Used when a given page doesn't set its own.
-  defaultDescription: "Your default page description"
-  defaultKeywords: "your,default,page,keywords"
+  defaultDescription: ""
+  defaultKeywords: ""
 
   # Changes sidebar background and link/accent colours.
   # See below for more colour options.
@@ -24,18 +24,18 @@ params:
   highlight: "sunburst"
 
   # Displays under the author name in the sidebar, keep it short.
-  tagline: "Codesmith by day. Airsculptor by night."
+  tagline: "Codesmithing by day. Airsculpting by night."
 
   # Metadata used to drive integrations.
-  googleAuthorship: "Your Google+ profile ID"
-  googleAnalytics: "Your Google Analytics tracking code"
+  # googleAuthorship: "TristanGomez"
+  googleAnalytics: "UA-41391404-1"
   gravatarHash: "e00d9254088a9db2e1875fc324402e2c"
 
   # Sidebar social links, avoid enabling too many of these if possible.
   # These should be full URLs.
   github: "https://github.com/parasquid"
-  linkedin: ""
+  linkedin: "https://www.linkedin.com/in/parasquid"
   googleplus: ""
-  facebook: ""
+  facebook: "https://www.facebook.com/parasquid"
   twitter: "https://twitter.com/parasquid"
 ---

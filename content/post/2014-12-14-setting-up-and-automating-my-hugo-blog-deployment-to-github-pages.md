@@ -35,7 +35,7 @@ git rm --cached $(git ls-files)
 
 # Grab one file from the master branch so we can make a commit
 git checkout source .gitignore
-git commit -m "INIT: initial commit on gh-pages branch"
+git commit -m "INIT: initial commit on master branch"
 git push origin master
 
 # Return to the source branch
@@ -131,7 +131,9 @@ git push origin source
 git subtree push --prefix=public\
 	git@github.com:parasquid/parasquid.github.io.git master
 ```
-It's a combination of the initial setup and the default deployment script from the hugo documentation. Now the only downside left (and this is a very minor thing for me) is that post updates take a number of minutes before they are seen live. But I can live with that.
+It's a combination of the initial setup and the default deployment script from the hugo documentation. Now the only downside left (and this is a very minor thing for me) is that post updates can take a number of minutes before they are seen live. But I can live with that.
+
+Also, there will be times when the master branch just won't deploy because of merge conflicts (and there's no way to do a force push on `git subtree`). So far all I have to do is to run `deploy.sh` one more time and it's all cool.
 
 ## Porting old blog entries to hugo
 I've blogged on and off for quite some time in various domains and platforms. There really isn't much I can do to automate the importing of the entries. Luckily I only have a handful of published posts, but I probably lost most of my drafts and idea dumps.

@@ -3,7 +3,7 @@
   <channel>
       <title>Basics on Life Beyond Rails </title>
       <generator uri="https://hugo.spf13.com">Hugo</generator>
-    <link>http://life.beyondrails.com/categories/basics/index.xml/</link>
+    <link>http://localhost:1313/categories/basics/index.xml/</link>
     
     
     
@@ -11,10 +11,10 @@
     
     <item>
       <title>Ruby and Blocks</title>
-      <link>http://life.beyondrails.com/blog/2014/03/04/ruby-and-blocks/</link>
+      <link>http://localhost:1313/blog/2014/03/04/ruby-and-blocks/</link>
       <pubDate>Tue, 04 Mar 2014 00:00:00 UTC</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2014/03/04/ruby-and-blocks/</guid>
+      <guid>http://localhost:1313/blog/2014/03/04/ruby-and-blocks/</guid>
       <description>
 
 &lt;p&gt;One of the most often used and ironically least understood concepts in the Ruby programming language is the block. If you&amp;rsquo;ve used one of the Enumerable mixed-in objects, you&amp;rsquo;ve encountered the block syntax.&lt;/p&gt;

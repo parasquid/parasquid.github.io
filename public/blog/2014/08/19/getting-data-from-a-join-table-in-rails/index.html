@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-  <title>Reinstalling Kubuntu &middot; </title>
+  <title>Getting Data From a Join Table in Rails &middot; </title>
 
   
   <link rel="stylesheet" href="http://localhost:1313/css/poole.css">
@@ -61,24 +61,94 @@
 
 <div class="content container">
   <div class="post">
-    <h1>Reinstalling Kubuntu</h1>
-    <span class="post-date">Mar 19, 2006 &middot; 1 minute read &middot; <a href="http://localhost:1313/blog/2006/03/19/reinstalling-kubuntu/#disqus_thread">Comments</a>
-    
-    <br/>
-    
-    <a class="label" href="http://localhost:1313/categories/linux">linux</a><a class="label" href="http://localhost:1313/categories/devops">devops</a>
+    <h1>Getting Data From a Join Table in Rails</h1>
+    <span class="post-date">Aug 19, 2014 &middot; 2 minute read &middot; <a href="http://localhost:1313/blog/2014/08/19/getting-data-from-a-join-table-in-rails/#disqus_thread">Comments</a>
     </span>
-    <p>My data drive had some corruption as regards its file system tree, and i was forced to rebuild it. I figured I&rsquo;ll just reinstall Kubuntu too since I inadverdently installed Ubuntu Desktop, which kinda doubled the applications I have on the menu.</p>
+    <p>A friend asked in my <a href="https://www.facebook.com/groups/klxrb">Ruby Facebook group</a> about a <a href="https://www.facebook.com/groups/klxrb/permalink/515838138548150/">problem</a> he was having that I feel I&rsquo;ve encountered before (or will be encountering in the future). It&rsquo;s about having to retrieve data taht is associated with a join table.</p>
 
-<p>Here are some of the things I did in order to remind myself in case my system crashes again:</p>
+<p>Here&rsquo;s the question:</p>
 
-<ul>
-<li>Make a dos partition writable - the options in fstab for the partition should be: user,exec,rw,umask=000 0 0</li>
-<li>Get Automatix and install some of the necessary non-free software</li>
-<li>Install packages used for compiling source code: sudo apt-get install build-essential</li>
-</ul>
+<blockquote>
+<p>I have set ActiveRecords models like these</p>
+</blockquote>
 
-<p>I&rsquo;ll add to the list as I walk through the rebuilding of my settings.</p>
+<script src="https://gist.github.com/87abbf74e8020ca7e95c.js?file=" type="text/javascript"></script>
+
+<blockquote>
+<p>I want to do something like current_user.boards.first.role which I expect to load the membership details of current_user AND the first board. Do you have any idea how can I achieve this? Do you suggest another approach?</p>
+</blockquote>
+
+<p>In other words, he wants to be able to get at the <code>current_user</code>&rsquo;s boards and retrieve the role assigned to the first board.</p>
+
+<p>At first it was a bit difficult to search google for the corrent keywords, but there&rsquo;s <a href="http://stackoverflow.com/a/8874831">StackOverflow</a> to the rescue. There needs to be a custom SQL select query to expose the role_mask attribute of the join table</p>
+
+<p>I felt that it was a very interesting question, so I made a sample app for him to show the technique. It can be found here: <a href="https://github.com/parasquid/reach-into-habtm-example/">https://github.com/parasquid/reach-into-habtm-example/</a></p>
+
+<p>For the lazy and impatient:</p>
+
+<pre><code class="language-ruby"># app/models/user.rb
+class User &lt; ActiveRecord::Base
+  has_many :memberships
+  has_many :boards, through: :memberships, :select =&gt; 'memberships.role_mask as role_mask'
+end
+</code></pre>
+
+<pre><code class="language-ruby"># spec/models/membership_spec.rb
+require 'spec_helper'
+
+MAX_USERS = 2
+MAX_BOARDS = 5
+
+describe Membership do
+  context 'access through a user instance' do
+    before :each do
+      1.upto MAX_USERS do
+        User.create
+      end
+
+      1.upto MAX_BOARDS do
+        Board.create
+      end
+
+      # associate two boards to the first user
+      user1 = User.first
+      user1.memberships.create(role_mask: 1, board: Board.first)
+      user1.memberships.create(role_mask: 4, board: Board.last)
+
+      # associate two boards to the second user in reverse order
+      user2 = User.last
+      user2.memberships.create(role_mask: 4, board: Board.first)
+      user2.memberships.create(role_mask: 1, board: Board.last)
+    end
+
+    context 'first user' do
+      let(:current_user) { User.first }
+
+      it 'returns the current user\'s board\'s membership role' do
+        expect(current_user.boards.first.role).to eq :admin
+        expect(current_user.boards.last.role).to eq :member
+      end
+    end
+
+    context 'second user' do
+      let(:current_user) { User.last }
+
+      it 'returns the current user\'s board\'s membership role' do
+        expect(current_user.boards.first.role).to eq :member
+        expect(current_user.boards.last.role).to eq :admin
+      end
+    end
+
+  end
+end
+</code></pre>
+
+<p>And of course, as Milad&rsquo;s comment (and the StackOverflow guy) says, the <code>:select</code> hash is already deprecated in Rails 4 and you&rsquo;d need to do use a lambda instead:</p>
+
+<pre><code class="language-ruby">has_many :boards,
+         -&gt; { select 'boards.*, memberships.role_mask as role_mask'},
+         :through =&gt; :memberships
+</code></pre>
 
   </div>
   <div id="disqus_thread"></div>

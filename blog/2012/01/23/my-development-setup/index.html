@@ -10,15 +10,15 @@
   <title>My Development Setup &middot; </title>
 
   
-  <link rel="stylesheet" href="http://life.beyondrails.com/css/poole.css">
-  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde.css">
-  <link rel="stylesheet" href="http://life.beyondrails.com/css/poole-overrides.css">
-  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde-overrides.css">
-  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde-x.css">
-  <link rel="stylesheet" href="http://life.beyondrails.com/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="http://localhost:1313/css/poole.css">
+  <link rel="stylesheet" href="http://localhost:1313/css/hyde.css">
+  <link rel="stylesheet" href="http://localhost:1313/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://localhost:1313/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://localhost:1313/css/hyde-x.css">
+  <link rel="stylesheet" href="http://localhost:1313/css/highlight/sunburst.css">
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
 
-  <link rel="stylesheet" href="http://life.beyondrails.com/css/styles.css">
+  <link rel="stylesheet" href="http://localhost:1313/css/styles.css">
 
   
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
@@ -42,7 +42,7 @@
     </div>
 
     <ul class="sidebar-nav">
-      <li class="sidebar-nav-item"><a href="http://life.beyondrails.com/">Blog</a></li>
+      <li class="sidebar-nav-item"><a href="http://localhost:1313/">Blog</a></li>
       
     </ul>
 
@@ -54,7 +54,7 @@
       <li class="sidebar-nav-item"><a href="https://twitter.com/parasquid">Twitter</a></li>
     </ul>
 
-    <p>Copyright &copy; 2014 <a href="http://life.beyondrails.com/license">License</a><br/>
+    <p>Copyright &copy; 2014 <a href="http://localhost:1313/license">License</a><br/>
        Powered by <a href="http://hugo.spf13.com">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
   </div>
 </div>
@@ -62,11 +62,11 @@
 <div class="content container">
   <div class="post">
     <h1>My Development Setup</h1>
-    <span class="post-date">Jan 23, 2012 &middot; 6 minute read &middot; <a href="http://life.beyondrails.com/blog/2012/01/23/my-development-setup/#disqus_thread">Comments</a>
+    <span class="post-date">Jan 23, 2012 &middot; 6 minute read &middot; <a href="http://localhost:1313/blog/2012/01/23/my-development-setup/#disqus_thread">Comments</a>
     
     <br/>
     
-    <a class="label" href="http://life.beyondrails.com/categories/hardware">hardware</a>
+    <a class="label" href="http://localhost:1313/categories/hardware">hardware</a>
     </span>
     
 
@@ -76,7 +76,7 @@
 
 <p>(the blank monitor on the left was an Ubuntu VM on screensaver mode)</p>
 
-<h2 id="a-brief-history-of-my-development-machines:23f4fb3f2f832c13ebfbe2c9c8736fb8">A Brief History of my Development Machines</h2>
+<h2 id="toc_0">A Brief History of my Development Machines</h2>
 
 <p>Before I describe the whole setup, allow me to provide a bit of a backgrounder. Vishen – Mindvalley’s CEO – has decreed that every employee be issued a Mac, be it a MacBook/MacBook Pro/MacBook Air/Mac Pro (yes, we have four of those). Only in special cases does the company get anything other than a Mac. Not only are employees to be A-players, they have to be cool and look cool as well :)</p>
 
@@ -86,7 +86,7 @@
 
 <p>“What if,” I thought to myself, “I can convince Vishen to get me a fast non-Apple desktop computer to save on price, then install Macintosh on it to somewhat retain the standard?” Long story short, I got my hackintosh (my very first, and it was quite an adventure making it). I have a sweet machine and I don’t have to unlearn and relearn my way through the OS.</p>
 
-<h2 id="the-pivot:23f4fb3f2f832c13ebfbe2c9c8736fb8">The Pivot</h2>
+<h2 id="toc_1">The Pivot</h2>
 
 <p>Fast forward to a lazy Friday afternoon when the Apple software updater prompted me to install a few software updates. I’ve been working with Macs for so long that it was second nature to me to install software updates without thinking about it. Needless to say, during my next reboot, my Mac sputtered during the boot sequence.</p>
 
@@ -94,7 +94,7 @@
 
 <p>One lucky side effect of being in Windows was that I can actually use both the discrete graphics card and the onboard graphics processor at the same time - giving me the ability to use four monitors concurrently. I wasn’t able to do that with the Hackintosh; I was limited to just two screens (three if I use a DVI-USB adapter but the screen refresh on that monitor is too low for comfort). I realized that maybe I might enjoy this nice side effect, if only I can get a decent development environment set up.</p>
 
-<h2 id="making-it-work:23f4fb3f2f832c13ebfbe2c9c8736fb8">Making it Work</h2>
+<h2 id="toc_2">Making it Work</h2>
 
 <p>Everyone knows that Windows isn’t the best environment to do web development. There are lots of things that I missed when I was in a unix-like environment like that with the Mac – a sane terminal and shell, development headers, web servers, and generally a dev environment that is close to that in production.</p>
 
@@ -106,7 +106,7 @@
 
 <p>To wrap things up, I used port forwarding to expose port 3000 and port 80 from the guest to the host. That way, I can run the servers from Ubuntu while still being able to access them from a native browser. Take note that Webrick is slow when run this way – you’d need to disable reverse lookups as seen in this <a href="https://gist.github.com/1524036">gist</a> to speed it up, or just use thin.</p>
 
-<h2 id="summary:23f4fb3f2f832c13ebfbe2c9c8736fb8">Summary</h2>
+<h2 id="toc_3">Summary</h2>
 
 <p>I think the setup is pretty sweet, and I have no complaints so far (aside from having to relearn my shortcut keys). I have a Windows machine that I don’t have to reboot for gaming, and I’m able to have a development environment very close to what we have on our production machines.</p>
 
@@ -144,7 +144,7 @@ var disqus_shortname = "parasquid";
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
-<script src="http://life.beyondrails.com/js/highlight.pack.js"></script>
+<script src="http://localhost:1313/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <script>
@@ -154,5 +154,8 @@ var disqus_shortname = "parasquid";
   s.parentNode.insertBefore(g,s)}(document,'script'));
 </script>
 
-</body>
+<script>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':1313/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
 </html>

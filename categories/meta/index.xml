@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Meta on Life Beyond Rails</title>
-    <link>http://life.beyondrails.com/categories/meta/</link>
-    <description>Recent content in Meta on Life Beyond Rails</description>
-    <generator>Hugo -- gohugo.io</generator>
+      <title>Meta on Life Beyond Rails </title>
+      <generator uri="https://hugo.spf13.com">Hugo</generator>
+    <link>http://localhost:1313/categories/meta/index.xml/</link>
     
     
     
-    <lastBuildDate>Sun, 14 Dec 2014 07:16:31 PST</lastBuildDate>
-    <atom:link href="http://life.beyondrails.com/categories/meta/index.xml" rel="self" type="application/rss+xml" />
+    <updated>Sun, 14 Dec 2014 07:16:31 -0800</updated>
     
     <item>
       <title>Setting Up and Automating my Hugo Blog Deployment to Github Pages</title>
-      <link>http://life.beyondrails.com/blog/2014/12/14/setting-up-and-automating-my-hugo-blog-deployment-to-github-pages/</link>
-      <pubDate>Sun, 14 Dec 2014 07:16:31 PST</pubDate>
+      <link>http://localhost:1313/blog/2014/12/14/setting-up-and-automating-my-hugo-blog-deployment-to-github-pages/</link>
+      <pubDate>Sun, 14 Dec 2014 07:16:31 -0800</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2014/12/14/setting-up-and-automating-my-hugo-blog-deployment-to-github-pages/</guid>
+      <guid>http://localhost:1313/blog/2014/12/14/setting-up-and-automating-my-hugo-blog-deployment-to-github-pages/</guid>
       <description>
 
 &lt;div class=&#34;info info&#34; data-title=&#34;Work In Progress&#34;&gt;
@@ -26,15 +24,15 @@
 
 &lt;p&gt;I&amp;rsquo;m currently moving my blog posts (and collecting all my blog entries from various blogging platforms) and putting them into Hugo. In case you&amp;rsquo;re wondering how I&amp;rsquo;ve set mine up, here&amp;rsquo;s a guide of what I&amp;rsquo;ve done.&lt;/p&gt;
 
-&lt;h2 id=&#34;choosing-the-hosting-platform:60bb9034dcbf91d2a362f1c22fd4d95c&#34;&gt;Choosing the hosting platform&lt;/h2&gt;
+&lt;h2 id=&#34;toc_0&#34;&gt;Choosing the hosting platform&lt;/h2&gt;
 
-&lt;h2 id=&#34;setting-up-the-blog:60bb9034dcbf91d2a362f1c22fd4d95c&#34;&gt;Setting up the blog&lt;/h2&gt;
+&lt;h2 id=&#34;toc_1&#34;&gt;Setting up the blog&lt;/h2&gt;
 
 &lt;p&gt;sudo aptitude install golang
 sudo aptitude install -y mercurial
 go get -v github.com/spf13/hugo&lt;/p&gt;
 
-&lt;h2 id=&#34;setting-up-the-github-pages:60bb9034dcbf91d2a362f1c22fd4d95c&#34;&gt;Setting up the github pages&lt;/h2&gt;
+&lt;h2 id=&#34;toc_2&#34;&gt;Setting up the github pages&lt;/h2&gt;
 
 &lt;p&gt;There&amp;rsquo;s a really cool guide over at the official &lt;a href=&#34;http://gohugo.io/tutorials/github_pages_blog/&#34;&gt;Hugo documentation&lt;/a&gt; and I advise everyone to check it out.&lt;/p&gt;
 
@@ -75,7 +73,7 @@ touch public/CNAME
 echo &amp;quot;life.beyondrails.com&amp;quot; &amp;gt; public/CNAME
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;scripting-the-deployment:60bb9034dcbf91d2a362f1c22fd4d95c&#34;&gt;Scripting the deployment&lt;/h2&gt;
+&lt;h2 id=&#34;toc_3&#34;&gt;Scripting the deployment&lt;/h2&gt;
 
 &lt;p&gt;Again I refered back to the hugo documentation on &lt;a href=&#34;http://gohugo.io/tutorials/github_pages_blog/&#34;&gt;setting up hugo for guthub hosting&lt;/a&gt; and I used it as the basis for my own deployment script.&lt;/p&gt;
 
@@ -152,15 +150,15 @@ git subtree push --prefix=public\
 
 &lt;p&gt;It&amp;rsquo;s a combination of the initial setup and the default deployment script from the hugo documentation. Now the only downside left (and this is a very minor thing for me) is that post updates take a number of minutes before they are seen live. But I can live with that.&lt;/p&gt;
 
-&lt;h2 id=&#34;porting-old-blog-entries-to-hugo:60bb9034dcbf91d2a362f1c22fd4d95c&#34;&gt;Porting old blog entries to hugo&lt;/h2&gt;
+&lt;h2 id=&#34;toc_4&#34;&gt;Porting old blog entries to hugo&lt;/h2&gt;
 
 &lt;p&gt;I&amp;rsquo;ve blogged on and off for quite some time in various domains and platforms. There really isn&amp;rsquo;t much I can do to automate the importing of the entries. Luckily I only have a handful of published posts, but I probably lost most of my drafts and idea dumps.&lt;/p&gt;
 
-&lt;h2 id=&#34;blogging-workflow:60bb9034dcbf91d2a362f1c22fd4d95c&#34;&gt;Blogging workflow&lt;/h2&gt;
+&lt;h2 id=&#34;toc_5&#34;&gt;Blogging workflow&lt;/h2&gt;
 
 &lt;p&gt;So now that everything&amp;rsquo;s set and deployed, how do I continue writing?&lt;/p&gt;
 
-&lt;h2 id=&#34;questions:60bb9034dcbf91d2a362f1c22fd4d95c&#34;&gt;Questions?&lt;/h2&gt;
+&lt;h2 id=&#34;toc_6&#34;&gt;Questions?&lt;/h2&gt;
 
 &lt;p&gt;If any of the instructions above are confusing, feel free to comment and I&amp;rsquo;ll try my best to answer the question in the comments as well as update the instructions :)&lt;/p&gt;
 </description>
@@ -168,10 +166,10 @@ git subtree push --prefix=public\
     
     <item>
       <title>Redoing my Blogs</title>
-      <link>http://life.beyondrails.com/blog/2014/12/12/redoing-my-blogs/</link>
-      <pubDate>Fri, 12 Dec 2014 12:25:29 PST</pubDate>
+      <link>http://localhost:1313/blog/2014/12/12/redoing-my-blogs/</link>
+      <pubDate>Fri, 12 Dec 2014 12:25:29 -0800</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2014/12/12/redoing-my-blogs/</guid>
+      <guid>http://localhost:1313/blog/2014/12/12/redoing-my-blogs/</guid>
       <description>&lt;p&gt;Yet again I&amp;rsquo;ve ported my blog into yet another blogging platform - &lt;a href=&#34;http://gohugo.io/&#34;&gt;Hugo&lt;/a&gt;. I feel so strongly that I&amp;rsquo;d be staying for quite some time on this platform that I&amp;rsquo;ve been porting over all my other posts in all my other various blogs over here.&lt;/p&gt;
 
 &lt;p&gt;It&amp;rsquo;s quite an interesting blogging platform. It outputs static files, which means hosting options are very cheap with a wide variety of providers.&lt;/p&gt;

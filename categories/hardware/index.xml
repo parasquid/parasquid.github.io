@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Hardware on Life Beyond Rails</title>
-    <link>http://life.beyondrails.com/categories/hardware/</link>
-    <description>Recent content in Hardware on Life Beyond Rails</description>
-    <generator>Hugo -- gohugo.io</generator>
+      <title>Hardware on Life Beyond Rails </title>
+      <generator uri="https://hugo.spf13.com">Hugo</generator>
+    <link>http://localhost:1313/categories/hardware/index.xml/</link>
     
     
     
-    <lastBuildDate>Sun, 03 Aug 2014 00:00:00 UTC</lastBuildDate>
-    <atom:link href="http://life.beyondrails.com/categories/hardware/index.xml" rel="self" type="application/rss+xml" />
+    <updated>Sun, 03 Aug 2014 00:00:00 UTC</updated>
     
     <item>
       <title>Setup and Configuration of my Machines</title>
-      <link>http://life.beyondrails.com/blog/2014/08/03/setup-and-configuration-of-my-machines/</link>
+      <link>http://localhost:1313/blog/2014/08/03/setup-and-configuration-of-my-machines/</link>
       <pubDate>Sun, 03 Aug 2014 00:00:00 UTC</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2014/08/03/setup-and-configuration-of-my-machines/</guid>
+      <guid>http://localhost:1313/blog/2014/08/03/setup-and-configuration-of-my-machines/</guid>
       <description>
 
 &lt;div class=&#34;info info&#34; data-title=&#34;Work In Progress&#34;&gt;
@@ -30,26 +28,26 @@
 
 &lt;p&gt;Here&amp;rsquo;s the blogpost to rectify that, as well as give you a glimpse as to how I like my machine setup and configured :)&lt;/p&gt;
 
-&lt;h2 id=&#34;setup-natural-scrolling:e9c0cc0211eea1041c321177ca84bcda&#34;&gt;Setup natural scrolling&lt;/h2&gt;
+&lt;h2 id=&#34;toc_0&#34;&gt;Setup natural scrolling&lt;/h2&gt;
 
 &lt;p&gt;Ever since I got my Macbook Air 2010 upgraded to Lion, I&amp;rsquo;ve been a fan of what Apple called &amp;ldquo;natural scrolling.&amp;rdquo;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://www.andybarratt.co.uk/lion-like-scrolling-on-ubuntu-inverse-scrolling-on-linux&#34;&gt;http://www.andybarratt.co.uk/lion-like-scrolling-on-ubuntu-inverse-scrolling-on-linux&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;setup-sublime-text:e9c0cc0211eea1041c321177ca84bcda&#34;&gt;Setup Sublime Text&lt;/h2&gt;
+&lt;h2 id=&#34;toc_1&#34;&gt;Setup Sublime Text&lt;/h2&gt;
 
 &lt;p&gt;I know I should start learning Emacs, but Sublime Text (and before that, Textmate) had always been my editor of choice. That might change in the near future though :)&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://www.webupd8.org/20&#34;&gt;Ubuntu PPA&lt;/a&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;sublime-text-settings:e9c0cc0211eea1041c321177ca84bcda&#34;&gt;Sublime Text settings&lt;/h3&gt;
+&lt;h3 id=&#34;toc_2&#34;&gt;Sublime Text settings&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://sublime.wbond.net/installation&#34;&gt;Package control&lt;/a&gt;
 &amp;hellip;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;key-management:e9c0cc0211eea1041c321177ca84bcda&#34;&gt;Key management&lt;/h2&gt;
+&lt;h2 id=&#34;toc_3&#34;&gt;Key management&lt;/h2&gt;
 
 &lt;p&gt;Yes, I keep my private key in Dropbox. I know many people would say that this is a security risk (and it is) but the keys that I do keep in Dropbox are only those with access to non-critical remote systems that I own. I run some rtorrent download boxes as well as some application servers that I use for quickly testing out application ideas.&lt;/p&gt;
 </description>
@@ -57,10 +55,10 @@
     
     <item>
       <title>My Development Setup</title>
-      <link>http://life.beyondrails.com/blog/2012/01/23/my-development-setup/</link>
+      <link>http://localhost:1313/blog/2012/01/23/my-development-setup/</link>
       <pubDate>Mon, 23 Jan 2012 00:00:00 UTC</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2012/01/23/my-development-setup/</guid>
+      <guid>http://localhost:1313/blog/2012/01/23/my-development-setup/</guid>
       <description>
 
 &lt;p&gt;At &lt;a href=&#34;http://www.mindvalley.com/&#34;&gt;Mindvalley&lt;/a&gt; employees can have any kind of hardware/software they want, provided that they can prove it is necessary for the work they’re doing, or at least it increases their productivity. In my case, I opted for the setup as seen here (picture courtesy of my colleague):&lt;/p&gt;
@@ -69,7 +67,7 @@
 
 &lt;p&gt;(the blank monitor on the left was an Ubuntu VM on screensaver mode)&lt;/p&gt;
 
-&lt;h2 id=&#34;a-brief-history-of-my-development-machines:23f4fb3f2f832c13ebfbe2c9c8736fb8&#34;&gt;A Brief History of my Development Machines&lt;/h2&gt;
+&lt;h2 id=&#34;toc_0&#34;&gt;A Brief History of my Development Machines&lt;/h2&gt;
 
 &lt;p&gt;Before I describe the whole setup, allow me to provide a bit of a backgrounder. Vishen – Mindvalley’s CEO – has decreed that every employee be issued a Mac, be it a MacBook/MacBook Pro/MacBook Air/Mac Pro (yes, we have four of those). Only in special cases does the company get anything other than a Mac. Not only are employees to be A-players, they have to be cool and look cool as well :)&lt;/p&gt;
 
@@ -79,7 +77,7 @@
 
 &lt;p&gt;“What if,” I thought to myself, “I can convince Vishen to get me a fast non-Apple desktop computer to save on price, then install Macintosh on it to somewhat retain the standard?” Long story short, I got my hackintosh (my very first, and it was quite an adventure making it). I have a sweet machine and I don’t have to unlearn and relearn my way through the OS.&lt;/p&gt;
 
-&lt;h2 id=&#34;the-pivot:23f4fb3f2f832c13ebfbe2c9c8736fb8&#34;&gt;The Pivot&lt;/h2&gt;
+&lt;h2 id=&#34;toc_1&#34;&gt;The Pivot&lt;/h2&gt;
 
 &lt;p&gt;Fast forward to a lazy Friday afternoon when the Apple software updater prompted me to install a few software updates. I’ve been working with Macs for so long that it was second nature to me to install software updates without thinking about it. Needless to say, during my next reboot, my Mac sputtered during the boot sequence.&lt;/p&gt;
 
@@ -87,7 +85,7 @@
 
 &lt;p&gt;One lucky side effect of being in Windows was that I can actually use both the discrete graphics card and the onboard graphics processor at the same time - giving me the ability to use four monitors concurrently. I wasn’t able to do that with the Hackintosh; I was limited to just two screens (three if I use a DVI-USB adapter but the screen refresh on that monitor is too low for comfort). I realized that maybe I might enjoy this nice side effect, if only I can get a decent development environment set up.&lt;/p&gt;
 
-&lt;h2 id=&#34;making-it-work:23f4fb3f2f832c13ebfbe2c9c8736fb8&#34;&gt;Making it Work&lt;/h2&gt;
+&lt;h2 id=&#34;toc_2&#34;&gt;Making it Work&lt;/h2&gt;
 
 &lt;p&gt;Everyone knows that Windows isn’t the best environment to do web development. There are lots of things that I missed when I was in a unix-like environment like that with the Mac – a sane terminal and shell, development headers, web servers, and generally a dev environment that is close to that in production.&lt;/p&gt;
 
@@ -99,7 +97,7 @@
 
 &lt;p&gt;To wrap things up, I used port forwarding to expose port 3000 and port 80 from the guest to the host. That way, I can run the servers from Ubuntu while still being able to access them from a native browser. Take note that Webrick is slow when run this way – you’d need to disable reverse lookups as seen in this &lt;a href=&#34;https://gist.github.com/1524036&#34;&gt;gist&lt;/a&gt; to speed it up, or just use thin.&lt;/p&gt;
 
-&lt;h2 id=&#34;summary:23f4fb3f2f832c13ebfbe2c9c8736fb8&#34;&gt;Summary&lt;/h2&gt;
+&lt;h2 id=&#34;toc_3&#34;&gt;Summary&lt;/h2&gt;
 
 &lt;p&gt;I think the setup is pretty sweet, and I have no complaints so far (aside from having to relearn my shortcut keys). I have a Windows machine that I don’t have to reboot for gaming, and I’m able to have a development environment very close to what we have on our production machines.&lt;/p&gt;
 

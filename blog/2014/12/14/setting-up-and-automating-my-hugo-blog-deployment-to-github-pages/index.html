@@ -10,15 +10,15 @@
   <title>Setting Up and Automating my Hugo Blog Deployment to Github Pages &middot; </title>
 
   
-  <link rel="stylesheet" href="http://life.beyondrails.com/css/poole.css">
-  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde.css">
-  <link rel="stylesheet" href="http://life.beyondrails.com/css/poole-overrides.css">
-  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde-overrides.css">
-  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde-x.css">
-  <link rel="stylesheet" href="http://life.beyondrails.com/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="http://localhost:1313/css/poole.css">
+  <link rel="stylesheet" href="http://localhost:1313/css/hyde.css">
+  <link rel="stylesheet" href="http://localhost:1313/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://localhost:1313/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://localhost:1313/css/hyde-x.css">
+  <link rel="stylesheet" href="http://localhost:1313/css/highlight/sunburst.css">
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
 
-  <link rel="stylesheet" href="http://life.beyondrails.com/css/styles.css">
+  <link rel="stylesheet" href="http://localhost:1313/css/styles.css">
 
   
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
@@ -42,7 +42,7 @@
     </div>
 
     <ul class="sidebar-nav">
-      <li class="sidebar-nav-item"><a href="http://life.beyondrails.com/">Blog</a></li>
+      <li class="sidebar-nav-item"><a href="http://localhost:1313/">Blog</a></li>
       
     </ul>
 
@@ -54,7 +54,7 @@
       <li class="sidebar-nav-item"><a href="https://twitter.com/parasquid">Twitter</a></li>
     </ul>
 
-    <p>Copyright &copy; 2014 <a href="http://life.beyondrails.com/license">License</a><br/>
+    <p>Copyright &copy; 2014 <a href="http://localhost:1313/license">License</a><br/>
        Powered by <a href="http://hugo.spf13.com">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
   </div>
 </div>
@@ -62,11 +62,11 @@
 <div class="content container">
   <div class="post">
     <h1>Setting Up and Automating my Hugo Blog Deployment to Github Pages</h1>
-    <span class="post-date">Dec 14, 2014 &middot; 5 minute read &middot; <a href="http://life.beyondrails.com/blog/2014/12/14/setting-up-and-automating-my-hugo-blog-deployment-to-github-pages/#disqus_thread">Comments</a>
+    <span class="post-date">Dec 14, 2014 &middot; 5 minute read &middot; <a href="http://localhost:1313/blog/2014/12/14/setting-up-and-automating-my-hugo-blog-deployment-to-github-pages/#disqus_thread">Comments</a>
     
     <br/>
     
-    <a class="label" href="http://life.beyondrails.com/categories/meta">meta</a>
+    <a class="label" href="http://localhost:1313/categories/meta">meta</a>
     </span>
     
 
@@ -77,15 +77,15 @@
 
 <p>I&rsquo;m currently moving my blog posts (and collecting all my blog entries from various blogging platforms) and putting them into Hugo. In case you&rsquo;re wondering how I&rsquo;ve set mine up, here&rsquo;s a guide of what I&rsquo;ve done.</p>
 
-<h2 id="choosing-the-hosting-platform:60bb9034dcbf91d2a362f1c22fd4d95c">Choosing the hosting platform</h2>
+<h2 id="toc_0">Choosing the hosting platform</h2>
 
-<h2 id="setting-up-the-blog:60bb9034dcbf91d2a362f1c22fd4d95c">Setting up the blog</h2>
+<h2 id="toc_1">Setting up the blog</h2>
 
 <p>sudo aptitude install golang
 sudo aptitude install -y mercurial
 go get -v github.com/spf13/hugo</p>
 
-<h2 id="setting-up-the-github-pages:60bb9034dcbf91d2a362f1c22fd4d95c">Setting up the github pages</h2>
+<h2 id="toc_2">Setting up the github pages</h2>
 
 <p>There&rsquo;s a really cool guide over at the official <a href="http://gohugo.io/tutorials/github_pages_blog/">Hugo documentation</a> and I advise everyone to check it out.</p>
 
@@ -126,7 +126,7 @@ touch public/CNAME
 echo &quot;life.beyondrails.com&quot; &gt; public/CNAME
 </code></pre>
 
-<h2 id="scripting-the-deployment:60bb9034dcbf91d2a362f1c22fd4d95c">Scripting the deployment</h2>
+<h2 id="toc_3">Scripting the deployment</h2>
 
 <p>Again I refered back to the hugo documentation on <a href="http://gohugo.io/tutorials/github_pages_blog/">setting up hugo for guthub hosting</a> and I used it as the basis for my own deployment script.</p>
 
@@ -203,15 +203,15 @@ git subtree push --prefix=public\
 
 <p>It&rsquo;s a combination of the initial setup and the default deployment script from the hugo documentation. Now the only downside left (and this is a very minor thing for me) is that post updates take a number of minutes before they are seen live. But I can live with that.</p>
 
-<h2 id="porting-old-blog-entries-to-hugo:60bb9034dcbf91d2a362f1c22fd4d95c">Porting old blog entries to hugo</h2>
+<h2 id="toc_4">Porting old blog entries to hugo</h2>
 
 <p>I&rsquo;ve blogged on and off for quite some time in various domains and platforms. There really isn&rsquo;t much I can do to automate the importing of the entries. Luckily I only have a handful of published posts, but I probably lost most of my drafts and idea dumps.</p>
 
-<h2 id="blogging-workflow:60bb9034dcbf91d2a362f1c22fd4d95c">Blogging workflow</h2>
+<h2 id="toc_5">Blogging workflow</h2>
 
 <p>So now that everything&rsquo;s set and deployed, how do I continue writing?</p>
 
-<h2 id="questions:60bb9034dcbf91d2a362f1c22fd4d95c">Questions?</h2>
+<h2 id="toc_6">Questions?</h2>
 
 <p>If any of the instructions above are confusing, feel free to comment and I&rsquo;ll try my best to answer the question in the comments as well as update the instructions :)</p>
 
@@ -243,7 +243,7 @@ var disqus_shortname = "parasquid";
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
-<script src="http://life.beyondrails.com/js/highlight.pack.js"></script>
+<script src="http://localhost:1313/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <script>
@@ -253,5 +253,8 @@ var disqus_shortname = "parasquid";
   s.parentNode.insertBefore(g,s)}(document,'script'));
 </script>
 
-</body>
+<script>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':1313/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
 </html>

@@ -3,7 +3,7 @@
   <channel>
       <title>Basics on Life Beyond Rails </title>
       <generator uri="https://hugo.spf13.com">Hugo</generator>
-    <link>http://life.beyondrails.com/categories/basics/index.xml/</link>
+    <link>http://localhost:1313/categories/basics/index.xml/</link>
     
     
     
@@ -11,10 +11,10 @@
     
     <item>
       <title>Ruby and Blocks</title>
-      <link>http://life.beyondrails.com/blog/2014/03/04/ruby-and-blocks/</link>
+      <link>http://localhost:1313/blog/2014/03/04/ruby-and-blocks/</link>
       <pubDate>Tue, 04 Mar 2014 00:00:00 UTC</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2014/03/04/ruby-and-blocks/</guid>
+      <guid>http://localhost:1313/blog/2014/03/04/ruby-and-blocks/</guid>
       <description>
 
 &lt;p&gt;One of the most often used and ironically least understood concepts in the Ruby programming language is the block. If you&amp;rsquo;ve used one of the Enumerable mixed-in objects, you&amp;rsquo;ve encountered the block syntax.&lt;/p&gt;
@@ -188,17 +188,19 @@ end
 
 &lt;p&gt;I presented this topic to the KL Ruby Brigade meetup in Kuala Lumpur, Malaysia. There have been a few questions after the presentation and I&amp;rsquo;ll try to address them here:&lt;/p&gt;
 
-&lt;ul&gt;
-&lt;li&gt;Q: What&amp;rsquo;s the difference between a block and a Proc?&lt;/li&gt;
-&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Q: What&amp;rsquo;s the difference between a block and a Proc?&lt;/p&gt;
 
 &lt;p&gt;A: I think &lt;a href=&#34;http://www.robertsosinski.com/2008/12/21/understanding-ruby-blocks-procs-and-lambdas/&#34;&gt;Robert&lt;/a&gt; will explain this a lot more comprehensively. In a nutshell: a block and a Proc are conceptually similar but a Proc gives you a handle that allows you to reuse the block later on, whereas a block is similar to an anonymous function in Java or C# (you define them inline and you can&amp;rsquo;t refer to them again later on).&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;ul&gt;
-&lt;li&gt;Q: What&amp;rsquo;s the difference between the &lt;code&gt;{}&lt;/code&gt; syntax and the &lt;code&gt;do...end&lt;/code&gt; syntax?&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;A: This has bitten me and many of my colleagues, and the answer has to do with binding precedence. This &lt;a href=&#34;http://stackoverflow.com/a/5587399&#34;&gt;Stackoverflow answer&lt;/a&gt; can give you more details. In a nutshell, the &lt;code&gt;{}&lt;/code&gt; syntax binds strongly that without parentheses it will bind to the last parameter (in a multi-parameter method) whereas the &lt;code&gt;do...end&lt;/code&gt; syntax will always bind to the invocation.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Q: What&amp;rsquo;s the difference between the &lt;code&gt;{}&lt;/code&gt; syntax and the &lt;code&gt;do...end&lt;/code&gt; syntax?&lt;/p&gt;
+
+&lt;p&gt;A: This has bitten me and many of my colleagues, and the answer has to do with binding precedence. This &lt;a href=&#34;http://stackoverflow.com/a/5587399&#34;&gt;Stackoverflow answer&lt;/a&gt; can give you more details. In a nutshell, the &lt;code&gt;{}&lt;/code&gt; syntax binds strongly; that means without parentheses it will bind to the last parameter (in a multi-parameter method) whereas the &lt;code&gt;do...end&lt;/code&gt; syntax will always bind to the invocation.&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;hr /&gt;
 

@@ -6,6 +6,8 @@ categories: [agile, management]
 
 You've probably heard of the [tick-tock model that Intel is using](http://www.intel.com/content/www/us/en/silicon-innovations/intel-tick-tock-model-general.html).
 
+<!--more-->
+
 It's a model where every 18 months, there's a new focus on the chip architecture: the tick is a shrinking of the chip (which requires retrofitting their manufacturing process to support the smaller size) and the tock is an upgrade of the architecture itself, using the current manufacturing process.
 
 I'm trying out a similar model with my team. We've been very successful with our sprint goals so far, but one thing that I've seen is that the goals are decided just then and there. Tick-tock is a refinement of the sprint goal determination process.

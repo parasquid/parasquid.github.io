@@ -204,11 +204,7 @@ git subtree push --prefix=public\
       <pubDate>Fri, 12 Dec 2014 00:00:00 UTC</pubDate>
       
       <guid>http://life.beyondrails.com/about/</guid>
-      <description>
-
-&lt;h3 id=&#34;toc_0&#34;&gt;About Me&lt;/h3&gt;
-
-&lt;p&gt;Hi, I’m Tristan! I’m a software developer currently living and working in Kuala Lumpur.&lt;/p&gt;
+      <description>&lt;p&gt;Hi, I’m Tristan! I’m a software developer currently living and working in Kuala Lumpur.&lt;/p&gt;
 
 &lt;p&gt;I work mostly in Ruby, some HTML/CSS/JS, DevOps and some Go.&lt;/p&gt;
 

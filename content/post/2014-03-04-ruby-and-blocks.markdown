@@ -187,13 +187,15 @@ Blocks are Ruby constructs that provide a very clean and elegant way to provide 
 
 I presented this topic to the KL Ruby Brigade meetup in Kuala Lumpur, Malaysia. There have been a few questions after the presentation and I'll try to address them here:
 
-- Q: What's the difference between a block and a Proc?
+> Q: What's the difference between a block and a Proc?
 
-  A: I think [Robert](http://www.robertsosinski.com/2008/12/21/understanding-ruby-blocks-procs-and-lambdas/) will explain this a lot more comprehensively. In a nutshell: a block and a Proc are conceptually similar but a Proc gives you a handle that allows you to reuse the block later on, whereas a block is similar to an anonymous function in Java or C# (you define them inline and you can't refer to them again later on).
+> A: I think [Robert](http://www.robertsosinski.com/2008/12/21/understanding-ruby-blocks-procs-and-lambdas/) will explain this a lot more comprehensively. In a nutshell: a block and a Proc are conceptually similar but a Proc gives you a handle that allows you to reuse the block later on, whereas a block is similar to an anonymous function in Java or C# (you define them inline and you can't refer to them again later on).
 
-- Q: What's the difference between the `{}` syntax and the `do...end` syntax?
+<br />
 
-  A: This has bitten me and many of my colleagues, and the answer has to do with binding precedence. This [Stackoverflow answer](http://stackoverflow.com/a/5587399) can give you more details. In a nutshell, the `{}` syntax binds strongly that without parentheses it will bind to the last parameter (in a multi-parameter method) whereas the `do...end` syntax will always bind to the invocation.
+> Q: What's the difference between the `{}` syntax and the `do...end` syntax?
+
+> A: This has bitten me and many of my colleagues, and the answer has to do with binding precedence. This [Stackoverflow answer](http://stackoverflow.com/a/5587399) can give you more details. In a nutshell, the `{}` syntax binds strongly; that means without parentheses it will bind to the last parameter (in a multi-parameter method) whereas the `do...end` syntax will always bind to the invocation.
 
 ----------------
 

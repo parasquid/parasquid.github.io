@@ -583,7 +583,7 @@ end
 
 &lt;p&gt;This code is, by the way, lifted from production code (of course the implementation details have been mocked out; tangentially, the ability to mock things out is one side-effect of good programming design, but that&amp;rsquo;s a topic for another day):&lt;/p&gt;
 
-&lt;p&gt;``` ruby tasks/migration.rb
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;# tasks/migration.rb
 module Tasks
   class Migration
     def self.migrate_all(offset=0,limit=(Tasks::Lead.count - offset))
@@ -591,20 +591,18 @@ module Tasks
         migrate_lead(lead)
         yield lead if block_given?
       end
-    end&lt;/p&gt;
+    end
 
-&lt;pre&gt;&lt;code&gt;def self.migrate_lead(m_lead)
-  # mocked response
-  # originally copied over the lead from MongoDB to Postgres
-  sleep(rand(1..200)/100)
+    def self.migrate_lead(m_lead)
+      # mocked response
+      # originally copied over the lead from MongoDB to Postgres
+      sleep(rand(1..200)/100)
+    end
+  end
 end
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;end
-end&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;
-``` ruby tasks/lead.rb
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;# tasks/lead.rb
 module Tasks
   class Lead
     def self.count
@@ -621,22 +619,20 @@ module Tasks
 end
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;``` ruby Rakefile
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;# Rakefile
 namespace :migrations do
-  desc &amp;lsquo;migrate entries from old mongodb database to postgresql&amp;rsquo;
+  desc &#39;migrate entries from old mongodb database to postgresql&#39;
   task :migrate_from_mongodb_to_postgres =&amp;gt; :environment do
-    progress = ProgressBar.create title: &amp;lsquo;Leads&amp;rsquo;,
+    progress = ProgressBar.create title: &#39;Leads&#39;,
       total: Tasks::Lead.count,
-      :format =&amp;gt; &amp;lsquo;%a |%b&amp;gt;&amp;gt;%i| %p%% %t %c of %C %e&amp;rsquo;&lt;/p&gt;
+      :format =&amp;gt; &#39;%a |%b&amp;gt;&amp;gt;%i| %p%% %t %c of %C %e&#39;
+      
+    Tasks::Migration.migrate_all { progress.increment }
 
-&lt;pre&gt;&lt;code&gt;Tasks::Migration.migrate_all { progress.increment }
-
-progress.finish
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;end
+    progress.finish
+  end
 end
-```&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;You can also get this code from &lt;a href=&#34;https://github.com/mindvalley/code_kata&#34;&gt;github&lt;/a&gt;.&lt;/p&gt;
 

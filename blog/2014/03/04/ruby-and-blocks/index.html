@@ -182,7 +182,7 @@ end
 
 <p>This code is, by the way, lifted from production code (of course the implementation details have been mocked out; tangentially, the ability to mock things out is one side-effect of good programming design, but that&rsquo;s a topic for another day):</p>
 
-<p>``` ruby tasks/migration.rb
+<pre><code class="language-ruby"># tasks/migration.rb
 module Tasks
   class Migration
     def self.migrate_all(offset=0,limit=(Tasks::Lead.count - offset))
@@ -190,20 +190,18 @@ module Tasks
         migrate_lead(lead)
         yield lead if block_given?
       end
-    end</p>
+    end
 
-<pre><code>def self.migrate_lead(m_lead)
-  # mocked response
-  # originally copied over the lead from MongoDB to Postgres
-  sleep(rand(1..200)/100)
+    def self.migrate_lead(m_lead)
+      # mocked response
+      # originally copied over the lead from MongoDB to Postgres
+      sleep(rand(1..200)/100)
+    end
+  end
 end
 </code></pre>
 
-<p>end
-end</p>
-
-<pre><code>
-``` ruby tasks/lead.rb
+<pre><code class="language-ruby"># tasks/lead.rb
 module Tasks
   class Lead
     def self.count
@@ -220,22 +218,20 @@ module Tasks
 end
 </code></pre>
 
-<p>``` ruby Rakefile
+<pre><code class="language-ruby"># Rakefile
 namespace :migrations do
-  desc &lsquo;migrate entries from old mongodb database to postgresql&rsquo;
+  desc 'migrate entries from old mongodb database to postgresql'
   task :migrate_from_mongodb_to_postgres =&gt; :environment do
-    progress = ProgressBar.create title: &lsquo;Leads&rsquo;,
+    progress = ProgressBar.create title: 'Leads',
       total: Tasks::Lead.count,
-      :format =&gt; &lsquo;%a |%b&gt;&gt;%i| %p%% %t %c of %C %e&rsquo;</p>
+      :format =&gt; '%a |%b&gt;&gt;%i| %p%% %t %c of %C %e'
+      
+    Tasks::Migration.migrate_all { progress.increment }
 
-<pre><code>Tasks::Migration.migrate_all { progress.increment }
-
-progress.finish
-</code></pre>
-
-<p>end
+    progress.finish
+  end
 end
-```</p>
+</code></pre>
 
 <p>You can also get this code from <a href="https://github.com/mindvalley/code_kata">github</a>.</p>
 

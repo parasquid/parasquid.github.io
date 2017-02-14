@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-  <title>Life Beyond Rails &middot; </title>
+  <title>API Documentation with Grape and Swagger &middot; </title>
 
   
   <link rel="stylesheet" href="http://life.beyondrails.com/css/poole.css">
@@ -15,67 +15,85 @@
   <link rel="stylesheet" href="http://life.beyondrails.com/css/poole-overrides.css">
   <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde-overrides.css">
   <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde-x.css">
-  <link rel="stylesheet" href="http://life.beyondrails.com/css/highlight/sunburst.css">
-  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
-
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/opalbox.min.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/opalbox-dark.min.css">
   <link rel="stylesheet" href="http://life.beyondrails.com/css/styles.css">
 
-  
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
-  <link href="/favicon.png" rel="icon">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
   
-  <link href="" rel="alternate" type="application/rss+xml" title="Life Beyond Rails &middot; " />
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://life.beyondrails.com/touch-icon-144-precomposed.png">
+  <link href="http://life.beyondrails.com/favicon.png" rel="icon">
+
+  
+  
+  
+  
 
   <meta name="description" content="">
   <meta name="keywords" content="">
   
+
+  <script type="text/javascript" src="http://cdn.opalrb.org/opal/0.7.1/opal.min.js"></script>
+  <script type="text/javascript" src="http://cdn.opalrb.org/opal/0.7.1/opal-parser.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <script type="text/javascript" src="http://life.beyondrails.com/js/opalbox-jquery.min.js"></script>
+
 </head>
 <body class="theme-base-0b">
-
 <div class="sidebar">
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
-      <img src="http://www.gravatar.com/avatar/e00d9254088a9db2e1875fc324402e2c?s=200" alt="gravatar">
+      
       <h1></h1>
       <p class="lead">Codesmithing by day. Airsculpting by night.</p>
     </div>
 
     <ul class="sidebar-nav">
-      <li class="sidebar-nav-item"><a href="http://life.beyondrails.com/">Blog</a></li>
+      <li class="sidebar-nav-item"><a href="http://life.beyondrails.com/">Blog Index</a></li>
       
       <li class="sidebar-nav-item"><a href="http://life.beyondrails.com/about/">About Me</a></li>
+      
+      <li class="sidebar-nav-item"><a href="http://life.beyondrails.com/zen/">Zen</a></li>
       
     </ul>
 
     <ul class="sidebar-nav">
-      <li class="sidebar-nav-item"><a href="https://github.com/parasquid">GitHub</a></li>
-      <li class="sidebar-nav-item"><a href="https://www.linkedin.com/in/parasquid">LinkedIn</a></li>
+      <li class="sidebar-nav-item">
+      <a href="https://github.com/parasquid"><i class="fa fa-github-square fa-3x"></i></a>
       
-      <li class="sidebar-nav-item"><a href="https://www.facebook.com/parasquid">Facebook</a></li>
-      <li class="sidebar-nav-item"><a href="https://twitter.com/parasquid">Twitter</a></li>
+      
+      <a href="https://www.linkedin.com/in/parasquid"><i class="fa fa-linkedin-square fa-3x"></i></a>
+      <a href="https://plus.google.com/u/1/&#43;TristanGomez/posts"><i class="fa fa-google-plus-square fa-3x"></i></a>
+      <a href="https://www.facebook.com/parasquid"><i class="fa fa-facebook-square fa-3x"></i></a>
+      <a href="https://twitter.com/parasquid"><i class="fa fa-twitter-square fa-3x"></i></a>
+      
+      
+      </li>
     </ul>
 
-    <p>Copyright &copy; 2014 <a href="http://life.beyondrails.com/license">License</a><br/>
-       Powered by <a href="http://hugo.spf13.com">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+    
+
+    <p>Copyright &copy; 2017 <a href="http://life.beyondrails.com/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
   </div>
 </div>
 
+
 <div class="content container">
   <div class="post">
-    <h1>API Documentation with Grape and Swagger</h1>
+    <h1 class="post-title">API Documentation with Grape and Swagger</h1>
     <span class="post-date">Jun 1, 2014 &middot; 3 minute read &middot; <a href="http://life.beyondrails.com/blog/2014/06/01/api-documentation-with-grape-and-swagger/#disqus_thread">Comments</a>
     
     <br/>
-    
     <a class="label" href="http://life.beyondrails.com/categories/api">api</a><a class="label" href="http://life.beyondrails.com/categories/grape">grape</a><a class="label" href="http://life.beyondrails.com/categories/documentation">documentation</a>
     </span>
-    
-
-<div class="info info" data-title="TL;DR">
-  <p>Use Swagger and Grape to create self-documenting APIs that automatically update themselves from metadata in the code. It also provides an API explorer to play around with.</p>
-
-</div>
+    <blockquote>
+<p>TL;DR
+Use Swagger and Grape to create self-documenting APIs that automatically update themselves from metadata in the code. It also provides an API explorer to play around with.</p>
+</blockquote>
 
 <p>During the AngelHack KL event, I (being the backend developer of the team) had to create an API to facilitate communication between the iPhone app and Twilio. Since it was a hackathon, there was not a lot of time to completely hash out API protocols (as well as explaining to my team mates how RESTful APIs work).</p>
 
@@ -83,9 +101,11 @@
 
 <p>We were able to quickly develop the whole project quickly and easily because of this, and here&rsquo;s a quick look at using Swagger with Grape.</p>
 
+<p></p>
+
 <hr />
 
-<h3 id="toc_0">Github Sample Application</h3>
+<h3 id="github-sample-application">Github Sample Application</h3>
 
 <p>I&rsquo;ve made a sample application which you can refer to here: <a href="https://github.com/parasquid/grape-swagger-sample-project">https://github.com/parasquid/grape-swagger-sample-project</a>. It was based off from another <a href="http://funonrails.com/2014/03/building-restful-api-using-grape-in-rails/">grape tutorial</a> with modifications; see his page for a bit more information.</p>
 
@@ -99,7 +119,7 @@
 
 <hr />
 
-<h3 id="toc_1">Grape</h3>
+<h3 id="grape">Grape</h3>
 
 <p>The self-documenting ability of Grape with Swagger actually consists of three separate gems that work together to provide an endpoint for a UI to consume. The first of these is Grape:</p>
 
@@ -115,7 +135,7 @@
 
 <hr />
 
-<h3 id="toc_2">Grape Swagger</h3>
+<h3 id="grape-swagger">Grape Swagger</h3>
 
 <p>The <a href="https://github.com/tim-vandecasteele/grape-swagger">grape-swagger project</a> has comprehensive instructions on enabling swagger for your Grape API; it&rsquo;s really a no-brainer.</p>
 
@@ -125,10 +145,9 @@
 
 <hr />
 
-<h3 id="toc_3">Swagger UI</h3>
+<h3 id="swagger-ui">Swagger UI</h3>
 
-<p><img src="https://raw.githubusercontent.com/tim-vandecasteele/grape-swagger/master/test/splines.png" alt="Swagger UI Screenshot" />
-</p>
+<p><img src="https://raw.githubusercontent.com/tim-vandecasteele/grape-swagger/master/test/splines.png" alt="Swagger UI Screenshot" /></p>
 
 <p>After making sure that Grape has a swagger json endpoint, <a href="https://github.com/wordnik/swagger-ui">Swagger UI</a> gives you two awesome abilities:</p>
 
@@ -141,7 +160,7 @@
 
 <hr />
 
-<h3 id="toc_4">Further Reading</h3>
+<h3 id="further-reading">Further Reading</h3>
 
 <ul>
 <li><a href="http://intridea.github.io/grape/docs/index.html">http://intridea.github.io/grape/docs/index.html</a></li>
@@ -149,10 +168,9 @@
 <li><a href="http://confreaks.com/videos/3848-rdrc2014-lightning-talks-building-rest-api-with-grape">http://confreaks.com/videos/3848-rdrc2014-lightning-talks-building-rest-api-with-grape</a> A lightning talk about Grape from the 2014 Red Dot Ruby Conference in Singapore</li>
 <li><a href="https://github.com/tim-vandecasteele/grape-swagger">https://github.com/tim-vandecasteele/grape-swagger</a></li>
 <li><a href="http://bitboxer.de/2014/02/09/grape/">http://bitboxer.de/2014/02/09/grape/</a></li>
-<li><a href="http://funonrails.com/2014/03/building-restful-api-using-grape-in-rails/">http://funonrails.com/<sup>2014</sup>&frasl;<sub>03</sub>/building-restful-api-using-grape-in-rails/</a> A more in-depth tour of how to build a restful API using Grape and mounting it in Rails</li>
+<li><a href="http://funonrails.com/2014/03/building-restful-api-using-grape-in-rails/">http://funonrails.com/2014/03/building-restful-api-using-grape-in-rails/</a> A more in-depth tour of how to build a restful API using Grape and mounting it in Rails</li>
 <li><a href="http://codetunes.com/2014/grape-part-II/">http://codetunes.com/2014/grape-part-II/</a></li>
 </ul>
-
   </div>
   <div id="disqus_thread"></div>
 </div>
@@ -183,22 +201,6 @@ var disqus_shortname = "parasquid";
 
 <script src="http://life.beyondrails.com/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
-
-<script>
-  var _gaq=[['_setAccount','UA-41391404-1'],['_trackPageview']];
-  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-  g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-  s.parentNode.insertBefore(g,s)}(document,'script'));
-</script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.2/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
-<script>
-  $(document).ready(function(){
-    
-    $(".youtube-player").fitVids();
-  });
-</script>
-
 </body>
 </html>
+

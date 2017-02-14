@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Meta Programming on Life Beyond Rails</title>
+    <link>http://life.beyondrails.com/categories/meta-programming/index.xml</link>
+    <description>Recent content in Meta Programming on Life Beyond Rails</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <atom:link href="http://life.beyondrails.com/categories/meta-programming/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Safely Passing Ruby Code in a Rake Task</title>
+      <link>http://life.beyondrails.com/blog/2015/12/04/safely-passing-ruby-code-in-a-rake-task/</link>
+      <pubDate>Fri, 04 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://life.beyondrails.com/blog/2015/12/04/safely-passing-ruby-code-in-a-rake-task/</guid>
+      <description>&lt;p&gt;I wanted to make a rake task that would accept something like &lt;code&gt;1.month&lt;/code&gt; or &lt;code&gt;1.day&lt;/code&gt; as one of it&amp;rsquo;s arguments. The immediate tool I reached for was &lt;code&gt;eval&lt;/code&gt; and it worked like a charm. However, &lt;a href=&#34;https://codeclimate.com&#34;&gt;Code Climate&lt;/a&gt; (the tool we use to check for static analysis) complains about &lt;code&gt;eval&lt;/code&gt; and understandably so; the use of &lt;code&gt;eval&lt;/code&gt; is a practice full of danger and security vulnerabilities.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m using it inside a rake task that is never exposed to third parties, and anyone malicious enough to run the rake task with a bad parameter to be eval&amp;rsquo;d would already have had access to the system anyway, and able to wreak even greater havoc than by running the malicious code through the rake task. I believe this is an accepted risk scenario, and &lt;a href=&#34;https://prezi.com/user/ypmnd6xz0d4h/&#34;&gt;Crystal&lt;/a&gt; (one of my colleagues who was reviewing my code) suggested that since I had a valid point, I can just turn off the Code Climate check for this particular instance.&lt;/p&gt;
+
+&lt;p&gt;I thought that was justified, but I also thought it was a slippery slope. I&amp;rsquo;m sure there are ways to pass in a string and have it dynamically interpreted, without having to expose the system to a security vulnerability.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;why-is-eval-so-dangerous&#34;&gt;Why is &lt;code&gt;eval&lt;/code&gt; so dangerous?&lt;/h1&gt;
+
+&lt;p&gt;Jimmy had a &lt;a href=&#34;https://www.facebook.com/download/858552380924696/Hacking%20Rails.pdf&#34;&gt;presentation on the YAML exploit&lt;/a&gt; and this is exactly what enables the exploit: a YAML payload is deserialized to an object that contains an &lt;code&gt;#eval&lt;/code&gt; statement and then executed.&lt;/p&gt;
+
+&lt;p&gt;There is a good &lt;a href=&#34;http://www.sitepoint.com/anatomy-of-an-exploit-an-in-depth-look-at-the-rails-yaml-vulnerability/&#34;&gt;Sitepoint article&lt;/a&gt; that goes in-depth into how the exploit works.&lt;/p&gt;
+
+&lt;h1 id=&#34;abv-always-be-validating&#34;&gt;ABV (Always Be Validating)&lt;/h1&gt;
+
+&lt;p&gt;One way to work around the danger is to validate the string being passed.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;args = { period: &amp;quot;1.day&amp;quot; } # this can be set through the rake task
+
+def permit?(operation)
+  permitted_operations = /^([1-9].(day|year|month|hour|minute)s?)$/
+  !permitted_operations.match(operation.to_s).nil?
+end
+
+period = eval(args[:period]) if permit?(args[:period])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here is the code I used to validate the parameters passed into eval. Since I know exactly what the format of the string would be, I can craft a simple regex to test for this.&lt;/p&gt;
+
+&lt;p&gt;However, since Code Climate does static analysis, it won&amp;rsquo;t give me cookie points for validating the input first before passing to eval. As long as there is a call to &lt;code&gt;Kernel#eval&lt;/code&gt; then the code climate checks will fail.&lt;/p&gt;
+
+&lt;h1 id=&#34;a-rose-by-any-other-name&#34;&gt;A rose by any other name&lt;/h1&gt;
+
+&lt;p&gt;We can instead use &lt;code&gt;#instance_eval&lt;/code&gt; which is mostly the same thing, but instead of evaluating the string in the current context, it evaluates the string within the context of the object instance you&amp;rsquo;re calling it in.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;class SandboxObject; end
+period = SandboxObject.new.instance_eval(args[:period]) if permit?(args[:period])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;#instance_eval&lt;/code&gt; not necessarily more secure, since you can still pass in stuff that can give remote access to an attacker if you don&amp;rsquo;t properly validate it. For example:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;class SandboxObject; end
+Sandbox.new.instance_eval(&amp;quot;system(&#39;cat /etc/passwd&#39;)&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;But since we&amp;rsquo;re now restricting the string evaluation to an instance of a sandbox object, you are able to sidestep a number of more common attacks such as redefining a method on a commonly used class.&lt;/p&gt;
+
+&lt;p&gt;Together with the input validation, this should be enough to mitigate against careless ruby code being passed in as input (and this also makes Code Climate happy and I get to have my pull request merged).&lt;/p&gt;
+
+&lt;h1 id=&#34;tl-dr&#34;&gt;TL;DR&lt;/h1&gt;
+
+&lt;p&gt;I lied; there is no perfect way have a third party pass in a string and safely &lt;code&gt;eval&lt;/code&gt; it. However, you can mitigate the damage with the following:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Validate your string parameters that are to be eval&amp;rsquo;d or executed.&lt;/li&gt;
+&lt;li&gt;Don&amp;rsquo;t turn off the code climate check; instead look for ways to approach what you want to do in a different way.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;updates&#34;&gt;Updates&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.facebook.com/ferngyi&#34;&gt;Looi&lt;/a&gt; made a good point on sidestepping the regex altogether:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def validated_period(args)
+  num, period = args.split(&#39;.&#39;)
+  allowed_periods = %w(second seconds hour hours day days month months)
+
+  if allowed_periods.include?(period) &amp;amp;&amp;amp; num.to_i &amp;gt; 0
+    num.to_i.public_send(period)
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.facebook.com/antonsen.espen&#34;&gt;Espen&lt;/a&gt; also makes a great point that the regex isn&amp;rsquo;t an issue, but the eval is and suggested to instead use something like the Chronic library or something like &lt;code&gt;.advance(period.to_sym =&amp;gt; i)&lt;/code&gt;.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

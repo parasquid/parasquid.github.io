@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-      <title>Devops on Life Beyond Rails </title>
-      <generator uri="https://hugo.spf13.com">Hugo</generator>
-    <link>http://life.beyondrails.com/categories/devops/index.xml/</link>
-    
-    
-    
-    <updated>Sat, 01 Jun 2013 00:00:00 UTC</updated>
+    <title>Devops on Life Beyond Rails</title>
+    <link>http://life.beyondrails.com/categories/devops/index.xml</link>
+    <description>Recent content in Devops on Life Beyond Rails</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <atom:link href="http://life.beyondrails.com/categories/devops/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Rolling Restarts with Capistrano and Linode</title>
       <link>http://life.beyondrails.com/blog/2013/06/01/rolling-restarts-with-capistrano-and-linode/</link>
-      <pubDate>Sat, 01 Jun 2013 00:00:00 UTC</pubDate>
+      <pubDate>Sat, 01 Jun 2013 00:00:00 +0000</pubDate>
       
       <guid>http://life.beyondrails.com/blog/2013/06/01/rolling-restarts-with-capistrano-and-linode/</guid>
       <description>&lt;p&gt;Here I show how to perform a rolling restart using Capistrano, and making sure that the load balancer (in this case Linode) properly reroutes traffic to the still-running servers while the others are being restarted.&lt;/p&gt;
 
-&lt;div class=&#34;info warning&#34; data-title=&#34;WARNING&#34;&gt;
-  &lt;p&gt;I&amp;rsquo;m still ironing out a few bugs for the rolling deployments. The issue appears to be that Capistrano executes &lt;code&gt;deploy:create_symlink&lt;/code&gt; in parallel so the apps still experience downtime before the restart happens. The concept itself is sound but the code is not yet production ready!!&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;WARNING
+I&amp;rsquo;m still ironing out a few bugs for the rolling deployments. The issue appears to be that Capistrano executes &lt;code&gt;deploy:create_symlink&lt;/code&gt; in parallel so the apps still experience downtime before the restart happens. The concept itself is sound but the code is not yet production ready!!&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;/div&gt;
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;It is generally recommended in high-availability setups (usually with a cluster of machines behind a proxy or a load balancer) to perform a rolling restart of the services. Restarting all of your services at the same time will generally cause downtime for your users, and depending on your use case this situation is not very desirable.&lt;/p&gt;
 
@@ -199,19 +199,20 @@ def accept_connections_from_node_with_label_and_address(label, address)
 end
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Given a label and an address, they will hunt down the nodebalancer configuration that matches those parameters and update it to reject or accept connections.&lt;/p&gt;
-</description>
+&lt;p&gt;Given a label and an address, they will hunt down the nodebalancer configuration that matches those parameters and update it to reject or accept connections.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Running PrivatePub/Faye Standalone in Heroku for Free</title>
       <link>http://life.beyondrails.com/blog/2013/05/25/running-privatepub/faye-standalone-in-heroku-for-free/</link>
-      <pubDate>Sat, 25 May 2013 00:00:00 UTC</pubDate>
+      <pubDate>Sat, 25 May 2013 00:00:00 +0000</pubDate>
       
       <guid>http://life.beyondrails.com/blog/2013/05/25/running-privatepub/faye-standalone-in-heroku-for-free/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://github.com/ryanb/private_pub&#34;&gt;PrivatePub&lt;/a&gt; is an awesome gem by the renowned Ryan Bates of &lt;a href=&#34;http://railscasts.com/&#34;&gt;Railscast&lt;/a&gt; fame. It provides an easy way to use Faye as a pubsub provider. Watch this &lt;a href=&#34;http://railscasts.com/episodes/316-private-pub&#34;&gt;episode&lt;/a&gt; to see it in action.&lt;/p&gt;
 
 &lt;p&gt;You don&amp;rsquo;t have to bundle the gem with a Rails application though; you can deploy PrivatePub standalone as a rack application in Heroku. This allows you to run PrivatePub in a web dyno instead of a worker, allowing for easier maintenance (separation of repositories/codebases) and as a side effect, save on hosting costs.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://www.heroku.com/&#34;&gt;Heroku&lt;/a&gt; is well known in the Ruby and Rails community for being the top-of-the-mind platform when it comes to cloud hosting. One of the biggest benefits of Heroku for developers is that they provide &amp;ndash; per application &amp;ndash; your &lt;a href=&#34;https://devcenter.heroku.com/categories/billing&#34;&gt;first web dyno&lt;/a&gt; for free. It&amp;rsquo;s great for trying out new ideas and services without having to shell out money for a hosting provider.&lt;/p&gt;
 
@@ -269,14 +270,13 @@ gem &#39;thin&#39;
 
 &lt;p&gt;The second line of the &lt;code&gt;Gemfile&lt;/code&gt; is a &lt;code&gt;bundler&lt;/code&gt; directive only available in version 1.2.0 and above. This is used by &lt;a href=&#34;https://devcenter.heroku.com/articles/ruby-versions&#34;&gt;Heroku&lt;/a&gt; (and even by &lt;a href=&#34;https://github.com/wayneeseguin/rvm/issues/1517#issuecomment-15007730&#34;&gt;rvm&lt;/a&gt;) to select the ruby version they will use for your environment. I prefer to make sure my deployment target mimics my development environment as much as possible so I throw that in there.&lt;/p&gt;
 
-&lt;p&gt;Another caveat: Heroku does not support WebSockets yet, so Faye will fallback to long-polling. This may or may not be a deal breaker, as this is in fact a desirable behavior &amp;ndash; long-polling ensures that your application is supported even by not-so-current browsers.&lt;/p&gt;
-</description>
+&lt;p&gt;Another caveat: Heroku does not support WebSockets yet, so Faye will fallback to long-polling. This may or may not be a deal breaker, as this is in fact a desirable behavior &amp;ndash; long-polling ensures that your application is supported even by not-so-current browsers.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Having Fun With Remote Shells</title>
       <link>http://life.beyondrails.com/blog/2006/04/03/having-fun-with-remote-shells/</link>
-      <pubDate>Mon, 03 Apr 2006 00:00:00 UTC</pubDate>
+      <pubDate>Mon, 03 Apr 2006 00:00:00 +0000</pubDate>
       
       <guid>http://life.beyondrails.com/blog/2006/04/03/having-fun-with-remote-shells/</guid>
       <description>&lt;p&gt;I just bought a VPS (virtual private server) a couple of days ago, and I&amp;rsquo;m enjoying tinkering with it. It&amp;rsquo;s not the most powerful beast though; it only has 64MB RAM and 128MB swap. I won&amp;rsquo;t say the name of the company I&amp;rsquo;m subscribed to since my box isn&amp;rsquo;t exactly the bastion of security, but you should be able to discern the shell provider from how I describe my escapades :D&lt;/p&gt;
@@ -334,7 +334,7 @@ gem &#39;thin&#39;
     <item>
       <title>Reinstalling Kubuntu</title>
       <link>http://life.beyondrails.com/blog/2006/03/19/reinstalling-kubuntu/</link>
-      <pubDate>Sun, 19 Mar 2006 00:00:00 UTC</pubDate>
+      <pubDate>Sun, 19 Mar 2006 00:00:00 +0000</pubDate>
       
       <guid>http://life.beyondrails.com/blog/2006/03/19/reinstalling-kubuntu/</guid>
       <description>&lt;p&gt;My data drive had some corruption as regards its file system tree, and i was forced to rebuild it. I figured I&amp;rsquo;ll just reinstall Kubuntu too since I inadverdently installed Ubuntu Desktop, which kinda doubled the applications I have on the menu.&lt;/p&gt;

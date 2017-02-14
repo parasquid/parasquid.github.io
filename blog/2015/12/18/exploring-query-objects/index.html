@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>Exploring Query Objects &middot; </title>
+
+  
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/poole.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde-x.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/opalbox.min.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/opalbox-dark.min.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/styles.css">
+
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://life.beyondrails.com/touch-icon-144-precomposed.png">
+  <link href="http://life.beyondrails.com/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  
+
+  <script type="text/javascript" src="http://cdn.opalrb.org/opal/0.7.1/opal.min.js"></script>
+  <script type="text/javascript" src="http://cdn.opalrb.org/opal/0.7.1/opal-parser.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <script type="text/javascript" src="http://life.beyondrails.com/js/opalbox-jquery.min.js"></script>
+
+</head>
+<body class="theme-base-0b">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1></h1>
+      <p class="lead">Codesmithing by day. Airsculpting by night.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://life.beyondrails.com/">Blog Index</a></li>
+      
+      <li class="sidebar-nav-item"><a href="http://life.beyondrails.com/about/">About Me</a></li>
+      
+      <li class="sidebar-nav-item"><a href="http://life.beyondrails.com/zen/">Zen</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="https://github.com/parasquid"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      <a href="https://www.linkedin.com/in/parasquid"><i class="fa fa-linkedin-square fa-3x"></i></a>
+      <a href="https://plus.google.com/u/1/&#43;TristanGomez/posts"><i class="fa fa-google-plus-square fa-3x"></i></a>
+      <a href="https://www.facebook.com/parasquid"><i class="fa fa-facebook-square fa-3x"></i></a>
+      <a href="https://twitter.com/parasquid"><i class="fa fa-twitter-square fa-3x"></i></a>
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://life.beyondrails.com/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">Exploring Query Objects</h1>
+    <span class="post-date">Dec 18, 2015 &middot; 6 minute read &middot; <a href="http://life.beyondrails.com/blog/2015/12/18/exploring-query-objects/#disqus_thread">Comments</a>
+    
+    <br/>
+    <a class="label" href="http://life.beyondrails.com/categories/til">til</a>
+    </span>
+    <p>A <a href="http://blog.codeclimate.com/blog/2012/10/17/7-ways-to-decompose-fat-activerecord-models/">CodeClimate Article</a> gave a number of ways to decompose fat ActiveRecord models, and one of them was: <strong>Extract Query Objects</strong>. I&rsquo;ve been trying to explore and get myself familiar with a good standard of how to implement Query Objects, and here is my take.</p>
+
+<p>I&rsquo;ll be trying out a new format in these articles. I&rsquo;ll be using something of a Q/A style similar to <a href="https://en.wikipedia.org/wiki/Socratic_questioning">Socratic Questioning</a></p>
+
+<p></p>
+
+<p>Here is one of the Query Objects I have in one of my production apps:</p>
+
+<pre><code class="language-ruby">module Subscription
+  module Calculations
+    class OrderLineQueries
+      extend Forwardable
+
+      def_delegators :relation, :map, :count, :to_sql
+
+      def initialize(relation = OrderLine.all)
+        @relation = relation
+      end
+
+      def is_cancelled
+        @relation = @relation.
+          where('order_lines.cancelled_at is not null')
+        self
+      end
+
+      def non_test_order_lines
+        @relation = @relation.
+          joins(:order).
+            where(
+              orders: {
+                test_transaction: false
+              }
+            )
+        self
+      end
+
+      def non_tax_payments
+        @relation = @relation.
+          joins(:order_line_transactions =&gt; :payment).
+          joins(&quot;LEFT OUTER JOIN tax_payments on payments.id = tax_payments.payment_id&quot;).
+            where(&quot;tax_payments.payment_id IS NULL&quot;).
+            distinct
+        self
+      end
+
+      def created_before_reporting_range(time_range: nil)
+        raise ArgumentError, &quot;time_range is required&quot; unless !!time_range
+        @relation = @relation.
+          where(
+            'order_lines.created_at &lt;= ?', time_range.start_time
+          )
+        self
+      end
+
+      private
+
+      def relation
+        @relation
+      end
+    end
+  end
+end
+</code></pre>
+
+<dl>
+<dt>Why are you returning <code>self</code>? It looks very strange.</dt>
+<dd>I&rsquo;m returning <code>self</code> to allow method chaining. It is similar to <a href="http://martinfowler.com/bliki/FluentInterface.html">Fluent Interfaces</a> but with a very tight focus on query building.</dd>
+<dt>Since you&rsquo;re returning self, that means you&rsquo;re mutating the object when you&rsquo;re chaining the methods. That means the object can&rsquo;t be reused to create a different query, and you&rsquo;ll need to start with a new object, right?</dt>
+<dd>Yes, that is correct. It was a common mistake for me in the past to do something like this:</dd>
+</dl>
+
+<pre><code class="language-ruby"># NOTE: DON'T DO THIS
+class OrderReporter
+  def initialize
+    @query = OrderLineQueries.new
+  end
+
+  def cancelled
+    @query.non_test_order_lines.is_cancelled
+  end
+
+  def test_orders_before_december_31_2015
+    @query.created_before_reporting_range(time_range: time_range.new(&quot;&lt;= Dec 31 2015&quot;))
+  end
+end
+</code></pre>
+
+<dl>
+<dd><p>It took some time to figure out that since I&rsquo;ve been sharing <code>@query</code> with two methods, <code>#cancelled</code> is actually modifying the query object such that <code>#test_orders_before_december_31_2015</code> won&rsquo;t ever have test order lines in its resultset.</p></dd>
+<dd><p>Furthermore, the <strong>individual unit tests</strong> for these methods are <em>green</em>; the only way to expose the bug was to have <strong>both methods</strong> called in a single test example. You can imagine how frustrating the debugging must have been.</p></dd>
+<dd><p>That&rsquo;s a caveat that you&rsquo;ll need to remember when using self-mutating objects like these.</p></dd>
+<dd><p>I did have an experiment where each method is immutable:</p></dd>
+</dl>
+
+<pre><code class="language-ruby">def paid(relation = Payment.all)
+  relation.
+    where(&quot;payments.state = ?&quot;, &quot;paid&quot;)
+end
+
+def paid_or_refunded(relation = Payment.all)
+  relation.
+    where(&quot;payments.state&quot; =&gt; %w(paid refunded))
+end
+
+def non_declined(relation = Payment.all)
+  relation.
+    where(&quot;payments.state != ?&quot;, &quot;declined&quot;)
+end
+
+def non_shipping(relation = Payment.all)
+  relation.
+    where(&quot;payments.reference_number NOT LIKE ?&quot;, &quot;-shipping&quot;)
+end
+</code></pre>
+
+<dl>
+<dd>and you&rsquo;d do a <code>golang</code>-like composition when filtering the query:</dd>
+</dl>
+
+<pre><code class="language-ruby">def report
+  query = paid
+  query = non_declined(query)
+  query = non_shipping(query)
+  query
+end
+</code></pre>
+
+<dl>
+<dd>or something like:</dd>
+</dl>
+
+<pre><code class="language-ruby">def report
+  paid(non_declined(non_shipping))
+end
+</code></pre>
+
+<dl>
+<dd>but I never really got around to exploring this further (too many parentheses!!!) as the fluent interface looked so much nicer:</dd>
+</dl>
+
+<pre><code class="language-ruby">def report
+  paid.
+    non_declined.
+    non_shipping
+end
+</code></pre>
+
+<dl>
+<dt>What&rsquo;s up with <code>Forwardable</code>? If you want to call <code>ActiveRelation</code> methods on the query object, why not just expose something like <code>#relation</code> then you can call it with something like <code>query.is_cancelled.relation.to_sql</code></dt>
+<dd>I did expose the internal <code>@relation</code> object before to do exactly what you are suggesting, and it was all good for a while. Then something really terrible happened. I haven&rsquo;t been working on the project for sometime so I wasn&rsquo;t able to do much code review, and I was a bit aghast when I saw these:</dd>
+</dl>
+
+<pre><code class="language-ruby">query = ProductLinesQuery.new
+product_lines_with_paypal = query.with_paypal_or_paypal_express
+  .with_english_currency
+  .with_english_language
+  .relation.where(id: product_lines_id)  # wtf ...
+</code></pre>
+
+<dl>
+<dd>I felt it was an abuse of the exposed <code>relation</code> attribute beause it completely undermines the point of the query object (which was to encapsulate queries). Using <code>Forwardable</code> I can delegate specific methods to the internal <code>ActiveRelation</code> object without having to expose the whole <code>ActiveRecord</code> <a href="http://tenderlovemaking.com/2014/06/02/yagni-methods-are-killing-me.html">API footprint</a>.</dd>
+<dt>I see a lot of modules. Where do you put these query objects?</dt>
+<dd>I used to put them in a folder named <code>app/queries</code> but as the application grew (and the number of query objects also grew) I realized this isn&rsquo;t the best way to organize the files. Now I put them just beside the files that use them.</dd>
+</dl>
+
+<pre><code>app
+ ├─ controllers
+ └─ models
+     ├─ subscription
+     │   ├─ calculations
+     │   │   ├─ customers.rb
+     │   │   └─ order_line_queries.rb
+     │   └─ calculators
+     └─ cohort
+</code></pre>
+
+<dl>
+<dt>Hm, so you mean you have multiple folders of query objects? Isn&rsquo;t that confusing? If you put them all in just one folder, then you know that all your queries are in one place.</dt>
+<dd>On the contrary, putting the query object near the calling file makes it a lot less confusing. When I look at a folder structure, I know exactly what queries this particular object needs.</dd>
+<dt>How about code reuse? Since you&rsquo;re spreading all your query objects around, you&rsquo;ll eventually have to duplicate code that does the same thing.</dt>
+<dd>Surprisingly there are very few generic queries that I need to duplicate, because each of the querying logic I need are very specific to the task. However, there are indeed a few queries that are more used than others. I usually have them included as a module in the query object.</dd>
+<dt>What&rsquo;s up with the separate <code>customers.rb</code>?</dt>
+<dd>Oh that? I prefer my query objects to focus on <strong>composable</strong> methods, while separating out another object that <strong>composes</strong> these queries. It looks something like this:</dd>
+</dl>
+
+<pre><code class="language-ruby">module Subscription
+  module Calculations
+    class Customers
+      def initialize(start_date, end_date, bundle: nil)
+        @time_query = TimeQuery.new(start_date, end_date)
+        @bundle = bundle
+      end
+
+      def beginning
+        Calculations::OrderLineQueries.new.
+          non_test_order_lines.
+          money_received.
+          specific_bundle(ids: @bundle.id).
+          created_before_reporting_range(time_query: @time_query).
+          not_cancelled_or_cancelled_after_reporting_range(time_query: @time_query)
+      end
+
+      def second_payment
+        Calculations::OrderLineQueries.new.
+          non_test_order_lines.
+          money_received.
+          specific_bundle(ids: @bundle.id).
+          trial.
+
+          paid_payments.
+          non_tax_payments.
+          non_shipping_payments.
+
+          created_before_reporting_range(time_query: @time_query).
+          created_after_30_days_before_reporting_range(time_query: @time_query).
+          not_cancelled_or_cancelled_after_reporting_range(time_query: @time_query).
+          more_than_one_payment
+      end
+
+      def new_in_reporting_range
+        Calculations::OrderLineQueries.new.
+          non_test_order_lines.
+          money_received.
+          specific_bundle(ids: @bundle.id).
+          created_during_reporting_range(time_query: @time_query)
+      end
+    end
+  end
+end
+</code></pre>
+
+<dl>
+<dd><p>Then the calculators in the <code>calculators</code> folder use the methods in <code>customers.rb</code> to further compose a full report.</p></dd>
+<dd><p>Bonus: whenever the feature requester asks me &ldquo;what exactly goes on with each of these columns&rdquo; I just point her to the github page for this file. The fluent interface is one way for me to easily explain what goes into calculating an entry, without having to resort to a detailed explanation.</p></dd>
+<dt>Why don&rsquo;t you just use scopes? They have almost the exact syntax that you&rsquo;re proposing, and it&rsquo;s built-in to Rails!</dt>
+<dd><p>Scopes are great when your project is still small, but eventually you&rsquo;ll end up with a lot of scopes in your model. The <a href="https://drive.google.com/file/d/0ByOwmqah_nuGNHEtcU5OekdDMkk/view">Single Responsibility Principle</a> says that there should only be one reason for an object to change, and putting these type of queries into the model as scopes violates that principle. The change in how a tax payment is queried is different from the change in how tax payments are calculated.</p></dd>
+<dd><p>Even if I don&rsquo;t appeal to higher authority by mentioning SRP, separating the queries from the <code>ActiveRecord</code> model is still a good idea. It just makes the whole thing easier to work with because I don&rsquo;t have to scroll through a huge file with the scopes on the first half and the business logic on the second half.
+<hr /></p></dd>
+</dl>
+
+<p>There you have it. I&rsquo;m still exploring query objects and figuring out a more generalized solution that I can implement in all my projects. Feedback and comments are highly appreciated!</p>
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "parasquid";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "parasquid";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://life.beyondrails.com/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

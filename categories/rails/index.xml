@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rails on Life Beyond Rails</title>
+    <link>http://life.beyondrails.com/categories/rails/index.xml</link>
+    <description>Recent content in Rails on Life Beyond Rails</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <atom:link href="http://life.beyondrails.com/categories/rails/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Using Dependency Injection and yield to Refactor a Legacy App</title>
+      <link>http://life.beyondrails.com/blog/2015/10/28/using-dependency-injection-and-yield-to-refactor-a-legacy-app/</link>
+      <pubDate>Wed, 28 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://life.beyondrails.com/blog/2015/10/28/using-dependency-injection-and-yield-to-refactor-a-legacy-app/</guid>
+      <description>&lt;p&gt;I had to create an automated report for finance and accounting that will send particular columns and their data in a csv once a month.&lt;/p&gt;
+
+&lt;p&gt;Being the &lt;a href=&#34;http://threevirtues.com/&#34;&gt;lazy&lt;/a&gt; developer that I am, I tried looking for code that already existed. I was planning to wrap up that code in a rake task and use &lt;a href=&#34;https://github.com/javan/whenever&#34;&gt;whenever&lt;/a&gt; to schedule a cron job to send the report monthly.&lt;/p&gt;
+
+&lt;p&gt;While I was able to find pre-existing code that did what finance wanted (I checked with them as well if the output showed what they needed), the code itself wasn&amp;rsquo;t easily convertible to a rake task.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;original-code&#34;&gt;Original Code&lt;/h3&gt;
+
+&lt;p&gt;Let me show you what I mean. Here is the original code (with redactions):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;class EmailJob::Accounting &amp;lt; BaseJob
+  include SuckerPunch::Job
+
+  def perform(payments, email)
+    filename = &amp;quot;/tmp/accounting_report_#{Time.now.to_i}.csv&amp;quot;
+
+    SuckerPunch.logger.info &amp;quot;#{self.class}: Compiling accounting report...&amp;quot;
+
+    CSV.open filename, &#39;w&#39; do |csv|
+      csv &amp;lt;&amp;lt; %w(email first_name last_name order_date order_datetime order_number order_line_state tags
+      payment_amount payment_state payment_date ... ) do |payment|
+
+# ...
+
+      rescue Exception =&amp;gt; e
+        SuckerPunch.logger.info &amp;quot;#{self.class}: Payment id #{payment.id} crashed with error #{e.inspect}&amp;quot;
+      end
+
+      row = [
+
+# ...
+
+      ]
+      csv &amp;lt;&amp;lt; row
+
+# ...
+
+    end
+
+    SuckerPunch.logger.info &amp;quot;#{self.class}: Report compiled, will upload and email it&amp;quot;
+    email(email, &amp;quot;accounting report&amp;quot;, File.open(filename))
+  end
+ end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;There are a couple of things that make it quite difficult to reuse this method:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;There is a dependence on the &lt;code&gt;SuckerPunch&lt;/code&gt; class name (mostly used for the logger), which may be great on a worker context but does not make sense in a rake task.&lt;/li&gt;
+&lt;li&gt;It tries to do many things at once: create the report, save it to a file, and email someone with the attachment.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Like many legacy applications, this is already used in production so there really isn&amp;rsquo;t much leeway to refactor the method. However, using &lt;a href=&#34;http://www.martinfowler.com/articles/injection.html&#34;&gt;Dependency Injection&lt;/a&gt; and ruby&amp;rsquo;s &lt;a href=&#34;https://bugs.ruby-lang.org/issues/5474&#34;&gt;keyword arguments&lt;/a&gt;, we can easily add on to the method without changing its apparent signature to old clients.&lt;/p&gt;
+
+&lt;h3 id=&#34;injecting-a-logger&#34;&gt;Injecting a logger&lt;/h3&gt;
+
+&lt;p&gt;First, we need to take care of the logger.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;# original
+def perform(payments, email)
+  # ...
+  SuckerPunch.logger.info &amp;quot;#{self.class}: Compiling accounting report...&amp;quot;
+  # ...
+end
+
+# refactored
+def perform(payments, email_address, log: SuckerPunch)
+  # ...
+  log.logger.info &amp;quot;#{self.class}: Compiling accounting report...&amp;quot;
+  # ...
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You&amp;rsquo;ll notice that I&amp;rsquo;ve changed a few things:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;I used a keyword argument &lt;code&gt;log&lt;/code&gt; and assigned it a default value of SuckerPunch.&lt;/li&gt;
+&lt;li&gt;I replaced all occurrences of &lt;code&gt;SuckerPunch&lt;/code&gt; with &lt;code&gt;log&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;I changed one of the parameter names from &lt;code&gt;email&lt;/code&gt; to &lt;code&gt;email_address&lt;/code&gt;. This isn&amp;rsquo;t fully related to the refactoring of the logger object, but since I was already changing the method definition, I might as well make the var names more intention-revealing and less confusing.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;By using a keyword argument that has a default value, the refactored method is functionally equivalent to the original method. Older clients expecting to call the method without having to change their call signatures.&lt;/p&gt;
+
+&lt;p&gt;Of course, it would have also been alright to not rely on a keyword argument and instead just put a positional argument that is assigned a default value. However, I felt that having three positional arguments (with one of them optional) was a bit too confusing. Having a keyword argument for the optional parameter reveals my intention that:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;I&amp;rsquo;m passing an object that has a logger (I use &lt;code&gt;Rails&lt;/code&gt; for my rake task)&lt;/li&gt;
+&lt;li&gt;This parameter is optional since it looks different from the first two parameters.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;There are also multiple reasons why keywork arguments are better. Here&amp;rsquo;s a &lt;a href=&#34;https://www.youtube.com/watch?v=HQXVKHoUQxY&#34;&gt;video of Jim Weirich&lt;/a&gt; talking about the concept of &lt;code&gt;connascence&lt;/code&gt;. I highly recommend you to watch this; it helped me a lot in putting a finger and naming a concept that I knew was there but couldn&amp;rsquo;t quite grasp nor explain.&lt;/p&gt;
+
+&lt;h3 id=&#34;yielding-to-a-block&#34;&gt;Yielding to a block&lt;/h3&gt;
+
+&lt;p&gt;One of my favorite ways to &amp;ldquo;open up&amp;rdquo; a method for reuse is to yield to an optional block.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;yield(payment, count) if block_given?
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you need a refresher on ruby blocks and blocks, see an old &lt;a href=&#34;http://life.beyondrails.com/blog/2014/03/04/ruby-and-blocks/&#34;&gt;post&lt;/a&gt; of mine.&lt;/p&gt;
+
+&lt;p&gt;By yielding to an optional block, I can do stuff like use a &lt;a href=&#34;https://github.com/jfelchner/ruby-progressbar&#34;&gt;progress bar&lt;/a&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;progress = ProgressBar.create(
+  title: &#39;Payments&#39;,
+  total: nil,
+  format: &#39;%a |%b&amp;gt;&amp;gt;%i| %p%% %t %c of %C %e&#39;
+)
+
+EmailJob::Accounting.new.perform do |payment, count|
+  progress.total = count
+  progress.increment
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Or, during debugging I can also try and inspect each of the payment being interated on:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;EmailJob::Accounting.new.perform do |payment, count|
+  Rails.logger.debug { &amp;quot;#{payment.inspect} out of #{count} items&amp;quot; }
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;All of this done without even touching the original object. As Sandi Metz has said:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Don&amp;rsquo;t write code that guesses the future, arrange code so you can adapt to the future when it arrives.&lt;/p&gt;
+
+&lt;p&gt;&amp;ndash; &lt;cite&gt;&lt;a href=&#34;https://twitter.com/sandimetz/status/441241600077725697&#34;&gt;Sandi Metz (@sandimetz)&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;In other words, there is no need to load up your objects with functionality that you think will be used, but most likely won&amp;rsquo;t. Instead, write small objects that are flexible and composable such that when a new requirement comes a long, the code you&amp;rsquo;ve written can be easily adaptable to the situation. Ruby blocks are a great way to &amp;ldquo;open up&amp;rdquo; an object to make them easier to accommodate feature additions or changes.&lt;/p&gt;
+
+&lt;h3 id=&#34;if-it-ain-t-broke-don-t-fix-it-yet&#34;&gt;If it ain&amp;rsquo;t broke, don&amp;rsquo;t fix it (yet)&lt;/h3&gt;
+
+&lt;p&gt;Of course, there are even better ways to refactor this method. You can extract out the reporting logic and build an assembler class that takes an input (&lt;code&gt;payments&lt;/code&gt;) an output (an &lt;code&gt;email&lt;/code&gt; object) and the logic to create the contents (the report generator than can maybe output an &lt;code&gt;IO&lt;/code&gt; object or something that responds to &lt;code&gt;#result&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;However, as I&amp;rsquo;ve mentioned before this is a legacy app. This piece of code had been running in production for quite some time now without any problems. This is one of the very rare times when finance asks for a change in the running reports, and it&amp;rsquo;s not even a change in logic &amp;ndash; merely an additional way the results are delivered (regular intervals vs on-demand).&lt;/p&gt;
+
+&lt;p&gt;Even though there are some tests that cover this method, it&amp;rsquo;s not very comprehensive. We have very limited resources in my current team and we don&amp;rsquo;t really have time (nor the business need) to do a full refactor (yet).&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m not advocating to do hackjobs or cowboy code. However, these two small changes are all it takes to make the method flexible enough to finish a (relatively simple) feature, and there is a business decision to be made here. Some recommend to &lt;a href=&#34;http://c2.com/cgi/wiki?WhenToStopRefactoring&#34;&gt;refactor until it doesn&amp;rsquo;t hurt anymore&lt;/a&gt; and then move on to the next feature; I subscribe to this idea.&lt;/p&gt;
+
+&lt;p&gt;My personal preference is that of the rule of second encounters: the first time you need to reference badly written or inflexible code, refactor it just enough so it&amp;rsquo;s usable (in the hopes that you don&amp;rsquo;t have to deal with it again). However, the second time you need to reference the same code, do the refactor because it is more likely that you&amp;rsquo;ll need to reference the same code again in the future &amp;ndash; it&amp;rsquo;s already happened once, it can happen again.&lt;/p&gt;
+
+&lt;h3 id=&#34;final-form&#34;&gt;Final form&lt;/h3&gt;
+
+&lt;p&gt;Here is the refactored code, as well as the code that calls it:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;class EmailJob::Accounting &amp;lt; BaseJob
+  include SuckerPunch::Job
+
+  def perform(payments, email_address=nil,
+    log: SuckerPunch,
+    filename: &amp;quot;/tmp/accounting_report_#{Time.now.to_i}.csv
+  )
+
+    log.logger.info &amp;quot;#{self.class}: Compiling accounting report...&amp;quot;
+
+    CSV.open filename, &#39;w&#39; do |csv|
+      csv &amp;lt;&amp;lt; %w(email first_name last_name order_date order_datetime order_number order_line_state tags
+      payment_amount payment_state payment_date ... ) do |payment|
+
+# ...
+
+      rescue Exception =&amp;gt; e
+        log.logger.info &amp;quot;#{self.class}: Payment id #{payment.id} crashed with error #{e.inspect}&amp;quot;
+      end
+
+      row = [
+
+# ...
+
+      ]
+      csv &amp;lt;&amp;lt; row
+
+      yield(payment, count) if block_given?
+
+# ...
+
+    end
+
+    log.logger.info &amp;quot;#{self.class}: Report compiled, will upload and email it&amp;quot;
+    email(email_address, &amp;quot;accounting report&amp;quot;, File.open(filename)) if email_address
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;payments = PaymentsQuery.all.includes(:order =&amp;gt; [:customer, :tags])
+count = payments.count
+
+progress = ProgressBar.create(
+  title: &#39;Payment&#39;,
+  total: nil,
+  format: &#39;%a |%b&amp;gt;&amp;gt;%i| %p%% %t %c of %C %e&#39;
+)
+
+filename = &amp;quot;report.csv&amp;quot;
+EmailJob::Accounting.new.perform(payments, logger: Rails, filename: filename) do |payment, count|
+  progress.total = count
+  progress.increment
+end
+progress.finish
+
+uploader = Upcloudify::S3.new
+uploader.email([&amp;quot;parasquid&amp;quot;&amp;quot;], filename, File.open(filename))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Not much has changed, but their flexibility is worlds apart, and it makes all the difference.&lt;/p&gt;
+
+&lt;h1 id=&#34;tl-dr&#34;&gt;TL;DR&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Use dependency injection and keyword arguments with default values to maintain the same signature to older clients, but allow you to change behavior as needed. In this case, I don&amp;rsquo;t want to call &lt;code&gt;SuckerPunch&lt;/code&gt; logger in my rake task.&lt;/li&gt;
+&lt;li&gt;Use &lt;code&gt;yield&lt;/code&gt; and &lt;code&gt;block_given?&lt;/code&gt; to allow client code to pass in custom blocks, and expose objects to the block depending on your intentions. In this case, I want to use a progress bar and also inspect the currently iterated on object.&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Have Rails.logger Output Sent to the Console (surprise, created_at field is protected from mass-assignment)</title>
+      <link>http://life.beyondrails.com/blog/2015/09/29/have-rails.logger-output-sent-to-the-console-surprise-created_at-field-is-protected-from-mass-assignment/</link>
+      <pubDate>Tue, 29 Sep 2015 23:14:07 -0700</pubDate>
+      
+      <guid>http://life.beyondrails.com/blog/2015/09/29/have-rails.logger-output-sent-to-the-console-surprise-created_at-field-is-protected-from-mass-assignment/</guid>
+      <description>&lt;p&gt;While working on a feature, I was wondering why my test is returning 0 records when I&amp;rsquo;m quite sure the query was written properly (it&amp;rsquo;s just a very simple query regarding date range).&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;I suspected there was something wrong with the database query, so I looked for a way to redirect the logs that Rails produces into the console where I&amp;rsquo;m running rspec (and pry).&lt;/p&gt;
+
+&lt;p&gt;Surprisingly, it wasn&amp;rsquo;t that the query was wrong (it was just what I wanted). It was this:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;WARN &amp;ndash; : WARNING: Can&amp;rsquo;t mass-assign protected attributes for &lt;code&gt;OrderLine: created_at&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;It does make your tests look messy, so I would only recommend using this configuration just for the times when you want to know exactly what Rails is trying to do.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;# config/environments/test.rb
+
+config.logger = Logger.new(STDOUT)
+config.logger.level = Logger::DEBUG
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Note that this is on Rails 3. As the StackOverflow answer by tommes would explain, the configuration is slightly different for Rails 4. See more at &lt;a href=&#34;http://stackoverflow.com/questions/11770552/how-to-get-rails-logger-printing-to-the-console-stdout-when-running-rspec&#34;&gt;http://stackoverflow.com/questions/11770552/how-to-get-rails-logger-printing-to-the-console-stdout-when-running-rspec&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

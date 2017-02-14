@@ -2,9 +2,133 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://life.beyondrails.com/</loc>
-    <lastmod>2014-12-15T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <loc>http://life.beyondrails.com/blog/2016/08/13/life-beyond-rails-building-cross-platform-applications/</loc>
+    <lastmod>2016-08-13T15:00:00+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/blog/2016/07/15/featured-pattern-rescue-log-rethrow/</loc>
+    <lastmod>2016-07-15T15:16:02+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/blog/2016/06/02/tdd-and-the-scientific-method/</loc>
+    <lastmod>2016-06-02T16:57:36+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/blog/2016/04/25/featured-refactoring-extract-method/</loc>
+    <lastmod>2016-04-25T13:55:34+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/blog/2016/04/14/a-strange-case-of-inheritance-behavior/</loc>
+    <lastmod>2016-04-14T20:27:59+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/blog/2016/04/08/2016-04-08-linklog/</loc>
+    <lastmod>2016-04-08T11:44:28+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/blog/2016/03/18/javascript-training-at-mindvalley-day-2/</loc>
+    <lastmod>2016-03-18T15:54:40+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/zen/answer-the-question</loc>
+    <lastmod>2016-02-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/zen/higher</loc>
+    <lastmod>2016-02-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/zen/the-easy-path</loc>
+    <lastmod>2016-02-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/blog/2016/02/05/string-interpolation-with-templates-using-string/</loc>
+    <lastmod>2016-02-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/blog/2016/01/03/opalboxrun-ruby-code-inside-pages/</loc>
+    <lastmod>2016-01-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/blog/2015/12/18/exploring-query-objects/</loc>
+    <lastmod>2015-12-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/blog/2015/12/11/using-hash-fetch/</loc>
+    <lastmod>2015-12-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/blog/2015/12/06/activerecord-and-forty-two/</loc>
+    <lastmod>2015-12-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/blog/2015/12/04/safely-passing-ruby-code-in-a-rake-task/</loc>
+    <lastmod>2015-12-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/blog/2015/12/03/evaluating-hackerrank-for-tech-hiring/</loc>
+    <lastmod>2015-12-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/blog/2015/11/07/ruby-development-in-windows-revisited/</loc>
+    <lastmod>2015-11-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/blog/2015/10/30/codility---permmissingelem/</loc>
+    <lastmod>2015-10-30T04:16:00-08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/blog/2015/10/30/codility---frogjmp/</loc>
+    <lastmod>2015-10-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/blog/2015/10/30/codility---tapeequilibrium/</loc>
+    <lastmod>2015-10-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/blog/2015/10/28/using-dependency-injection-and-yield-to-refactor-a-legacy-app/</loc>
+    <lastmod>2015-10-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/blog/2015/09/29/have-rails.logger-output-sent-to-the-console-surprise-created_at-field-is-protected-from-mass-assignment/</loc>
+    <lastmod>2015-09-29T23:14:07-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/blog/2015/09/26/moving-hosts-from-github-pages-to-amazon-s3/</loc>
+    <lastmod>2015-09-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/blog/2015/06/27/preparing-for-a-hackathon-choosing-your-platform/</loc>
+    <lastmod>2015-06-27T13:57:41+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/blog/2015/06/26/preparing-for-a-hackathon/</loc>
+    <lastmod>2015-06-26T11:46:04+08:00</lastmod>
   </url>
   
   <url>
@@ -48,6 +172,16 @@
   </url>
   
   <url>
+    <loc>http://life.beyondrails.com/blog/2014/04/01/makers-schedule-managers-schedule/</loc>
+    <lastmod>2014-04-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/blog/2014/03/09/ruby-development-in-windows/</loc>
+    <lastmod>2014-03-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://life.beyondrails.com/blog/2014/03/04/ruby-and-blocks/</loc>
     <lastmod>2014-03-04T00:00:00+00:00</lastmod>
   </url>
@@ -68,23 +202,8 @@
   </url>
   
   <url>
-    <loc>http://life.beyondrails.com/blog/2013/02/12/a-smartphone-is-not-a-phone/</loc>
-    <lastmod>2013-02-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://life.beyondrails.com/blog/2013/02/05/writing-history-on-your-own-terms/</loc>
-    <lastmod>2013-02-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://life.beyondrails.com/blog/2012/01/23/my-development-setup/</loc>
     <lastmod>2012-01-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://life.beyondrails.com/blog/2011/12/29/sticky-users/</loc>
-    <lastmod>2011-12-29T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -104,7 +223,227 @@
   
   <url>
     <loc>http://life.beyondrails.com/license/</loc>
-    <lastmod>0001-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/categories/activerecord/</loc>
+    <lastmod>2015-12-06T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/categories/agile/</loc>
+    <lastmod>2014-12-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/categories/api/</loc>
+    <lastmod>2014-06-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/categories/basics/</loc>
+    <lastmod>2014-03-04T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/categories/codility/</loc>
+    <lastmod>2015-10-30T04:16:00-08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/categories/dependency-injection/</loc>
+    <lastmod>2015-10-28T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/categories/devops/</loc>
+    <lastmod>2013-06-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/categories/documentation/</loc>
+    <lastmod>2014-06-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/categories/featured/</loc>
+    <lastmod>2016-08-13T15:00:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/categories/grape/</loc>
+    <lastmod>2014-06-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/categories/hackathon/</loc>
+    <lastmod>2015-06-27T13:57:41+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/categories/hardware/</loc>
+    <lastmod>2014-08-03T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/categories/heroku/</loc>
+    <lastmod>2013-05-25T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/categories/inheritance/</loc>
+    <lastmod>2016-04-14T20:27:59+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/categories/javascript/</loc>
+    <lastmod>2016-03-18T15:54:40+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/</loc>
+    <lastmod>2016-08-13T15:00:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/categories/linklog/</loc>
+    <lastmod>2016-04-08T11:44:28+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/categories/linux/</loc>
+    <lastmod>2014-08-03T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/categories/management/</loc>
+    <lastmod>2015-12-03T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/categories/meta/</loc>
+    <lastmod>2016-01-03T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/categories/meta-programming/</loc>
+    <lastmod>2015-12-04T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/categories/opal/</loc>
+    <lastmod>2016-01-03T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/categories/pattern/</loc>
+    <lastmod>2016-07-15T15:16:02+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/post/</loc>
+    <lastmod>2016-08-13T15:00:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/categories/presentations/</loc>
+    <lastmod>2016-08-13T15:00:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/categories/rails/</loc>
+    <lastmod>2015-10-28T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/categories/refactoring/</loc>
+    <lastmod>2016-04-25T13:55:34+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/categories/ruby/</loc>
+    <lastmod>2015-12-04T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/categories/software/</loc>
+    <lastmod>2015-06-27T13:57:41+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/categories/til/</loc>
+    <lastmod>2016-04-14T20:27:59+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/categories/training-notes/</loc>
+    <lastmod>2016-03-18T15:54:40+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/categories/ubuntu/</loc>
+    <lastmod>2014-08-03T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/categories/virtualbox/</loc>
+    <lastmod>2015-11-07T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/categories/windows/</loc>
+    <lastmod>2015-11-07T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/categories/zen/</loc>
+    <lastmod>2016-02-19T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://life.beyondrails.com/zen/</loc>
+    <lastmod>2016-02-19T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
 </urlset>

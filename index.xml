@@ -1,1066 +1,1830 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-      <title>Recent Content on Life Beyond Rails </title>
-      <generator uri="https://hugo.spf13.com">Hugo</generator>
-    <link>http://life.beyondrails.com/index.xml/</link>
-    
-    
-    
-    <updated>Mon, 15 Dec 2014 00:00:00 UTC</updated>
-    
-    <item>
-      <title>The Tick-Tock Innovation Model Applied to Agile Methodology</title>
-      <link>http://life.beyondrails.com/blog/2014/12/15/the-tick-tock-innovation-model-applied-to-agile-methodology/</link>
-      <pubDate>Mon, 15 Dec 2014 00:00:00 UTC</pubDate>
-      
-      <guid>http://life.beyondrails.com/blog/2014/12/15/the-tick-tock-innovation-model-applied-to-agile-methodology/</guid>
-      <description>&lt;p&gt;You&amp;rsquo;ve probably heard of the &lt;a href=&#34;http://www.intel.com/content/www/us/en/silicon-innovations/intel-tick-tock-model-general.html&#34;&gt;tick-tock model that Intel is using&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;It&amp;rsquo;s a model where every 18 months, there&amp;rsquo;s a new focus on the chip architecture: the tick is a shrinking of the chip (which requires retrofitting their manufacturing process to support the smaller size) and the tock is an upgrade of the architecture itself, using the current manufacturing process.&lt;/p&gt;
-
-&lt;p&gt;I&amp;rsquo;m trying out a similar model with my team. We&amp;rsquo;ve been very successful with our sprint goals so far, but one thing that I&amp;rsquo;ve seen is that the goals are decided just then and there. Tick-tock is a refinement of the sprint goal determination process.&lt;/p&gt;
-
-&lt;p&gt;With every Tick, the primary focus is on the development of new features (plus business as usual stories, bug fixes etc). With every Tock we spend more time on refactoring, code quality, updating standards, documentation, and cleanup (and of course any new feature that is deemed &amp;ldquo;very urgent that it can&amp;rsquo;t wait another week,&amp;rdquo; as well as bugfixes.&lt;/p&gt;
-
-&lt;p&gt;From the retrospectives, I&amp;rsquo;ve seen that many of my team&amp;rsquo;s speedbumps (which deals mostly with legacy code) come from code that isn&amp;rsquo;t as good quality as we hoped. Every new feature and code that we write is already up to standards, but it&amp;rsquo;s the older code that keeps us from going forward as fast as we can.&lt;/p&gt;
-
-&lt;p&gt;Tick-tock will allow us to maintain an innovation cadence while making sure we start paying our debts before they overwhelm us.&lt;/p&gt;
-</description>
-    </item>
+    <title>Life Beyond Rails</title>
+    <link>http://life.beyondrails.com/index.xml</link>
+    <description>Recent content on Life Beyond Rails</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 13 Aug 2016 15:00:00 +0800</lastBuildDate>
+    <atom:link href="http://life.beyondrails.com/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>Setting Up and Automating my Hugo Blog Deployment to Github Pages</title>
-      <link>http://life.beyondrails.com/blog/2014/12/14/setting-up-and-automating-my-hugo-blog-deployment-to-github-pages/</link>
-      <pubDate>Sun, 14 Dec 2014 07:16:31 -0800</pubDate>
+      <title>Life Beyond Rails: Building Cross Platform Applications</title>
+      <link>http://life.beyondrails.com/blog/2016/08/13/life-beyond-rails-building-cross-platform-applications/</link>
+      <pubDate>Sat, 13 Aug 2016 15:00:00 +0800</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2014/12/14/setting-up-and-automating-my-hugo-blog-deployment-to-github-pages/</guid>
-      <description>
+      <guid>http://life.beyondrails.com/blog/2016/08/13/life-beyond-rails-building-cross-platform-applications/</guid>
+      <description>&lt;p&gt;This is the talk I presented during the first &lt;a href=&#34;http://rubyconf.my/&#34;&gt;Ruby Conference in Kuala Lumpur&lt;/a&gt;, Malaysia. It&amp;rsquo;s not a word-for-word transcription, but this is mostly the same material I wrote to prepare for the talk.&lt;/p&gt;
 
-&lt;div class=&#34;info info&#34; data-title=&#34;Work In Progress&#34;&gt;
-  &lt;p&gt;I&amp;rsquo;m still in the middle of writing this article, and I probably will be always updating this.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-001.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
 
-&lt;/div&gt;
+&lt;p&gt;The secret to creating cross platform apps is something you already know, but probably not doing.&lt;/p&gt;
 
-&lt;p&gt;I&amp;rsquo;m currently moving my blog posts (and collecting all my blog entries from various blogging platforms) and putting them into Hugo. In case you&amp;rsquo;re wondering how I&amp;rsquo;ve set mine up, here&amp;rsquo;s a guide of what I&amp;rsquo;ve done.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;toc_0&#34;&gt;Choosing the hosting platform&lt;/h2&gt;
+&lt;hr /&gt;
 
-&lt;h2 id=&#34;toc_1&#34;&gt;Setting up the blog&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-002.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;sudo aptitude install golang
-sudo aptitude install -y mercurial
-go get -v github.com/spf13/hugo&lt;/p&gt;
+&lt;p&gt;I used Ruby to write a streaming app, a request-response app, a client-side web app, and a mobile app.&lt;/p&gt;
 
-&lt;h2 id=&#34;toc_2&#34;&gt;Setting up the github pages&lt;/h2&gt;
+&lt;hr /&gt;
 
-&lt;p&gt;There&amp;rsquo;s a really cool guide over at the official &lt;a href=&#34;http://gohugo.io/tutorials/github_pages_blog/&#34;&gt;Hugo documentation&lt;/a&gt; and I advise everyone to check it out.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-003.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;git checkout source
+&lt;p&gt;I&amp;rsquo;m Tristan, and I&amp;rsquo;m the Chief Problem Solver at &lt;a href=&#34;http://www.mindvalley.com/&#34;&gt;Mindvalley&lt;/a&gt;. You can find me on facebook and github @parasquid.&lt;/p&gt;
 
-# Delete the master branch
-git branch -D master
-git push origin :master
+&lt;p&gt;Like many of you, I was a self-taught programmer. It all started many years ago when I was around 9 or 10; my father had an Apple ][+ clone called Minta ][ and I spent many nights typing in programs in BASIC from Byte magazine.&lt;/p&gt;
 
-# Create an orphaned master branch
-git checkout --orphan master
-rm -rf *
-git rm --cached $(git ls-files)
+&lt;p&gt;After that, came QBasic in high school (I was fortunate to have studied in a more technical school that taught programming and Wordstar, among other things) as well as C/C++ and dBase/Clipper.&lt;/p&gt;
 
-# Grab one file from the master branch so we can make a commit
-git checkout source .gitignore
-git commit -m &amp;quot;INIT: initial commit on master branch&amp;quot;
-git push origin master
+&lt;p&gt;After that, I joined an opensource project that was primarily in Perl and picked that up. Around 2005 the project leader introduced me to Ruby and I remember telling him &amp;ldquo;It&amp;rsquo;s just like Perl!&amp;rdquo; and promptly forgot about it.&lt;/p&gt;
 
-# Return to the source branch
-git checkout source
+&lt;p&gt;I picked up Java for a job I had in a VAS (valu-added services) company&amp;ndash;we were making apps before they were cool&amp;ndash;handling the applications that respond when you send an SMS to 2467. Then I rediscovered Ruby because of Mindvalley, and at that time also got introduced to Rails.&lt;/p&gt;
 
-# Remove the public folder to make room for the master subtree
-rm -rf public
-git add -A
-git commit -m &#39;remove stale public folder&#39;
+&lt;p&gt;Unfortunately (or fortunately, as some might think) I skipped PHP altogether so I don&amp;rsquo;t have as much of horror developer stories as the rest of us. :)&lt;/p&gt;
 
-# Add the master  branch of the repository.
-# It will look like a folder named public
-git subtree add --prefix\
-	public git@github.com:parasquid/parasquid.github.io.git master --squash
+&lt;hr /&gt;
 
-# Pull down the file we just committed. This helps avoid merge conflicts
-git subtree pull --prefix=public origin master -m &#39;merge origin&#39;
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-004.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
 
-# Add the CNAME
-touch public/CNAME
-echo &amp;quot;life.beyondrails.com&amp;quot; &amp;gt; public/CNAME
-&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;But now, I love Ruby. Its currently my favorite language. It&amp;rsquo;s the hammer I use to solve all the problems that come my way.&lt;/p&gt;
 
-&lt;h2 id=&#34;toc_3&#34;&gt;Scripting the deployment&lt;/h2&gt;
+&lt;p&gt;If I can just use Ruby all the time, not just for web but also on the frontend, and in mobile, I&amp;rsquo;ll be happy.&lt;/p&gt;
 
-&lt;p&gt;Again I refered back to the hugo documentation on &lt;a href=&#34;http://gohugo.io/tutorials/github_pages_blog/&#34;&gt;setting up hugo for guthub hosting&lt;/a&gt; and I used it as the basis for my own deployment script.&lt;/p&gt;
+&lt;p&gt;Then I thought, hey that&amp;rsquo;s a challenge! So I did, and that was the small project I made.&lt;/p&gt;
 
-&lt;p&gt;My workflow however is unlike the any of the trhee recommended workflows (more like a hybrid):&lt;/p&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-006.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;So that&amp;rsquo;s it! It&amp;rsquo;s proof that ruby is cross platform! We can now all go home and tell everyone we can also do mobile development. We just need to learn how to compile ruby using RubyMotion.&lt;/p&gt;
+
+&lt;p&gt;So that&amp;rsquo;s it! It&amp;rsquo;s proof that ruby is cross platform! We can now tell everyone we can also do mobile development, we just need to learn how to compile ruby using RubyMotion.&lt;/p&gt;
+
+&lt;p&gt;Right?&lt;/p&gt;
+
+&lt;p&gt;The thing is, I think the meaning of &amp;ldquo;cross platform&amp;rdquo; is usually misunderstood.&lt;/p&gt;
+
+&lt;p&gt;What does cross platform really mean then?&lt;/p&gt;
+
+&lt;p&gt;In order to understand that, we need to know what cross platform isn’t.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-007.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;What does Voyager 2, your legacy Rails app, and your hackathon prototype have in common?&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-008.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;They&amp;rsquo;re &lt;a href=&#34;http://witforsale.com/dead-end-products/&#34;&gt;dead end products&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;When the Voyager 2 was made, they didn&amp;rsquo;t intend to repair or update it after launch. If there was any glitch or malfunction, the only way to fix it was to launch another probe.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-009.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In some ways, it made the design process so much easier.&lt;/p&gt;
+
+&lt;p&gt;The power cells can be directly welded to the modules because they&amp;rsquo;ll never be taken apart anyway.&lt;/p&gt;
+
+&lt;p&gt;So what if the antenna can only operate on a fixed frequency? There&amp;rsquo;s no need for a tuning knob because it will never be retuned.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-010.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Then again, Voyager 2 will never change, and will never be used for a different purpose.&lt;/p&gt;
+
+&lt;p&gt;You&amp;rsquo;re not touching your legacy Rails app because you &amp;ldquo;don&amp;rsquo;t fix it if it ain&amp;rsquo;t broke,&amp;rdquo; and you&amp;rsquo;d prefer to just rewrite it from scratch anyway.&lt;/p&gt;
+
+&lt;p&gt;Your hackathon prototype works well for the pitch, but it is not suited for production purposes.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-011.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;It&amp;rsquo;s the same with your code.&lt;/p&gt;
+
+&lt;p&gt;Ask yourself the question: can you reuse a significant portion of the code you wrote if, by some magical means you can suddenly run your code in a different platform?&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-012.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Cross platform means absolutely nothing if you can&amp;rsquo;t reuse your code.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ll repeat this again, and you know it&amp;rsquo;s important because I said it twice.&lt;/p&gt;
+
+&lt;p&gt;Cross platform is useless if your code can&amp;rsquo;t be reused.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-013.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Interesting isn&amp;rsquo;t it? What benefit is it that ruby runs on an iOS device when you have to rewrite the whole codebase from scratch anyway?&lt;/p&gt;
+
+&lt;p&gt;You might as well just learn swift and do it the way apple wants you to do it.&lt;/p&gt;
+
+&lt;p&gt;Reuse of prior work across multiple platforms is the biggest reason why you want cross platform support.&lt;/p&gt;
+
+&lt;p&gt;So how do you design your code so that it is reusable?&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-014.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s take a look at the calculator.&lt;/p&gt;
+
+&lt;p&gt;Notice how the UI and the domain logic are separate. How in this example, we put the React UI, while in this example, we put the telnet UI and here, we put the iOS ui.&lt;/p&gt;
+
+&lt;p&gt;It&amp;rsquo;s almost as if you&amp;rsquo;re just able to just swap things  around just like that!
+Right?&lt;/p&gt;
+
+&lt;p&gt;Do you know what this reminds me of?&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-015.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This. A USB cable.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-016.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I can use the same cable to charge a cellphone, a powerbank, a camera, and various other things.&lt;/p&gt;
+
+&lt;p&gt;They all follow the same standard so they are all interchangeable.&lt;/p&gt;
+
+&lt;p&gt;And I don&amp;rsquo;t have to know which pin of the USB connects carries the electricity&amp;ndash;I just know that if I plug one end to a power source and the other end to the device, it will charge.&lt;/p&gt;
+
+&lt;p&gt;Nobody would think of making a phone that has its power cable attached and not detachable. Well maybe Apple might.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-017.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In majority of the cases, the cross platform problem is solved in the physical world. We intuitively understand how to design products that can be reused.&lt;/p&gt;
+
+&lt;p&gt;But because software is intangible it&amp;rsquo;s difficult to apply our experience as meatbags to the act of creating software.&lt;/p&gt;
+
+&lt;p&gt;So what can we take from designing physical products and apply it to software development?&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-018.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s take a look at the USB cable example again.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-019.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Remember when I said they all follow the same standard? That means the USB cable can treat different objects in the same way.&lt;/p&gt;
+
+&lt;p&gt;They all have the same USB interface, so from the point of view of the cable, they&amp;rsquo;re all the same thing (even though they&amp;rsquo;re not).&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-020.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;How about when I said that I don&amp;rsquo;t need to care about the electromotive force or which pins carry the electricity?&lt;/p&gt;
+
+&lt;p&gt;That means I don&amp;rsquo;t even have to know how the cable was made in order to use it! I also immediately know that the cable is not for drying my hair, or for opening a can.&lt;/p&gt;
+
+&lt;p&gt;It was less complicated because the list of things I can do with the cable was small, and the kinds of things I can use the cable with was also limited.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-021.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In effect, you’re replacing the questions on the left with this one question on the right.&lt;/p&gt;
+
+&lt;p&gt;You’re reducing the surface area of the complexity involved.&lt;/p&gt;
+
+&lt;p&gt;I think some of you would already know where I’m going here.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-022.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Instead of asking how does this work, or which things can I use this with, I now just ask: what can this do?&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;I do use Github pages, but as a Personal/Organization page. That means my repository is at parasquid/parasquid.github.io&lt;/li&gt;
-&lt;li&gt;Instead of two repositories, I prefer to have a single repository containing both the source files and the cooked files.&lt;/li&gt;
-&lt;li&gt;Because I&amp;rsquo;m using Github Pages for Personal/Organization I need to have the cooked pages inside the master branch. I had to modify the deployment script a little bit to ensure that my sources remain in the source branch, the subtree is located at the master branch (prefixed with public), and that all the pushing and pulling are seamless so it&amp;rsquo;s all automatic (and there&amp;rsquo;s no need for manual merging).&lt;/li&gt;
+&lt;li&gt;Encapsulation: What vs How&lt;/li&gt;
+&lt;li&gt;Polymorphism: What vs Which&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;In the end I went for a &lt;code&gt;git subtree pull&lt;/code&gt; before regenerating the blog. &lt;strong&gt;And never trying to touch the master branch.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;These two might sound familiar. You&amp;rsquo;d know them from Object Oriented Programming.&lt;/p&gt;
 
-&lt;p&gt;However, the &lt;code&gt;git subtree&lt;/code&gt; command is only present in the 1.7.11 version of git. Ubuntu Precise (12.04) only comes with 1.7.9.5 so in order to use this, a &lt;a href=&#34;https://launchpad.net/~git-core/+archive/ubuntu/ppa&#34;&gt;PPA&lt;/a&gt; must be installed:&lt;/p&gt;
-
-&lt;pre&gt;
-  deb http://ppa.launchpad.net/git-core/ppa/ubuntu precise main
-  deb-src http://ppa.launchpad.net/git-core/ppa/ubuntu precise main
-&lt;/pre&gt;
-
-&lt;p&gt;While trying to do deployment I ran into numerous problems with errors like:&lt;/p&gt;
-
-&lt;pre&gt;
-error: failed to push some refs to
-       &#39;git@github.com:parasquid/parasquid.github.io.git&#39;
-hint: Updates were rejected because a pushed branch tip is behind its remote
-hint: counterpart. Check out this branch and integrate the remote changes
-hint: (e.g. &#39;git pull ...&#39;) before pushing again.
-hint: See the &#39;Note about fast-forwards&#39; in &#39;git push --help&#39; for details.
-&lt;/pre&gt;
-
-&lt;p&gt;Apparently this message comes up when you already have files in the remote branch and for some reason pushing will cause a merge conflict. Eventually I settled in for a bit of brutish action: deleting the master branch and recreating it as an orphan page every deploy. I&amp;rsquo;m not sure if this is something that Github will frown upon; sure it&amp;rsquo;s okay to delete and recreate branches, but since this is a hosted page it may screw up their bots trying to retrieve the latest version of the branch (since I&amp;rsquo;m messing up with git history).&lt;/p&gt;
-
-&lt;p&gt;In order to delete the master branch, there needs to be some pre-work done. Github does not allow you to delete the default branch (which is master) so you&amp;rsquo;d need to first set the default branch to something else, then delete master. Matthew Brett has a very good &lt;a href=&#34;http://matthew-brett.github.io/pydagogue/gh_delete_master.html&#34;&gt;article&lt;/a&gt; that explains the procedure in full.&lt;/p&gt;
-
-&lt;p&gt;The downside here is that the site goes down for around 30 minutes everytime there&amp;rsquo;s a deployment :( Not cool. So I had to look for a different way.&lt;/p&gt;
-
-&lt;p&gt;After struggling for quite a few hours this is the best I can come up with:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;#!/bin/bash
-
-echo -e &amp;quot;\033[0;32mDeploying updates to GitHub...\033[0m&amp;quot;
-
-git checkout source
-git pull origin source
-git add -A
-git commit -m &#39;committing work in progress&#39;
-
-# Pull down the file we just committed. This helps avoid merge conflicts
-git subtree pull --prefix=public origin master -m &#39;merge origin&#39;
-
-# Build the project.
-hugo -t hyde-x
-
-# Add the CNAME
-touch public/CNAME
-echo &amp;quot;life.beyondrails.com&amp;quot; &amp;gt; public/CNAME
-
-# Add changes to git.
-git add -A
-
-# Commit changes.
-msg=&amp;quot;rebuilding site `date`&amp;quot;
-if [ $# -eq 1 ]
-  then msg=&amp;quot;$1&amp;quot;
-fi
-git commit -m &amp;quot;$msg&amp;quot;
-
-# Push source and build repos.
-git push origin source
-git subtree push --prefix=public\
-	git@github.com:parasquid/parasquid.github.io.git master
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;It&amp;rsquo;s a combination of the initial setup and the default deployment script from the hugo documentation. Now the only downside left (and this is a very minor thing for me) is that post updates can take a number of minutes before they are seen live. But I can live with that.&lt;/p&gt;
-
-&lt;p&gt;Also, there will be times when the master branch just won&amp;rsquo;t deploy because of merge conflicts (and there&amp;rsquo;s no way to do a force push on &lt;code&gt;git subtree&lt;/code&gt;). So far all I have to do is to run &lt;code&gt;deploy.sh&lt;/code&gt; one more time and it&amp;rsquo;s all cool.&lt;/p&gt;
-
-&lt;h2 id=&#34;toc_4&#34;&gt;Porting old blog entries to hugo&lt;/h2&gt;
-
-&lt;p&gt;I&amp;rsquo;ve blogged on and off for quite some time in various domains and platforms. There really isn&amp;rsquo;t much I can do to automate the importing of the entries. Luckily I only have a handful of published posts, but I probably lost most of my drafts and idea dumps.&lt;/p&gt;
-
-&lt;h2 id=&#34;toc_5&#34;&gt;Blogging workflow&lt;/h2&gt;
-
-&lt;p&gt;So now that everything&amp;rsquo;s set and deployed, how do I continue writing?&lt;/p&gt;
-
-&lt;h2 id=&#34;toc_6&#34;&gt;Questions?&lt;/h2&gt;
-
-&lt;p&gt;If any of the instructions above are confusing, feel free to comment and I&amp;rsquo;ll try my best to answer the question in the comments as well as update the instructions :)&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Redoing my Blogs</title>
-      <link>http://life.beyondrails.com/blog/2014/12/12/redoing-my-blogs/</link>
-      <pubDate>Fri, 12 Dec 2014 12:25:29 -0800</pubDate>
-      
-      <guid>http://life.beyondrails.com/blog/2014/12/12/redoing-my-blogs/</guid>
-      <description>&lt;p&gt;Yet again I&amp;rsquo;ve ported my blog into yet another blogging platform - &lt;a href=&#34;http://gohugo.io/&#34;&gt;Hugo&lt;/a&gt;. I feel so strongly that I&amp;rsquo;d be staying for quite some time on this platform that I&amp;rsquo;ve been porting over all my other posts in all my other various blogs over here.&lt;/p&gt;
-
-&lt;p&gt;It&amp;rsquo;s quite an interesting blogging platform. It outputs static files, which means hosting options are very cheap with a wide variety of providers.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>About Me</title>
-      <link>http://life.beyondrails.com/about/</link>
-      <pubDate>Fri, 12 Dec 2014 00:00:00 UTC</pubDate>
-      
-      <guid>http://life.beyondrails.com/about/</guid>
-      <description>&lt;p&gt;Hi, I’m Tristan! I’m a software developer currently living and working in Kuala Lumpur.&lt;/p&gt;
-
-&lt;p&gt;I work mostly in Ruby, some HTML/CSS/JS, DevOps and some Go.&lt;/p&gt;
-
-&lt;p&gt;My main interest is in server-side technology and massive scalability, but I’ve been known to dabble in native mobile development, user facing web applications and various other projects.&lt;/p&gt;
-
-&lt;p&gt;Check out my &lt;a href=&#34;https://github.com/parasquid&#34;&gt;GitHub page&lt;/a&gt; to see what I’ve been up to recently!&lt;/p&gt;
-
-&lt;p&gt;(this page was shamelessly stolen from &lt;a href=&#34;http://andreimihu.com/about/&#34;&gt;http://andreimihu.com/about/&lt;/a&gt;)&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>How I Hire Developers</title>
-      <link>http://life.beyondrails.com/blog/2014/11/04/how-i-hire-developers/</link>
-      <pubDate>Tue, 04 Nov 2014 00:00:00 UTC</pubDate>
-      
-      <guid>http://life.beyondrails.com/blog/2014/11/04/how-i-hire-developers/</guid>
-      <description>&lt;p&gt;I was invited to pressent at the &lt;a href=&#34;http://www.projectrenaissance.com/technology/kl-ruby-brigade-2&#34;&gt;KL Ruby Brigade&lt;/a&gt; and I thought I shuld mix things around by talking about something not very technical but still very much relevant to the audience.&lt;/p&gt;
-
-&lt;p&gt;Since I&amp;rsquo;m in charge (but saying &amp;ldquo;in-charge&amp;rdquo; is a bit of a misnomer since in Mindvalley we don&amp;rsquo;t really have predefined job descriptions) of the internship program for new tech hires, I figures I should share some of the things I consider when interviewing and hiring people.&lt;/p&gt;
-
-&lt;p&gt;Here are the slides :)&lt;/p&gt;
-
-&lt;iframe src=&#34;//www.slideshare.net/slideshow/embed_code/41100004&#34; width=&#34;760&#34; height=&#34;570&#34; frameborder=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; scrolling=&#34;no&#34; style=&#34;border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt; &lt;/iframe&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Getting Data From a Join Table in Rails</title>
-      <link>http://life.beyondrails.com/blog/2014/08/19/getting-data-from-a-join-table-in-rails/</link>
-      <pubDate>Tue, 19 Aug 2014 00:00:00 UTC</pubDate>
-      
-      <guid>http://life.beyondrails.com/blog/2014/08/19/getting-data-from-a-join-table-in-rails/</guid>
-      <description>&lt;p&gt;A friend asked in my &lt;a href=&#34;https://www.facebook.com/groups/klxrb&#34;&gt;Ruby Facebook group&lt;/a&gt; about a &lt;a href=&#34;https://www.facebook.com/groups/klxrb/permalink/515838138548150/&#34;&gt;problem&lt;/a&gt; he was having that I feel I&amp;rsquo;ve encountered before (or will be encountering in the future). It&amp;rsquo;s about having to retrieve data taht is associated with a join table.&lt;/p&gt;
-
-&lt;p&gt;Here&amp;rsquo;s the question:&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;I have set ActiveRecords models like these&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;script src=&#34;https://gist.github.com/87abbf74e8020ca7e95c.js?file=&#34; type=&#34;text/javascript&#34;&gt;&lt;/script&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;I want to do something like current_user.boards.first.role which I expect to load the membership details of current_user AND the first board. Do you have any idea how can I achieve this? Do you suggest another approach?&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;In other words, he wants to be able to get at the &lt;code&gt;current_user&lt;/code&gt;&amp;rsquo;s boards and retrieve the role assigned to the first board.&lt;/p&gt;
-
-&lt;p&gt;At first it was a bit difficult to search google for the corrent keywords, but there&amp;rsquo;s &lt;a href=&#34;http://stackoverflow.com/a/8874831&#34;&gt;StackOverflow&lt;/a&gt; to the rescue. There needs to be a custom SQL select query to expose the role_mask attribute of the join table&lt;/p&gt;
-
-&lt;p&gt;I felt that it was a very interesting question, so I made a sample app for him to show the technique. It can be found here: &lt;a href=&#34;https://github.com/parasquid/reach-into-habtm-example/&#34;&gt;https://github.com/parasquid/reach-into-habtm-example/&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;For the lazy and impatient:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;# app/models/user.rb
-class User &amp;lt; ActiveRecord::Base
-  has_many :memberships
-  has_many :boards, through: :memberships, :select =&amp;gt; &#39;memberships.role_mask as role_mask&#39;
-end
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;# spec/models/membership_spec.rb
-require &#39;spec_helper&#39;
-
-MAX_USERS = 2
-MAX_BOARDS = 5
-
-describe Membership do
-  context &#39;access through a user instance&#39; do
-    before :each do
-      1.upto MAX_USERS do
-        User.create
-      end
-
-      1.upto MAX_BOARDS do
-        Board.create
-      end
-
-      # associate two boards to the first user
-      user1 = User.first
-      user1.memberships.create(role_mask: 1, board: Board.first)
-      user1.memberships.create(role_mask: 4, board: Board.last)
-
-      # associate two boards to the second user in reverse order
-      user2 = User.last
-      user2.memberships.create(role_mask: 4, board: Board.first)
-      user2.memberships.create(role_mask: 1, board: Board.last)
-    end
-
-    context &#39;first user&#39; do
-      let(:current_user) { User.first }
-
-      it &#39;returns the current user\&#39;s board\&#39;s membership role&#39; do
-        expect(current_user.boards.first.role).to eq :admin
-        expect(current_user.boards.last.role).to eq :member
-      end
-    end
-
-    context &#39;second user&#39; do
-      let(:current_user) { User.last }
-
-      it &#39;returns the current user\&#39;s board\&#39;s membership role&#39; do
-        expect(current_user.boards.first.role).to eq :member
-        expect(current_user.boards.last.role).to eq :admin
-      end
-    end
-
-  end
-end
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;And of course, as Milad&amp;rsquo;s comment (and the StackOverflow guy) says, the &lt;code&gt;:select&lt;/code&gt; hash is already deprecated in Rails 4 and you&amp;rsquo;d need to do use a lambda instead:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;has_many :boards,
-         -&amp;gt; { select &#39;boards.*, memberships.role_mask as role_mask&#39;},
-         :through =&amp;gt; :memberships
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Setup and Configuration of my Machines</title>
-      <link>http://life.beyondrails.com/blog/2014/08/03/setup-and-configuration-of-my-machines/</link>
-      <pubDate>Sun, 03 Aug 2014 00:00:00 UTC</pubDate>
-      
-      <guid>http://life.beyondrails.com/blog/2014/08/03/setup-and-configuration-of-my-machines/</guid>
-      <description>
-
-&lt;div class=&#34;info info&#34; data-title=&#34;Work In Progress&#34;&gt;
-  &lt;p&gt;I&amp;rsquo;m still in the middle of writing this article, and I probably will be always updating this.&lt;/p&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;I&amp;rsquo;ve just recently (re)installed Linux on my Acer V5 122p. Had to fiddle around with UEFI settings thinking to preserve my Windows 8.1 partition, but eventually I had to bite the bullet. I wiped the whole partition clean and turned off UEFI so my installation would be a lot simpler.&lt;/p&gt;
-
-&lt;p&gt;I ended up installing PeppermintOS which is a very lightweight distribution. After installing a few updates, the system was snappy and fast. I started to install the usual apps and configuration I normally use, when I realized I don&amp;rsquo;t have a document to use as a reference. I&amp;rsquo;ve been mostly doing stuff through memory and through Googling as soon as I encounter the problem or need.&lt;/p&gt;
-
-&lt;p&gt;Here&amp;rsquo;s the blogpost to rectify that, as well as give you a glimpse as to how I like my machine setup and configured :)&lt;/p&gt;
-
-&lt;h2 id=&#34;toc_0&#34;&gt;Setup natural scrolling&lt;/h2&gt;
-
-&lt;p&gt;Ever since I got my Macbook Air 2010 upgraded to Lion, I&amp;rsquo;ve been a fan of what Apple called &amp;ldquo;natural scrolling.&amp;rdquo;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.andybarratt.co.uk/lion-like-scrolling-on-ubuntu-inverse-scrolling-on-linux&#34;&gt;http://www.andybarratt.co.uk/lion-like-scrolling-on-ubuntu-inverse-scrolling-on-linux&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;toc_1&#34;&gt;Setup Sublime Text&lt;/h2&gt;
-
-&lt;p&gt;I know I should start learning Emacs, but Sublime Text (and before that, Textmate) had always been my editor of choice. That might change in the near future though :)&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.webupd8.org/20&#34;&gt;Ubuntu PPA&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;toc_2&#34;&gt;Sublime Text settings&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://sublime.wbond.net/installation&#34;&gt;Package control&lt;/a&gt;
-&amp;hellip;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;toc_3&#34;&gt;Key management&lt;/h2&gt;
-
-&lt;p&gt;Yes, I keep my private key in Dropbox. I know many people would say that this is a security risk (and it is) but the keys that I do keep in Dropbox are only those with access to non-critical remote systems that I own. I run some rtorrent download boxes as well as some application servers that I use for quickly testing out application ideas.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>API Documentation with Grape and Swagger</title>
-      <link>http://life.beyondrails.com/blog/2014/06/01/api-documentation-with-grape-and-swagger/</link>
-      <pubDate>Sun, 01 Jun 2014 00:00:00 UTC</pubDate>
-      
-      <guid>http://life.beyondrails.com/blog/2014/06/01/api-documentation-with-grape-and-swagger/</guid>
-      <description>
-
-&lt;div class=&#34;info info&#34; data-title=&#34;TL;DR&#34;&gt;
-  &lt;p&gt;Use Swagger and Grape to create self-documenting APIs that automatically update themselves from metadata in the code. It also provides an API explorer to play around with.&lt;/p&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;During the AngelHack KL event, I (being the backend developer of the team) had to create an API to facilitate communication between the iPhone app and Twilio. Since it was a hackathon, there was not a lot of time to completely hash out API protocols (as well as explaining to my team mates how RESTful APIs work).&lt;/p&gt;
-
-&lt;p&gt;I was able to solve this by using Grape and Swagger. I can develop the API at my own time. When a particular endpoint was finished, I can push to production and my team mate is immediately able to see the documentation. He was also able to make use of the API explorer to test out the API&amp;rsquo;s responses to his queries.&lt;/p&gt;
-
-&lt;p&gt;We were able to quickly develop the whole project quickly and easily because of this, and here&amp;rsquo;s a quick look at using Swagger with Grape.&lt;/p&gt;
+&lt;p&gt;But they’re not purely the domain of OOP&lt;/p&gt;
 
 &lt;hr /&gt;
 
-&lt;h3 id=&#34;toc_0&#34;&gt;Github Sample Application&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-023.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;I&amp;rsquo;ve made a sample application which you can refer to here: &lt;a href=&#34;https://github.com/parasquid/grape-swagger-sample-project&#34;&gt;https://github.com/parasquid/grape-swagger-sample-project&lt;/a&gt;. It was based off from another &lt;a href=&#34;http://funonrails.com/2014/03/building-restful-api-using-grape-in-rails/&#34;&gt;grape tutorial&lt;/a&gt; with modifications; see his page for a bit more information.&lt;/p&gt;
-
-&lt;p&gt;A few changes I&amp;rsquo;ve made are:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Instead of inheriting straight from Grape::API I instead opted to inherit from the API::V1::Root class. This allows me to easily put in common elements (such as the Swagger documentation mounts)&lt;/li&gt;
-&lt;li&gt;I&amp;rsquo;ve added some CORS headers&lt;/li&gt;
-&lt;li&gt;I&amp;rsquo;ve added in the swagger mount path&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;Here’s an example. what does a storage device, an input device, and a network socket have in common?&lt;/p&gt;
 
 &lt;hr /&gt;
 
-&lt;h3 id=&#34;toc_1&#34;&gt;Grape&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-024.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;The self-documenting ability of Grape with Swagger actually consists of three separate gems that work together to provide an endpoint for a UI to consume. The first of these is Grape:&lt;/p&gt;
+&lt;p&gt;Bonus points for whoever can tell me the reference in this picture.&lt;/p&gt;
+
+&lt;p&gt;From the Unix perspective, they’re all files.&lt;/p&gt;
+
+&lt;p&gt;Everything is a file&lt;/p&gt;
+
+&lt;p&gt;Well technically, everything is a file descriptor.&lt;/p&gt;
+
+&lt;p&gt;But have you ever wondered how is this possible? How can you have an operating system treating everything as if it’s a file when it&amp;rsquo;s obvious that an ethernet device isn&amp;rsquo;t a file?&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-025.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;There are generally five functions you need to implement if you want to write a device driver for a Unix system. There are more, but these five are the most common.&lt;/p&gt;
+
+&lt;p&gt;If you implement these (and note that returning nil is an implementation; just take a look at &lt;code&gt;/dev/null&lt;/code&gt;) then you conform to the file descriptor POSIX API specification.&lt;/p&gt;
+
+&lt;p&gt;That also means you get the benefits of getting treated just like every other file.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-026.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Or, just like what Tyler Durden from fight club says: you are not a beautiful or unique snowflake.&lt;/p&gt;
+
+&lt;p&gt;And that’s a good thing!&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-027.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;That means that you can use common tools to operate on different things.&lt;/p&gt;
+
+&lt;p&gt;Whether it’s a storage device, a network stream, or the keyboard circular buffer, you can use the common unix tools to operate on them&lt;/p&gt;
+
+&lt;p&gt;Even if you don’t care about whether the device responds—just use &lt;code&gt;/dev/null&lt;/code&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-028.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In this case, common tools operating on different things is the principle, polymorphism is the technique.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-029.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;You can also have encapsulation without oop&lt;/p&gt;
+
+&lt;p&gt;In fact, you’re using it all the time. when you open your browser and go to google.com you don’t really care about how google retrieved the search results; all you’re interested in is what the search results are.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-030.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In a sense, your only public interface is that of the search bar.&lt;/p&gt;
+
+&lt;p&gt;It represents the big, complicated machinery that is called google search, and presents it as something that can be easily understood.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-031.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;A more code related example: Let’s take a quick look at the calculator brain.&lt;/p&gt;
+
+&lt;p&gt;Notice how the Brain class only has a few exposed methods, out of which two are used in react: &lt;code&gt;display&lt;/code&gt;, &lt;code&gt;input_char&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Three if you count &lt;code&gt;new&lt;/code&gt; which creates an object out of the class.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-032.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Here’s the object that have its methods exposed.&lt;/p&gt;
+
+&lt;p&gt;This isn’t the best implementation of a calculator, but that’s okay. Notice that I can easily refactor or rewrite this entirely without severely affecting the UI framework.&lt;/p&gt;
+
+&lt;p&gt;Because the UI framework only know about a few very specific api calls, they don’t know a lot about how the brain operates. They are shielded from changes in the brain.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-033.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;That’s because this object has a very small surface area.&lt;/p&gt;
+
+&lt;p&gt;Note the distinction here. I didn’t say that the object was small - it really isn&amp;rsquo;t. I said that its surface area is small.&lt;/p&gt;
+
+&lt;p&gt;If you&amp;rsquo;ve ever encountered God objects in your code (hint: check all files in your code that end with &amp;ldquo;service&amp;rdquo;) then you know the problem very well. You have a very hard time debugging your application because it&amp;rsquo;s just so big and complex!&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-034.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Well. You see, the problem isn&amp;rsquo;t that those objects are too big.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-035.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;It’s because God objects are too fat (paraphrasing &lt;a href=&#34;http://2014.jsconf.eu/speakers/sebastian-markbage-minimal-api-surface-area-learning-patterns-instead-of-frameworks.html&#34;&gt;Sebastian Markbage&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;When your objects try to expose a lot of methods in its interface, the API surface area of your objects is too wide.&lt;/p&gt;
+
+&lt;p&gt;And that makes your app complex and difficult to manage because these APIs will get used, and you need to remember all of these things. You will have to memorize them and keep asking yourself: what connects to where?&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-036.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;So the principle here is information hiding, and the technique is encapsulation.&lt;/p&gt;
+
+&lt;p&gt;This concept allows you to represent something really big and complex with something small and simple by exposing a small surface api.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-037.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;But yeah, we all know about this already, right? Ruby is OOP, we use OOP all the time!&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-038.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s the thing: If you ask many programmers what OOP is about, they’ll just tell you it’s using objects to do stuff.&lt;/p&gt;
+
+&lt;p&gt;They’ll tell you that OOP is about programming with objects. It’s not, that’s just a tautology&amp;ndash;saying the same thing twice in different words.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-039.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;So no. It’s not just about programming with objects.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-040.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;It’s a different way of thinking about your code, where you tell an object what you want, instead of just storing and operating on data.&lt;/p&gt;
+
+&lt;p&gt;It is a method of organization.&lt;/p&gt;
+
+&lt;p&gt;And it’s just one of many.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-041.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Just like Functional, Prototype-based, Rails-way based, or a combination of these are. They are all ways to organize your program so you can more easily figure out how things are connected.&lt;/p&gt;
+
+&lt;p&gt;I think we&amp;rsquo;re doing ourselves a disservice by not going back to basics and experiencing for ourselves a whole new different way of writing our apps.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-042.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;If you want to write cross platform apps, you need to write reusable code.&lt;/p&gt;
+
+&lt;p&gt;Unfortunately, the Rails way of writing apps is not enough.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-043.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;That doesn’t mean that the Rails way is “wrong” or that we should stop using it because it “promotes bad habits”
+a framework is, after all, just a tool and it is up to the programmer to decide how to use it.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-044.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;DHH famously said that &lt;a href=&#34;http://david.heinemeierhansson.com/2012/rails-is-omakase.html&#34;&gt;Rails is Omakase&lt;/a&gt;, that he is the head chef that decides the experience that is Rails. And this arrangement has been great because Rails is an awesome framework that makes it really easy to make web applications.&lt;/p&gt;
+
+&lt;p&gt;And that is where we run into a problem with cross platform support; the Rails way is too web centric that it’s very difficult to reuse prior work for other platforms.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-045.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Does that mean we should just not use Rails or any other framework at all?&lt;/p&gt;
+
+&lt;p&gt;Not at all.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-046.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This is Kent Beck, he is the founder of Extreme Programming, the precursor to what we now call agile software development, and from where we get the scrum methodology.&lt;/p&gt;
+
+&lt;p&gt;One of his papers talked about connected and modular designs, and the Rails way falls quite near to the connected design model.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-047.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Here’s what &lt;a href=&#34;https://gist.github.com/parasquid/efa7a516913769726b32e768f673f31a#design-for-latency&#34;&gt;he said&lt;/a&gt;:&lt;/p&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;Grape is a REST-like API micro-framework for Ruby. It&amp;rsquo;s designed to run on Rack or complement existing web application frameworks such as Rails and Sinatra by providing a simple DSL to easily develop RESTful APIs. It has built-in support for common conventions, including multiple formats, subdomain/prefix restriction, content negotiation, versioning and much more.&lt;/p&gt;
+&lt;p&gt;In a connected system, elements are highly available to each other (via global state, for example). Adding the first feature to a connected system is cheap. All the resources you need are available. However, the cost of all those connections is that subsequent features are very likely to interact with previous features, driving up the cost of development over time.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;There was a lightning talk at Red Dot Ruby Conf 2014 as well:&lt;/p&gt;
+&lt;p&gt;This is one of the reasons why Rails apps can be built so fast. I join hackathons, and I always use Rails because it’s really so easy to just build features because I have access to everything.&lt;/p&gt;
 
-&lt;div class=&#34;youtube-player&#34;&gt;
-&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;http://www.youtube.com/embed/lNXa-fjTroE&#34; frameborder=&#34;0&#34; allowfullscreen&gt;&lt;/iframe&gt;
-&lt;/div&gt;
+&lt;p&gt;It’s one of the reasons why bootcamps and one day tutorials can show people the power of programming—because producing a usable output is so easy.&lt;/p&gt;
 
 &lt;hr /&gt;
 
-&lt;h3 id=&#34;toc_2&#34;&gt;Grape Swagger&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-048.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;The &lt;a href=&#34;https://github.com/tim-vandecasteele/grape-swagger&#34;&gt;grape-swagger project&lt;/a&gt; has comprehensive instructions on enabling swagger for your Grape API; it&amp;rsquo;s really a no-brainer.&lt;/p&gt;
+&lt;p&gt;Here’s the next thing &lt;a href=&#34;https://gist.github.com/parasquid/efa7a516913769726b32e768f673f31a#design-for-latency&#34;&gt;he said&lt;/a&gt;:&lt;/p&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;The grape-swagger gem provides an autogenerated documentation for your Grape API. The generated documentation is Swagger-compliant, meaning it can easily be discovered in Swagger UI.&lt;/p&gt;
+&lt;p&gt;A modular design has connections deliberately kept to a minimum. The cost for the first feature is likely to be higher than in the connected system, because you need to find the necessary resources and bring them together, possibly re-modularizing in the process. Features are much less likely to interact in a modular system, though, leading to a steady stream of features at relatively constant cost.&lt;/p&gt;
 &lt;/blockquote&gt;
+
+&lt;p&gt;And so we have a problem.&lt;/p&gt;
+
+&lt;p&gt;A mature system benefits from a modular design. We know about the &lt;a href=&#34;https://docs.spring.io/spring/docs/2.5.x/javadoc-api/org/springframework/aop/framework/AbstractSingletonProxyFactoryBean.html&#34;&gt;Abstract Singleton Proxy Factory Bean&lt;/a&gt; jokes in java, but the reason why there’s a lot of code monkeys in enterprise application development is because the modular design allows easy distribution of work.&lt;/p&gt;
 
 &lt;hr /&gt;
 
-&lt;h3 id=&#34;toc_3&#34;&gt;Swagger UI&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-049.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/tim-vandecasteele/grape-swagger/master/test/splines.png&#34; alt=&#34;Swagger UI Screenshot&#34; /&gt;
+&lt;p&gt;The issue is that it’s so costly to start modular, because there&amp;rsquo;s a lot of code and thought investment needed.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-050.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The advice then, is not to ditch connected designs. Kent Beck recommends to stay on the connected curve until the climb phase, then switch to the modular curve.&lt;/p&gt;
+
+&lt;p&gt;How do you know when the climb phase begins? That’s when experience comes in.&lt;/p&gt;
+
+&lt;p&gt;How would you even know what to switch to if you’re not familiar with how modular designs look like?&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-051.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We need to find that knowledge to organize your code as if it was a USB cable.&lt;/p&gt;
+
+&lt;p&gt;That would be really cool.&lt;/p&gt;
+
+&lt;p&gt;If you wanted to swap the UI, all you needed to do is to write the UI layer for that framework.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-052.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;It would look something like this&lt;/p&gt;
+
+&lt;p&gt;[request-response] Rails &amp;ndash; App&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-053.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;[streaming] Telnet/Websockets &amp;ndash; App&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-054.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;[mobile] RubyMotion &amp;ndash; App&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-055.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;[browser] Opal &amp;ndash; App&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-056.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;[hardware] mRuby &amp;ndash; App&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-057.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The rails way is what we&amp;rsquo;re familiar with.&lt;/p&gt;
+
+&lt;p&gt;Many of us started learning ruby because of rails. I got reintroduced to ruby because Mindvalley uses rails.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-058.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;But my point is, that it’s not the only code-organization technique out there.&lt;/p&gt;
+
+&lt;p&gt;And we haven’t been seeking them out.&lt;/p&gt;
+
+&lt;p&gt;Have you tried any of these? Have you tried to at least deviate a little bit from the Rails way?&lt;/p&gt;
+
+&lt;p&gt;Here you have a command-query separation by Bertrand Meyer, here you have event sourcing which says that all changes to an application state should be stored as a sequence of events, and here we have the DCI paradigm which builds on top of OOP.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-059.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Our industry is still young, but is now mature enough to recognize that there are many different ways to skin a cat.&lt;/p&gt;
+
+&lt;p&gt;These are just a few presentations tackling a different face of the same issue: we are too web centric because the Rails way makes it easy to write web applications&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-060.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Tightly coupling with the rails framework works great if you want to create apps that are similar to Basecamp, you’re targeting web only, and you know that&amp;rsquo;s the final iteration of your product.&lt;/p&gt;
+
+&lt;p&gt;But sometimes, your app is far out different from basecamp.&lt;/p&gt;
+
+&lt;p&gt;If you are planning to reuse a significant portion of your code across platforms, the rails way is not enough. But more importantly, it’s not the only organizational technique available to you.&lt;/p&gt;
+
+&lt;p&gt;I think that as programmers, we need to start looking beyond what we’re comfortable with, and start rediscovering solutions to problems that have been solved by other disciplines.&lt;/p&gt;
+
+&lt;p&gt;But if you had only one idea to take home with you, let it be this: that programming is fundamentally an activity by humans, for humans.&lt;/p&gt;
+
+&lt;p&gt;Many people think that programming equals coding, and that’s really disappointing. That’s just scratching the surface, because programming is more than that.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-065.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Programming is the act of managing complexity.&lt;/p&gt;
+
+&lt;p&gt;We often make the mistake of thinking that we&amp;rsquo;re programming for the computer. No, your computer won&amp;rsquo;t run your program faster solely because you used a well designed architecture.&lt;/p&gt;
+
+&lt;p&gt;But YOU will be faster, because your wonderful but still limited brain can now comprehend the relationships in the code.&lt;/p&gt;
+
+&lt;p&gt;By organizing our code and designing it so it’s easy to understand, we free our brains and give it space to think about the stuff that really matters: what is your app supposed to do?&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-066.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;When you start focusing on that question, and start expanding your toolbox, you end up with more flexible, maintainable, and reusable code.&lt;/p&gt;
+
+&lt;p&gt;And that’s it. That’s the answer. That&amp;rsquo;s how you write cross platform apps.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://s3-ap-southeast-1.amazonaws.com/hackworkplay-assets/rubyconfkl2016-page-067.resized.jpg&#34; alt=&#34;Life Beyond Rails&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m Tristan, and I&amp;rsquo;m the Chief Problem Solver at Mindvalley. You can find me on facebook and github @parasquid&lt;/p&gt;
+
+&lt;p&gt;Thank you&lt;/p&gt;
+
+&lt;p&gt;Slideshare link: &lt;a href=&#34;http://www.slideshare.net/parasquid/life-beyond-rails-creating-cross-platform-ruby-apps&#34;&gt;http://www.slideshare.net/parasquid/life-beyond-rails-creating-cross-platform-ruby-apps&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Featured Pattern: Rescue, Log, Rethrow</title>
+      <link>http://life.beyondrails.com/blog/2016/07/15/featured-pattern-rescue-log-rethrow/</link>
+      <pubDate>Fri, 15 Jul 2016 15:16:02 +0800</pubDate>
+      
+      <guid>http://life.beyondrails.com/blog/2016/07/15/featured-pattern-rescue-log-rethrow/</guid>
+      <description>&lt;p&gt;Whenever you use a method that you know might throw an exception but shouldn&amp;rsquo;t, the rescue-log-rethrow pattern is useful to figure out what happened while preserving the contracts implied in the code.
 &lt;/p&gt;
 
-&lt;p&gt;After making sure that Grape has a swagger json endpoint, &lt;a href=&#34;https://github.com/wordnik/swagger-ui&#34;&gt;Swagger UI&lt;/a&gt; gives you two awesome abilities:&lt;/p&gt;
+&lt;p&gt;For example, we were recently investigating a payload from our ecommerce provider that is throwing a &lt;code&gt;KeyError&lt;/code&gt; exception. Official documentation doesn&amp;rsquo;t provide any information about this, so we had to break out the debugger&amp;rsquo;s favorite tool: the logger.&lt;/p&gt;
 
-&lt;ul&gt;
-&lt;li&gt;it consumes the swagger documentation and presents it in a human-readable format&lt;/li&gt;
-&lt;li&gt;it provides an API explorer&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;Here&amp;rsquo;s the original method:&lt;/p&gt;
 
-&lt;p&gt;It was the API explorer that hooked me into investing time and effort into experimenting with grape and swagger, and it&amp;rsquo;s been really helpful with team communication.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;def initialize(account_id, api_response)
+  @account_id = account_id
+  @signature = api_response.fetch(&amp;quot;signature&amp;quot;)
+  @token = api_response.fetch(&amp;quot;token&amp;quot;)
+  @key = api_response.fetch(&amp;quot;key&amp;quot;)
+end
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;hr /&gt;
+&lt;p&gt;For some reason we were getting a 500 error and looking at the available logs:&lt;/p&gt;
 
-&lt;h3 id=&#34;toc_4&#34;&gt;Further Reading&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;status=500 error=&#39;KeyError: key not found: &amp;quot;signature&amp;quot;&#39;
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://intridea.github.io/grape/docs/index.html&#34;&gt;http://intridea.github.io/grape/docs/index.html&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://intridea.github.io/grape/&#34;&gt;http://intridea.github.io/grape/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://confreaks.com/videos/3848-rdrc2014-lightning-talks-building-rest-api-with-grape&#34;&gt;http://confreaks.com/videos/3848-rdrc2014-lightning-talks-building-rest-api-with-grape&lt;/a&gt; A lightning talk about Grape from the 2014 Red Dot Ruby Conference in Singapore&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/tim-vandecasteele/grape-swagger&#34;&gt;https://github.com/tim-vandecasteele/grape-swagger&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://bitboxer.de/2014/02/09/grape/&#34;&gt;http://bitboxer.de/2014/02/09/grape/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://funonrails.com/2014/03/building-restful-api-using-grape-in-rails/&#34;&gt;http://funonrails.com/&lt;sup&gt;2014&lt;/sup&gt;&amp;frasl;&lt;sub&gt;03&lt;/sub&gt;/building-restful-api-using-grape-in-rails/&lt;/a&gt; A more in-depth tour of how to build a restful API using Grape and mounting it in Rails&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://codetunes.com/2014/grape-part-II/&#34;&gt;http://codetunes.com/2014/grape-part-II/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+&lt;p&gt;Here&amp;rsquo;s the &lt;code&gt;rescue-log-rethrow&lt;/code&gt; pattern in action:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;def initialize(account_id, api_response)
+  @account_id = account_id,
+  begin
+    @signature = api_response.fetch(&amp;quot;signature&amp;quot;)
+    @token = api_response.fetch(&amp;quot;token&amp;quot;)
+    @key = api_response.fetch(&amp;quot;key&amp;quot;)
+  rescue KeyError =&amp;gt; e
+    logger.error &amp;quot;response does not have the required key: #{response.inspect}&amp;quot;
+    raise e
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In the end we found out that one of the environment variables necessary for connecting to the ecommerce platform was misconfigured and had to be properly set.&lt;/p&gt;
+
+&lt;p&gt;Rethrowing the exception is important, because the original intention of the code was to enforce the contract that none of these keys should be &lt;code&gt;nil&lt;/code&gt; (hence the &lt;code&gt;#fetch&lt;/code&gt; method).&lt;/p&gt;
+
+&lt;p&gt;Never swallow exceptions! Yes, even if you&amp;rsquo;re logging them anyway. If the exception wasn&amp;rsquo;t rethrown, it is possible that a response missing one of the necessary keys will trigger the rescue block and log the message. However, the object now has an undefined state. An object with an undefined state is a recipe for long hours debugging and trying to figure out where the bug might be hiding.&lt;/p&gt;
+
+&lt;p&gt;Immediately rethrowing the exception after logging allows you to keep the context of the exception closer to its origin. This makes it so much easier to trace where the possible bug might have come from.&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>Ruby and Blocks</title>
-      <link>http://life.beyondrails.com/blog/2014/03/04/ruby-and-blocks/</link>
-      <pubDate>Tue, 04 Mar 2014 00:00:00 UTC</pubDate>
+      <title>TDD and the Scientific Method</title>
+      <link>http://life.beyondrails.com/blog/2016/06/02/tdd-and-the-scientific-method/</link>
+      <pubDate>Thu, 02 Jun 2016 16:57:36 +0300</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2014/03/04/ruby-and-blocks/</guid>
-      <description>
+      <guid>http://life.beyondrails.com/blog/2016/06/02/tdd-and-the-scientific-method/</guid>
+      <description>&lt;p&gt;TDD&amp;rsquo;s mantra is the following: Red, Green, Refactor. In other words: write a failing test, write code to make the test fast, and then make the code better (having the test as a safety net).
+&lt;/p&gt;
 
-&lt;p&gt;One of the most often used and ironically least understood concepts in the Ruby programming language is the block. If you&amp;rsquo;ve used one of the Enumerable mixed-in objects, you&amp;rsquo;ve encountered the block syntax.&lt;/p&gt;
-
-&lt;p&gt;For example:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;array = [1, 2, 3, 4, 5]
-
-# returns all the odd numbers of the array
-array.delete_if { |e| e.even? }
-
-#  =&amp;gt; [1, 3, 5]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Or the more common:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;array = [1, 2, 3, 4, 5]
-
-# prints out all of the array&#39;s elements
-array.each do |element|
-  puts element
-end
-
-# 1
-# 2
-# 3
-# 4
-# 5
-#  =&amp;gt; [1, 2, 3, 4, 5]    
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Ruby blocks also enable a lot of the functional programming DSL such as:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;array = [1, 2, 3, 4, 5]
-
-# returns the sum of the squares of each element of the array
-array.map { |e| e ** 2 }.reduce(:+)
-
-#  =&amp;gt; 55
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Robert Sosinski has written a really awesome &lt;a href=&#34;http://www.robertsosinski.com/2008/12/21/understanding-ruby-blocks-procs-and-lambdas/&#34;&gt;tutorial&lt;/a&gt; about ruby blocks and I&amp;rsquo;m encouraging you to go through it.&lt;/p&gt;
-
-&lt;p&gt;All of these however are just skimming over the power of blocks. Sure, they&amp;rsquo;re good for eye candy &amp;ndash; we won&amp;rsquo;t be able to use such an elegant looping syntax without the use of blocks, but it&amp;rsquo;s not just another way to loop over a collection!&lt;/p&gt;
-
-&lt;p&gt;In fact, blocks (and its related concepts Procs and lambdas) enable a very important programming concept: &lt;a href=&#34;http://en.wikipedia.org/wiki/Loose_coupling&#34;&gt;loose coupling.&lt;/a&gt; For instance, suppose you do:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;def print_name
-  puts &amp;quot;Hello there. I&#39;ve got your name:&amp;quot;
-  yield
-end
-
-print_name do
-  puts &amp;quot;Tristan&amp;quot;
-end
-
-# Hello there. I&#39;ve got your name:
-# Tristan
-#  =&amp;gt; nil
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;I could just have as easily done this:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;def print_name(name)
-  puts &amp;quot;Hello there. I&#39;ve got your name:&amp;quot;
-  puts name
-end
-
-print_name(&amp;quot;Tristan&amp;quot;)
-
-# Hello there. I&#39;ve got your name:
-# Tristan
-#  =&amp;gt; nil
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Which does exactly the same thing.&lt;/p&gt;
-
-&lt;p&gt;Well not exactly, because with the second example, the method explicitly defined that the name be printed out to STDOUT whereas in the first example, I could have done:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;print_name do
-  File.open(local_filename, &#39;w&#39;) {|f| f.write(name) }
-end
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Which writes the name into a file. I could have just as easily logged it using &lt;code&gt;Rails.logger&lt;/code&gt;, or sent it over a TCP Socket, or save it in a database entry (granted &lt;code&gt;print_name&lt;/code&gt; is a bad method name for this purpose, but hey &amp;ndash; with great power comes great responsibility).&lt;/p&gt;
-
-&lt;p&gt;Rob Sobers had an epiphany that many people seeking to understand blocks have had. As mentioned in Rob&amp;rsquo;s &lt;a href=&#34;http://robsobers.com/struggle-ruby-blocks/&#34;&gt;article&lt;/a&gt;, you are an active participant in the method you&amp;rsquo;re calling. The method is basically doing a cop-out and telling you &amp;ldquo;hey, I&amp;rsquo;m gonna do this and this but I&amp;rsquo;m giving you the option to also do something else while I&amp;rsquo;m doing that (which I heavily encourage you to do so because you&amp;rsquo;re actually doing the heavy lifting)&amp;rdquo;&lt;/p&gt;
-
-&lt;p&gt;This allows you to be quite flexible when you&amp;rsquo;re writing reusable code or libraries, of which you don&amp;rsquo;t really know (or care) what the client code would do. That&amp;rsquo;s the case for the &lt;a href=&#34;https://github.com/parasquid/snoopka&#34;&gt;Snoopka Gem&lt;/a&gt; I wrote, which does the work of connecting to a Kafka stream but defers the processing of the messages to client code.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;puts &#39;Starting the Kafka listener&#39;
-
-listener = Snoopka::Listener.new host: &amp;quot;localhost&amp;quot;, port: 9092
-
-handler = Handler.new
-listener.add_observer &#39;test&#39;, &amp;amp;handler
-# or alternatively you can also do
-#
-# listener.add_observer &#39;test&#39; do |message|
-#   puts &amp;quot;your handler code here&amp;quot;
-#   puts message
-# end
-
-loop do
-  listener.consume
-end
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Here is another neat way to use blocks in your code. Have you ever written a migration script or Rakefile and you wanted to know how long it will take at a particular point in time? There&amp;rsquo;s this gem called &lt;a href=&#34;https://github.com/jfelchner/ruby-progressbar&#34;&gt;ProgressBar&lt;/a&gt; that does exactly that. I&amp;rsquo;ll show you how to make your task so that it will pipe in information to ProgressBar in order for it to display cool stuff.&lt;/p&gt;
-
-&lt;p&gt;This code is, by the way, lifted from production code (of course the implementation details have been mocked out; tangentially, the ability to mock things out is one side-effect of good programming design, but that&amp;rsquo;s a topic for another day):&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;# tasks/migration.rb
-module Tasks
-  class Migration
-    def self.migrate_all(offset=0,limit=(Tasks::Lead.count - offset))
-      Tasks::Lead.offsetted_entries.each do |lead|
-        migrate_lead(lead)
-        yield lead if block_given?
-      end
-    end
-
-    def self.migrate_lead(m_lead)
-      # mocked response
-      # originally copied over the lead from MongoDB to Postgres
-      sleep(rand(1..200)/100)
-    end
-  end
-end
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;# tasks/lead.rb
-module Tasks
-  class Lead
-    def self.count
-      offsetted_entries.count
-    end
-
-    def self.offsetted_entries(skip=0, offset=0)
-      # mocked response
-      # originally returns leads from the database with a particular
-      # skip and offset
-      return 1..100
-    end
-  end
-end
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;# Rakefile
-namespace :migrations do
-  desc &#39;migrate entries from old mongodb database to postgresql&#39;
-  task :migrate_from_mongodb_to_postgres =&amp;gt; :environment do
-    progress = ProgressBar.create title: &#39;Leads&#39;,
-      total: Tasks::Lead.count,
-      :format =&amp;gt; &#39;%a |%b&amp;gt;&amp;gt;%i| %p%% %t %c of %C %e&#39;
-      
-    Tasks::Migration.migrate_all { progress.increment }
-
-    progress.finish
-  end
-end
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;You can also get this code from &lt;a href=&#34;https://github.com/mindvalley/code_kata&#34;&gt;github&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Blocks are Ruby constructs that provide a very clean and elegant way to provide flexibility to your code. Do you have any other ideas on how to improve your code using blocks?&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&#34;toc_0&#34;&gt;Updates&lt;/h3&gt;
-
-&lt;p&gt;I presented this topic to the KL Ruby Brigade meetup in Kuala Lumpur, Malaysia. There have been a few questions after the presentation and I&amp;rsquo;ll try to address them here:&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Q: What&amp;rsquo;s the difference between a block and a Proc?&lt;/p&gt;
-
-&lt;p&gt;A: I think &lt;a href=&#34;http://www.robertsosinski.com/2008/12/21/understanding-ruby-blocks-procs-and-lambdas/&#34;&gt;Robert&lt;/a&gt; will explain this a lot more comprehensively. In a nutshell: a block and a Proc are conceptually similar but a Proc gives you a handle that allows you to reuse the block later on, whereas a block is similar to an anonymous function in Java or C# (you define them inline and you can&amp;rsquo;t refer to them again later on).&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Q: What&amp;rsquo;s the difference between the &lt;code&gt;{}&lt;/code&gt; syntax and the &lt;code&gt;do...end&lt;/code&gt; syntax?&lt;/p&gt;
-
-&lt;p&gt;A: This has bitten me and many of my colleagues, and the answer has to do with binding precedence. This &lt;a href=&#34;http://stackoverflow.com/a/5587399&#34;&gt;Stackoverflow answer&lt;/a&gt; can give you more details. In a nutshell, the &lt;code&gt;{}&lt;/code&gt; syntax binds strongly; that means without parentheses it will bind to the last parameter (in a multi-parameter method) whereas the &lt;code&gt;do...end&lt;/code&gt; syntax will always bind to the invocation.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&#34;toc_1&#34;&gt;Further Reading&lt;/h3&gt;
+&lt;p&gt;Comparatively, here are the steps of the Scientific Method:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.robertsosinski.com/2008/12/21/understanding-ruby-blocks-procs-and-lambdas/&#34;&gt;http://www.robertsosinski.com/2008/12/21/understanding-ruby-blocks-procs-and-lambdas/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://stackoverflow.com/questions/4911353/best-explanation-of-ruby-blocks&#34;&gt;http://stackoverflow.com/questions/4911353/best-explanation-of-ruby-blocks&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://en.wikipedia.org/wiki/Loose_coupling&#34;&gt;http://en.wikipedia.org/wiki/Loose_coupling&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://robsobers.com/struggle-ruby-blocks/&#34;&gt;http://robsobers.com/struggle-ruby-blocks/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/jfelchner/ruby-progressbar&#34;&gt;https://github.com/jfelchner/ruby-progressbar&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/mindvalley/code_kata&#34;&gt;https://github.com/mindvalley/code_kata&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/parasquid/snoopka&#34;&gt;https://github.com/parasquid/snoopka&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://stackoverflow.com/a/5587399&#34;&gt;http://stackoverflow.com/a/5587399&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Ask a Question&lt;/li&gt;
+&lt;li&gt;Do Background Research&lt;/li&gt;
+&lt;li&gt;Construct a Hypothesis&lt;/li&gt;
+&lt;li&gt;Test Your Hypothesis by Doing an Experiment&lt;/li&gt;
+&lt;li&gt;Analyze Your Data and Draw a Conclusion&lt;/li&gt;
+&lt;li&gt;Communicate Your Results&lt;/li&gt;
 &lt;/ul&gt;
-</description>
+
+&lt;p&gt;There are many parallels between these two disciplines.&lt;/p&gt;
+
+&lt;p&gt;Writing a failing test can be compared to asking a question: &amp;ldquo;can my application do this?&amp;rdquo; with the constructed hypothesis being that &amp;ldquo;no, the application can&amp;rsquo;t do this yet&amp;rdquo; (if it can, we just skip to the next iteration).&lt;/p&gt;
+
+&lt;p&gt;Writing the code to satisfy a test can be compared to doing the experiment to confirm the hypothesis.&lt;/p&gt;
+
+&lt;p&gt;Refactoring can be compared to drawing a conclusion and summarizing your results. Based on what you&amp;rsquo;ve learned on the behavior of the application, you can rearrange the code so it tells a much better story of the intention of the application.&lt;/p&gt;
+
+&lt;p&gt;Of course, it&amp;rsquo;s not an exact parallel. You&amp;rsquo;d be scorned in the scientific community for filtering data and only using those that advance your hypothesis (see &lt;a href=&#34;https://en.wikipedia.org/wiki/Confirmation_bias#Wason.27s_research_on_hypothesis-testing&#34;&gt;Confirmation Bias&lt;/a&gt;) but otherwise, the similarities are striking.&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>Install ruby-2.0.0-p195 on Ubuntu 12.04</title>
-      <link>http://life.beyondrails.com/blog/2013/06/08/install-ruby-2.0.0-p195-on-ubuntu-12.04/</link>
-      <pubDate>Sat, 08 Jun 2013 00:00:00 UTC</pubDate>
+      <title>Featured Refactoring: Extract Method</title>
+      <link>http://life.beyondrails.com/blog/2016/04/25/featured-refactoring-extract-method/</link>
+      <pubDate>Mon, 25 Apr 2016 13:55:34 +0800</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2013/06/08/install-ruby-2.0.0-p195-on-ubuntu-12.04/</guid>
-      <description>&lt;p&gt;It&amp;rsquo;s always easier to deal with a ruby binary that&amp;rsquo;s installed server-wide rather than a local user installation (done via &lt;a href=&#34;http://rvm.io/&#34;&gt;rvm&lt;/a&gt; or &lt;a href=&#34;http://rbenv.org/&#34;&gt;rbenv&lt;/a&gt;). Server initialization scripts don&amp;rsquo;t need to do path magic and profile sourcing in order to find the correct binary. Here I how to install ruby-2.0.0-p195 in a way that your system administrator will love you for.&lt;/p&gt;
+      <guid>http://life.beyondrails.com/blog/2016/04/25/featured-refactoring-extract-method/</guid>
+      <description>&lt;p&gt;I work with &lt;a href=&#34;http://www.mindvalley.com&#34;&gt;really awesome people who do really amazing work&lt;/a&gt;. I came upon this commit recently while I was reviewing a pull request, and I thought I&amp;rsquo;d share them with you.&lt;/p&gt;
 
-&lt;p&gt;System administrators maintain their servers like they would maintain a well-tended garden: clean, organized, and everything in its place. It&amp;rsquo;s no surprise then that when we developers start compiling &amp;ldquo;stuff&amp;rdquo; left and right, our sysadmins get annoyed out of their minds.&lt;/p&gt;
+&lt;p&gt;Note that some of the information on the diff presented here has been redacted or removed, due to it being proprietary. But the full idea of the refactoring is present.
+&lt;/p&gt;
 
-&lt;p&gt;There is a common ground though, and that&amp;rsquo;s through using &lt;a href=&#34;https://help.ubuntu.com/community/CheckInstall&#34;&gt;checkinstall&lt;/a&gt;. This allows us to:&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s the diff:&lt;/p&gt;
 
-&lt;ul&gt;
-&lt;li&gt;compile the ruby binary that we want (even the latest and greatest)&lt;/li&gt;
-&lt;li&gt;allow the sysadmin to remove the package using the distro&amp;rsquo;s package manager&lt;/li&gt;
-&lt;li&gt;allows a &amp;ldquo;one-build-multiple-deploy&amp;rdquo; scenario where the binary used for a server can simply be copied over and installed at a similarly configured server (think staging to production deploys)&lt;/li&gt;
-&lt;li&gt;simplifies &lt;code&gt;init.d&lt;/code&gt; and other capistrano tasks by not having to remember to source the correct &lt;code&gt;.profile&lt;/code&gt; to find the correct ruby binary&lt;/li&gt;
-&lt;li&gt;sidesteps the &lt;code&gt;rvm&lt;/code&gt; vs &lt;code&gt;rbenv&lt;/code&gt; argument by allowing the developers to choose whatever they want to use on their local, but the ruby version is standardized in production&lt;/li&gt;
-&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-diff&#34;&gt;From: Wei Lih Loh &amp;lt;willie@mindvalley.com&amp;gt;
+Date: Mon, 25 Apr 2016 11:34:01 +0800
+Subject: [PATCH] better naming &amp;amp; break into smaller method
 
-&lt;p&gt;For the impatient, it&amp;rsquo;s as easy as copy-pasting this line in your terminal:&lt;/p&gt;
+---
+ app/support/apis/awesome_commerce.rb       | 39 ++++++++++++++--------------
+ spec/support/apis/awesome_commerce_spec.rb | 41 ++++++++++++++++++++----------
+ 2 files changed, 47 insertions(+), 33 deletions(-)
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;curl -Lo- https://gist.github.com/parasquid/5624732/raw/install-ruby-2-ubuntu.sh | bash
+diff --git a/app/support/apis/awesome_commerce.rb b/app/support/apis/awesome_commerce.rb
+index 61be997..6ea162b 100644
+--- a/app/support/apis/awesome_commerce.rb
++++ b/app/support/apis/awesome_commerce.rb
+@@ -1,30 +1,16 @@
+ module Apis
+   class AwesomeCommerce
+
+     def get_payment_history_from_email(email)
+-      order_ids = get_order_ids_from_email(email)
+       payments = []
+
+-      order_ids.each do |order_id|
+-        order = order(number: order_id)
++      order_numbers(email: email).each do |order_number|
++        order = order(number: order_number)
+
+         payments += order[&#39;order_lines&#39;].map do |order_line|
+           next if order_line[&#39;state&#39;] == &#39;migrated_to_zuora&#39;
+-
+-          amount =  &amp;quot;#{order_line[&#39;amount_currency&#39;]}$&amp;quot;
+-          amount += &amp;quot;#{(order_line[&#39;amount_paid&#39;] / 100.0).round}&amp;quot;
+-          date = order_line[&#39;created_at&#39;].to_date.try(:strftime, &#39;%e %b %Y&#39;)
+-
+-          {
+-            amount:         amount,
+-            payment_date:   date,
+-            product_order:  order_id,
+-            product_name:   order_line.dig(&#39;bundle&#39;, &#39;name&#39;),
+-            billing_method: nil, #todo no awc api for this yet
+-            receipt_url:    nil  #todo no such feature in awc
+-          }
++          summarize_order_line(order_number, order_line)
+         end
+       end
+       payments
+@@ -42,9 +28,24 @@ module Apis
+       JSON.parse(payload.body)
+     end
+
+-    def get_order_ids_from_email(email)
++    def order_numbers(email:)
+       payload = from_customer(email: email)
+       payload[&#39;orders&#39;].map { |order| order[&#39;number&#39;] }
+     end
++
++    def summarize_order_line(order_number, order_line)
++      amount =  &amp;quot;#{order_line[&#39;amount_currency&#39;]}$&amp;quot;
++      amount += &amp;quot;#{(order_line[&#39;amount_paid&#39;] / 100.0).round}&amp;quot;
++      date = order_line[&#39;created_at&#39;].to_date.try(:strftime, &#39;%e %b %Y&#39;)
++
++      {
++        amount:         amount,
++        payment_date:   date,
++        product_order:  order_number,
++        product_name:   order_line.dig(&#39;bundle&#39;, &#39;name&#39;),
++        billing_method: nil, #todo no awc api for this yet
++        receipt_url:    nil  #todo no such feature in awc
++      }
++    end
+   end
+ end
+diff --git a/spec/support/apis/awesome_commerce_spec.rb b/spec/support/apis/awesome_commerce_spec.rb
+index b663eed..16bb4c1 100644
+--- a/spec/support/apis/awesome_commerce_spec.rb
++++ b/spec/support/apis/awesome_commerce_spec.rb
+@@ -4,6 +4,8 @@ require &#39;active_support/core_ext/hash&#39;
+
+ describe Apis::AwesomeCommerce do
+   Given(:klass) { Apis::AwesomeCommerce }
++  Given(:instance) { klass.new }
++  Given(:customer_email) { &#39;john@example.com&#39; }
+   before do
+     stub_const(&#39;AWC_CLIENT&#39;,
+       Faraday.new(url: &#39;redacted&#39;)
+@@ -288,8 +290,6 @@ describe Apis::AwesomeCommerce do
+   end
+
+-  describe &#39;#get_order_ids_from_email&#39; do
+-    Given(:instance) { klass.new }
+-    Given(:customer_email) { &#39;john@example.com&#39; }
+-
++  describe &#39;#order_numbers&#39; do
+     Given do
+       allow_any_instance_of(klass).to(
+         receive(:from_customer).with(email: customer_email)
+@@ -337,15 +334,31 @@ describe Apis::AwesomeCommerce do
+       )
+     end
+
+-    When(:result) { instance.send(:get_order_ids_from_email, customer_email) }
++    When(:result) { instance.send(:order_numbers, email: customer_email) }
+
+     Then { result == [&#39;redacted&#39;] }
+   end
+
++  describe &#39;#summarize_order_line&#39; do
++    Given(:order_number) { &#39;redacted&#39; }
++    Given(:order_line) { JSON.parse(order_payload).dig(&#39;order_lines&#39;, 0) }
++    Given(:amount_paid) { (order_line[&#39;amount_paid&#39;] / 100.0).round }
++
++    When(:payment_summary) do
++      instance.summarize_order_line(order_number, order_line)
++    end
++
++    Then { payment_summary[:amount] =~ /^#{order_line[&#39;amount_currency&#39;]}/ }
++    Then { payment_summary[:amount] =~ /#{amount_paid}$/ }
++    Then { payment_summary[:payment_date].to_date.kind_of? Date }
++    Then { payment_summary[:product_order] == order_number }
++    Then { payment_summary[:product_name] == order_line.dig(&#39;bundle&#39;, &#39;name&#39;) }
++    Then { payment_summary.keys.include?(:billing_method) }
++    Then { payment_summary.keys.include?(:receipt_url) }
++  end
+
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;div class=&#34;info warning&#34; data-title=&#34;Caveat&#34;&gt;
-  &lt;p&gt;My preferred deployment environment uses passwordless login through SSH keys; you might need to run this script as root. Your mileage may vary depending on how different your environment is from mine.&lt;/p&gt;
+&lt;p&gt;There are a couple of things are going on here:&lt;/p&gt;
 
+&lt;h3 id=&#34;inline-method-http-refactoring-com-catalog-inlinemethod-html&#34;&gt;Inline method (&lt;a href=&#34;http://refactoring.com/catalog/inlineMethod.html&#34;&gt;http://refactoring.com/catalog/inlineMethod.html&lt;/a&gt;)&lt;/h3&gt;
+
+&lt;p&gt;Take a look at this section of the diff:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;-      order_ids = get_order_ids_from_email(email)
+       payments = []
+
+-      order_ids.each do |order_id|
+-        order = order(number: order_id)
++      order_numbers(email: email).each do |order_number|
++        order = order(number: order_number)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can see that instead of creating a new variable to get order numbers from an email (which feels very procedural) he instead iterated over the results of the method call itself, as if it&amp;rsquo;s just another variable.&lt;/p&gt;
+
+&lt;p&gt;When you have very descriptive method names, inlining like this can actually add to the expressiveness of your code.&lt;/p&gt;
+
+&lt;h3 id=&#34;extract-method-http-refactoring-com-catalog-extractmethod-html&#34;&gt;Extract method (&lt;a href=&#34;http://refactoring.com/catalog/extractMethod.html&#34;&gt;http://refactoring.com/catalog/extractMethod.html&lt;/a&gt;)&lt;/h3&gt;
+
+&lt;p&gt;In this case, the operations inside the loop were taken out of the loop and put in a seperate method. This makes the loop a lot clearer because at one glance we can see that it loops through order lines and generates an array of summarized order lines.&lt;/p&gt;
+
+&lt;p&gt;What makes it even cooler is that because he extracted out the method, he can test it separately&amp;ndash;now that&amp;rsquo;s a proper unit test.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>A Strange Case of Inheritance Behavior</title>
+      <link>http://life.beyondrails.com/blog/2016/04/14/a-strange-case-of-inheritance-behavior/</link>
+      <pubDate>Thu, 14 Apr 2016 20:27:59 +0800</pubDate>
+      
+      <guid>http://life.beyondrails.com/blog/2016/04/14/a-strange-case-of-inheritance-behavior/</guid>
+      <description>&lt;p&gt;While working some code to work with the Zuora SOAP API, I got bit by a strange case of inheritance behavior. It would seem that this is related to what &lt;code&gt;self&lt;/code&gt; is bound to during the execution of the statement. Here it is, distilled to its essentials:
+
+&lt;script&gt;
+$(function() {
+    $(&#39;.ruby-code&#39;).opalBox();
+  var $targets = $(&#34;.ruby-code textarea&#34;)
+  $targets.each(function() {
+    $(this).height(0).height(this.scrollHeight - $(this).css(&#34;font-size&#34;).replace(&#39;px&#39;,&#39;&#39;)).change();
+  })
+});
+&lt;/script&gt;
+&lt;/p&gt;
+
+&lt;div class=&#34;ruby-code&#34;&gt;
+class Parent
+  def self.foo
+    &#34;parent foo&#34;
+  end
+
+  def self.bar
+    puts &#34;parent bar&#34;
+    puts self.foo
+  end
+end
+
+class Child &lt; Parent
+  def self.foo
+    puts &#34;child foo&#34;
+  end
+
+  def self.bar
+    puts &#34;child bar&#34;
+    super
+  end
+end
+
+puts Child.bar
 &lt;/div&gt;
 
-&lt;p&gt;This may not work on situations where a single server will need to host multiple ruby versions. In that case, you&amp;rsquo;d definitely need a ruby versioning manager such as &lt;code&gt;rvm&lt;/code&gt; or &lt;code&gt;rbenv&lt;/code&gt;. But if you don&amp;rsquo;t need to support multiple ruby versions in one server, simplify your life (and save your sysadmin&amp;rsquo;s sanity) by using a ruby binary that&amp;rsquo;s installed server-wide through checkinstall.&lt;/p&gt;
+&lt;p&gt;Intuition will tell you that when you call &lt;code&gt;Child.bar&lt;/code&gt;, since the method called &lt;code&gt;super&lt;/code&gt; you would remain in the &lt;code&gt;Parent&lt;/code&gt; context. So when the &lt;code&gt;Parent.bar&lt;/code&gt; method called &lt;code&gt;self.foo&lt;/code&gt; you would expect it to be kept in the same context.&lt;/p&gt;
 
-&lt;p&gt;Here&amp;rsquo;s the whole script:&lt;/p&gt;
+&lt;p&gt;This is in fact not the case; it is as if the binding of &lt;code&gt;self&lt;/code&gt; remains with the &lt;code&gt;Child&lt;/code&gt; class, that is why even if the &lt;code&gt;self.foo&lt;/code&gt; was called in the &lt;code&gt;Parent&lt;/code&gt; class the &lt;code&gt;Child.foo&lt;/code&gt; was called instead.&lt;/p&gt;
 
-&lt;script src=&#34;https://gist.github.com/5624732.js?file=install-ruby-2-ubuntu.sh&#34; type=&#34;text/javascript&#34;&gt;&lt;/script&gt;
+&lt;p&gt;I asked my colleague &lt;a href=&#34;http://aaronmyatt.github.io/&#34;&gt;Aaron&lt;/a&gt; who was once a Python programmer to give me an equivalent Python code to run:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Parent(object):
+	def foo(self):
+		print(&amp;quot;Parent foo&amp;quot;)
+	def bar(self):
+		print(&amp;quot;Parent bar&amp;quot;)
+		return self.foo()
+
+​class Child(Parent):
+	def foo(self):
+		print(&amp;quot;Child foo&amp;quot;)
+	def bar(self):
+		print(&amp;quot;Child bar&amp;quot;)
+		return super(Child, self).bar()
+
+c = Child()
+print(c.bar())
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And the output was the same:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;Child bar
+Parent bar
+Child foo
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I&amp;rsquo;m not an expert Javascript programmer so I&amp;rsquo;m curious how an equivalent program would behave under Javascript.&lt;/p&gt;
+
+&lt;h3 id=&#34;update&#34;&gt;Update:&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.facebook.com/noob.kido&#34;&gt;Lee Siong Tai&lt;/a&gt; kindly provided me a fiddle here: &lt;a href=&#34;http://www.es6fiddle.net/in0c3zsi/&#34;&gt;http://www.es6fiddle.net/in0c3zsi/&lt;/a&gt; and interestingly, it shows the same behavior.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.facebook.com/jimmyngu&#34;&gt;Jimmy Ngu&lt;/a&gt; also has some interesting links, go check out our discussion at &lt;a href=&#34;https://www.facebook.com/groups/klxrb/permalink/792231597575468/&#34;&gt;https://www.facebook.com/groups/klxrb/permalink/792231597575468/&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>2016 04 08 Linklog</title>
+      <link>http://life.beyondrails.com/blog/2016/04/08/2016-04-08-linklog/</link>
+      <pubDate>Fri, 08 Apr 2016 11:44:28 +0800</pubDate>
+      
+      <guid>http://life.beyondrails.com/blog/2016/04/08/2016-04-08-linklog/</guid>
+      <description>&lt;p&gt;Here&amp;rsquo;s this week&amp;rsquo;s linklog:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Producing Documentation for your Rails API&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;The Making of an Expert&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;Apprenticeship Patterns&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;So Good They Can&amp;rsquo;t Ignore You&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;Architecture: the Lost Years&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;hugomore42&#34;&gt;&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Producing Documentation for your Rails API&lt;/strong&gt;&lt;br /&gt;
+&lt;a href=&#34;https://blog.codeship.com/producing-documentation-for-your-rails-api&#34;&gt;https://blog.codeship.com/producing-documentation-for-your-rails-api&lt;/a&gt;&lt;br /&gt;
+We&amp;rsquo;re doing a lot of new software at work, and most of them are APIs to help out with task parallelization. Here&amp;rsquo;s a really good article to help guide everyone on the team on producing good API documentation.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;The Making of an Expert&lt;/strong&gt;&lt;br /&gt;
+&lt;a href=&#34;https://hbr.org/2007/07/the-making-of-an-expert&#34;&gt;https://hbr.org/2007/07/the-making-of-an-expert&lt;/a&gt;&lt;br /&gt;
+Lately I&amp;rsquo;ve been spending time on self-improvement, and the question I find asking myself now is: How do I achieve mastery? This is an old article from the Harvard Business Review, but the lessons in there are timeless.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;Apprenticeship Patterns&lt;/strong&gt;&lt;br /&gt;
+&lt;a href=&#34;http://chimera.labs.oreilly.com/books/1234000001813/index.html&#34;&gt;http://chimera.labs.oreilly.com/books/1234000001813/index.html&lt;/a&gt; (online book)
+&lt;a href=&#34;http://amzn.to/1RTFx8n&#34;&gt;http://amzn.to/1RTFx8n&lt;/a&gt; (amazon link)&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve been recommending this book for all new hires at my company, and I&amp;rsquo;ve learned a lot from the book myself. Definitely a must read.&lt;br /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;So Good They Can&amp;rsquo;t Ignore You&lt;/strong&gt;&lt;br /&gt;
+&lt;a href=&#34;http://amzn.to/1qaX6cI&#34;&gt;http://amzn.to/1qaX6cI&lt;/a&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m currently reading this book and it&amp;rsquo;s been an interesting read so far. The author argues that the belief of following your passion is a dangerous advice, and that you need to save up enough &amp;ldquo;career capital&amp;rdquo; before you can get meaningful work with autonomy and control.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;Architecture: the Lost Years&lt;/strong&gt;&lt;br /&gt;
+&lt;a href=&#34;https://www.youtube.com/watch?v=WpkDN78P884&#34;&gt;https://www.youtube.com/watch?v=WpkDN78P884&lt;/a&gt; (video)&lt;/p&gt;
+
+&lt;p&gt;Uncle Bob Martin makes the case for &amp;ldquo;pluggable architecture&amp;rdquo; where your business logic is separated from your delivery mechanism and persistence layers. The ideas presented will challenge how you think about your application.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;That&amp;rsquo;s it for the link log!&lt;/p&gt;
+
+&lt;p&gt;Full disclosure: the links to Amazon above are affiliate links. That doesn&amp;rsquo;t mean the books are of poor quality; on the contrary I would really recommend that you go and check them out because they will really take you to the next level.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Javascript Training at Mindvalley Day 2</title>
+      <link>http://life.beyondrails.com/blog/2016/03/18/javascript-training-at-mindvalley-day-2/</link>
+      <pubDate>Fri, 18 Mar 2016 15:54:40 +0800</pubDate>
+      
+      <guid>http://life.beyondrails.com/blog/2016/03/18/javascript-training-at-mindvalley-day-2/</guid>
+      <description>&lt;p&gt;We&amp;rsquo;ve commissioned &lt;a href=&#34;http://www.dekatku.com/&#34;&gt;Dekatku&lt;/a&gt; to train some developers here at &lt;a href=&#34;http://www.mindvalley.com/&#34;&gt;Mindvalley&lt;/a&gt; on Javascript, and it&amp;rsquo;s been a great experience so far! Today is Day 2 of the the training and we&amp;rsquo;ve covered some really deep topics.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve started &lt;a href=&#34;https://www.safaribooksonline.com/library/view/apprenticeship-patterns/9780596806842/ch02s02.html&#34;&gt;wearing my whitebelt&lt;/a&gt; again and I thought I&amp;rsquo;ll put up my thoughts and notes here for future reference.
+
+At the start of the session we had one hour to make a TODO application. The caveat being that we&amp;rsquo;re not allowed to use any libraries or frameworks; just pure javascript.&lt;/p&gt;
+
+&lt;p&gt;How did it go? I realized (yet again) that raw javascript is very verbose! I looked at the output of my code and there was so much &lt;code&gt;document.getElementById()&lt;/code&gt; calls everywhere.&lt;/p&gt;
+
+&lt;p&gt;I knew what to do, but I didn&amp;rsquo;t have the vocabulary to express it.&lt;/p&gt;
+
+&lt;p&gt;I found that it was good to go back to fundamentals and try to rebuild what you&amp;rsquo;ve been using utilizing only the basic building blocks of the technology. It gave me a better appreciation of the work that libraries and frameworks saved me, but more importantly: &lt;strong&gt;it gave me the confidence to walk by myself without a crutch&lt;/strong&gt;; whatever these libraries are doing isn&amp;rsquo;t magical anymore, and I can rebuild (or debug) them myself.&lt;/p&gt;
+
+&lt;p&gt;We then went on to the two different types of expressions in Javascript:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;expression&lt;/code&gt; =&amp;gt; produces a value&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;statement&lt;/code&gt; =&amp;gt; performs an action&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For some reason it reminded me of the &lt;a href=&#34;http://martinfowler.com/bliki/CommandQuerySeparation.html&#34;&gt;command/query separation&lt;/a&gt; by Bertrand Meyer.&lt;/p&gt;
+
+&lt;p&gt;Of course, what&amp;rsquo;s some Javascript without surprising behavior:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-Javascript&#34;&gt;{} + []
+//=&amp;gt; 0 but it&#39;s an [object Object] so it&#39;s true(thy)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Good piece of advice: &lt;strong&gt;deal with an exception, or throw it back out&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Some food for thought by Tim when I asked a question about whether you can catch hierarchichal errors:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;The answer is no, but yes.&amp;rdquo; &amp;ndash; Timothy&lt;/p&gt;
+
+&lt;p&gt;[Like everything else in Javascript, it would seem. &amp;ndash; Tristan]&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Fun facts:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;every function in javascript is variadic&lt;/li&gt;
+&lt;li&gt;javascript has a &amp;ldquo;moveable&amp;rdquo; &lt;code&gt;this&lt;/code&gt; (functions can be bound to any object)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;More syntactic sugar:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-Javascript&#34;&gt;x.foo(args) =&amp;gt; x.foo.call(x, args)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The &lt;code&gt;call&lt;/code&gt; function from &lt;code&gt;Function.prototype&lt;/code&gt; sounds very much like &lt;code&gt;#instance_exec&lt;/code&gt; from Ruby.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call&#34;&gt;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.bigbinary.com/2010/05/28/instance-exec-changing-self-and-parameters-to-proc.html&#34;&gt;http://blog.bigbinary.com/2010/05/28/instance-exec-changing-self-and-parameters-to-proc.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Words of warning: Don&amp;rsquo;t mess with the global scope. That&amp;rsquo;s why we have this pattern:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-Javascript&#34;&gt;(function(){})();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now we have lunch :)&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;After lunch, things get more exciting as we start diving deeper into the Javascript object model.&lt;/p&gt;
+
+&lt;p&gt;Javascript has no formal notion of classes and inheritance, but you can make it behave similar to that:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-Javascript&#34;&gt;function LifeForm() {
+  this.name = &amp;quot;&amp;quot;;
+  this.description = &amp;quot;&amp;quot;;
+  this.setName = function(name) {
+    this.name = name;
+  };
+  this.getName = function() {
+    return this.name;
+  };
+};
+var lifeForm = new LifeForm();
+
+function Human() {
+  LifeForm.call(this);
+  this.arms = 2;
+  this.legs = 2;
+};
+
+Human.prototype = Object.create(LifeForm.prototype);
+// =&amp;gt; this changes the class &amp;quot;definition&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;More words of wisdom:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Managing scope in OOJavasctipt is very important, especially in async code (which use callbacks a lot) &amp;ndash; Björn&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Surprising stuff: you can change an object&amp;rsquo;s prototype and it will change all objects derived from that prototype, even ones that&amp;rsquo;s already been created.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-Javascript&#34;&gt;var baz = function bar() { }
+Function.prototype.foo = function() {
+  console.log(&amp;quot;hello!&amp;quot;);
+}
+baz.foo();
+//=&amp;gt; hello
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This is very similar to how ruby works with &lt;code&gt;#class_eval&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-Ruby&#34;&gt;class Bar; end;
+Class.class_eval do
+  def foo
+    puts &amp;quot;hello&amp;quot;
+  end
+end
+Bar.foo #=&amp;gt; &amp;quot;hello&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Note that even though the class &lt;code&gt;Bar&lt;/code&gt; was created &lt;em&gt;before&lt;/em&gt; we reopened the class &lt;code&gt;Class&lt;/code&gt; (which in Ruby is similar to the prototype of the object &lt;code&gt;Function&lt;/code&gt;) it still managed to call the &lt;code&gt;#foo&lt;/code&gt; method.&lt;/p&gt;
+
+&lt;p&gt;What&amp;rsquo;s a class without Homework:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Using everything you&amp;rsquo;ve learnt today, create a set of classes which represent vehicles.&lt;/li&gt;
+&lt;li&gt;Must have 3 levels hierarchy.&lt;/li&gt;
+&lt;li&gt;Submit by Wednesday 23 March.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Super thanks to:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Björn Karge &lt;a href=&#34;https://www.linkedin.com/in/bjornkarge&#34;&gt;https://www.linkedin.com/in/bjornkarge&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Timothy Chandler &lt;a href=&#34;https://www.linkedin.com/in/timothy-chandler-7625b823&#34;&gt;https://www.linkedin.com/in/timothy-chandler-7625b823&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Answer the Question</title>
+      <link>http://life.beyondrails.com/zen/answer-the-question</link>
+      <pubDate>Fri, 19 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://life.beyondrails.com/zen/answer-the-question</guid>
+      <description>&lt;p&gt;The Student was arguing with his Colleague about a piece of code they have written.&lt;/p&gt;
+
+&lt;p&gt;&amp;ldquo;Master, please settle our argument,&amp;rdquo; the student said. &amp;ldquo;My Colleague insists that the return value of a method should always be an object.&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;The Master was expressionless. After some a few minutes, he finally replied. &amp;ldquo;Nil.&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;The Student&amp;rsquo;s face contorted into a frown, for he was confused at the Master&amp;rsquo;s reply. &amp;ldquo;Master, I don&amp;rsquo;t understand,&amp;rdquo; he stammered. &amp;ldquo;You haven&amp;rsquo;t answered my question!&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;The Student&amp;rsquo;s face then slowly lit up, for he finally understood.&lt;/p&gt;
 </description>
     </item>
     
     <item>
-      <title>Rolling Restarts with Capistrano and Linode</title>
-      <link>http://life.beyondrails.com/blog/2013/06/01/rolling-restarts-with-capistrano-and-linode/</link>
-      <pubDate>Sat, 01 Jun 2013 00:00:00 UTC</pubDate>
+      <title>Higher</title>
+      <link>http://life.beyondrails.com/zen/higher</link>
+      <pubDate>Thu, 18 Feb 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2013/06/01/rolling-restarts-with-capistrano-and-linode/</guid>
-      <description>&lt;p&gt;Here I show how to perform a rolling restart using Capistrano, and making sure that the load balancer (in this case Linode) properly reroutes traffic to the still-running servers while the others are being restarted.&lt;/p&gt;
+      <guid>http://life.beyondrails.com/zen/higher</guid>
+      <description>&lt;p&gt;The Master saw the Student bewildered. Apparently, the Client complained that the temple construction being supervised by the Student is not going according to spec.&lt;/p&gt;
 
-&lt;div class=&#34;info warning&#34; data-title=&#34;WARNING&#34;&gt;
-  &lt;p&gt;I&amp;rsquo;m still ironing out a few bugs for the rolling deployments. The issue appears to be that Capistrano executes &lt;code&gt;deploy:create_symlink&lt;/code&gt; in parallel so the apps still experience downtime before the restart happens. The concept itself is sound but the code is not yet production ready!!&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;I don&amp;rsquo;t get it,&amp;rdquo; the Student sighed, &amp;ldquo;the specs are right here; they are clear, complete, and in black and white. How can he tell me that I&amp;rsquo;m not following the specs?&amp;rdquo;&lt;/p&gt;
 
+&lt;p&gt;The Master replied &amp;ldquo;I will answer your question, but first you must help me hang a portrait. I am old and frail, and do not have the strength to put a portrait up a wall.&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;When they reached the Master&amp;rsquo;s dwelling, the Master began giving instructions. &amp;ldquo;I need it to be about this high. Around the height of my eyes,&amp;rdquo; she said.&lt;/p&gt;
+
+&lt;p&gt;The Student started to move the portrait up and down while listening to the Master&amp;rsquo;s feedback. An hour has passed, and the Student still saw dissatisfaction in the Master&amp;rsquo;s face. Concerned that he wasn&amp;rsquo;t doing a good job, he asked &amp;ldquo;you still ask me to put the portrait higher. Isn&amp;rsquo;t the portrait high enough?&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;The Master shook his head, stamped her foot, and growled &amp;ldquo;higher!&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;&amp;ldquo;But Master,&amp;rdquo; the Student stammered, &amp;ldquo;the portrait is almost at the ceiling! I can&amp;rsquo;t put it up any higher.&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;&amp;ldquo;I didn&amp;rsquo;t tell you to increase the height at which you place the portrait,&amp;rdquo; the Master retorted.&lt;/p&gt;
+
+&lt;p&gt;The Student&amp;ndash;visibly confounded&amp;ndash;pleadingly asked &amp;ldquo;then what was it that you wanted me to do?&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;&amp;ldquo;When the portrait was too low, you said &amp;lsquo;higher.&amp;rsquo; When the portrait was near the height of your eyes, you said &amp;lsquo;yes, but a little bit higher.&amp;rsquo; When the portrait was a bit over the height of your eyes, you said &amp;lsquo;no, go back higher.&amp;rsquo; When the portrait was too far away from the agreed on height, you said &amp;lsquo;no, I want it higher!&amp;rsquo; and this time more vigorously. I don&amp;rsquo;t understand what you mean when you say &amp;lsquo;higher&amp;rsquo;!&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Suddenly, the Student was enlightened.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>The Easy Path</title>
+      <link>http://life.beyondrails.com/zen/the-easy-path</link>
+      <pubDate>Wed, 17 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://life.beyondrails.com/zen/the-easy-path</guid>
+      <description>&lt;p&gt;One night during a walk, the Master visited the Student during a project. &amp;ldquo;Master,&amp;rdquo; the Student said, &amp;ldquo;why do we have to write a failing test that exposes a bug before fixing the bug itself? Isn&amp;rsquo;t it easier to just fix the bug; our Client has complained about it, I&amp;rsquo;ve tried reproducing it myself, other colleagues can reproduce it too. It&amp;rsquo;s plain as day that the bug exists.&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;The Master then asked the Student for a favor. &amp;ldquo;I have lost my spectacles and have been trying to search for them for hours. Will you help me find them?&amp;rdquo; The Student, sensing the chance to be useful, immediately agreed.&lt;/p&gt;
+
+&lt;p&gt;The Master led the student to a brightly lit room and said &amp;ldquo;please search here.&amp;rdquo; The Student then went on all fours and methodically went through every nook and cranny. This went on for hours, until the Student gave up and said &amp;ldquo;I&amp;rsquo;m sorry Master, I do not think your spectacles are here.&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Sighing, the Master whispered &amp;ldquo;that might as well be, since the last time I saw my spectacles was inside that dark room over there where the sun&amp;rsquo;s light never reaches.&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Exasperated, the Student exclaimed &amp;ldquo;Master, I do not understand. Why did you ask me to search here when you very well know you lost your spectacles over there?&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;In an apologetic tone, the Master explained &amp;ldquo;because I thought it would be easier for you if you can search when there is light.&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;The Student was visibly irritated. &amp;ldquo;Master! That is stupid. I could very well just bring a lamp into the dark room.&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;With this, the Student was enlightened.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>String Interpolation with Templates Using String#</title>
+      <link>http://life.beyondrails.com/blog/2016/02/05/string-interpolation-with-templates-using-string/</link>
+      <pubDate>Fri, 05 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://life.beyondrails.com/blog/2016/02/05/string-interpolation-with-templates-using-string/</guid>
+      <description>&lt;p&gt;I was working on a feature for &lt;a href=&#34;https://github.com/parasquid/upcloudify&#34;&gt;upcloudify&lt;/a&gt; that will use Slack notifications instead of email notifications. One of the challenges I faced was how to build-in flexibility for generating messages. I would want that the user be able to provide their own custom notification message, but at the same time be able to provide placeholders for items like the S3 download link.
+
+&lt;script&gt;
+$(function() {
+    $(&#39;.ruby-code&#39;).opalBox();
+  var $targets = $(&#34;.ruby-code textarea&#34;)
+  $targets.each(function() {
+    $(this).height(0).height(this.scrollHeight - $(this).css(&#34;font-size&#34;).replace(&#39;px&#39;,&#39;&#39;)).change();
+  })
+});
+&lt;/script&gt;
+&lt;/p&gt;
+
+&lt;p&gt;I initially thought of using an &lt;code&gt;ERB&lt;/code&gt; template but then realized it will be far too overkill for this simple purpose. I actually just needed to have the caller be able to provide a template string, and then merge certain variables into this template string.&lt;/p&gt;
+
+&lt;p&gt;I started playing around with regexes when I came upon &lt;a href=&#34;http://ruby-doc.org/core-2.2.0/String.html#method-i-25&#34;&gt;String#%&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;From the documentation:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Format—Uses &lt;em&gt;str&lt;/em&gt; as a format specification, and returns the result of applying it to &lt;em&gt;arg&lt;/em&gt;. If the format specification contains more than one substitution, then &lt;em&gt;arg&lt;/em&gt; must be an &lt;code&gt;Array&lt;/code&gt; or &lt;code&gt;Hash&lt;/code&gt; containing the values to be substituted. See &lt;code&gt;Kernel::sprintf&lt;/code&gt; for details of the format string.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;&amp;quot;%05d&amp;quot; % 123                              #=&amp;gt; &amp;quot;00123&amp;quot;
+&amp;quot;%-5s: %08x&amp;quot; % [ &amp;quot;ID&amp;quot;, self.object_id ]   #=&amp;gt; &amp;quot;ID   : 200e14d6&amp;quot;
+&amp;quot;foo = %{foo}&amp;quot; % { :foo =&amp;gt; &#39;bar&#39; }        #=&amp;gt; &amp;quot;foo = bar&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I thought this was very cool. Let me show you what I mean:&lt;/p&gt;
+
+&lt;div class=&#34;ruby-code&#34;&gt;
+template = &#34;Hello %s!&#34;
+
+puts template % &#34;World&#34;
 &lt;/div&gt;
 
-&lt;p&gt;It is generally recommended in high-availability setups (usually with a cluster of machines behind a proxy or a load balancer) to perform a rolling restart of the services. Restarting all of your services at the same time will generally cause downtime for your users, and depending on your use case this situation is not very desirable.&lt;/p&gt;
+&lt;p&gt;You can also use an array to feed the template:&lt;/p&gt;
 
-&lt;p&gt;However, Capistrano by default runs tasks in parallel and it mostly isn&amp;rsquo;t obvious how to perform capistrano tasks serially with all of your hosts. Furthermore, communication with the load balancer during the restart is vital to proactively stop incoming connections to the application server being restarted.&lt;/p&gt;
+&lt;div class=&#34;ruby-code&#34;&gt;
+template = &#34;Because Oct %o = Dec %d&#34;
 
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;# config/deploy.rb
-namespace :deploy do
-  task :restart, :roles =&amp;gt; :app, except: { no_release: true } do
-    if self.roles[:app].count == 1
-      run &amp;quot;/etc/init.d/rainbows_#{application} restart&amp;quot;
-    else
-      self.roles[:app].each do |host|
-        # execute a rolling restart
-        address = &amp;quot;#{host.options[:private_ip]}:80&amp;quot;
-        label = &#39;NodebalancerConfiguration&#39;
-        api = LinodeApi.new
+puts &#34;Why do programmers always mix up Halloween and Christmas?&#34;
+puts template % [25, 25]
+&lt;/div&gt;
 
-        puts &amp;quot;rejecting connections for #{address}&amp;quot;
-        api.reject_connections_from_node_with_label_and_address(label, address)
+&lt;p&gt;For an even better template that doesn&amp;rsquo;t depend on the order of the elements, you can feed in a &lt;code&gt;Hash&lt;/code&gt;:
+&lt;div class=&#34;ruby-code&#34;&gt;
+template = &#34;
+Q: What&#39;s the %{programming_paradigm} way to become wealthy?
+A: %{answer}&#34;
 
-        puts &amp;quot;performing restart&amp;quot;
-        run &amp;quot;/etc/init.d/rainbows_#{application} restart&amp;quot;, hosts: host
+puts template % {programming_paradigm: &#34;Object Oriented&#34;, answer: &#34;Inheritance&#34;}
+&lt;/div&gt;&lt;/p&gt;
 
-        puts &amp;quot;accepting connections for #{address}&amp;quot;
-        api.accept_connections_from_node_with_label_and_address(label, address)
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Sadly, OpalBox doesn&amp;rsquo;t seem to work well with this particular usage of &lt;code&gt;String#%&lt;/code&gt; since &lt;a href=&#34;https://github.com/opal/opal/issues/678&#34;&gt;Opal 0.7.1 has a bug&lt;/a&gt; where it doesn&amp;rsquo;t properly interpolate named parameters (I&amp;rsquo;ve already &lt;a href=&#34;https://github.com/Angelmmiguel/opalbox-jquery/issues/3&#34;&gt;reported this&lt;/a&gt; to the opalbox author). I will update this article whenever the issues have been ironed out.&lt;/p&gt;
 
-        puts &amp;quot;sleeping for 90 seconds to allow for status propagation&amp;quot;
-        sleep(90)
+&lt;p&gt;Runnning the code in &lt;code&gt;IRB&lt;/code&gt; works however:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;puts template % {programming_paradigm: &amp;quot;Object Oriented&amp;quot;, answer: &amp;quot;Inheritance&amp;quot;}
+Q: What&#39;s the Object Oriented way to become wealthy?
+A: Inheritance
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The method is also written in C (at least for MRI) so it&amp;rsquo;s expected to be fast.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;puts Benchmark.measure { &amp;quot;Hello %s&amp;quot; % &amp;quot;World&amp;quot; * 6_000_000}
+  0.010000   0.040000   0.050000 (  0.051013)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In the end the code for the feature I was working on looked like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;# gem source
+def upload_and_notify(filename: nil, attachment: nil, message: &amp;quot;%s&amp;quot;)
+  raise ArgumentError &amp;quot;filename cannot be nil&amp;quot; unless filename
+  raise ArgumentError &amp;quot;attachment cannot be nil&amp;quot; unless attachment
+
+  expiration = (Date.today + 7).to_time
+  file = @uploader.upload(filename, attachment)
+  @notifier.notify(text: message % file.url(expiration))
+end
+
+# spec file
+context &amp;quot;the notification can merge the file url&amp;quot; do
+  When { expect(notifier).to receive(:notify).with({text: &amp;quot;your report &amp;lt;filename link&amp;gt;&amp;quot;}) }
+  Then {
+    expect {
+      instance.upload_and_notify(filename: &#39;abc&#39;, attachment: &#39;123&#39;, message: &amp;quot;your report &amp;lt;%s&amp;gt;&amp;quot;)
+    }.not_to raise_error
+  }
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;see-also&#34;&gt;See also:&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://ruby-doc.org/core-2.2.0/String.html#method-i-25&#34;&gt;http://ruby-doc.org/core-2.2.0/String.html#method-i-25&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://ruby-doc.org/core-2.2.0/Kernel.html#method-i-sprintf&#34;&gt;http://ruby-doc.org/core-2.2.0/Kernel.html#method-i-sprintf&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.revathskumar.com/2013/01/ruby-multiple-string-substitution-in-string-template.html&#34;&gt;http://blog.revathskumar.com/2013/01/ruby-multiple-string-substitution-in-string-template.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://davebaker.me/articles/tip-ruby-string-interpolation-with-hashes&#34;&gt;http://davebaker.me/articles/tip-ruby-string-interpolation-with-hashes&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;tldr&#34;&gt;TLDR;&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;String#%&lt;/code&gt; is a cool and flexible way to store a template in a string so you can defer the string interpolation.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Opalbox—Run Ruby Code Inside Pages</title>
+      <link>http://life.beyondrails.com/blog/2016/01/03/opalboxrun-ruby-code-inside-pages/</link>
+      <pubDate>Sun, 03 Jan 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://life.beyondrails.com/blog/2016/01/03/opalboxrun-ruby-code-inside-pages/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://opalrb.org/&#34;&gt;Opal&lt;/a&gt; is a Ruby to JavaScript compiler, and &lt;a href=&#34;https://github.com/Angelmmiguel/opalbox-jquery&#34;&gt;OpalBox&lt;/a&gt; is a &lt;code&gt;jQuery&lt;/code&gt; plugin to easily create a textarea that can take ruby code and allow it to run.&lt;/p&gt;
+
+&lt;p&gt;I just added OpalBox to this blog and it&amp;rsquo;s been quite interesting. I&amp;rsquo;ve learned how to resize a &lt;code&gt;textarea&lt;/code&gt; based on its content (you need javascript to do that because &lt;code&gt;CSS&lt;/code&gt; just doesn&amp;rsquo;t cut it) and I&amp;rsquo;ve added in a shortcode.&lt;/p&gt;
+
+&lt;h3 id=&#34;update&#34;&gt;update:&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/Angelmmiguel/opalbox-jquery&#34;&gt;Angelmmiguel&lt;/a&gt; (the author of opalbox) has just released &lt;a href=&#34;https://github.com/Angelmmiguel/opalbox-jquery/issues/1&#34;&gt;0.1.0 that fixes the issue&lt;/a&gt; :)
+
+&lt;script&gt;
+$(function() {
+    $(&#39;.ruby-code&#39;).opalBox();
+  var $targets = $(&#34;.ruby-code textarea&#34;)
+  $targets.each(function() {
+    $(this).height(0).height(this.scrollHeight - $(this).css(&#34;font-size&#34;).replace(&#39;px&#39;,&#39;&#39;)).change();
+  })
+});
+&lt;/script&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s how it looks like:&lt;/p&gt;
+
+&lt;div class=&#34;ruby-code&#34;&gt;
+# this is ruby code
+# it is inside a text area so you can edit it and play around with it
+
+def square(x)
+  x ** 2
+end
+
+puts square(256)
+
+# click on run below to execute the code
+&lt;/div&gt;
+
+&lt;p&gt;I&amp;rsquo;ve edited one of my &lt;a href=&#34;http://life.beyondrails.com/blog/2014/03/04/ruby-and-blocks/&#34;&gt;past articles&lt;/a&gt; to use &lt;code&gt;OpalBox&lt;/code&gt; if you&amp;rsquo;re interested in how it looks like as a method for instruction.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s the javascript snippet that resizes the &lt;code&gt;textarea&lt;/code&gt; to fit its content:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;var $targets = $(&amp;quot;.ruby-code textarea&amp;quot;)
+$targets.each(function() {
+  $(this).height(0).height(this.scrollHeight - $(this).css(&amp;quot;font-size&amp;quot;).replace(&#39;px&#39;,&#39;&#39;)).change();
+})
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The &lt;code&gt;height&lt;/code&gt; is first set to &lt;code&gt;0&lt;/code&gt; because some browsers get confused with unconventional positions (negative margins, for example). It is then set to the &lt;code&gt;textarea&lt;/code&gt;&amp;rsquo;s &lt;code&gt;scrollHeight&lt;/code&gt;. I then subtract the &lt;code&gt;font-size&lt;/code&gt; of this element to remove the extra line at the end.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://gohugo.io/extras/shortcodes/&#34;&gt;Shortcodes in Hugo&lt;/a&gt; (the blog engine this site is running on) is quite simple to make. It&amp;rsquo;s just a &lt;code&gt;text&lt;/code&gt; snippet that you can call within your article. For example, the above &lt;code&gt;OpalBox&lt;/code&gt; looks like this:&lt;/p&gt;
+
+&lt;pre&gt;
+&amp;#123;&amp;#123;&amp;lt; rubycode &amp;gt;&amp;#125;&amp;#125;
+# this is ruby code
+# it is inside a text area so you can edit it and play around with it
+
+def square(x)
+  x ** 2
+end
+
+puts square(256)
+
+# click on run below to execute the code
+&amp;#123;&amp;#123;&amp;lt; /rubycode &amp;gt;&amp;#125;&amp;#125;
+&lt;/pre&gt;
+
+&lt;p&gt;While the shortcode file contents (&lt;code&gt;rubycode.html&lt;/code&gt;) look like this:&lt;/p&gt;
+
+&lt;pre&gt;
+&amp;lt;div class=&#34;ruby-code&#34;&amp;gt;&amp;#123;&amp;#123; .Inner &amp;#125;&amp;#125;&amp;lt;/div&amp;gt;
+&lt;/pre&gt;
+
+&lt;p&gt;I also have the &lt;code&gt;opalbox.html&lt;/code&gt; shortcode that I only include whenever the article contains an &lt;code&gt;OpalBox&lt;/code&gt;. It first runs the &lt;code&gt;.opalBox()&lt;/code&gt; function on all &lt;code&gt;div&lt;/code&gt; that have the class &lt;code&gt;.ruby-code&lt;/code&gt; and turn them into &lt;code&gt;textarea&lt;/code&gt;. Then the &lt;code&gt;textarea&lt;/code&gt; are resized to fit their contents.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;$(function() {
+  $(&#39;.ruby-code&#39;).opalBox();
+  var $targets = $(&amp;quot;.ruby-code textarea&amp;quot;)
+  $targets.each(function() {
+    $(this).height(0).height(this.scrollHeight - $(this).css(&amp;quot;font-size&amp;quot;).replace(&#39;px&#39;,&#39;&#39;)).change();
+  })
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;what-i-like&#34;&gt;What I like&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;It&amp;rsquo;s great for tutorial articles that explain complicated concepts.&lt;/li&gt;
+&lt;li&gt;The reader can play and manipulate the code to confirm understanding.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;what-i-don-t-like&#34;&gt;What I don&amp;rsquo;t like&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;textarea&lt;/code&gt; disables syntax highlighting.&lt;/li&gt;
+&lt;li&gt;Long ruby code is not practical because it looks like a wall of text.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;references&#34;&gt;References:&lt;/h2&gt;
+
+&lt;p&gt;Initial change to the article to include opalbox: &lt;a href=&#34;https://github.com/parasquid/life.beyondrails.com/commit/996234fffc57a8e16ce7015abc00e3a374f00343&#34;&gt;https://github.com/parasquid/life.beyondrails.com/commit/996234fffc57a8e16ce7015abc00e3a374f00343&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Changing the divs into a shortcode: &lt;a href=&#34;https://github.com/parasquid/life.beyondrails.com/commit/20fe9761d285c448498ce5a1faef5f70edceed5a&#34;&gt;https://github.com/parasquid/life.beyondrails.com/commit/20fe9761d285c448498ce5a1faef5f70edceed5a&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Exploring Query Objects</title>
+      <link>http://life.beyondrails.com/blog/2015/12/18/exploring-query-objects/</link>
+      <pubDate>Fri, 18 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://life.beyondrails.com/blog/2015/12/18/exploring-query-objects/</guid>
+      <description>&lt;p&gt;A &lt;a href=&#34;http://blog.codeclimate.com/blog/2012/10/17/7-ways-to-decompose-fat-activerecord-models/&#34;&gt;CodeClimate Article&lt;/a&gt; gave a number of ways to decompose fat ActiveRecord models, and one of them was: &lt;strong&gt;Extract Query Objects&lt;/strong&gt;. I&amp;rsquo;ve been trying to explore and get myself familiar with a good standard of how to implement Query Objects, and here is my take.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ll be trying out a new format in these articles. I&amp;rsquo;ll be using something of a Q/A style similar to &lt;a href=&#34;https://en.wikipedia.org/wiki/Socratic_questioning&#34;&gt;Socratic Questioning&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;Here is one of the Query Objects I have in one of my production apps:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;module Subscription
+  module Calculations
+    class OrderLineQueries
+      extend Forwardable
+
+      def_delegators :relation, :map, :count, :to_sql
+
+      def initialize(relation = OrderLine.all)
+        @relation = relation
+      end
+
+      def is_cancelled
+        @relation = @relation.
+          where(&#39;order_lines.cancelled_at is not null&#39;)
+        self
+      end
+
+      def non_test_order_lines
+        @relation = @relation.
+          joins(:order).
+            where(
+              orders: {
+                test_transaction: false
+              }
+            )
+        self
+      end
+
+      def non_tax_payments
+        @relation = @relation.
+          joins(:order_line_transactions =&amp;gt; :payment).
+          joins(&amp;quot;LEFT OUTER JOIN tax_payments on payments.id = tax_payments.payment_id&amp;quot;).
+            where(&amp;quot;tax_payments.payment_id IS NULL&amp;quot;).
+            distinct
+        self
+      end
+
+      def created_before_reporting_range(time_range: nil)
+        raise ArgumentError, &amp;quot;time_range is required&amp;quot; unless !!time_range
+        @relation = @relation.
+          where(
+            &#39;order_lines.created_at &amp;lt;= ?&#39;, time_range.start_time
+          )
+        self
+      end
+
+      private
+
+      def relation
+        @relation
       end
     end
   end
 end
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;# config/deploy/production.rb
-server &#39;10.0.0.2&#39;, :web, :app, private_ip: &#39;192.168.0.1&#39;
-server &#39;10.0.0.3&#39;, :web, :app, private_ip: &#39;192.168.0.2&#39;
-server &#39;10.0.0.4&#39;, :web, :app, private_ip: &#39;192.168.0.3&#39;
-server &#39;10.0.0.5&#39;, :db, no_release: true, primary: true
-set :port, 20022
-set :server_name, &#39;your.domain.com&#39;
-set :branch, &#39;production&#39;
-&lt;/code&gt;&lt;/pre&gt;
+&lt;dl&gt;
+&lt;dt&gt;Why are you returning &lt;code&gt;self&lt;/code&gt;? It looks very strange.&lt;/dt&gt;
+&lt;dd&gt;I&amp;rsquo;m returning &lt;code&gt;self&lt;/code&gt; to allow method chaining. It is similar to &lt;a href=&#34;http://martinfowler.com/bliki/FluentInterface.html&#34;&gt;Fluent Interfaces&lt;/a&gt; but with a very tight focus on query building.&lt;/dd&gt;
+&lt;dt&gt;Since you&amp;rsquo;re returning self, that means you&amp;rsquo;re mutating the object when you&amp;rsquo;re chaining the methods. That means the object can&amp;rsquo;t be reused to create a different query, and you&amp;rsquo;ll need to start with a new object, right?&lt;/dt&gt;
+&lt;dd&gt;Yes, that is correct. It was a common mistake for me in the past to do something like this:&lt;/dd&gt;
+&lt;/dl&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;# lib/linode_api.rb
-class LinodeApi
-  require &#39;linode&#39;
-  LINODE_API_KEY =  ENV[&#39;LINODE_API_KEY&#39;]
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;# NOTE: DON&#39;T DO THIS
+class OrderReporter
   def initialize
-    @l = Linode.new(api_key: LINODE_API_KEY)
+    @query = OrderLineQueries.new
   end
 
-  def first_nodebalancer_id_with_label(label)
-    @l.nodebalancer.list.select{|n| n.label == label}.first.nodebalancerid
+  def cancelled
+    @query.non_test_order_lines.is_cancelled
   end
 
-  def first_config_id_with_label(label)
-    nodebalancer_id = first_nodebalancer_id_with_label(label)
-    @l.nodebalancer.config.list(:NODEBALANCERID =&amp;gt; nodebalancer_id).first.configid
-  end
-
-  def first_node_id_with_label_and_address(label, address)
-    config_id = first_config_id_with_label(label)
-    @l.nodebalancer.node.list(:ConfigID =&amp;gt; config_id).select{|n| n.address == address}.first.nodeid
-  end
-
-  def reject_connections_from_node_with_label_and_address(label, address)
-    node_id = first_node_id_with_label_and_address(label, address)
-    @l.nodebalancer.node.update(:NodeID =&amp;gt; node_id, :Mode =&amp;gt; &#39;reject&#39;)
-  end
-
-  def accept_connections_from_node_with_label_and_address(label, address)
-    node_id = first_node_id_with_label_and_address(label, address)
-    @l.nodebalancer.node.update(:NodeID =&amp;gt; node_id, :Mode =&amp;gt; &#39;accept&#39;)
+  def test_orders_before_december_31_2015
+    @query.created_before_reporting_range(time_range: time_range.new(&amp;quot;&amp;lt;= Dec 31 2015&amp;quot;))
   end
 end
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;# Gemfile
-group :development do
-  gem &#39;capistrano&#39;
-  gem &#39;capistrano-ext&#39;
-  gem &#39;linode&#39;
+&lt;dl&gt;
+&lt;dd&gt;&lt;p&gt;It took some time to figure out that since I&amp;rsquo;ve been sharing &lt;code&gt;@query&lt;/code&gt; with two methods, &lt;code&gt;#cancelled&lt;/code&gt; is actually modifying the query object such that &lt;code&gt;#test_orders_before_december_31_2015&lt;/code&gt; won&amp;rsquo;t ever have test order lines in its resultset.&lt;/p&gt;&lt;/dd&gt;
+&lt;dd&gt;&lt;p&gt;Furthermore, the &lt;strong&gt;individual unit tests&lt;/strong&gt; for these methods are &lt;em&gt;green&lt;/em&gt;; the only way to expose the bug was to have &lt;strong&gt;both methods&lt;/strong&gt; called in a single test example. You can imagine how frustrating the debugging must have been.&lt;/p&gt;&lt;/dd&gt;
+&lt;dd&gt;&lt;p&gt;That&amp;rsquo;s a caveat that you&amp;rsquo;ll need to remember when using self-mutating objects like these.&lt;/p&gt;&lt;/dd&gt;
+&lt;dd&gt;&lt;p&gt;I did have an experiment where each method is immutable:&lt;/p&gt;&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;def paid(relation = Payment.all)
+  relation.
+    where(&amp;quot;payments.state = ?&amp;quot;, &amp;quot;paid&amp;quot;)
+end
+
+def paid_or_refunded(relation = Payment.all)
+  relation.
+    where(&amp;quot;payments.state&amp;quot; =&amp;gt; %w(paid refunded))
+end
+
+def non_declined(relation = Payment.all)
+  relation.
+    where(&amp;quot;payments.state != ?&amp;quot;, &amp;quot;declined&amp;quot;)
+end
+
+def non_shipping(relation = Payment.all)
+  relation.
+    where(&amp;quot;payments.reference_number NOT LIKE ?&amp;quot;, &amp;quot;-shipping&amp;quot;)
 end
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.linode.com/api/nodebalancer&#34;&gt;https://www.linode.com/api/nodebalancer&lt;/a&gt; - documentation for the linode nodebalancer api&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/rick/linode&#34;&gt;https://github.com/rick/linode&lt;/a&gt; - linode gem that wraps the linode api&lt;/li&gt;
-&lt;/ul&gt;
+&lt;dl&gt;
+&lt;dd&gt;and you&amp;rsquo;d do a &lt;code&gt;golang&lt;/code&gt;-like composition when filtering the query:&lt;/dd&gt;
+&lt;/dl&gt;
 
-&lt;p&gt;The default &lt;a href=&#34;http://capitate.rubyforge.org/recipes/deploy.html#deploy:restart&#34;&gt;capistrano deploy:restart&lt;/a&gt; recipe is a &lt;a href=&#34;https://github.com/capistrano/capistrano/blob/master/lib/capistrano/recipes/deploy.rb#L357&#34;&gt;blank task&lt;/a&gt; that you have to override depending on your application server&amp;rsquo;s needs. For example, Passenger users would need to &lt;code&gt;touch tmp/restart.txt&lt;/code&gt; and in my case, I have a custom &lt;code&gt;init.d&lt;/code&gt; script that I can call to restart my application.&lt;/p&gt;
-
-&lt;p&gt;Let&amp;rsquo;s walk through the deployment recipe.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;if self.roles[:app].count == 1
-  run &amp;quot;/etc/init.d/rainbows_#{application} restart&amp;quot;
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;def report
+  query = paid
+  query = non_declined(query)
+  query = non_shipping(query)
+  query
+end
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;The &lt;code&gt;self.roles&lt;/code&gt; hash contains the different &lt;a href=&#34;http://stackoverflow.com/questions/1155218/what-exactly-is-a-role-in-capistrano&#34;&gt;roles&lt;/a&gt; you have defined in your deployment file. In this case, we&amp;rsquo;re only interested in the &lt;code&gt;:app&lt;/code&gt; role (i.e. we want to limit our script to only the servers we tagged as having &lt;code&gt;:app&lt;/code&gt; role).&lt;/p&gt;
+&lt;dl&gt;
+&lt;dd&gt;or something like:&lt;/dd&gt;
+&lt;/dl&gt;
 
-&lt;p&gt;In this case, if there is only one &lt;code&gt;:app&lt;/code&gt; defined (which usually is the case &amp;ndash; as in mine &amp;ndash; for staging servers) it makes no sense to do a rolling restarts since there is nothing to roll. There will be downtime when the single server restarts, so we might as well optimize this usecase away by calling the restart script directly.&lt;/p&gt;
-
-&lt;p&gt;Note that this line: &lt;code&gt;run &amp;quot;/etc/init.d/rainbows_#{application} restart&amp;quot;&lt;/code&gt; when called by itself with no arguments will cause the task to run in parallel.&lt;/p&gt;
-
-&lt;p&gt;How do you know if a task is being run in parallel? Take a look at your deployment logs:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;tristan (master)$ cap production deploy
-  * 2013-06-01 15:31:48 executing `production&#39;
-    triggering start callbacks for `deploy&#39;
-  * 2013-06-01 15:31:48 executing `multistage:ensure&#39;
-  * 2013-06-01 15:31:48 executing `deploy&#39;
-  * 2013-06-01 15:31:48 executing `deploy:update&#39;
- ** transaction: start
-  * 2013-06-01 15:31:48 executing `deploy:update_code&#39;
-    triggering before callbacks for `deploy:update_code&#39;
-  * 2013-06-01 15:31:48 executing `sidekiq:quiet&#39;
-  * executing multiple commands in parallel
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;def report
+  paid(non_declined(non_shipping))
+end
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Capistrano will inform you that it will be executing the task in parallel (in this case, the task is &lt;code&gt;sidekiq:quiet&lt;/code&gt;)&lt;/p&gt;
+&lt;dl&gt;
+&lt;dd&gt;but I never really got around to exploring this further (too many parentheses!!!) as the fluent interface looked so much nicer:&lt;/dd&gt;
+&lt;/dl&gt;
 
-&lt;p&gt;In order to deploy in serial, we have to loop through the hosts:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;def report
+  paid.
+    non_declined.
+    non_shipping
+end
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;else
-  self.roles[:app].each do |host|
-    # execute a rolling restart
-    address = &amp;quot;#{host.options[:private_ip]}:80&amp;quot;
-    label = &#39;OathkeeperTest&#39;
-    api = LinodeApi.new
+&lt;dl&gt;
+&lt;dt&gt;What&amp;rsquo;s up with &lt;code&gt;Forwardable&lt;/code&gt;? If you want to call &lt;code&gt;ActiveRelation&lt;/code&gt; methods on the query object, why not just expose something like &lt;code&gt;#relation&lt;/code&gt; then you can call it with something like &lt;code&gt;query.is_cancelled.relation.to_sql&lt;/code&gt;&lt;/dt&gt;
+&lt;dd&gt;I did expose the internal &lt;code&gt;@relation&lt;/code&gt; object before to do exactly what you are suggesting, and it was all good for a while. Then something really terrible happened. I haven&amp;rsquo;t been working on the project for sometime so I wasn&amp;rsquo;t able to do much code review, and I was a bit aghast when I saw these:&lt;/dd&gt;
+&lt;/dl&gt;
 
-    puts &amp;quot;rejecting connections for #{address}&amp;quot;
-    api.reject_connections_from_node_with_label_and_address(label, address)
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;query = ProductLinesQuery.new
+product_lines_with_paypal = query.with_paypal_or_paypal_express
+  .with_english_currency
+  .with_english_language
+  .relation.where(id: product_lines_id)  # wtf ...
+&lt;/code&gt;&lt;/pre&gt;
 
-    puts &amp;quot;performing restart&amp;quot;
-    run &amp;quot;/etc/init.d/rainbows_#{application} restart&amp;quot;, hosts: host
+&lt;dl&gt;
+&lt;dd&gt;I felt it was an abuse of the exposed &lt;code&gt;relation&lt;/code&gt; attribute beause it completely undermines the point of the query object (which was to encapsulate queries). Using &lt;code&gt;Forwardable&lt;/code&gt; I can delegate specific methods to the internal &lt;code&gt;ActiveRelation&lt;/code&gt; object without having to expose the whole &lt;code&gt;ActiveRecord&lt;/code&gt; &lt;a href=&#34;http://tenderlovemaking.com/2014/06/02/yagni-methods-are-killing-me.html&#34;&gt;API footprint&lt;/a&gt;.&lt;/dd&gt;
+&lt;dt&gt;I see a lot of modules. Where do you put these query objects?&lt;/dt&gt;
+&lt;dd&gt;I used to put them in a folder named &lt;code&gt;app/queries&lt;/code&gt; but as the application grew (and the number of query objects also grew) I realized this isn&amp;rsquo;t the best way to organize the files. Now I put them just beside the files that use them.&lt;/dd&gt;
+&lt;/dl&gt;
 
-    puts &amp;quot;accepting connections for #{address}&amp;quot;
-    api.accept_connections_from_node_with_label_and_address(label, address)
+&lt;pre&gt;&lt;code&gt;app
+ ├─ controllers
+ └─ models
+     ├─ subscription
+     │   ├─ calculations
+     │   │   ├─ customers.rb
+     │   │   └─ order_line_queries.rb
+     │   └─ calculators
+     └─ cohort
+&lt;/code&gt;&lt;/pre&gt;
 
-    puts &amp;quot;sleeping for 90 seconds to allow for status propagation&amp;quot;
-    sleep(90)
+&lt;dl&gt;
+&lt;dt&gt;Hm, so you mean you have multiple folders of query objects? Isn&amp;rsquo;t that confusing? If you put them all in just one folder, then you know that all your queries are in one place.&lt;/dt&gt;
+&lt;dd&gt;On the contrary, putting the query object near the calling file makes it a lot less confusing. When I look at a folder structure, I know exactly what queries this particular object needs.&lt;/dd&gt;
+&lt;dt&gt;How about code reuse? Since you&amp;rsquo;re spreading all your query objects around, you&amp;rsquo;ll eventually have to duplicate code that does the same thing.&lt;/dt&gt;
+&lt;dd&gt;Surprisingly there are very few generic queries that I need to duplicate, because each of the querying logic I need are very specific to the task. However, there are indeed a few queries that are more used than others. I usually have them included as a module in the query object.&lt;/dd&gt;
+&lt;dt&gt;What&amp;rsquo;s up with the separate &lt;code&gt;customers.rb&lt;/code&gt;?&lt;/dt&gt;
+&lt;dd&gt;Oh that? I prefer my query objects to focus on &lt;strong&gt;composable&lt;/strong&gt; methods, while separating out another object that &lt;strong&gt;composes&lt;/strong&gt; these queries. It looks something like this:&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;module Subscription
+  module Calculations
+    class Customers
+      def initialize(start_date, end_date, bundle: nil)
+        @time_query = TimeQuery.new(start_date, end_date)
+        @bundle = bundle
+      end
+
+      def beginning
+        Calculations::OrderLineQueries.new.
+          non_test_order_lines.
+          money_received.
+          specific_bundle(ids: @bundle.id).
+          created_before_reporting_range(time_query: @time_query).
+          not_cancelled_or_cancelled_after_reporting_range(time_query: @time_query)
+      end
+
+      def second_payment
+        Calculations::OrderLineQueries.new.
+          non_test_order_lines.
+          money_received.
+          specific_bundle(ids: @bundle.id).
+          trial.
+
+          paid_payments.
+          non_tax_payments.
+          non_shipping_payments.
+
+          created_before_reporting_range(time_query: @time_query).
+          created_after_30_days_before_reporting_range(time_query: @time_query).
+          not_cancelled_or_cancelled_after_reporting_range(time_query: @time_query).
+          more_than_one_payment
+      end
+
+      def new_in_reporting_range
+        Calculations::OrderLineQueries.new.
+          non_test_order_lines.
+          money_received.
+          specific_bundle(ids: @bundle.id).
+          created_during_reporting_range(time_query: @time_query)
+      end
+    end
   end
 end
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;We&amp;rsquo;ll get back to the &lt;code&gt;address&lt;/code&gt; and &lt;code&gt;label&lt;/code&gt; variables later when we discuss the linode api. For now, all we need to know is that the api can update the nodebalancer configuration to reject and accept connections.&lt;/p&gt;
+&lt;dl&gt;
+&lt;dd&gt;&lt;p&gt;Then the calculators in the &lt;code&gt;calculators&lt;/code&gt; folder use the methods in &lt;code&gt;customers.rb&lt;/code&gt; to further compose a full report.&lt;/p&gt;&lt;/dd&gt;
+&lt;dd&gt;&lt;p&gt;Bonus: whenever the feature requester asks me &amp;ldquo;what exactly goes on with each of these columns&amp;rdquo; I just point her to the github page for this file. The fluent interface is one way for me to easily explain what goes into calculating an entry, without having to resort to a detailed explanation.&lt;/p&gt;&lt;/dd&gt;
+&lt;dt&gt;Why don&amp;rsquo;t you just use scopes? They have almost the exact syntax that you&amp;rsquo;re proposing, and it&amp;rsquo;s built-in to Rails!&lt;/dt&gt;
+&lt;dd&gt;&lt;p&gt;Scopes are great when your project is still small, but eventually you&amp;rsquo;ll end up with a lot of scopes in your model. The &lt;a href=&#34;https://drive.google.com/file/d/0ByOwmqah_nuGNHEtcU5OekdDMkk/view&#34;&gt;Single Responsibility Principle&lt;/a&gt; says that there should only be one reason for an object to change, and putting these type of queries into the model as scopes violates that principle. The change in how a tax payment is queried is different from the change in how tax payments are calculated.&lt;/p&gt;&lt;/dd&gt;
+&lt;dd&gt;&lt;p&gt;Even if I don&amp;rsquo;t appeal to higher authority by mentioning SRP, separating the queries from the &lt;code&gt;ActiveRecord&lt;/code&gt; model is still a good idea. It just makes the whole thing easier to work with because I don&amp;rsquo;t have to scroll through a huge file with the scopes on the first half and the business logic on the second half.
+&lt;hr /&gt;&lt;/p&gt;&lt;/dd&gt;
+&lt;/dl&gt;
 
-&lt;p&gt;Our deployment pattern then looks like this:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;reject&lt;/code&gt; &lt;code&gt;-&amp;gt;&lt;/code&gt; &lt;code&gt;restart&lt;/code&gt; &lt;code&gt;-&amp;gt;&lt;/code&gt; &lt;code&gt;accept&lt;/code&gt; &lt;code&gt;-&amp;gt;&lt;/code&gt; &lt;code&gt;sleep&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Then it goes on to the next server for the same cycle. This allows us to maintain application availability: before the app goes down to restart, the node balancer stops accepting connections, then will start accepting connections again after a restart. Due to the way the Linode Nodebalancer system works, updating the node to accept doesn&amp;rsquo;t begin accepting connections from users until it can verify that the host is up and able to process requests.&lt;/p&gt;
-
-&lt;p&gt;You might notice that in the server definitions I&amp;rsquo;ve added the option &lt;code&gt;private_ip&lt;/code&gt;. When defining a host, you are able to add custom options that can be later be retrieved. That&amp;rsquo;s what we are doing in this line:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;address = &amp;quot;#{host.options[:private_ip]}:80&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Why do I need to pass in the private IP of the host? This is because in the linode api, there is no real connection between the concept of a server and an address a nodebalancer points to.&lt;/p&gt;
-
-&lt;p&gt;Hence, we have to go in a rather round-about way to figure out which node to modify to reject/accept connections. The most reliable way I&amp;rsquo;ve found is to use the configuration label and the private IP address to locate the node configuration.&lt;/p&gt;
-
-&lt;p&gt;You&amp;rsquo;re going to need your linode api key that can be generated in your Linode &lt;a href=&#34;https://manager.linode.com/profile/&#34;&gt;My Profile&lt;/a&gt; page. Here we set it as an environment variable as a security measure. We also use the &lt;code&gt;linode&lt;/code&gt; gem to make requests to the linode api. Lastly, we wrap the whole thing into a simple object to abstract out the nittygritty of dealing with the api.&lt;/p&gt;
-
-&lt;p&gt;The meat of this wrapper object is contained in these methods:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;def reject_connections_from_node_with_label_and_address(label, address)
-  node_id = first_node_id_with_label_and_address(label, address)
-  @l.nodebalancer.node.update(:NodeID =&amp;gt; node_id, :Mode =&amp;gt; &#39;reject&#39;)
-end
-
-def accept_connections_from_node_with_label_and_address(label, address)
-  node_id = first_node_id_with_label_and_address(label, address)
-  @l.nodebalancer.node.update(:NodeID =&amp;gt; node_id, :Mode =&amp;gt; &#39;accept&#39;)
-end
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Given a label and an address, they will hunt down the nodebalancer configuration that matches those parameters and update it to reject or accept connections.&lt;/p&gt;
-</description>
+&lt;p&gt;There you have it. I&amp;rsquo;m still exploring query objects and figuring out a more generalized solution that I can implement in all my projects. Feedback and comments are highly appreciated!&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>Running PrivatePub/Faye Standalone in Heroku for Free</title>
-      <link>http://life.beyondrails.com/blog/2013/05/25/running-privatepub/faye-standalone-in-heroku-for-free/</link>
-      <pubDate>Sat, 25 May 2013 00:00:00 UTC</pubDate>
+      <title>Using Hash Fetch</title>
+      <link>http://life.beyondrails.com/blog/2015/12/11/using-hash-fetch/</link>
+      <pubDate>Fri, 11 Dec 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2013/05/25/running-privatepub/faye-standalone-in-heroku-for-free/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://github.com/ryanb/private_pub&#34;&gt;PrivatePub&lt;/a&gt; is an awesome gem by the renowned Ryan Bates of &lt;a href=&#34;http://railscasts.com/&#34;&gt;Railscast&lt;/a&gt; fame. It provides an easy way to use Faye as a pubsub provider. Watch this &lt;a href=&#34;http://railscasts.com/episodes/316-private-pub&#34;&gt;episode&lt;/a&gt; to see it in action.&lt;/p&gt;
+      <guid>http://life.beyondrails.com/blog/2015/12/11/using-hash-fetch/</guid>
+      <description>&lt;p&gt;I fat-finger my code &lt;strong&gt;a lot&lt;/strong&gt; and produce a lot of typos. I do test driven development so it&amp;rsquo;s not as bad, but what&amp;rsquo;s annoying is when I typo a hash key and the test blows up with a failure due to a &lt;code&gt;nil&lt;/code&gt; &amp;ndash; resulting in a very confusing error message.&lt;/p&gt;
 
-&lt;p&gt;You don&amp;rsquo;t have to bundle the gem with a Rails application though; you can deploy PrivatePub standalone as a rack application in Heroku. This allows you to run PrivatePub in a web dyno instead of a worker, allowing for easier maintenance (separation of repositories/codebases) and as a side effect, save on hosting costs.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;https://www.heroku.com/&#34;&gt;Heroku&lt;/a&gt; is well known in the Ruby and Rails community for being the top-of-the-mind platform when it comes to cloud hosting. One of the biggest benefits of Heroku for developers is that they provide &amp;ndash; per application &amp;ndash; your &lt;a href=&#34;https://devcenter.heroku.com/categories/billing&#34;&gt;first web dyno&lt;/a&gt; for free. It&amp;rsquo;s great for trying out new ideas and services without having to shell out money for a hosting provider.&lt;/p&gt;
+&lt;h1 id=&#34;the-issue&#34;&gt;The issue&lt;/h1&gt;
 
-&lt;p&gt;Heroku supports a &lt;a href=&#34;https://devcenter.heroku.com/categories/language-support&#34;&gt;number of languages&lt;/a&gt; (including Ruby) and a number of deployment options. What we&amp;rsquo;re interested here is the &lt;a href=&#34;https://devcenter.heroku.com/articles/ruby-support#rack-applications&#34;&gt;Rack application depoyment&lt;/a&gt; capbility.&lt;/p&gt;
+&lt;p&gt;One of my tests look like this:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;# config.ru
-# Run with: rackup private_pub.ru -s thin -E production
-require &amp;quot;bundler/setup&amp;quot;
-require &amp;quot;yaml&amp;quot;
-require &amp;quot;faye&amp;quot;
-require &amp;quot;private_pub&amp;quot;
-
-Faye::WebSocket.load_adapter(&#39;thin&#39;)
-
-PrivatePub.load_config(
-  File.expand_path(
-    &amp;quot;../config/private_pub.yml&amp;quot;, __FILE__
-  ), &#39;production&#39;
-)
-run PrivatePub.faye_app
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;Given(:instance) { klass.new(payment: payment, signup: signup) }
+context &amp;quot;payment data&amp;quot; do
+  When(:line) { instance.payment_hash }
+  Then { line[:amount] == 99.0 }
+  Then { line[:shipment_address] == &amp;quot;999 papaya triangle windsor alabama 06040 united states&amp;quot; }
+  Then { line[:bundle_ids] == &amp;quot;88 44&amp;quot; }
+  Then { line[:bundle_names] == &amp;quot;test_bundle_88 test_bundle_44&amp;quot; }
+  Then { line[:payment_id] == 859017 }
+  Then { line[:payment_state] == &amp;quot;paid&amp;quot; }
+  Then { line[:payment_date] == &amp;quot;2015-11-11&amp;quot; }
+end
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-yaml&#34;&gt;# config/private_pub.yml
-development:
-  server: &amp;quot;http://localhost:9292/faye&amp;quot;
-  secret_token: &amp;quot;secret&amp;quot;
-test:
-  server: &amp;quot;http://localhost:9292/faye&amp;quot;
-  secret_token: &amp;quot;secret&amp;quot;
-production:
-  server: &amp;quot;http://example.com/faye&amp;quot;
-  secret_token: &amp;quot;secret&amp;quot;
-  signature_expiration: 3600 # one hour
+&lt;p&gt;Can you see the typo?&lt;/p&gt;
+
+&lt;p&gt;I couldn&amp;rsquo;t &amp;ndash; not immediately. At least, not until I saw the code implementation:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;def payment_hash
+  {
+    amount: @payment.amount,
+    shipping_address: address_to_s(@payment.order.shipping_address),
+    bundle_ids: @payment.order_lines.map {|o| o.bundle.id}.join(&#39; &#39;),
+    bundle_names: @payment.order_lines.map {|o| o.bundle.name}.join(&#39; &#39;),
+    payment_id: @payment.id,
+    payment_state: @payment.state,
+    payment_date: date_to_excel_string(@payment.created_at),
+  }
+end
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;# Gemfile
-source &#39;https://rubygems.org&#39;
-ruby &amp;quot;2.0.0&amp;quot;
+&lt;p&gt;Can you see it now?&lt;/p&gt;
 
-gem &#39;faye&#39;
-gem &#39;private_pub&#39;
-gem &#39;thin&#39;
+&lt;h1 id=&#34;the-soultion&#34;&gt;The soultion&lt;/h1&gt;
+
+&lt;p&gt;I eventually figured out where the typo was, and was super annoyed that I changed all my hash key access for this test to &lt;code&gt;Hash#fetch&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;Given(:instance) { klass.new(payment: payment, signup: signup) }
+context &amp;quot;payment data&amp;quot; do
+  When(:line) { instance.payment_hash }
+  Then { line.fetch(:amount) == 99.0 }
+  Then { line.fetch(:shipping_address) == &amp;quot;999 papaya triangle windsor alabama 06040 united states&amp;quot; }
+  Then { line.fetch(:bundle_ids) == &amp;quot;88 44&amp;quot; }
+  Then { line.fetch(:bundle_names) == &amp;quot;test_bundle_88 test_bundle_44&amp;quot; }
+  Then { line.fetch(:payment_id) == 859017 }
+  Then { line.fetch(:payment_state) == &amp;quot;paid&amp;quot; }
+  Then { line.fetch(:payment_date) == &amp;quot;2015-11-11&amp;quot; }
+end
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;These three files are really all you need to start your PrivatePub standalone server in heroku. You&amp;rsquo;ll notice a few changes from the original instructions.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Hash#fetch&lt;/code&gt; is way to get the value from a hash, given a hash key. It&amp;rsquo;s very similar to &lt;code&gt;#[]&lt;/code&gt; with some slight (and in this case, effective) differences.&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;rails g private_pub:install&lt;/code&gt; will create a &lt;code&gt;private_pub.ru&lt;/code&gt; rackup file in your app folder. Since heroku by default will define a web process type at deploy time with the following parameters:&lt;/p&gt;
+&lt;p&gt;From the &lt;a href=&#34;http://ruby-doc.org/core-2.2.0/Hash.html#method-i-fetch&#34;&gt;documentation&lt;/a&gt;:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;web: bundle exec thin start -R config.ru -e $RACK_ENV -p $PORT
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;fetch(key [, default] ) → obj&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;fetch(key) {| key | block } → obj&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Returns a value from the hash for the given key. If the key can’t be found, there are several options: With no other arguments, it will raise an &lt;code&gt;KeyError&lt;/code&gt; exception; if default is given, then that will be returned; if the optional code block is specified, then that will be run and its result returned.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;h = { &amp;quot;a&amp;quot; =&amp;gt; 100, &amp;quot;b&amp;quot; =&amp;gt; 200 }
+h.fetch(&amp;quot;a&amp;quot;)                            #=&amp;gt; 100
+h.fetch(&amp;quot;z&amp;quot;, &amp;quot;go fish&amp;quot;)                 #=&amp;gt; &amp;quot;go fish&amp;quot;
+h.fetch(&amp;quot;z&amp;quot;) { |el| &amp;quot;go fish, #{el}&amp;quot;}   #=&amp;gt; &amp;quot;go fish, z&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;I simply renamed the file to &lt;code&gt;config.ru&lt;/code&gt;. You don&amp;rsquo;t need the rest of the Rails application to run PrivatePub (but you still need Rails to use the client portions).&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The following example shows that an exception is raised if the key is not found and a default value is not supplied.&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;p&gt;One caveat: Rack and Faye doesn&amp;rsquo;t play well with &lt;a href=&#34;https://github.com/faye/faye/issues/25#issuecomment-375678&#34;&gt;running the server in development mode&lt;/a&gt;. So if you&amp;rsquo;re developing locally, you&amp;rsquo;d need to make sure you pass in &lt;code&gt;-E production&lt;/code&gt; to thin. You&amp;rsquo;d also most likely need to copy the same &lt;code&gt;secret_token&lt;/code&gt; for the &lt;code&gt;development&lt;/code&gt; and &lt;code&gt;production&lt;/code&gt; environments.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;h = { &amp;quot;a&amp;quot; =&amp;gt; 100, &amp;quot;b&amp;quot; =&amp;gt; 200 }
+h.fetch(&amp;quot;z&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;The second line of the &lt;code&gt;Gemfile&lt;/code&gt; is a &lt;code&gt;bundler&lt;/code&gt; directive only available in version 1.2.0 and above. This is used by &lt;a href=&#34;https://devcenter.heroku.com/articles/ruby-versions&#34;&gt;Heroku&lt;/a&gt; (and even by &lt;a href=&#34;https://github.com/wayneeseguin/rvm/issues/1517#issuecomment-15007730&#34;&gt;rvm&lt;/a&gt;) to select the ruby version they will use for your environment. I prefer to make sure my deployment target mimics my development environment as much as possible so I throw that in there.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;produces:&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;p&gt;Another caveat: Heroku does not support WebSockets yet, so Faye will fallback to long-polling. This may or may not be a deal breaker, as this is in fact a desirable behavior &amp;ndash; long-polling ensures that your application is supported even by not-so-current browsers.&lt;/p&gt;
-</description>
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;prog.rb:2:in `fetch&#39;: key not found (KeyError)
+ from prog.rb:2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The last example is what I gain the most benefit from: it clarifies exactly where I went wrong. In the first code example I gave, the issue was I was using &lt;code&gt;shipment_address&lt;/code&gt; instead of &lt;code&gt;shipping_address&lt;/code&gt; and since they both &lt;strong&gt;looked almost the same&lt;/strong&gt; I initially thought that the value was indeed &lt;code&gt;nil&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;By using &lt;code&gt;Hash#fetch&lt;/code&gt; I completely sidestep the problem of confusing error messages and get a clearer one that tells me the key I&amp;rsquo;m trying to access does not actually exist.&lt;/p&gt;
+
+&lt;h1 id=&#34;faq&#34;&gt;FAQ&lt;/h1&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;You said you&amp;rsquo;re doing TDD, but I can see that the typo is in the middle of the test! If you&amp;rsquo;re really doing TDD then you should have caught the bug at the last line!!&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;It&amp;rsquo;s true, I caught the bug at the last line (and catching the typo was a lot easier because I knew exactly where to look). You&amp;rsquo;ll notice that the hash keys are alphabetically arranged; I moved the typo&amp;rsquo;d line in the middle as an artistic decision. As Mark Twain famously said: never let the truth get in the way of a good story. :P&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;How can this be used to avoid &lt;code&gt;&amp;amp;&amp;amp;&lt;/code&gt; when trying to access a deep nested hash like this:&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;hash = {foo:{bar: {baz: &amp;quot;hello world&amp;quot;}}}
+puts hash[:foo][:bar][:baz] if hash[:foo] &amp;amp;&amp;amp; hash[:foo][:bar]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can use the &lt;code&gt;default&lt;/code&gt; value option during the call:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;hash = {foo:{bar: {baz: &amp;quot;hello world&amp;quot;}}}
+puts hash.fetch(:foo, {}).fetch(:bar, {}).fetch(:baz, nil)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Or, if you&amp;rsquo;re using Ruby 2.3 you can use &lt;code&gt;Hash#dig&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;hash = {foo:{bar: {baz: &amp;quot;hello world&amp;quot;}}}
+puts hash.dig(:foo, :bar, :baz)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you&amp;rsquo;re not yet using Ruby 2.3 (which is true at the time of this post&amp;rsquo;s publication) then you can use a &lt;a href=&#34;https://github.com/Invoca/ruby_dig&#34;&gt;gem&lt;/a&gt; to add that method call.&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>A Smartphone is not a Phone</title>
-      <link>http://life.beyondrails.com/blog/2013/02/12/a-smartphone-is-not-a-phone/</link>
-      <pubDate>Tue, 12 Feb 2013 00:00:00 UTC</pubDate>
+      <title>ActiveRecord and Forty Two</title>
+      <link>http://life.beyondrails.com/blog/2015/12/06/activerecord-and-forty-two/</link>
+      <pubDate>Sun, 06 Dec 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://life.beyondrails.com/blog/2013/02/12/a-smartphone-is-not-a-phone/</guid>
-      <description>&lt;p&gt;I&amp;rsquo;ve seen a number of commenters (mostly from the US) arguing that people look funny holding a 5-inch phone/tablet at the side of their heads, while being surprised at how well they&amp;rsquo;ve sold so far (especially in Asia).&lt;/p&gt;
+      <guid>http://life.beyondrails.com/blog/2015/12/06/activerecord-and-forty-two/</guid>
+      <description>&lt;p&gt;I was making a gem to have Google Spreadsheets as the backing store for an &lt;code&gt;ActiveRecord&lt;/code&gt; adapter when I came upon this interesting method:&lt;/p&gt;
 
-&lt;p&gt;I think it&amp;rsquo;s because those that got these &amp;ldquo;giant phones&amp;rdquo; have subconsciously realised the obvious: their smart phone isn&amp;rsquo;t a phone. It&amp;rsquo;s actually a computer that happens to have phone-like functionalities. After all, the only difference Skype has over regular cellular voice services is the medium.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
 
-&lt;p&gt;I&amp;rsquo;m guessing all these customers have performed a cost-benefit analysis in their heads during purchase (cost of looking stupid during phone calls vs amount of time making phone calls, and the benefit of having extra screen space vs amount of time on activities that benefit from that screen space e.g. email, SMS, games, videos)&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;# Same as +first+ except returns only the fourth record.
+def fourth(*args)
+  @association.fourth(*args)
+end
 
-&lt;p&gt;When you start looking at the whole situation from this perspective, it all makes sense.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Writing History on Your Own Terms</title>
-      <link>http://life.beyondrails.com/blog/2013/02/05/writing-history-on-your-own-terms/</link>
-      <pubDate>Tue, 05 Feb 2013 00:00:00 UTC</pubDate>
-      
-      <guid>http://life.beyondrails.com/blog/2013/02/05/writing-history-on-your-own-terms/</guid>
-      <description>&lt;p&gt;HTC just posted a brilliant blog entry titled &amp;ldquo;&lt;a href=&#34;http://blog.htc.com/2013/02/a-brief-history-of-photography/&#34;&gt;A Brief History of Photography&lt;/a&gt;.&amp;rdquo; It&amp;rsquo;s a short infographic that details the experience of photographic technology from two centuries ago until the present.&lt;/p&gt;
+# Same as +first+ except returns only the fifth record.
+def fifth(*args)
+  @association.fifth(*args)
+end
 
-&lt;p&gt;What&amp;rsquo;s really clever is that they&amp;rsquo;ve inserted themselves in history. The message is subtle yet clear: HTC will become part of this particular retelling of history.&lt;/p&gt;
+# Same as +first+ except returns only the forty second record.
+# Also known as accessing &amp;quot;the reddit&amp;quot;.
+def forty_two(*args)
+  @association.forty_two(*args)
+end
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Maybe your product isn&amp;rsquo;t that well known enough to be included in the &lt;strong&gt;History of Mankind&lt;/strong&gt;, or even the &lt;strong&gt;History of &lt;em&gt;insert country here&lt;/em&gt;,&lt;/strong&gt; but is there a niche or genre where you are history in the making?&lt;/p&gt;
+&lt;p&gt;Today I learned that &lt;code&gt;ActiveRecord&lt;/code&gt; has methods first until fifth, and also forty_two.&lt;/p&gt;
 
-&lt;p&gt;The challenge then is finding out which niche or genre that is, and making sure the mark you leave behind is indelible, (enough that people will take the history you&amp;rsquo;re making as the canonical one) cementing your place in the timeline.&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s even in the &lt;a href=&#34;https://github.com/rails/rails/blob/master/guides/source/active_support_core_extensions.md#extensions-to-array&#34;&gt;documentation&lt;/a&gt;:&lt;/p&gt;
 
-&lt;p&gt;You or your product may not be around forever, but the history you&amp;rsquo;ve contributed to is an inexpensive path to immortality.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>My Development Setup</title>
-      <link>http://life.beyondrails.com/blog/2012/01/23/my-development-setup/</link>
-      <pubDate>Mon, 23 Jan 2012 00:00:00 UTC</pubDate>
-      
-      <guid>http://life.beyondrails.com/blog/2012/01/23/my-development-setup/</guid>
-      <description>
+&lt;blockquote&gt;
+&lt;p&gt;The methods second, third, fourth, and fifth return the corresponding element (first is built-in). Thanks to social wisdom and positive constructiveness all around, forty_two is also available.&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;p&gt;At &lt;a href=&#34;http://www.mindvalley.com/&#34;&gt;Mindvalley&lt;/a&gt; employees can have any kind of hardware/software they want, provided that they can prove it is necessary for the work they’re doing, or at least it increases their productivity. In my case, I opted for the setup as seen here (picture courtesy of my colleague):&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://instagr.am/p/h_EQp/&#34;&gt;&lt;img src=&#34;http://distilleryimage1.s3.amazonaws.com/8bd5621a40f411e180c9123138016265_7.jpg&#34; alt=&#34;Look, Ma! Four eyes!!&#34;&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;(the blank monitor on the left was an Ubuntu VM on screensaver mode)&lt;/p&gt;
-
-&lt;h2 id=&#34;toc_0&#34;&gt;A Brief History of my Development Machines&lt;/h2&gt;
-
-&lt;p&gt;Before I describe the whole setup, allow me to provide a bit of a backgrounder. Vishen – Mindvalley’s CEO – has decreed that every employee be issued a Mac, be it a MacBook/MacBook Pro/MacBook Air/Mac Pro (yes, we have four of those). Only in special cases does the company get anything other than a Mac. Not only are employees to be A-players, they have to be cool and look cool as well :)&lt;/p&gt;
-
-&lt;p&gt;Before my setup, I used to use a MacBook Air 2010 for development (and before that, a MacBook Pro 2010). The only person in the company that uses something other than a mac is Calvin (he runs Linux on a Dell XPS laptop). All’s well and good, but then when Mindvalley experienced a renaissance and shifted from merely being an internet marketing company into a internet services company, Calvin and I realized that our current workhorses are insufficient for the kind of work we will be doing.&lt;/p&gt;
-
-&lt;p&gt;And so we went about trying to get a quote for some hardware. I preferred the Mac type of environment (I loved my MacBook Air) so I thought maybe I’d get the newer MacBook Pro 2011. Calvin, of course isn’t restricted to Apple hardware since he prefers to develop on Linux anyway. That was well and good, but I when it was time to do the requisition email, I noticed that my machine was waaaay pricier than his, and I had lower specs. It was then that I had an idea.&lt;/p&gt;
-
-&lt;p&gt;“What if,” I thought to myself, “I can convince Vishen to get me a fast non-Apple desktop computer to save on price, then install Macintosh on it to somewhat retain the standard?” Long story short, I got my hackintosh (my very first, and it was quite an adventure making it). I have a sweet machine and I don’t have to unlearn and relearn my way through the OS.&lt;/p&gt;
-
-&lt;h2 id=&#34;toc_1&#34;&gt;The Pivot&lt;/h2&gt;
-
-&lt;p&gt;Fast forward to a lazy Friday afternoon when the Apple software updater prompted me to install a few software updates. I’ve been working with Macs for so long that it was second nature to me to install software updates without thinking about it. Needless to say, during my next reboot, my Mac sputtered during the boot sequence.&lt;/p&gt;
-
-&lt;p&gt;Now before all this, when I first started my foray into the forbidden world of Hackintoshes, I thought to myself that it would be such a waste if I couldn’t play any of the nice games on my machine. So I installed Windows 7 as a dual-boot option (we had a few unused licenses lying around). It was fortunate that I had this setup, because when the Mac OS refused to boot, I was still able to do basic stuff (like email and skype and some cloud-related tasks – thank you Google Docs!) with the Windows portion.&lt;/p&gt;
-
-&lt;p&gt;One lucky side effect of being in Windows was that I can actually use both the discrete graphics card and the onboard graphics processor at the same time - giving me the ability to use four monitors concurrently. I wasn’t able to do that with the Hackintosh; I was limited to just two screens (three if I use a DVI-USB adapter but the screen refresh on that monitor is too low for comfort). I realized that maybe I might enjoy this nice side effect, if only I can get a decent development environment set up.&lt;/p&gt;
-
-&lt;h2 id=&#34;toc_2&#34;&gt;Making it Work&lt;/h2&gt;
-
-&lt;p&gt;Everyone knows that Windows isn’t the best environment to do web development. There are lots of things that I missed when I was in a unix-like environment like that with the Mac – a sane terminal and shell, development headers, web servers, and generally a dev environment that is close to that in production.&lt;/p&gt;
-
-&lt;p&gt;What would be the best way to have such an environment? Make one in a virtual machine of course.&lt;/p&gt;
-
-&lt;p&gt;I installed Ubuntu 10.04 in VirtualBox (we use 10.04 in production as well, so that’s perfect because when I deploy I know I can mimic the same packages I’ve been using). In order to access the vm, I also installed cygwin (but I mostly just use the ssh cygwin provides). That solves the issue of the shell – I have bash inside screen and I get the benefits of multiplexing and tab completion – but still I’m stuck with the horrible terminal. So I also got XMing and ran gnome-terminal off the XServer. Bit by bit I’m getting the benefits of a Unix environment – almost there.&lt;/p&gt;
-
-&lt;p&gt;My editor of choice is NetBeans (I’ll explain why in a future post) and I’d prefer to run it inside Windows - running NetBeans inside Ubuntu isn’t that pretty and is pretty clunky with copy-paste. I thought I’d just be able to use VirtualBox’s shared folder capabilities, but when I tried that I realized that the Windows filesystem doesn’t respect the file permissions – all files become 777. In order to preserve the file permissions while still being able to run my editor natively (outside the VM) I used &lt;a href=&#34;http://www.expandrive.com/&#34;&gt;ExpanDrive&lt;/a&gt; to mount my VM’s filesystem through SSH. It’s $40 well spent – I tried using some free ssh filesystem software like &lt;a href=&#34;http://dokan-dev.net/en/&#34;&gt;Dokan&lt;/a&gt; but wasn’t able to make it work.&lt;/p&gt;
-
-&lt;p&gt;To wrap things up, I used port forwarding to expose port 3000 and port 80 from the guest to the host. That way, I can run the servers from Ubuntu while still being able to access them from a native browser. Take note that Webrick is slow when run this way – you’d need to disable reverse lookups as seen in this &lt;a href=&#34;https://gist.github.com/1524036&#34;&gt;gist&lt;/a&gt; to speed it up, or just use thin.&lt;/p&gt;
-
-&lt;h2 id=&#34;toc_3&#34;&gt;Summary&lt;/h2&gt;
-
-&lt;p&gt;I think the setup is pretty sweet, and I have no complaints so far (aside from having to relearn my shortcut keys). I have a Windows machine that I don’t have to reboot for gaming, and I’m able to have a development environment very close to what we have on our production machines.&lt;/p&gt;
-
-&lt;p&gt;The ability to use four monitors was also very productive. I have NetBeans running on the left most monitor, the middle left monitor is for my terminal (with shells being multiplexed by screen), middle right is for the current site preview, and the far right is for viewing documentation. I think four screens is just right – any more and I’d be confused where to look at (maybe one more small monitor for and extra console output?)&lt;/p&gt;
-
-&lt;p&gt;One additional advantage of this setup is that the whole thing is in files. That means when I get to upgrade my machine in the future, I don’t have to redo my environment – it’s in a VM so I just transplant the required files and that’s it. What I’m planning to do next is to get extra space in DropBox or &lt;a href=&#34;https://www.insynchq.com/&#34;&gt;Insync&lt;/a&gt; and put the VM image on it. I should be able to access everything from my different workstations, as long as I keep to the discipline of suspending or shutting down the VM whenever I leave.&lt;/p&gt;
-
-&lt;p&gt;What do you think of this setup? Any suggestions how to improve on this? Would love to hear how you would solve this if you called the shots :)&lt;/p&gt;
-</description>
+&lt;p&gt;It seems to have been added by &lt;a href=&#34;https://github.com/jeremy&#34;&gt;jeremy&lt;/a&gt; on March 21, 2009 puportedly to &amp;ldquo;&lt;a href=&#34;https://github.com/rails/rails/commit/83fd1ae122cf1ee4ea2c52e0bd963462163516ca&#34;&gt;Convert array extension modules to class reopens&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
     
   </channel>

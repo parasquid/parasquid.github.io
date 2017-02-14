@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>Using Hash Fetch &middot; </title>
+
+  
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/poole.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde-x.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/opalbox.min.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/opalbox-dark.min.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/styles.css">
+
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://life.beyondrails.com/touch-icon-144-precomposed.png">
+  <link href="http://life.beyondrails.com/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  
+
+  <script type="text/javascript" src="http://cdn.opalrb.org/opal/0.7.1/opal.min.js"></script>
+  <script type="text/javascript" src="http://cdn.opalrb.org/opal/0.7.1/opal-parser.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <script type="text/javascript" src="http://life.beyondrails.com/js/opalbox-jquery.min.js"></script>
+
+</head>
+<body class="theme-base-0b">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1></h1>
+      <p class="lead">Codesmithing by day. Airsculpting by night.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://life.beyondrails.com/">Blog Index</a></li>
+      
+      <li class="sidebar-nav-item"><a href="http://life.beyondrails.com/about/">About Me</a></li>
+      
+      <li class="sidebar-nav-item"><a href="http://life.beyondrails.com/zen/">Zen</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="https://github.com/parasquid"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      <a href="https://www.linkedin.com/in/parasquid"><i class="fa fa-linkedin-square fa-3x"></i></a>
+      <a href="https://plus.google.com/u/1/&#43;TristanGomez/posts"><i class="fa fa-google-plus-square fa-3x"></i></a>
+      <a href="https://www.facebook.com/parasquid"><i class="fa fa-facebook-square fa-3x"></i></a>
+      <a href="https://twitter.com/parasquid"><i class="fa fa-twitter-square fa-3x"></i></a>
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://life.beyondrails.com/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">Using Hash Fetch</h1>
+    <span class="post-date">Dec 11, 2015 &middot; 4 minute read &middot; <a href="http://life.beyondrails.com/blog/2015/12/11/using-hash-fetch/#disqus_thread">Comments</a>
+    
+    <br/>
+    <a class="label" href="http://life.beyondrails.com/categories/til">til</a>
+    </span>
+    <p>I fat-finger my code <strong>a lot</strong> and produce a lot of typos. I do test driven development so it&rsquo;s not as bad, but what&rsquo;s annoying is when I typo a hash key and the test blows up with a failure due to a <code>nil</code> &ndash; resulting in a very confusing error message.</p>
+
+<p></p>
+
+<h1 id="the-issue">The issue</h1>
+
+<p>One of my tests look like this:</p>
+
+<pre><code class="language-ruby">Given(:instance) { klass.new(payment: payment, signup: signup) }
+context &quot;payment data&quot; do
+  When(:line) { instance.payment_hash }
+  Then { line[:amount] == 99.0 }
+  Then { line[:shipment_address] == &quot;999 papaya triangle windsor alabama 06040 united states&quot; }
+  Then { line[:bundle_ids] == &quot;88 44&quot; }
+  Then { line[:bundle_names] == &quot;test_bundle_88 test_bundle_44&quot; }
+  Then { line[:payment_id] == 859017 }
+  Then { line[:payment_state] == &quot;paid&quot; }
+  Then { line[:payment_date] == &quot;2015-11-11&quot; }
+end
+</code></pre>
+
+<p>Can you see the typo?</p>
+
+<p>I couldn&rsquo;t &ndash; not immediately. At least, not until I saw the code implementation:</p>
+
+<pre><code class="language-ruby">def payment_hash
+  {
+    amount: @payment.amount,
+    shipping_address: address_to_s(@payment.order.shipping_address),
+    bundle_ids: @payment.order_lines.map {|o| o.bundle.id}.join(' '),
+    bundle_names: @payment.order_lines.map {|o| o.bundle.name}.join(' '),
+    payment_id: @payment.id,
+    payment_state: @payment.state,
+    payment_date: date_to_excel_string(@payment.created_at),
+  }
+end
+</code></pre>
+
+<p>Can you see it now?</p>
+
+<h1 id="the-soultion">The soultion</h1>
+
+<p>I eventually figured out where the typo was, and was super annoyed that I changed all my hash key access for this test to <code>Hash#fetch</code>:</p>
+
+<pre><code class="language-ruby">Given(:instance) { klass.new(payment: payment, signup: signup) }
+context &quot;payment data&quot; do
+  When(:line) { instance.payment_hash }
+  Then { line.fetch(:amount) == 99.0 }
+  Then { line.fetch(:shipping_address) == &quot;999 papaya triangle windsor alabama 06040 united states&quot; }
+  Then { line.fetch(:bundle_ids) == &quot;88 44&quot; }
+  Then { line.fetch(:bundle_names) == &quot;test_bundle_88 test_bundle_44&quot; }
+  Then { line.fetch(:payment_id) == 859017 }
+  Then { line.fetch(:payment_state) == &quot;paid&quot; }
+  Then { line.fetch(:payment_date) == &quot;2015-11-11&quot; }
+end
+</code></pre>
+
+<p><code>Hash#fetch</code> is way to get the value from a hash, given a hash key. It&rsquo;s very similar to <code>#[]</code> with some slight (and in this case, effective) differences.</p>
+
+<p>From the <a href="http://ruby-doc.org/core-2.2.0/Hash.html#method-i-fetch">documentation</a>:</p>
+
+<blockquote>
+<p><code>fetch(key [, default] ) → obj</code></p>
+
+<p><code>fetch(key) {| key | block } → obj</code></p>
+
+<p>Returns a value from the hash for the given key. If the key can’t be found, there are several options: With no other arguments, it will raise an <code>KeyError</code> exception; if default is given, then that will be returned; if the optional code block is specified, then that will be run and its result returned.</p>
+</blockquote>
+
+<pre><code class="language-ruby">h = { &quot;a&quot; =&gt; 100, &quot;b&quot; =&gt; 200 }
+h.fetch(&quot;a&quot;)                            #=&gt; 100
+h.fetch(&quot;z&quot;, &quot;go fish&quot;)                 #=&gt; &quot;go fish&quot;
+h.fetch(&quot;z&quot;) { |el| &quot;go fish, #{el}&quot;}   #=&gt; &quot;go fish, z&quot;
+</code></pre>
+
+<blockquote>
+<p>The following example shows that an exception is raised if the key is not found and a default value is not supplied.</p>
+</blockquote>
+
+<pre><code class="language-ruby">h = { &quot;a&quot; =&gt; 100, &quot;b&quot; =&gt; 200 }
+h.fetch(&quot;z&quot;)
+</code></pre>
+
+<blockquote>
+<p>produces:</p>
+</blockquote>
+
+<pre><code class="language-ruby">prog.rb:2:in `fetch': key not found (KeyError)
+ from prog.rb:2
+</code></pre>
+
+<p>The last example is what I gain the most benefit from: it clarifies exactly where I went wrong. In the first code example I gave, the issue was I was using <code>shipment_address</code> instead of <code>shipping_address</code> and since they both <strong>looked almost the same</strong> I initially thought that the value was indeed <code>nil</code>.</p>
+
+<p>By using <code>Hash#fetch</code> I completely sidestep the problem of confusing error messages and get a clearer one that tells me the key I&rsquo;m trying to access does not actually exist.</p>
+
+<h1 id="faq">FAQ</h1>
+
+<blockquote>
+<p>You said you&rsquo;re doing TDD, but I can see that the typo is in the middle of the test! If you&rsquo;re really doing TDD then you should have caught the bug at the last line!!</p>
+</blockquote>
+
+<p>It&rsquo;s true, I caught the bug at the last line (and catching the typo was a lot easier because I knew exactly where to look). You&rsquo;ll notice that the hash keys are alphabetically arranged; I moved the typo&rsquo;d line in the middle as an artistic decision. As Mark Twain famously said: never let the truth get in the way of a good story. :P</p>
+
+<hr />
+
+<blockquote>
+<p>How can this be used to avoid <code>&amp;&amp;</code> when trying to access a deep nested hash like this:</p>
+</blockquote>
+
+<pre><code class="language-ruby">hash = {foo:{bar: {baz: &quot;hello world&quot;}}}
+puts hash[:foo][:bar][:baz] if hash[:foo] &amp;&amp; hash[:foo][:bar]
+</code></pre>
+
+<p>You can use the <code>default</code> value option during the call:</p>
+
+<pre><code class="language-ruby">hash = {foo:{bar: {baz: &quot;hello world&quot;}}}
+puts hash.fetch(:foo, {}).fetch(:bar, {}).fetch(:baz, nil)
+</code></pre>
+
+<p>Or, if you&rsquo;re using Ruby 2.3 you can use <code>Hash#dig</code></p>
+
+<pre><code class="language-ruby">hash = {foo:{bar: {baz: &quot;hello world&quot;}}}
+puts hash.dig(:foo, :bar, :baz)
+</code></pre>
+
+<p>If you&rsquo;re not yet using Ruby 2.3 (which is true at the time of this post&rsquo;s publication) then you can use a <a href="https://github.com/Invoca/ruby_dig">gem</a> to add that method call.</p>
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "parasquid";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "parasquid";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://life.beyondrails.com/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

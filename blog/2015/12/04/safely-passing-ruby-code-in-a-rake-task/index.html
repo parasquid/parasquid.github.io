@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>Safely Passing Ruby Code in a Rake Task &middot; </title>
+
+  
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/poole.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde-x.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/opalbox.min.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/opalbox-dark.min.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/styles.css">
+
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://life.beyondrails.com/touch-icon-144-precomposed.png">
+  <link href="http://life.beyondrails.com/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  
+
+  <script type="text/javascript" src="http://cdn.opalrb.org/opal/0.7.1/opal.min.js"></script>
+  <script type="text/javascript" src="http://cdn.opalrb.org/opal/0.7.1/opal-parser.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <script type="text/javascript" src="http://life.beyondrails.com/js/opalbox-jquery.min.js"></script>
+
+</head>
+<body class="theme-base-0b">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1></h1>
+      <p class="lead">Codesmithing by day. Airsculpting by night.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://life.beyondrails.com/">Blog Index</a></li>
+      
+      <li class="sidebar-nav-item"><a href="http://life.beyondrails.com/about/">About Me</a></li>
+      
+      <li class="sidebar-nav-item"><a href="http://life.beyondrails.com/zen/">Zen</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="https://github.com/parasquid"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      <a href="https://www.linkedin.com/in/parasquid"><i class="fa fa-linkedin-square fa-3x"></i></a>
+      <a href="https://plus.google.com/u/1/&#43;TristanGomez/posts"><i class="fa fa-google-plus-square fa-3x"></i></a>
+      <a href="https://www.facebook.com/parasquid"><i class="fa fa-facebook-square fa-3x"></i></a>
+      <a href="https://twitter.com/parasquid"><i class="fa fa-twitter-square fa-3x"></i></a>
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://life.beyondrails.com/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">Safely Passing Ruby Code in a Rake Task</h1>
+    <span class="post-date">Dec 4, 2015 &middot; 4 minute read &middot; <a href="http://life.beyondrails.com/blog/2015/12/04/safely-passing-ruby-code-in-a-rake-task/#disqus_thread">Comments</a>
+    
+    <br/>
+    <a class="label" href="http://life.beyondrails.com/categories/ruby">ruby</a><a class="label" href="http://life.beyondrails.com/categories/meta-programming">meta-programming</a><a class="label" href="http://life.beyondrails.com/categories/til">til</a>
+    </span>
+    <p>I wanted to make a rake task that would accept something like <code>1.month</code> or <code>1.day</code> as one of it&rsquo;s arguments. The immediate tool I reached for was <code>eval</code> and it worked like a charm. However, <a href="https://codeclimate.com">Code Climate</a> (the tool we use to check for static analysis) complains about <code>eval</code> and understandably so; the use of <code>eval</code> is a practice full of danger and security vulnerabilities.</p>
+
+<p>I&rsquo;m using it inside a rake task that is never exposed to third parties, and anyone malicious enough to run the rake task with a bad parameter to be eval&rsquo;d would already have had access to the system anyway, and able to wreak even greater havoc than by running the malicious code through the rake task. I believe this is an accepted risk scenario, and <a href="https://prezi.com/user/ypmnd6xz0d4h/">Crystal</a> (one of my colleagues who was reviewing my code) suggested that since I had a valid point, I can just turn off the Code Climate check for this particular instance.</p>
+
+<p>I thought that was justified, but I also thought it was a slippery slope. I&rsquo;m sure there are ways to pass in a string and have it dynamically interpreted, without having to expose the system to a security vulnerability.</p>
+
+<p></p>
+
+<h1 id="why-is-eval-so-dangerous">Why is <code>eval</code> so dangerous?</h1>
+
+<p>Jimmy had a <a href="https://www.facebook.com/download/858552380924696/Hacking%20Rails.pdf">presentation on the YAML exploit</a> and this is exactly what enables the exploit: a YAML payload is deserialized to an object that contains an <code>#eval</code> statement and then executed.</p>
+
+<p>There is a good <a href="http://www.sitepoint.com/anatomy-of-an-exploit-an-in-depth-look-at-the-rails-yaml-vulnerability/">Sitepoint article</a> that goes in-depth into how the exploit works.</p>
+
+<h1 id="abv-always-be-validating">ABV (Always Be Validating)</h1>
+
+<p>One way to work around the danger is to validate the string being passed.</p>
+
+<pre><code class="language-ruby">args = { period: &quot;1.day&quot; } # this can be set through the rake task
+
+def permit?(operation)
+  permitted_operations = /^([1-9].(day|year|month|hour|minute)s?)$/
+  !permitted_operations.match(operation.to_s).nil?
+end
+
+period = eval(args[:period]) if permit?(args[:period])
+</code></pre>
+
+<p>Here is the code I used to validate the parameters passed into eval. Since I know exactly what the format of the string would be, I can craft a simple regex to test for this.</p>
+
+<p>However, since Code Climate does static analysis, it won&rsquo;t give me cookie points for validating the input first before passing to eval. As long as there is a call to <code>Kernel#eval</code> then the code climate checks will fail.</p>
+
+<h1 id="a-rose-by-any-other-name">A rose by any other name</h1>
+
+<p>We can instead use <code>#instance_eval</code> which is mostly the same thing, but instead of evaluating the string in the current context, it evaluates the string within the context of the object instance you&rsquo;re calling it in.</p>
+
+<pre><code class="language-ruby">class SandboxObject; end
+period = SandboxObject.new.instance_eval(args[:period]) if permit?(args[:period])
+</code></pre>
+
+<p><code>#instance_eval</code> not necessarily more secure, since you can still pass in stuff that can give remote access to an attacker if you don&rsquo;t properly validate it. For example:</p>
+
+<pre><code class="language-ruby">class SandboxObject; end
+Sandbox.new.instance_eval(&quot;system('cat /etc/passwd')&quot;)
+</code></pre>
+
+<p>But since we&rsquo;re now restricting the string evaluation to an instance of a sandbox object, you are able to sidestep a number of more common attacks such as redefining a method on a commonly used class.</p>
+
+<p>Together with the input validation, this should be enough to mitigate against careless ruby code being passed in as input (and this also makes Code Climate happy and I get to have my pull request merged).</p>
+
+<h1 id="tl-dr">TL;DR</h1>
+
+<p>I lied; there is no perfect way have a third party pass in a string and safely <code>eval</code> it. However, you can mitigate the damage with the following:</p>
+
+<ul>
+<li>Validate your string parameters that are to be eval&rsquo;d or executed.</li>
+<li>Don&rsquo;t turn off the code climate check; instead look for ways to approach what you want to do in a different way.</li>
+</ul>
+
+<h1 id="updates">Updates</h1>
+
+<p><a href="https://www.facebook.com/ferngyi">Looi</a> made a good point on sidestepping the regex altogether:</p>
+
+<pre><code>def validated_period(args)
+  num, period = args.split('.')
+  allowed_periods = %w(second seconds hour hours day days month months)
+
+  if allowed_periods.include?(period) &amp;&amp; num.to_i &gt; 0
+    num.to_i.public_send(period)
+  end
+end
+</code></pre>
+
+<p><a href="https://www.facebook.com/antonsen.espen">Espen</a> also makes a great point that the regex isn&rsquo;t an issue, but the eval is and suggested to instead use something like the Chronic library or something like <code>.advance(period.to_sym =&gt; i)</code>.</p>
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "parasquid";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "parasquid";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://life.beyondrails.com/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

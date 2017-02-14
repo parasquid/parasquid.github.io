@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Activerecord on Life Beyond Rails</title>
+    <link>http://life.beyondrails.com/categories/activerecord/index.xml</link>
+    <description>Recent content in Activerecord on Life Beyond Rails</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <atom:link href="http://life.beyondrails.com/categories/activerecord/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>ActiveRecord and Forty Two</title>
+      <link>http://life.beyondrails.com/blog/2015/12/06/activerecord-and-forty-two/</link>
+      <pubDate>Sun, 06 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://life.beyondrails.com/blog/2015/12/06/activerecord-and-forty-two/</guid>
+      <description>&lt;p&gt;I was making a gem to have Google Spreadsheets as the backing store for an &lt;code&gt;ActiveRecord&lt;/code&gt; adapter when I came upon this interesting method:&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;# Same as +first+ except returns only the fourth record.
+def fourth(*args)
+  @association.fourth(*args)
+end
+
+# Same as +first+ except returns only the fifth record.
+def fifth(*args)
+  @association.fifth(*args)
+end
+
+# Same as +first+ except returns only the forty second record.
+# Also known as accessing &amp;quot;the reddit&amp;quot;.
+def forty_two(*args)
+  @association.forty_two(*args)
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Today I learned that &lt;code&gt;ActiveRecord&lt;/code&gt; has methods first until fifth, and also forty_two.&lt;/p&gt;
+
+&lt;p&gt;It&amp;rsquo;s even in the &lt;a href=&#34;https://github.com/rails/rails/blob/master/guides/source/active_support_core_extensions.md#extensions-to-array&#34;&gt;documentation&lt;/a&gt;:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;The methods second, third, fourth, and fifth return the corresponding element (first is built-in). Thanks to social wisdom and positive constructiveness all around, forty_two is also available.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;It seems to have been added by &lt;a href=&#34;https://github.com/jeremy&#34;&gt;jeremy&lt;/a&gt; on March 21, 2009 puportedly to &amp;ldquo;&lt;a href=&#34;https://github.com/rails/rails/commit/83fd1ae122cf1ee4ea2c52e0bd963462163516ca&#34;&gt;Convert array extension modules to class reopens&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

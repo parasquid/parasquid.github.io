@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Zens on Life Beyond Rails</title>
+    <link>http://life.beyondrails.com/zen/index.xml</link>
+    <description>Recent content in Zens on Life Beyond Rails</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 19 Feb 2016 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://life.beyondrails.com/zen/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Answer the Question</title>
+      <link>http://life.beyondrails.com/zen/answer-the-question</link>
+      <pubDate>Fri, 19 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://life.beyondrails.com/zen/answer-the-question</guid>
+      <description>&lt;p&gt;The Student was arguing with his Colleague about a piece of code they have written.&lt;/p&gt;
+
+&lt;p&gt;&amp;ldquo;Master, please settle our argument,&amp;rdquo; the student said. &amp;ldquo;My Colleague insists that the return value of a method should always be an object.&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;The Master was expressionless. After some a few minutes, he finally replied. &amp;ldquo;Nil.&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;The Student&amp;rsquo;s face contorted into a frown, for he was confused at the Master&amp;rsquo;s reply. &amp;ldquo;Master, I don&amp;rsquo;t understand,&amp;rdquo; he stammered. &amp;ldquo;You haven&amp;rsquo;t answered my question!&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;The Student&amp;rsquo;s face then slowly lit up, for he finally understood.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Higher</title>
+      <link>http://life.beyondrails.com/zen/higher</link>
+      <pubDate>Thu, 18 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://life.beyondrails.com/zen/higher</guid>
+      <description>&lt;p&gt;The Master saw the Student bewildered. Apparently, the Client complained that the temple construction being supervised by the Student is not going according to spec.&lt;/p&gt;
+
+&lt;p&gt;&amp;ldquo;I don&amp;rsquo;t get it,&amp;rdquo; the Student sighed, &amp;ldquo;the specs are right here; they are clear, complete, and in black and white. How can he tell me that I&amp;rsquo;m not following the specs?&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;The Master replied &amp;ldquo;I will answer your question, but first you must help me hang a portrait. I am old and frail, and do not have the strength to put a portrait up a wall.&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;When they reached the Master&amp;rsquo;s dwelling, the Master began giving instructions. &amp;ldquo;I need it to be about this high. Around the height of my eyes,&amp;rdquo; she said.&lt;/p&gt;
+
+&lt;p&gt;The Student started to move the portrait up and down while listening to the Master&amp;rsquo;s feedback. An hour has passed, and the Student still saw dissatisfaction in the Master&amp;rsquo;s face. Concerned that he wasn&amp;rsquo;t doing a good job, he asked &amp;ldquo;you still ask me to put the portrait higher. Isn&amp;rsquo;t the portrait high enough?&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;The Master shook his head, stamped her foot, and growled &amp;ldquo;higher!&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;&amp;ldquo;But Master,&amp;rdquo; the Student stammered, &amp;ldquo;the portrait is almost at the ceiling! I can&amp;rsquo;t put it up any higher.&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;&amp;ldquo;I didn&amp;rsquo;t tell you to increase the height at which you place the portrait,&amp;rdquo; the Master retorted.&lt;/p&gt;
+
+&lt;p&gt;The Student&amp;ndash;visibly confounded&amp;ndash;pleadingly asked &amp;ldquo;then what was it that you wanted me to do?&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;&amp;ldquo;When the portrait was too low, you said &amp;lsquo;higher.&amp;rsquo; When the portrait was near the height of your eyes, you said &amp;lsquo;yes, but a little bit higher.&amp;rsquo; When the portrait was a bit over the height of your eyes, you said &amp;lsquo;no, go back higher.&amp;rsquo; When the portrait was too far away from the agreed on height, you said &amp;lsquo;no, I want it higher!&amp;rsquo; and this time more vigorously. I don&amp;rsquo;t understand what you mean when you say &amp;lsquo;higher&amp;rsquo;!&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Suddenly, the Student was enlightened.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>The Easy Path</title>
+      <link>http://life.beyondrails.com/zen/the-easy-path</link>
+      <pubDate>Wed, 17 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://life.beyondrails.com/zen/the-easy-path</guid>
+      <description>&lt;p&gt;One night during a walk, the Master visited the Student during a project. &amp;ldquo;Master,&amp;rdquo; the Student said, &amp;ldquo;why do we have to write a failing test that exposes a bug before fixing the bug itself? Isn&amp;rsquo;t it easier to just fix the bug; our Client has complained about it, I&amp;rsquo;ve tried reproducing it myself, other colleagues can reproduce it too. It&amp;rsquo;s plain as day that the bug exists.&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;The Master then asked the Student for a favor. &amp;ldquo;I have lost my spectacles and have been trying to search for them for hours. Will you help me find them?&amp;rdquo; The Student, sensing the chance to be useful, immediately agreed.&lt;/p&gt;
+
+&lt;p&gt;The Master led the student to a brightly lit room and said &amp;ldquo;please search here.&amp;rdquo; The Student then went on all fours and methodically went through every nook and cranny. This went on for hours, until the Student gave up and said &amp;ldquo;I&amp;rsquo;m sorry Master, I do not think your spectacles are here.&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Sighing, the Master whispered &amp;ldquo;that might as well be, since the last time I saw my spectacles was inside that dark room over there where the sun&amp;rsquo;s light never reaches.&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;Exasperated, the Student exclaimed &amp;ldquo;Master, I do not understand. Why did you ask me to search here when you very well know you lost your spectacles over there?&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;In an apologetic tone, the Master explained &amp;ldquo;because I thought it would be easier for you if you can search when there is light.&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;The Student was visibly irritated. &amp;ldquo;Master! That is stupid. I could very well just bring a lamp into the dark room.&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;With this, the Student was enlightened.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

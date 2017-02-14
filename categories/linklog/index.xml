@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linklog on Life Beyond Rails</title>
+    <link>http://life.beyondrails.com/categories/linklog/index.xml</link>
+    <description>Recent content in Linklog on Life Beyond Rails</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <atom:link href="http://life.beyondrails.com/categories/linklog/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>2016 04 08 Linklog</title>
+      <link>http://life.beyondrails.com/blog/2016/04/08/2016-04-08-linklog/</link>
+      <pubDate>Fri, 08 Apr 2016 11:44:28 +0800</pubDate>
+      
+      <guid>http://life.beyondrails.com/blog/2016/04/08/2016-04-08-linklog/</guid>
+      <description>&lt;p&gt;Here&amp;rsquo;s this week&amp;rsquo;s linklog:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Producing Documentation for your Rails API&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;The Making of an Expert&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;Apprenticeship Patterns&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;So Good They Can&amp;rsquo;t Ignore You&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;Architecture: the Lost Years&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;hugomore42&#34;&gt;&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Producing Documentation for your Rails API&lt;/strong&gt;&lt;br /&gt;
+&lt;a href=&#34;https://blog.codeship.com/producing-documentation-for-your-rails-api&#34;&gt;https://blog.codeship.com/producing-documentation-for-your-rails-api&lt;/a&gt;&lt;br /&gt;
+We&amp;rsquo;re doing a lot of new software at work, and most of them are APIs to help out with task parallelization. Here&amp;rsquo;s a really good article to help guide everyone on the team on producing good API documentation.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;The Making of an Expert&lt;/strong&gt;&lt;br /&gt;
+&lt;a href=&#34;https://hbr.org/2007/07/the-making-of-an-expert&#34;&gt;https://hbr.org/2007/07/the-making-of-an-expert&lt;/a&gt;&lt;br /&gt;
+Lately I&amp;rsquo;ve been spending time on self-improvement, and the question I find asking myself now is: How do I achieve mastery? This is an old article from the Harvard Business Review, but the lessons in there are timeless.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;Apprenticeship Patterns&lt;/strong&gt;&lt;br /&gt;
+&lt;a href=&#34;http://chimera.labs.oreilly.com/books/1234000001813/index.html&#34;&gt;http://chimera.labs.oreilly.com/books/1234000001813/index.html&lt;/a&gt; (online book)
+&lt;a href=&#34;http://amzn.to/1RTFx8n&#34;&gt;http://amzn.to/1RTFx8n&lt;/a&gt; (amazon link)&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve been recommending this book for all new hires at my company, and I&amp;rsquo;ve learned a lot from the book myself. Definitely a must read.&lt;br /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;So Good They Can&amp;rsquo;t Ignore You&lt;/strong&gt;&lt;br /&gt;
+&lt;a href=&#34;http://amzn.to/1qaX6cI&#34;&gt;http://amzn.to/1qaX6cI&lt;/a&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m currently reading this book and it&amp;rsquo;s been an interesting read so far. The author argues that the belief of following your passion is a dangerous advice, and that you need to save up enough &amp;ldquo;career capital&amp;rdquo; before you can get meaningful work with autonomy and control.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;Architecture: the Lost Years&lt;/strong&gt;&lt;br /&gt;
+&lt;a href=&#34;https://www.youtube.com/watch?v=WpkDN78P884&#34;&gt;https://www.youtube.com/watch?v=WpkDN78P884&lt;/a&gt; (video)&lt;/p&gt;
+
+&lt;p&gt;Uncle Bob Martin makes the case for &amp;ldquo;pluggable architecture&amp;rdquo; where your business logic is separated from your delivery mechanism and persistence layers. The ideas presented will challenge how you think about your application.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;That&amp;rsquo;s it for the link log!&lt;/p&gt;
+
+&lt;p&gt;Full disclosure: the links to Amazon above are affiliate links. That doesn&amp;rsquo;t mean the books are of poor quality; on the contrary I would really recommend that you go and check them out because they will really take you to the next level.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

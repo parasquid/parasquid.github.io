@@ -1,26 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-      <title>Grape on Life Beyond Rails </title>
-      <generator uri="https://hugo.spf13.com">Hugo</generator>
-    <link>http://life.beyondrails.com/categories/grape/index.xml/</link>
-    
-    
-    
-    <updated>Sun, 01 Jun 2014 00:00:00 UTC</updated>
+    <title>Grape on Life Beyond Rails</title>
+    <link>http://life.beyondrails.com/categories/grape/index.xml</link>
+    <description>Recent content in Grape on Life Beyond Rails</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <atom:link href="http://life.beyondrails.com/categories/grape/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>API Documentation with Grape and Swagger</title>
       <link>http://life.beyondrails.com/blog/2014/06/01/api-documentation-with-grape-and-swagger/</link>
-      <pubDate>Sun, 01 Jun 2014 00:00:00 UTC</pubDate>
+      <pubDate>Sun, 01 Jun 2014 00:00:00 +0000</pubDate>
       
       <guid>http://life.beyondrails.com/blog/2014/06/01/api-documentation-with-grape-and-swagger/</guid>
-      <description>
-
-&lt;div class=&#34;info info&#34; data-title=&#34;TL;DR&#34;&gt;
-  &lt;p&gt;Use Swagger and Grape to create self-documenting APIs that automatically update themselves from metadata in the code. It also provides an API explorer to play around with.&lt;/p&gt;
-
-&lt;/div&gt;
+      <description>&lt;blockquote&gt;
+&lt;p&gt;TL;DR
+Use Swagger and Grape to create self-documenting APIs that automatically update themselves from metadata in the code. It also provides an API explorer to play around with.&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;p&gt;During the AngelHack KL event, I (being the backend developer of the team) had to create an API to facilitate communication between the iPhone app and Twilio. Since it was a hackathon, there was not a lot of time to completely hash out API protocols (as well as explaining to my team mates how RESTful APIs work).&lt;/p&gt;
 
@@ -28,9 +24,11 @@
 
 &lt;p&gt;We were able to quickly develop the whole project quickly and easily because of this, and here&amp;rsquo;s a quick look at using Swagger with Grape.&lt;/p&gt;
 
+&lt;p&gt;&lt;/p&gt;
+
 &lt;hr /&gt;
 
-&lt;h3 id=&#34;toc_0&#34;&gt;Github Sample Application&lt;/h3&gt;
+&lt;h3 id=&#34;github-sample-application&#34;&gt;Github Sample Application&lt;/h3&gt;
 
 &lt;p&gt;I&amp;rsquo;ve made a sample application which you can refer to here: &lt;a href=&#34;https://github.com/parasquid/grape-swagger-sample-project&#34;&gt;https://github.com/parasquid/grape-swagger-sample-project&lt;/a&gt;. It was based off from another &lt;a href=&#34;http://funonrails.com/2014/03/building-restful-api-using-grape-in-rails/&#34;&gt;grape tutorial&lt;/a&gt; with modifications; see his page for a bit more information.&lt;/p&gt;
 
@@ -44,7 +42,7 @@
 
 &lt;hr /&gt;
 
-&lt;h3 id=&#34;toc_1&#34;&gt;Grape&lt;/h3&gt;
+&lt;h3 id=&#34;grape&#34;&gt;Grape&lt;/h3&gt;
 
 &lt;p&gt;The self-documenting ability of Grape with Swagger actually consists of three separate gems that work together to provide an endpoint for a UI to consume. The first of these is Grape:&lt;/p&gt;
 
@@ -60,7 +58,7 @@
 
 &lt;hr /&gt;
 
-&lt;h3 id=&#34;toc_2&#34;&gt;Grape Swagger&lt;/h3&gt;
+&lt;h3 id=&#34;grape-swagger&#34;&gt;Grape Swagger&lt;/h3&gt;
 
 &lt;p&gt;The &lt;a href=&#34;https://github.com/tim-vandecasteele/grape-swagger&#34;&gt;grape-swagger project&lt;/a&gt; has comprehensive instructions on enabling swagger for your Grape API; it&amp;rsquo;s really a no-brainer.&lt;/p&gt;
 
@@ -70,10 +68,9 @@
 
 &lt;hr /&gt;
 
-&lt;h3 id=&#34;toc_3&#34;&gt;Swagger UI&lt;/h3&gt;
+&lt;h3 id=&#34;swagger-ui&#34;&gt;Swagger UI&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/tim-vandecasteele/grape-swagger/master/test/splines.png&#34; alt=&#34;Swagger UI Screenshot&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/tim-vandecasteele/grape-swagger/master/test/splines.png&#34; alt=&#34;Swagger UI Screenshot&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;After making sure that Grape has a swagger json endpoint, &lt;a href=&#34;https://github.com/wordnik/swagger-ui&#34;&gt;Swagger UI&lt;/a&gt; gives you two awesome abilities:&lt;/p&gt;
 
@@ -86,7 +83,7 @@
 
 &lt;hr /&gt;
 
-&lt;h3 id=&#34;toc_4&#34;&gt;Further Reading&lt;/h3&gt;
+&lt;h3 id=&#34;further-reading&#34;&gt;Further Reading&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://intridea.github.io/grape/docs/index.html&#34;&gt;http://intridea.github.io/grape/docs/index.html&lt;/a&gt;&lt;/li&gt;
@@ -94,10 +91,9 @@
 &lt;li&gt;&lt;a href=&#34;http://confreaks.com/videos/3848-rdrc2014-lightning-talks-building-rest-api-with-grape&#34;&gt;http://confreaks.com/videos/3848-rdrc2014-lightning-talks-building-rest-api-with-grape&lt;/a&gt; A lightning talk about Grape from the 2014 Red Dot Ruby Conference in Singapore&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/tim-vandecasteele/grape-swagger&#34;&gt;https://github.com/tim-vandecasteele/grape-swagger&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://bitboxer.de/2014/02/09/grape/&#34;&gt;http://bitboxer.de/2014/02/09/grape/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://funonrails.com/2014/03/building-restful-api-using-grape-in-rails/&#34;&gt;http://funonrails.com/&lt;sup&gt;2014&lt;/sup&gt;&amp;frasl;&lt;sub&gt;03&lt;/sub&gt;/building-restful-api-using-grape-in-rails/&lt;/a&gt; A more in-depth tour of how to build a restful API using Grape and mounting it in Rails&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://funonrails.com/2014/03/building-restful-api-using-grape-in-rails/&#34;&gt;http://funonrails.com/2014/03/building-restful-api-using-grape-in-rails/&lt;/a&gt; A more in-depth tour of how to build a restful API using Grape and mounting it in Rails&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://codetunes.com/2014/grape-part-II/&#34;&gt;http://codetunes.com/2014/grape-part-II/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+&lt;/ul&gt;</description>
     </item>
     
   </channel>

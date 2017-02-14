@@ -1,13 +1,141 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-      <title>Meta on Life Beyond Rails </title>
-      <generator uri="https://hugo.spf13.com">Hugo</generator>
-    <link>http://life.beyondrails.com/categories/meta/index.xml/</link>
+    <title>Meta on Life Beyond Rails</title>
+    <link>http://life.beyondrails.com/categories/meta/index.xml</link>
+    <description>Recent content in Meta on Life Beyond Rails</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <atom:link href="http://life.beyondrails.com/categories/meta/index.xml" rel="self" type="application/rss+xml" />
     
+    <item>
+      <title>Opalbox—Run Ruby Code Inside Pages</title>
+      <link>http://life.beyondrails.com/blog/2016/01/03/opalboxrun-ruby-code-inside-pages/</link>
+      <pubDate>Sun, 03 Jan 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://life.beyondrails.com/blog/2016/01/03/opalboxrun-ruby-code-inside-pages/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://opalrb.org/&#34;&gt;Opal&lt;/a&gt; is a Ruby to JavaScript compiler, and &lt;a href=&#34;https://github.com/Angelmmiguel/opalbox-jquery&#34;&gt;OpalBox&lt;/a&gt; is a &lt;code&gt;jQuery&lt;/code&gt; plugin to easily create a textarea that can take ruby code and allow it to run.&lt;/p&gt;
+
+&lt;p&gt;I just added OpalBox to this blog and it&amp;rsquo;s been quite interesting. I&amp;rsquo;ve learned how to resize a &lt;code&gt;textarea&lt;/code&gt; based on its content (you need javascript to do that because &lt;code&gt;CSS&lt;/code&gt; just doesn&amp;rsquo;t cut it) and I&amp;rsquo;ve added in a shortcode.&lt;/p&gt;
+
+&lt;h3 id=&#34;update&#34;&gt;update:&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/Angelmmiguel/opalbox-jquery&#34;&gt;Angelmmiguel&lt;/a&gt; (the author of opalbox) has just released &lt;a href=&#34;https://github.com/Angelmmiguel/opalbox-jquery/issues/1&#34;&gt;0.1.0 that fixes the issue&lt;/a&gt; :)
+
+&lt;script&gt;
+$(function() {
+    $(&#39;.ruby-code&#39;).opalBox();
+  var $targets = $(&#34;.ruby-code textarea&#34;)
+  $targets.each(function() {
+    $(this).height(0).height(this.scrollHeight - $(this).css(&#34;font-size&#34;).replace(&#39;px&#39;,&#39;&#39;)).change();
+  })
+});
+&lt;/script&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s how it looks like:&lt;/p&gt;
+
+&lt;div class=&#34;ruby-code&#34;&gt;
+# this is ruby code
+# it is inside a text area so you can edit it and play around with it
+
+def square(x)
+  x ** 2
+end
+
+puts square(256)
+
+# click on run below to execute the code
+&lt;/div&gt;
+
+&lt;p&gt;I&amp;rsquo;ve edited one of my &lt;a href=&#34;http://life.beyondrails.com/blog/2014/03/04/ruby-and-blocks/&#34;&gt;past articles&lt;/a&gt; to use &lt;code&gt;OpalBox&lt;/code&gt; if you&amp;rsquo;re interested in how it looks like as a method for instruction.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s the javascript snippet that resizes the &lt;code&gt;textarea&lt;/code&gt; to fit its content:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;var $targets = $(&amp;quot;.ruby-code textarea&amp;quot;)
+$targets.each(function() {
+  $(this).height(0).height(this.scrollHeight - $(this).css(&amp;quot;font-size&amp;quot;).replace(&#39;px&#39;,&#39;&#39;)).change();
+})
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The &lt;code&gt;height&lt;/code&gt; is first set to &lt;code&gt;0&lt;/code&gt; because some browsers get confused with unconventional positions (negative margins, for example). It is then set to the &lt;code&gt;textarea&lt;/code&gt;&amp;rsquo;s &lt;code&gt;scrollHeight&lt;/code&gt;. I then subtract the &lt;code&gt;font-size&lt;/code&gt; of this element to remove the extra line at the end.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://gohugo.io/extras/shortcodes/&#34;&gt;Shortcodes in Hugo&lt;/a&gt; (the blog engine this site is running on) is quite simple to make. It&amp;rsquo;s just a &lt;code&gt;text&lt;/code&gt; snippet that you can call within your article. For example, the above &lt;code&gt;OpalBox&lt;/code&gt; looks like this:&lt;/p&gt;
+
+&lt;pre&gt;
+&amp;#123;&amp;#123;&amp;lt; rubycode &amp;gt;&amp;#125;&amp;#125;
+# this is ruby code
+# it is inside a text area so you can edit it and play around with it
+
+def square(x)
+  x ** 2
+end
+
+puts square(256)
+
+# click on run below to execute the code
+&amp;#123;&amp;#123;&amp;lt; /rubycode &amp;gt;&amp;#125;&amp;#125;
+&lt;/pre&gt;
+
+&lt;p&gt;While the shortcode file contents (&lt;code&gt;rubycode.html&lt;/code&gt;) look like this:&lt;/p&gt;
+
+&lt;pre&gt;
+&amp;lt;div class=&#34;ruby-code&#34;&amp;gt;&amp;#123;&amp;#123; .Inner &amp;#125;&amp;#125;&amp;lt;/div&amp;gt;
+&lt;/pre&gt;
+
+&lt;p&gt;I also have the &lt;code&gt;opalbox.html&lt;/code&gt; shortcode that I only include whenever the article contains an &lt;code&gt;OpalBox&lt;/code&gt;. It first runs the &lt;code&gt;.opalBox()&lt;/code&gt; function on all &lt;code&gt;div&lt;/code&gt; that have the class &lt;code&gt;.ruby-code&lt;/code&gt; and turn them into &lt;code&gt;textarea&lt;/code&gt;. Then the &lt;code&gt;textarea&lt;/code&gt; are resized to fit their contents.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;$(function() {
+  $(&#39;.ruby-code&#39;).opalBox();
+  var $targets = $(&amp;quot;.ruby-code textarea&amp;quot;)
+  $targets.each(function() {
+    $(this).height(0).height(this.scrollHeight - $(this).css(&amp;quot;font-size&amp;quot;).replace(&#39;px&#39;,&#39;&#39;)).change();
+  })
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;what-i-like&#34;&gt;What I like&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;It&amp;rsquo;s great for tutorial articles that explain complicated concepts.&lt;/li&gt;
+&lt;li&gt;The reader can play and manipulate the code to confirm understanding.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;what-i-don-t-like&#34;&gt;What I don&amp;rsquo;t like&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;textarea&lt;/code&gt; disables syntax highlighting.&lt;/li&gt;
+&lt;li&gt;Long ruby code is not practical because it looks like a wall of text.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;references&#34;&gt;References:&lt;/h2&gt;
+
+&lt;p&gt;Initial change to the article to include opalbox: &lt;a href=&#34;https://github.com/parasquid/life.beyondrails.com/commit/996234fffc57a8e16ce7015abc00e3a374f00343&#34;&gt;https://github.com/parasquid/life.beyondrails.com/commit/996234fffc57a8e16ce7015abc00e3a374f00343&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Changing the divs into a shortcode: &lt;a href=&#34;https://github.com/parasquid/life.beyondrails.com/commit/20fe9761d285c448498ce5a1faef5f70edceed5a&#34;&gt;https://github.com/parasquid/life.beyondrails.com/commit/20fe9761d285c448498ce5a1faef5f70edceed5a&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
     
-    
-    <updated>Sun, 14 Dec 2014 07:16:31 -0800</updated>
+    <item>
+      <title>Moving Hosts From Github Pages to Amazon S3</title>
+      <link>http://life.beyondrails.com/blog/2015/09/26/moving-hosts-from-github-pages-to-amazon-s3/</link>
+      <pubDate>Sat, 26 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://life.beyondrails.com/blog/2015/09/26/moving-hosts-from-github-pages-to-amazon-s3/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;ve decided to simplify the deployment &lt;a href=&#34;http://life.beyondrails.com/blog/2014/12/14/setting-up-and-automating-my-hugo-blog-deployment-to-github-pages/&#34;&gt;process&lt;/a&gt; and instead host the blog at S3.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;Now, my deployment script looks like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;#!/bin/sh
+killall hugo # make sure no hugo server is running since that can mess things up
+hugo
+s3cmd sync public/* s3://life.beyondrails.com -v --no-mime-magic
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;That &lt;code&gt;--no-mime-magic&lt;/code&gt; switch is because of a &lt;a href=&#34;https://github.com/s3tools/s3cmd/issues/198&#34;&gt;known issue&lt;/a&gt; that causes css and js files to be uploaded with a mime-type of &lt;code&gt;text/plain&lt;/code&gt; instead of &lt;code&gt;text/css&lt;/code&gt; and &lt;code&gt;text/js&lt;/code&gt; respectively.&lt;/p&gt;
+
+&lt;p&gt;Aside from a more streamlined deployment process, I also am able to completely sidestep an intermittent DNS error that sometimes happens when loading the blog when it was hosted on github pages.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Setting Up and Automating my Hugo Blog Deployment to Github Pages</title>
@@ -15,24 +143,27 @@
       <pubDate>Sun, 14 Dec 2014 07:16:31 -0800</pubDate>
       
       <guid>http://life.beyondrails.com/blog/2014/12/14/setting-up-and-automating-my-hugo-blog-deployment-to-github-pages/</guid>
-      <description>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Update&lt;/p&gt;
 
-&lt;div class=&#34;info info&#34; data-title=&#34;Work In Progress&#34;&gt;
-  &lt;p&gt;I&amp;rsquo;m still in the middle of writing this article, and I probably will be always updating this.&lt;/p&gt;
-
-&lt;/div&gt;
+&lt;p&gt;This is largely obsolete. I have setup a new &lt;a href=&#34;http://life.beyondrails.com/blog/2015/09/26/moving-hosts-from-github-pages-to-amazon-s3/&#34;&gt;process&lt;/a&gt; to deploy to Amazon S3 amd I recommend it over Github Pages.&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;p&gt;I&amp;rsquo;m currently moving my blog posts (and collecting all my blog entries from various blogging platforms) and putting them into Hugo. In case you&amp;rsquo;re wondering how I&amp;rsquo;ve set mine up, here&amp;rsquo;s a guide of what I&amp;rsquo;ve done.&lt;/p&gt;
 
-&lt;h2 id=&#34;toc_0&#34;&gt;Choosing the hosting platform&lt;/h2&gt;
+&lt;p&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;toc_1&#34;&gt;Setting up the blog&lt;/h2&gt;
+&lt;h2 id=&#34;choosing-the-hosting-platform&#34;&gt;Choosing the hosting platform&lt;/h2&gt;
 
-&lt;p&gt;sudo aptitude install golang
-sudo aptitude install -y mercurial
-go get -v github.com/spf13/hugo&lt;/p&gt;
+&lt;h2 id=&#34;setting-up-the-blog&#34;&gt;Setting up the blog&lt;/h2&gt;
 
-&lt;h2 id=&#34;toc_2&#34;&gt;Setting up the github pages&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sudo aptitude install golang&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sudo aptitude install -y mercurial&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;go get -v github.com/spf13/hugo&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;setting-up-the-github-pages&#34;&gt;Setting up the github pages&lt;/h2&gt;
 
 &lt;p&gt;There&amp;rsquo;s a really cool guide over at the official &lt;a href=&#34;http://gohugo.io/tutorials/github_pages_blog/&#34;&gt;Hugo documentation&lt;/a&gt; and I advise everyone to check it out.&lt;/p&gt;
 
@@ -73,14 +204,14 @@ touch public/CNAME
 echo &amp;quot;life.beyondrails.com&amp;quot; &amp;gt; public/CNAME
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;toc_3&#34;&gt;Scripting the deployment&lt;/h2&gt;
+&lt;h2 id=&#34;scripting-the-deployment&#34;&gt;Scripting the deployment&lt;/h2&gt;
 
 &lt;p&gt;Again I refered back to the hugo documentation on &lt;a href=&#34;http://gohugo.io/tutorials/github_pages_blog/&#34;&gt;setting up hugo for guthub hosting&lt;/a&gt; and I used it as the basis for my own deployment script.&lt;/p&gt;
 
 &lt;p&gt;My workflow however is unlike the any of the trhee recommended workflows (more like a hybrid):&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;I do use Github pages, but as a Personal/Organization page. That means my repository is at parasquid/parasquid.github.io&lt;/li&gt;
+&lt;li&gt;I do use Github pages, but as a Personal/Organization page. That means my repository is at &lt;code&gt;parasquid/parasquid.github.io&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;Instead of two repositories, I prefer to have a single repository containing both the source files and the cooked files.&lt;/li&gt;
 &lt;li&gt;Because I&amp;rsquo;m using Github Pages for Personal/Organization I need to have the cooked pages inside the master branch. I had to modify the deployment script a little bit to ensure that my sources remain in the source branch, the subtree is located at the master branch (prefixed with public), and that all the pushing and pulling are seamless so it&amp;rsquo;s all automatic (and there&amp;rsquo;s no need for manual merging).&lt;/li&gt;
 &lt;/ul&gt;
@@ -152,18 +283,17 @@ git subtree push --prefix=public\
 
 &lt;p&gt;Also, there will be times when the master branch just won&amp;rsquo;t deploy because of merge conflicts (and there&amp;rsquo;s no way to do a force push on &lt;code&gt;git subtree&lt;/code&gt;). So far all I have to do is to run &lt;code&gt;deploy.sh&lt;/code&gt; one more time and it&amp;rsquo;s all cool.&lt;/p&gt;
 
-&lt;h2 id=&#34;toc_4&#34;&gt;Porting old blog entries to hugo&lt;/h2&gt;
+&lt;h2 id=&#34;porting-old-blog-entries-to-hugo&#34;&gt;Porting old blog entries to hugo&lt;/h2&gt;
 
 &lt;p&gt;I&amp;rsquo;ve blogged on and off for quite some time in various domains and platforms. There really isn&amp;rsquo;t much I can do to automate the importing of the entries. Luckily I only have a handful of published posts, but I probably lost most of my drafts and idea dumps.&lt;/p&gt;
 
-&lt;h2 id=&#34;toc_5&#34;&gt;Blogging workflow&lt;/h2&gt;
+&lt;h2 id=&#34;blogging-workflow&#34;&gt;Blogging workflow&lt;/h2&gt;
 
 &lt;p&gt;So now that everything&amp;rsquo;s set and deployed, how do I continue writing?&lt;/p&gt;
 
-&lt;h2 id=&#34;toc_6&#34;&gt;Questions?&lt;/h2&gt;
+&lt;h2 id=&#34;questions&#34;&gt;Questions?&lt;/h2&gt;
 
-&lt;p&gt;If any of the instructions above are confusing, feel free to comment and I&amp;rsquo;ll try my best to answer the question in the comments as well as update the instructions :)&lt;/p&gt;
-</description>
+&lt;p&gt;If any of the instructions above are confusing, feel free to comment and I&amp;rsquo;ll try my best to answer the question in the comments as well as update the instructions :)&lt;/p&gt;</description>
     </item>
     
     <item>

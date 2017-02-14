@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>Opalbox—Run Ruby Code Inside Pages &middot; </title>
+
+  
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/poole.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde-x.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/opalbox.min.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/opalbox-dark.min.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/styles.css">
+
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://life.beyondrails.com/touch-icon-144-precomposed.png">
+  <link href="http://life.beyondrails.com/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  
+
+  <script type="text/javascript" src="http://cdn.opalrb.org/opal/0.7.1/opal.min.js"></script>
+  <script type="text/javascript" src="http://cdn.opalrb.org/opal/0.7.1/opal-parser.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <script type="text/javascript" src="http://life.beyondrails.com/js/opalbox-jquery.min.js"></script>
+
+</head>
+<body class="theme-base-0b">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1></h1>
+      <p class="lead">Codesmithing by day. Airsculpting by night.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://life.beyondrails.com/">Blog Index</a></li>
+      
+      <li class="sidebar-nav-item"><a href="http://life.beyondrails.com/about/">About Me</a></li>
+      
+      <li class="sidebar-nav-item"><a href="http://life.beyondrails.com/zen/">Zen</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="https://github.com/parasquid"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      <a href="https://www.linkedin.com/in/parasquid"><i class="fa fa-linkedin-square fa-3x"></i></a>
+      <a href="https://plus.google.com/u/1/&#43;TristanGomez/posts"><i class="fa fa-google-plus-square fa-3x"></i></a>
+      <a href="https://www.facebook.com/parasquid"><i class="fa fa-facebook-square fa-3x"></i></a>
+      <a href="https://twitter.com/parasquid"><i class="fa fa-twitter-square fa-3x"></i></a>
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://life.beyondrails.com/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">Opalbox—Run Ruby Code Inside Pages</h1>
+    <span class="post-date">Jan 3, 2016 &middot; 3 minute read &middot; <a href="http://life.beyondrails.com/blog/2016/01/03/opalboxrun-ruby-code-inside-pages/#disqus_thread">Comments</a>
+    
+    <br/>
+    <a class="label" href="http://life.beyondrails.com/categories/meta">meta</a><a class="label" href="http://life.beyondrails.com/categories/opal">opal</a>
+    </span>
+    <p><a href="http://opalrb.org/">Opal</a> is a Ruby to JavaScript compiler, and <a href="https://github.com/Angelmmiguel/opalbox-jquery">OpalBox</a> is a <code>jQuery</code> plugin to easily create a textarea that can take ruby code and allow it to run.</p>
+
+<p>I just added OpalBox to this blog and it&rsquo;s been quite interesting. I&rsquo;ve learned how to resize a <code>textarea</code> based on its content (you need javascript to do that because <code>CSS</code> just doesn&rsquo;t cut it) and I&rsquo;ve added in a shortcode.</p>
+
+<h3 id="update">update:</h3>
+
+<p><a href="https://github.com/Angelmmiguel/opalbox-jquery">Angelmmiguel</a> (the author of opalbox) has just released <a href="https://github.com/Angelmmiguel/opalbox-jquery/issues/1">0.1.0 that fixes the issue</a> :)
+
+<script>
+$(function() {
+    $('.ruby-code').opalBox();
+  var $targets = $(".ruby-code textarea")
+  $targets.each(function() {
+    $(this).height(0).height(this.scrollHeight - $(this).css("font-size").replace('px','')).change();
+  })
+});
+</script>
+</p>
+
+<p>Here&rsquo;s how it looks like:</p>
+
+<div class="ruby-code">
+# this is ruby code
+# it is inside a text area so you can edit it and play around with it
+
+def square(x)
+  x ** 2
+end
+
+puts square(256)
+
+# click on run below to execute the code
+</div>
+
+<p>I&rsquo;ve edited one of my <a href="/blog/2014/03/04/ruby-and-blocks/">past articles</a> to use <code>OpalBox</code> if you&rsquo;re interested in how it looks like as a method for instruction.</p>
+
+<p>Here&rsquo;s the javascript snippet that resizes the <code>textarea</code> to fit its content:</p>
+
+<pre><code class="language-javascript">var $targets = $(&quot;.ruby-code textarea&quot;)
+$targets.each(function() {
+  $(this).height(0).height(this.scrollHeight - $(this).css(&quot;font-size&quot;).replace('px','')).change();
+})
+</code></pre>
+
+<p>The <code>height</code> is first set to <code>0</code> because some browsers get confused with unconventional positions (negative margins, for example). It is then set to the <code>textarea</code>&rsquo;s <code>scrollHeight</code>. I then subtract the <code>font-size</code> of this element to remove the extra line at the end.</p>
+
+<p><a href="https://gohugo.io/extras/shortcodes/">Shortcodes in Hugo</a> (the blog engine this site is running on) is quite simple to make. It&rsquo;s just a <code>text</code> snippet that you can call within your article. For example, the above <code>OpalBox</code> looks like this:</p>
+
+<pre>
+&#123;&#123;&lt; rubycode &gt;&#125;&#125;
+# this is ruby code
+# it is inside a text area so you can edit it and play around with it
+
+def square(x)
+  x ** 2
+end
+
+puts square(256)
+
+# click on run below to execute the code
+&#123;&#123;&lt; /rubycode &gt;&#125;&#125;
+</pre>
+
+<p>While the shortcode file contents (<code>rubycode.html</code>) look like this:</p>
+
+<pre>
+&lt;div class="ruby-code"&gt;&#123;&#123; .Inner &#125;&#125;&lt;/div&gt;
+</pre>
+
+<p>I also have the <code>opalbox.html</code> shortcode that I only include whenever the article contains an <code>OpalBox</code>. It first runs the <code>.opalBox()</code> function on all <code>div</code> that have the class <code>.ruby-code</code> and turn them into <code>textarea</code>. Then the <code>textarea</code> are resized to fit their contents.</p>
+
+<pre><code class="language-javascript">$(function() {
+  $('.ruby-code').opalBox();
+  var $targets = $(&quot;.ruby-code textarea&quot;)
+  $targets.each(function() {
+    $(this).height(0).height(this.scrollHeight - $(this).css(&quot;font-size&quot;).replace('px','')).change();
+  })
+});
+</code></pre>
+
+<h2 id="what-i-like">What I like</h2>
+
+<ul>
+<li>It&rsquo;s great for tutorial articles that explain complicated concepts.</li>
+<li>The reader can play and manipulate the code to confirm understanding.</li>
+</ul>
+
+<h2 id="what-i-don-t-like">What I don&rsquo;t like</h2>
+
+<ul>
+<li><code>textarea</code> disables syntax highlighting.</li>
+<li>Long ruby code is not practical because it looks like a wall of text.</li>
+</ul>
+
+<h2 id="references">References:</h2>
+
+<p>Initial change to the article to include opalbox: <a href="https://github.com/parasquid/life.beyondrails.com/commit/996234fffc57a8e16ce7015abc00e3a374f00343">https://github.com/parasquid/life.beyondrails.com/commit/996234fffc57a8e16ce7015abc00e3a374f00343</a></p>
+
+<p>Changing the divs into a shortcode: <a href="https://github.com/parasquid/life.beyondrails.com/commit/20fe9761d285c448498ce5a1faef5f70edceed5a">https://github.com/parasquid/life.beyondrails.com/commit/20fe9761d285c448498ce5a1faef5f70edceed5a</a></p>
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "parasquid";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "parasquid";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://life.beyondrails.com/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

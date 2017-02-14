@@ -1,23 +1,143 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-      <title>Management on Life Beyond Rails </title>
-      <generator uri="https://hugo.spf13.com">Hugo</generator>
-    <link>http://life.beyondrails.com/categories/management/index.xml/</link>
+    <title>Management on Life Beyond Rails</title>
+    <link>http://life.beyondrails.com/categories/management/index.xml</link>
+    <description>Recent content in Management on Life Beyond Rails</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <atom:link href="http://life.beyondrails.com/categories/management/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    
-    <updated>Mon, 15 Dec 2014 00:00:00 UTC</updated>
+    <item>
+      <title>Evaluating Hackerrank for Tech Hiring</title>
+      <link>http://life.beyondrails.com/blog/2015/12/03/evaluating-hackerrank-for-tech-hiring/</link>
+      <pubDate>Thu, 03 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://life.beyondrails.com/blog/2015/12/03/evaluating-hackerrank-for-tech-hiring/</guid>
+      <description>&lt;p&gt;We were looking at &lt;a href=&#34;https://www.hackerrank.com&#34;&gt;Hackerrank&lt;/a&gt; to see if they can help us with alleviating some of the interview and review load on our senior developers.
+&lt;/p&gt;
+
+&lt;p&gt;Some observations:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;I feel this is a more &amp;ldquo;sophisticated&amp;rdquo; &lt;a href=&#34;http://c2.com/cgi/wiki?FizzBuzzTest&#34;&gt;FizzBuzz&lt;/a&gt; to filter candidates that only say they can program, but &lt;strong&gt;in reality cannot&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;The exercise by its nature &lt;strong&gt;focuses on results&lt;/strong&gt;, not on some of the more (in my opinion) important metrics of code quality such as maintainability, readability, discipline, testability, etc.&lt;/li&gt;
+&lt;li&gt;The time limit practically forces the applicant to &lt;strong&gt;cowboy code&lt;/strong&gt;, instead of practicing their code discipline. I don&amp;rsquo;t really want to get &lt;a href=&#34;http://c2.com/cgi/wiki?CowboyCoder&#34;&gt;cowboy coders&lt;/a&gt; into my team.&lt;/li&gt;
+&lt;li&gt;(note: I experienced this with &lt;a href=&#34;https://codility.com/&#34;&gt;Codility&lt;/a&gt; and not in Hackerrank directly; but since they are in a similar niche I feel I can extrapolate from there) The harder algorithm problems test more of &lt;strong&gt;whether you know a particular algorithm or not&lt;/strong&gt; (like splitting binary trees). Although such knowledge is great if you&amp;rsquo;re making the next high-performance NoSQL database server or a Natural Language Processing library, it&amp;rsquo;s less useful for web developer applicants. The danger is assuming that someone good at these kinds of &amp;ldquo;puzzles&amp;rdquo; would also be good at solving business problems; I feel it&amp;rsquo;s just &lt;strong&gt;not a good predictor&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Following on the previous point, there is a danger that since the hiring manager has all of these crispy numbers, that they would exclusively use these numbers as a &lt;strong&gt;predictor for skill or aptitude; they&amp;rsquo;re not&lt;/strong&gt;. These methods produce a high number of &lt;strong&gt;false positives&lt;/strong&gt; (up until a certain level of applications) that I feel it&amp;rsquo;s better to just invest in a more involved programming challenge (like what we do in &lt;a href=&#34;http://mindvalley.com&#34;&gt;Mindvalley&lt;/a&gt;). If we were getting hundreds of applications (with a wide skill variance) every week, then I think it would be worth it to filter using these challenges since the time savings will outweigh the risks of false positives. Right now, Mindvalley receives a drip of really high quality applicants that there&amp;rsquo;s no need to test them on a FizzBuzz level.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I tried the questions for myself, with the time limit and all, to find out what kind of experiences the possible applicants would have. I was not able to finish all 4 questions within 30 minutes as I was doing &lt;a href=&#34;https://en.wikipedia.org/wiki/Test-driven_development&#34;&gt;TDD&lt;/a&gt;, and had to figure out that I had to send my output to &lt;code&gt;STDOUT&lt;/code&gt; for the checker to confirm my answers. I did eventually find out that the last two questions were actually &lt;code&gt;SQL&lt;/code&gt; questions, which would have probably taken me around 10 to 15 minutes tops.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m not allowed to reproduce the questions, so I&amp;rsquo;m just pasting here my answers :P&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;def lastLetter(word)
+  word = word.strip
+  last_two_letters = get_last_two_letters(word)
+  reversed = last_two_letters.reverse
+  result = reversed.split(&amp;quot;&amp;quot;).join(&amp;quot; &amp;quot;)
+  puts result
+  result
+end
+
+def get_last_two_letters(word)
+  word[word.length - 2, word.length]
+end
+
+# require &amp;quot;rspec&amp;quot;
+# require &amp;quot;rspec-given&amp;quot;
+
+# describe &amp;quot;lastLetter&amp;quot; do
+#   Given(:word) { &amp;quot;APPLE&amp;quot; }
+#   context &amp;quot;getting the last two letters&amp;quot; do
+#     When(:last_two_letters) { get_last_two_letters(word) }
+#     Then { last_two_letters == &amp;quot;LE&amp;quot; }
+#   end
+  
+#   context &amp;quot;getting the result&amp;quot; do
+#     When(:result) { lastLetter(word) }
+#     Then { result == &amp;quot;E L&amp;quot;}
+#   end
+
+#   context &amp;quot;edge cases&amp;quot; do
+#     context &amp;quot;1 character long&amp;quot; do
+#       Given(:word) { &amp;quot;a&amp;quot; }
+#       When(:result) { lastLetter(word) }
+#       Then { result == &amp;quot;a&amp;quot;}
+#     end
+
+#     context &amp;quot;last character is a space&amp;quot; do
+#       Given(:word) { &amp;quot;a &amp;quot; }
+#       When(:result) { lastLetter(word) }
+#       Then { result == &amp;quot;a&amp;quot;}
+#     end
+#   end
+
+# end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;def solvePuzzle(num)
+  num = num.to_s
+  result = num.split(&amp;quot;&amp;quot;).reduce(0) { |sum, num| sum + get_num_holes(num.to_i) }
+  puts result
+  result
+end
+
+def get_num_holes(num)
+  return 0 if [1, 2, 3, 5, 7].include?(num)
+  return 1 if [0, 4, 6, 9].include?(num)
+  return 2 if [8].include?(num)
+end
+
+# require &amp;quot;rspec&amp;quot;
+# require &amp;quot;rspec-given&amp;quot;
+
+# describe &amp;quot;number of holes&amp;quot; do
+#   context &amp;quot;solution&amp;quot; do
+#     Given(:num) { &amp;quot;9899&amp;quot; }
+#     When(:result) { solvePuzzle(num) }
+#     Then { result == 5 }
+#   end
+
+#   context &amp;quot;zero hole&amp;quot; do
+#     context do
+#       Given(:number) { 1 }
+#       When(:num_holes) { get_num_holes(number) }
+#       Then { num_holes == 0 }
+#     end
+#     context do
+#       Given(:number) { 2 }
+#       When(:num_holes) { get_num_holes(number) }
+#       Then { num_holes == 0 }
+#     end
+#   end
+
+#   context &amp;quot;one hole&amp;quot; do
+#     context do
+#       Given(:number) { 0 }
+#       When(:num_holes) { get_num_holes(number) }
+#       Then { num_holes == 1 }
+#     end
+#     context do
+#       Given(:number) { 4 }
+#       When(:num_holes) { get_num_holes(number) }
+#       Then { num_holes == 1 }
+#     end
+#   end
+# end
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
     
     <item>
       <title>The Tick-Tock Innovation Model Applied to Agile Methodology</title>
       <link>http://life.beyondrails.com/blog/2014/12/15/the-tick-tock-innovation-model-applied-to-agile-methodology/</link>
-      <pubDate>Mon, 15 Dec 2014 00:00:00 UTC</pubDate>
+      <pubDate>Mon, 15 Dec 2014 00:00:00 +0000</pubDate>
       
       <guid>http://life.beyondrails.com/blog/2014/12/15/the-tick-tock-innovation-model-applied-to-agile-methodology/</guid>
       <description>&lt;p&gt;You&amp;rsquo;ve probably heard of the &lt;a href=&#34;http://www.intel.com/content/www/us/en/silicon-innovations/intel-tick-tock-model-general.html&#34;&gt;tick-tock model that Intel is using&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;It&amp;rsquo;s a model where every 18 months, there&amp;rsquo;s a new focus on the chip architecture: the tick is a shrinking of the chip (which requires retrofitting their manufacturing process to support the smaller size) and the tock is an upgrade of the architecture itself, using the current manufacturing process.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;I&amp;rsquo;m trying out a similar model with my team. We&amp;rsquo;ve been very successful with our sprint goals so far, but one thing that I&amp;rsquo;ve seen is that the goals are decided just then and there. Tick-tock is a refinement of the sprint goal determination process.&lt;/p&gt;
 
@@ -25,14 +145,13 @@
 
 &lt;p&gt;From the retrospectives, I&amp;rsquo;ve seen that many of my team&amp;rsquo;s speedbumps (which deals mostly with legacy code) come from code that isn&amp;rsquo;t as good quality as we hoped. Every new feature and code that we write is already up to standards, but it&amp;rsquo;s the older code that keeps us from going forward as fast as we can.&lt;/p&gt;
 
-&lt;p&gt;Tick-tock will allow us to maintain an innovation cadence while making sure we start paying our debts before they overwhelm us.&lt;/p&gt;
-</description>
+&lt;p&gt;Tick-tock will allow us to maintain an innovation cadence while making sure we start paying our debts before they overwhelm us.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>How I Hire Developers</title>
       <link>http://life.beyondrails.com/blog/2014/11/04/how-i-hire-developers/</link>
-      <pubDate>Tue, 04 Nov 2014 00:00:00 UTC</pubDate>
+      <pubDate>Tue, 04 Nov 2014 00:00:00 +0000</pubDate>
       
       <guid>http://life.beyondrails.com/blog/2014/11/04/how-i-hire-developers/</guid>
       <description>&lt;p&gt;I was invited to pressent at the &lt;a href=&#34;http://www.projectrenaissance.com/technology/kl-ruby-brigade-2&#34;&gt;KL Ruby Brigade&lt;/a&gt; and I thought I shuld mix things around by talking about something not very technical but still very much relevant to the audience.&lt;/p&gt;
@@ -42,6 +161,53 @@
 &lt;p&gt;Here are the slides :)&lt;/p&gt;
 
 &lt;iframe src=&#34;//www.slideshare.net/slideshow/embed_code/41100004&#34; width=&#34;760&#34; height=&#34;570&#34; frameborder=&#34;0&#34; marginwidth=&#34;0&#34; marginheight=&#34;0&#34; scrolling=&#34;no&#34; style=&#34;border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;&#34; allowfullscreen&gt; &lt;/iframe&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Maker&#39;s Schedule, Manager&#39;s Schedule</title>
+      <link>http://life.beyondrails.com/blog/2014/04/01/makers-schedule-managers-schedule/</link>
+      <pubDate>Tue, 01 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://life.beyondrails.com/blog/2014/04/01/makers-schedule-managers-schedule/</guid>
+      <description>&lt;p&gt;Paul Graham&amp;rsquo;s (of YCombinator fame) essay on the difference between the Maker&amp;rsquo;s Schedule and the Manager&amp;rsquo;s Schedule is a timeless piece of advice that is sadly not as well known as it should be. The essay provides an interesting, if not logical reason behind why programmer&amp;rsquo;s skip meetings called by managers, while managers often tend to interrupt programmers.&lt;/p&gt;
+
+&lt;p&gt;Here are some of the important points in his essay:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Bosses often run on the manager&amp;rsquo;s schedule&lt;/li&gt;
+&lt;li&gt;The manager&amp;rsquo;s schedule is granular to an hour (or half an hour)&lt;/li&gt;
+&lt;li&gt;If there is nothing scheduled in the appointment book for this hour, it&amp;rsquo;s practically a &amp;ldquo;free hour&amp;rdquo; in which you can slot in a new appointment (or a &amp;ldquo;short&amp;rdquo; meeting)&lt;/li&gt;
+&lt;li&gt;People on the manager&amp;rsquo;s schedule always have something coming up in the next hour, so it&amp;rsquo;s a no-brainer for them to remember or check what they should be doing next&lt;/li&gt;
+&lt;li&gt;The ticket to productivity is to fill in as many slots as possible with quality meetings&lt;/li&gt;
+&lt;li&gt;Many people who make things (like programmers and writers) instead run on the maker&amp;rsquo;s schedule&lt;/li&gt;
+&lt;li&gt;The granularity is at least half a day&lt;/li&gt;
+&lt;li&gt;This means that if an interruption (such as a &amp;ldquo;short&amp;rdquo; meeting) cuts the work unit, that work unit is effectively wasted&lt;/li&gt;
+&lt;li&gt;People on the maker&amp;rsquo;s schedule need to remember that there is a meeting coming up, which throws a spanner into their workday because you can&amp;rsquo;t really predict how far down you would be thinking about a problem&lt;/li&gt;
+&lt;li&gt;The ticket to productivity is long stretches of uniterrupted work time&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Speaking of interruptions (see what I did there? :P) there had been a number of studies (both anecdotal and scientifically validated) that enormous productivity loss of interruptions.&lt;/p&gt;
+
+&lt;p&gt;As a maker, how do you explain to your colleagues/friends/significant others that you&amp;rsquo;re not being rude for ignoring or telling them away when they interrupt you? One way could be through an analogy: sleep.&lt;/p&gt;
+
+&lt;p&gt;Another way of explaining would be to let the other person experience what you&amp;rsquo;re experiencing during an interruption.&lt;/p&gt;
+
+&lt;p&gt;What do we do at Mindvalley to help mitigate these concerns?&lt;/p&gt;
+
+&lt;p&gt;HipChat and channels (or any asynchronous mode of communication)&amp;ndash;because the communication is asynchronous, the other party is not required to immediately respond to a question or a request, and gives the the other person the choice of answering you in their own time. The popping icon is really distracting so we need to turn that off as well&lt;/p&gt;
+
+&lt;p&gt;Further reading:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.paulgraham.com/makersschedule.html&#34;&gt;http://www.paulgraham.com/makersschedule.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.joelonsoftware.com/articles/fog0000000068.html&#34;&gt;http://www.joelonsoftware.com/articles/fog0000000068.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://programmers.stackexchange.com/questions/46252/how-to-explain-a-layperson-why-a-developer-should-not-be-interrupted-while-neck&#34;&gt;http://programmers.stackexchange.com/questions/46252/how-to-explain-a-layperson-why-a-developer-should-not-be-interrupted-while-neck&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.daedtech.com/programmers-teach-non-geeks-the-true-cost-of-interruptions&#34;&gt;http://www.daedtech.com/programmers-teach-non-geeks-the-true-cost-of-interruptions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.cc.gatech.edu/~vector/papers/emg.pdf&#34;&gt;http://www.cc.gatech.edu/~vector/papers/emg.pdf&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.ninlabs.com/2013/01/programmer-interrupted/&#34;&gt;http://blog.ninlabs.com/2013/01/programmer-interrupted/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://thefuturebuzz.com/2013/03/28/the-cost-of-interruption-visualized/&#34;&gt;http://thefuturebuzz.com/2013/03/28/the-cost-of-interruption-visualized/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     

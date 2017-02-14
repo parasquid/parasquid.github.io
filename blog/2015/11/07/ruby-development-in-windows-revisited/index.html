@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>Ruby Development in Windows Revisited &middot; </title>
+
+  
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/poole.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde-x.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/opalbox.min.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/opalbox-dark.min.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/styles.css">
+
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://life.beyondrails.com/touch-icon-144-precomposed.png">
+  <link href="http://life.beyondrails.com/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  
+
+  <script type="text/javascript" src="http://cdn.opalrb.org/opal/0.7.1/opal.min.js"></script>
+  <script type="text/javascript" src="http://cdn.opalrb.org/opal/0.7.1/opal-parser.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <script type="text/javascript" src="http://life.beyondrails.com/js/opalbox-jquery.min.js"></script>
+
+</head>
+<body class="theme-base-0b">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1></h1>
+      <p class="lead">Codesmithing by day. Airsculpting by night.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://life.beyondrails.com/">Blog Index</a></li>
+      
+      <li class="sidebar-nav-item"><a href="http://life.beyondrails.com/about/">About Me</a></li>
+      
+      <li class="sidebar-nav-item"><a href="http://life.beyondrails.com/zen/">Zen</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="https://github.com/parasquid"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      <a href="https://www.linkedin.com/in/parasquid"><i class="fa fa-linkedin-square fa-3x"></i></a>
+      <a href="https://plus.google.com/u/1/&#43;TristanGomez/posts"><i class="fa fa-google-plus-square fa-3x"></i></a>
+      <a href="https://www.facebook.com/parasquid"><i class="fa fa-facebook-square fa-3x"></i></a>
+      <a href="https://twitter.com/parasquid"><i class="fa fa-twitter-square fa-3x"></i></a>
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://life.beyondrails.com/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">Ruby Development in Windows Revisited</h1>
+    <span class="post-date">Nov 7, 2015 &middot; 7 minute read &middot; <a href="http://life.beyondrails.com/blog/2015/11/07/ruby-development-in-windows-revisited/#disqus_thread">Comments</a>
+    
+    <br/>
+    <a class="label" href="http://life.beyondrails.com/categories/ruby">ruby</a><a class="label" href="http://life.beyondrails.com/categories/windows">windows</a><a class="label" href="http://life.beyondrails.com/categories/virtualbox">virtualbox</a>
+    </span>
+    <p>Some time ago I <a href="/blog/2014/03/09/ruby-development-in-windows/">wrote about how I set up my machine</a> so I can program hassle-free in ruby while running Windows. It was more of a reminder to myself than anything, if I ever needed to set things up the same way again.</p>
+
+<p>Fast forward to 2015. When a colleague saw my workstation and realized I was running Windows, he was quite surprised and asked me how I was doing it. I thought of pointing him to my old blog post, but I felt that:</p>
+
+<ul>
+<li>It was outdated (the setup described was from 2012, written in 2014)</li>
+<li>It was incomplete (it&rsquo;s just a checklist of what I&rsquo;ve installed)</li>
+</ul>
+
+<p>I&rsquo;ve improved on the whole setup since, and I thought it&rsquo;s time to share the whole updated setup so that anyone else interested can benefit.</p>
+
+<p></p>
+
+<h2 id="the-magic-of-virtualization">The Magic of Virtualization</h2>
+
+<blockquote>
+<p>Pay no attention to that man behind the curtain!</p>
+
+<p><a href="https://en.wikiquote.org/wiki/The_Wizard_of_Oz_%281939_film%29#The_Wizard">The Wizard of Oz (1939 film)</a></p>
+</blockquote>
+
+<p>It&rsquo;s probably a bit misleading to say I do my ruby development <em>exclusively</em> in Windows. It&rsquo;s not because of the graphical user interface or the hardware support; I think Windows 10 had really been a great improvement over the past Windows versions. Support for peripherals (like graphic cards, multi-monitor setups, or just <a href="link to follow soon on hackworkplay.com">recently</a> 4k TV/monitors) is simply heaps better than that of Ubuntu.</p>
+
+
+<figure >
+    
+        <img src="/images/IMG_20151109_002555_HDR.jpg" />
+    
+    
+    <figcaption>
+        <h4>My home workstation: a 40&#34; LG 4k display and a 1080p LG IPS display. The 1080p display is showing a webpage generated by a server running in the VM that is port forwarded to 1313. The 4k display is running sublime text and two instances of gnome-terminal. All three of these applications are using X11 forwarding.</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+<p>Rather, it&rsquo;s because the Windows CLI is absolutely horrible. I&rsquo;ve looked into some projects that attempt to alleviate the pain of the Windows CLI like <a href="https://en.wikipedia.org/wiki/Windows_PowerShell">PowerShell</a> or <a href="Console2">Console2</a> but for me, nothing still beats the power of a unix tty.</p>
+
+<p>The easiest way to combine the two worlds is to run Ubuntu inside a virtual machine, and expose the tools I needed to Windows. I get the hardware compatibility and peripheral support of Windows, while getting the workflow efficiencies of unix.</p>
+
+<h2 id="write-once-run-anywhere">Write Once, Run Anywhere</h2>
+
+<blockquote>
+<p>Portability is for people who cannot write new programs.</p>
+
+<p><a href="http://www.oreilly.com/openbook/opensources/book/appa.html">Linus Torvalds (tongue in cheek)</a></p>
+</blockquote>
+
+<p>I chose to use apps that have been &ldquo;portabilized&rdquo; because:</p>
+
+<ul>
+<li>I have many computers</li>
+<li>I like using all of them</li>
+<li>I prefer keeping my stuff synchronized</li>
+</ul>
+
+<p>I&rsquo;m able to do this by using a portable versions of <a href="http://www.vbox.me/">VirtualBox</a> and <a href="http://mobaxterm.mobatek.net/download-home-edition.html">MobaXterm</a> (an all-in-one remote terminal that comes with an X11 server). I keep my portable MobaXterm in a Dropbox folder; this allows me to sync all of my settings and bookmarks across all my devices that have Dropbox installed. For Virtualbox, I keep the files in a USB 3.0 portable drive.</p>
+
+<p>During the vbox setup, I prefer to separate my home drive and my os drive; this preference saved me a lot of time and effort in the recent past. Previously, I ran my vbox server with the full <a href="https://ubuntugnome.org/">Ubuntu Gnome</a> gui (I use Ubuntu Gnome because they have the version of gnome-terminal that can reflow text, something that the Mac terminals have had since forever) full-screen. I&rsquo;m now running a setup that is a basic ubuntu-server installation, with all my applications being X11 forwarded.</p>
+
+
+<figure >
+    
+        <img src="/images/11123892_391902314330773_325601457_n.jpg" />
+    
+    
+    <figcaption>
+        <h4>My old office Workstation. I used to run the Ubuntu Desktop Environment as a full-screen application in Windows.</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+<p>Since I&rsquo;ve separated out my os drive from my home drive, I can just create a new vbox with a fresh os drive and reuse the same home drive as before. All my local settings and repositories are immediately available.</p>
+
+<h2 id="setting-it-all-up">Setting it all up</h2>
+
+<blockquote>
+<p>It takes these very simple-minded instructions&ndash;&ldquo;Go fetch a number, add it to this number, put the result there, perceive if it&rsquo;s greater than this other number&rsquo;&ndash;but executes them at a rate of, let&rsquo;s say, 1,000,000 per second. At 1,000,000 per second, the results appear to be magic.&rdquo;</p>
+
+<p><a href="https://web.archive.org/web/20110926012452/http://www.playboy.com/magazine/playboy-interview-steve-jobs/2">Steve Jobs (playboy magazine interview, on &ldquo;what a computer is&rdquo;)</a></p>
+</blockquote>
+
+<p>I&rsquo;m using a <a href="http://www.vbox.me/">portable version of VirtualBox</a> and if you&rsquo;ve made any VMs with VirtualBox before, it&rsquo;s mostly the same experience. Currently I&rsquo;m running <a href="http://www.ubuntu.com/download/server">Ubuntu Server 15.10</a> but there&rsquo;s nothing preventing you from running a full blown Ubuntu with all the Desktop Environment bells and whistles. I just prefer a more clean and precise installation that allows me to choose the exact packages I want and need.</p>
+
+<h3 id="vm-creation">VM Creation</h3>
+
+<p>I separated out my <code>home</code> and <code>os</code> by installing them on different virtual hard drives. I gave the <code>os</code> disk some 40GB of space that has fixed allocation, and the <code>home</code> partition 80GB of space that has dynamic allocation. I figured that since the OS would be used a lot more than the user owned files, the tiny bit of extra performance I&rsquo;ll get from pre-allocating the disk space on the physical hard drive would be worth it.</p>
+
+
+<figure >
+    
+        <img src="/images/ubuntu-plus-x11-forwarding.png" />
+    
+    
+    <figcaption>
+        <h4>Screenshot of my desktop running Windows and having an X11-forwarded gnome-terminal and sublime-text running inside a VM</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+<p>I also gave the VM a ram size of 8GB. Since I&rsquo;ll be installing ubuntu-server on the VM, 8GB is more than enough memory for my needs (since there&rsquo;s no GUI or Desktop Environment). So far I haven&rsquo;t had to increase the memory requirements, and I can comfortably run the VM alongside huge Excel sheets and some Steam games.</p>
+
+<p>If I do need to increase the memory size, it&rsquo;s just a matter of:</p>
+
+<ul>
+<li>shutting the VM down</li>
+<li>changing the memory size in the settings</li>
+<li>booting the VM back up</li>
+</ul>
+
+<h3 id="clipboard">Clipboard</h3>
+
+<p>I set the clipboard sharing to be Bidirectional; that allows me to copy and paste to the VM and to the host seamlessly, as though they&rsquo;re all just normal native applications on the host. I disable Drag&rsquo;n&rsquo;Drop though; I never really found much use for it.</p>
+
+<h3 id="port-forwarding">Port forwarding</h3>
+
+<p>As a web (and Ruby on Rails) developer I use custom ports to run my webservers to preview my work. Common ports I use are <code>3000</code> (rails), <code>1313</code> (hugo), and <code>22</code> (SSH). It&rsquo;s very easy to add more port forwards and better still, it&rsquo;s almost instantaneous. There really isn&rsquo;t much issue if you don&rsquo;t setup your port forwards at this point; you can always add more later.</p>
+
+<p>If you&rsquo;re running a full Desktop Environment, you can get away with not port-forwarding <code>22</code> to the host. However, since I&rsquo;ll be using X11 forwarding I need to have <code>22</code> port-forwarded.</p>
+
+<h3 id="shared-folders">Shared folders</h3>
+
+<p>I like prefer my Dropbox folder to the VM instead of my full Documents folder. I feel that since I&rsquo;m sharing files between two local machines anyway, I might as well share the files to all of my machines (through Dropbox).</p>
+
+<p>VirtualBox makes it really easy to share folders between the host and the client.</p>
+
+<p>Add yourself to the <code>vboxsf</code> group to be able to access the shared folder without haveing superuser privileges:</p>
+
+<pre><code class="language-bash">sudo adduser `whoami` vboxsf
+</code></pre>
+
+<p>Then, you can either logout and login back again (which is annoying) or just force the OS to recognize the new members of the group:</p>
+
+<pre><code class="language-bash">sudo newgrp vboxsf
+</code></pre>
+
+<p>You now have access to the shared folder in <code>/media/sf_Dropbox/</code> (if you followed my preference of sharing the Dropbox folder; otherwise the folder name will be different). I like doing a symlink of that shared folder to my home:</p>
+
+<pre><code class="language-bash">sudo ln -s /media/sf_Dropbox/ ./
+</code></pre>
+
+<p>That just makes everything easier since I have the same folder structure in my <a href="link to follow soon">Dell XPS 13 (2015)</a> that almost exclusively runs on Ubuntu Gnome</p>
+
+<h3 id="packages">Packages</h3>
+
+<p>Chosen for minimalist reasons (except for gnome-terminal, which was chosen because it does text reflow)</p>
+
+<ul>
+<li>xvfb</li>
+<li>gnome-terminal</li>
+<li>rox-filer</li>
+<li>eog (eye of gnome)</li>
+</ul>
+
+<p>Additional quality of life packages
+* sublime-text
+* gnome-tweak-tool</p>
+
+<h3 id="x11-forwarding">X11 forwarding</h3>
+
+<p>Here comes the magic where I get seamless interaction between the VM applications, and the host&rsquo;s native applications. In a nutshell, I run an XServer in Windows (currently Cygwin, but XMing will also do) and have it display the application that&rsquo;s running inside the VM.</p>
+
+<p>Getting all the applications running would be a chore, so I turn to <a href="http://mobaxterm.mobatek.net/download-home-edition.html">MobaXterm</a> to provide me with almost everything I need to do this setup. Instead of getting <code>PuTTY + XMing + configuration</code> I just bookmark my SSH connection to the VM and that&rsquo;s it.</p>
+
+<p>Note that for this to work you&rsquo;ll need to have the SSH port in your VM (<code>22</code> in my case) forwarded to the host.</p>
+
+<h2 id="caveats">Caveats</h2>
+
+<blockquote>
+<p>Caveat emptor /ˌkævɛɑːt ˈɛmptɔr/ is Latin for &ldquo;Let the buyer beware&rdquo; (from caveat, &ldquo;may he beware&rdquo;, the subjunctive of cavere, &ldquo;to beware&rdquo; + emptor, &ldquo;buyer&rdquo;).</p>
+
+<p><a href="https://en.wikipedia.org/wiki/Caveat_emptor">Wikipedia</a></p>
+</blockquote>
+
+<p>Although I&rsquo;m very happy with the setup and have been using this setup for both my work and home workstations for years now, there are still a number of niggling issues that I haven&rsquo;t quite resolved yet due to lack of time or lack of knowledge.</p>
+
+<h3 id="response-lag">Response lag</h3>
+
+<p>Depending on the application,</p>
+
+<h3 id="multi-tasking-preview-in-windows-10">Multi-tasking preview in Windows 10</h3>
+
+<h3 id="hardware-accelerated-opengl">Hardware accelerated OpenGL</h3>
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "parasquid";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "parasquid";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://life.beyondrails.com/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

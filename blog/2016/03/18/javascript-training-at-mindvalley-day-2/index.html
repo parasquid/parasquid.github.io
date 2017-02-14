@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>Javascript Training at Mindvalley Day 2 &middot; </title>
+
+  
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/poole.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde-x.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/opalbox.min.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/opalbox-dark.min.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/styles.css">
+
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://life.beyondrails.com/touch-icon-144-precomposed.png">
+  <link href="http://life.beyondrails.com/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  
+
+  <script type="text/javascript" src="http://cdn.opalrb.org/opal/0.7.1/opal.min.js"></script>
+  <script type="text/javascript" src="http://cdn.opalrb.org/opal/0.7.1/opal-parser.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <script type="text/javascript" src="http://life.beyondrails.com/js/opalbox-jquery.min.js"></script>
+
+</head>
+<body class="theme-base-0b">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1></h1>
+      <p class="lead">Codesmithing by day. Airsculpting by night.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://life.beyondrails.com/">Blog Index</a></li>
+      
+      <li class="sidebar-nav-item"><a href="http://life.beyondrails.com/about/">About Me</a></li>
+      
+      <li class="sidebar-nav-item"><a href="http://life.beyondrails.com/zen/">Zen</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="https://github.com/parasquid"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      <a href="https://www.linkedin.com/in/parasquid"><i class="fa fa-linkedin-square fa-3x"></i></a>
+      <a href="https://plus.google.com/u/1/&#43;TristanGomez/posts"><i class="fa fa-google-plus-square fa-3x"></i></a>
+      <a href="https://www.facebook.com/parasquid"><i class="fa fa-facebook-square fa-3x"></i></a>
+      <a href="https://twitter.com/parasquid"><i class="fa fa-twitter-square fa-3x"></i></a>
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://life.beyondrails.com/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">Javascript Training at Mindvalley Day 2</h1>
+    <span class="post-date">Mar 18, 2016 &middot; 3 minute read &middot; <a href="http://life.beyondrails.com/blog/2016/03/18/javascript-training-at-mindvalley-day-2/#disqus_thread">Comments</a>
+    
+    <br/>
+    <a class="label" href="http://life.beyondrails.com/categories/til">til</a><a class="label" href="http://life.beyondrails.com/categories/javascript">javascript</a><a class="label" href="http://life.beyondrails.com/categories/training-notes">training notes</a>
+    </span>
+    <p>We&rsquo;ve commissioned <a href="http://www.dekatku.com/">Dekatku</a> to train some developers here at <a href="http://www.mindvalley.com/">Mindvalley</a> on Javascript, and it&rsquo;s been a great experience so far! Today is Day 2 of the the training and we&rsquo;ve covered some really deep topics.</p>
+
+<p>I&rsquo;ve started <a href="https://www.safaribooksonline.com/library/view/apprenticeship-patterns/9780596806842/ch02s02.html">wearing my whitebelt</a> again and I thought I&rsquo;ll put up my thoughts and notes here for future reference.
+
+At the start of the session we had one hour to make a TODO application. The caveat being that we&rsquo;re not allowed to use any libraries or frameworks; just pure javascript.</p>
+
+<p>How did it go? I realized (yet again) that raw javascript is very verbose! I looked at the output of my code and there was so much <code>document.getElementById()</code> calls everywhere.</p>
+
+<p>I knew what to do, but I didn&rsquo;t have the vocabulary to express it.</p>
+
+<p>I found that it was good to go back to fundamentals and try to rebuild what you&rsquo;ve been using utilizing only the basic building blocks of the technology. It gave me a better appreciation of the work that libraries and frameworks saved me, but more importantly: <strong>it gave me the confidence to walk by myself without a crutch</strong>; whatever these libraries are doing isn&rsquo;t magical anymore, and I can rebuild (or debug) them myself.</p>
+
+<p>We then went on to the two different types of expressions in Javascript:</p>
+
+<ul>
+<li><code>expression</code> =&gt; produces a value</li>
+<li><code>statement</code> =&gt; performs an action</li>
+</ul>
+
+<p>For some reason it reminded me of the <a href="http://martinfowler.com/bliki/CommandQuerySeparation.html">command/query separation</a> by Bertrand Meyer.</p>
+
+<p>Of course, what&rsquo;s some Javascript without surprising behavior:</p>
+
+<pre><code class="language-Javascript">{} + []
+//=&gt; 0 but it's an [object Object] so it's true(thy)
+</code></pre>
+
+<p>Good piece of advice: <strong>deal with an exception, or throw it back out</strong></p>
+
+<p>Some food for thought by Tim when I asked a question about whether you can catch hierarchichal errors:</p>
+
+<blockquote>
+<p>&ldquo;The answer is no, but yes.&rdquo; &ndash; Timothy</p>
+
+<p>[Like everything else in Javascript, it would seem. &ndash; Tristan]</p>
+</blockquote>
+
+<p>Fun facts:</p>
+
+<ul>
+<li>every function in javascript is variadic</li>
+<li>javascript has a &ldquo;moveable&rdquo; <code>this</code> (functions can be bound to any object)</li>
+</ul>
+
+<p>More syntactic sugar:</p>
+
+<pre><code class="language-Javascript">x.foo(args) =&gt; x.foo.call(x, args)
+</code></pre>
+
+<p>The <code>call</code> function from <code>Function.prototype</code> sounds very much like <code>#instance_exec</code> from Ruby.</p>
+
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call</a></li>
+<li><a href="http://blog.bigbinary.com/2010/05/28/instance-exec-changing-self-and-parameters-to-proc.html">http://blog.bigbinary.com/2010/05/28/instance-exec-changing-self-and-parameters-to-proc.html</a></li>
+</ul>
+
+<p>Words of warning: Don&rsquo;t mess with the global scope. That&rsquo;s why we have this pattern:</p>
+
+<pre><code class="language-Javascript">(function(){})();
+</code></pre>
+
+<p>Now we have lunch :)</p>
+
+<hr />
+
+<p>After lunch, things get more exciting as we start diving deeper into the Javascript object model.</p>
+
+<p>Javascript has no formal notion of classes and inheritance, but you can make it behave similar to that:</p>
+
+<pre><code class="language-Javascript">function LifeForm() {
+  this.name = &quot;&quot;;
+  this.description = &quot;&quot;;
+  this.setName = function(name) {
+    this.name = name;
+  };
+  this.getName = function() {
+    return this.name;
+  };
+};
+var lifeForm = new LifeForm();
+
+function Human() {
+  LifeForm.call(this);
+  this.arms = 2;
+  this.legs = 2;
+};
+
+Human.prototype = Object.create(LifeForm.prototype);
+// =&gt; this changes the class &quot;definition&quot;
+</code></pre>
+
+<p>More words of wisdom:</p>
+
+<blockquote>
+<p>Managing scope in OOJavasctipt is very important, especially in async code (which use callbacks a lot) &ndash; Björn</p>
+</blockquote>
+
+<p>Surprising stuff: you can change an object&rsquo;s prototype and it will change all objects derived from that prototype, even ones that&rsquo;s already been created.</p>
+
+<pre><code class="language-Javascript">var baz = function bar() { }
+Function.prototype.foo = function() {
+  console.log(&quot;hello!&quot;);
+}
+baz.foo();
+//=&gt; hello
+</code></pre>
+
+<p>This is very similar to how ruby works with <code>#class_eval</code></p>
+
+<pre><code class="language-Ruby">class Bar; end;
+Class.class_eval do
+  def foo
+    puts &quot;hello&quot;
+  end
+end
+Bar.foo #=&gt; &quot;hello&quot;
+</code></pre>
+
+<p>Note that even though the class <code>Bar</code> was created <em>before</em> we reopened the class <code>Class</code> (which in Ruby is similar to the prototype of the object <code>Function</code>) it still managed to call the <code>#foo</code> method.</p>
+
+<p>What&rsquo;s a class without Homework:</p>
+
+<ul>
+<li>Using everything you&rsquo;ve learnt today, create a set of classes which represent vehicles.</li>
+<li>Must have 3 levels hierarchy.</li>
+<li>Submit by Wednesday 23 March.</li>
+</ul>
+
+<hr />
+
+<p>Super thanks to:</p>
+
+<ul>
+<li>Björn Karge <a href="https://www.linkedin.com/in/bjornkarge">https://www.linkedin.com/in/bjornkarge</a></li>
+<li>Timothy Chandler <a href="https://www.linkedin.com/in/timothy-chandler-7625b823">https://www.linkedin.com/in/timothy-chandler-7625b823</a></li>
+</ul>
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "parasquid";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "parasquid";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://life.beyondrails.com/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

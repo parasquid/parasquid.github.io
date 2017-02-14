@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>Using Dependency Injection and yield to Refactor a Legacy App &middot; </title>
+
+  
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/poole.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde-x.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/opalbox.min.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/opalbox-dark.min.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/styles.css">
+
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://life.beyondrails.com/touch-icon-144-precomposed.png">
+  <link href="http://life.beyondrails.com/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  
+
+  <script type="text/javascript" src="http://cdn.opalrb.org/opal/0.7.1/opal.min.js"></script>
+  <script type="text/javascript" src="http://cdn.opalrb.org/opal/0.7.1/opal-parser.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <script type="text/javascript" src="http://life.beyondrails.com/js/opalbox-jquery.min.js"></script>
+
+</head>
+<body class="theme-base-0b">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1></h1>
+      <p class="lead">Codesmithing by day. Airsculpting by night.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://life.beyondrails.com/">Blog Index</a></li>
+      
+      <li class="sidebar-nav-item"><a href="http://life.beyondrails.com/about/">About Me</a></li>
+      
+      <li class="sidebar-nav-item"><a href="http://life.beyondrails.com/zen/">Zen</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="https://github.com/parasquid"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      <a href="https://www.linkedin.com/in/parasquid"><i class="fa fa-linkedin-square fa-3x"></i></a>
+      <a href="https://plus.google.com/u/1/&#43;TristanGomez/posts"><i class="fa fa-google-plus-square fa-3x"></i></a>
+      <a href="https://www.facebook.com/parasquid"><i class="fa fa-facebook-square fa-3x"></i></a>
+      <a href="https://twitter.com/parasquid"><i class="fa fa-twitter-square fa-3x"></i></a>
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://life.beyondrails.com/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">Using Dependency Injection and yield to Refactor a Legacy App</h1>
+    <span class="post-date">Oct 28, 2015 &middot; 7 minute read &middot; <a href="http://life.beyondrails.com/blog/2015/10/28/using-dependency-injection-and-yield-to-refactor-a-legacy-app/#disqus_thread">Comments</a>
+    
+    <br/>
+    <a class="label" href="http://life.beyondrails.com/categories/til">til</a><a class="label" href="http://life.beyondrails.com/categories/rails">rails</a><a class="label" href="http://life.beyondrails.com/categories/refactoring">refactoring</a><a class="label" href="http://life.beyondrails.com/categories/dependency-injection">dependency injection</a>
+    </span>
+    <p>I had to create an automated report for finance and accounting that will send particular columns and their data in a csv once a month.</p>
+
+<p>Being the <a href="http://threevirtues.com/">lazy</a> developer that I am, I tried looking for code that already existed. I was planning to wrap up that code in a rake task and use <a href="https://github.com/javan/whenever">whenever</a> to schedule a cron job to send the report monthly.</p>
+
+<p>While I was able to find pre-existing code that did what finance wanted (I checked with them as well if the output showed what they needed), the code itself wasn&rsquo;t easily convertible to a rake task.</p>
+
+<p></p>
+
+<h3 id="original-code">Original Code</h3>
+
+<p>Let me show you what I mean. Here is the original code (with redactions):</p>
+
+<pre><code class="language-ruby">class EmailJob::Accounting &lt; BaseJob
+  include SuckerPunch::Job
+
+  def perform(payments, email)
+    filename = &quot;/tmp/accounting_report_#{Time.now.to_i}.csv&quot;
+
+    SuckerPunch.logger.info &quot;#{self.class}: Compiling accounting report...&quot;
+
+    CSV.open filename, 'w' do |csv|
+      csv &lt;&lt; %w(email first_name last_name order_date order_datetime order_number order_line_state tags
+      payment_amount payment_state payment_date ... ) do |payment|
+
+# ...
+
+      rescue Exception =&gt; e
+        SuckerPunch.logger.info &quot;#{self.class}: Payment id #{payment.id} crashed with error #{e.inspect}&quot;
+      end
+
+      row = [
+
+# ...
+
+      ]
+      csv &lt;&lt; row
+
+# ...
+
+    end
+
+    SuckerPunch.logger.info &quot;#{self.class}: Report compiled, will upload and email it&quot;
+    email(email, &quot;accounting report&quot;, File.open(filename))
+  end
+ end
+</code></pre>
+
+<p>There are a couple of things that make it quite difficult to reuse this method:</p>
+
+<ul>
+<li>There is a dependence on the <code>SuckerPunch</code> class name (mostly used for the logger), which may be great on a worker context but does not make sense in a rake task.</li>
+<li>It tries to do many things at once: create the report, save it to a file, and email someone with the attachment.</li>
+</ul>
+
+<p>Like many legacy applications, this is already used in production so there really isn&rsquo;t much leeway to refactor the method. However, using <a href="http://www.martinfowler.com/articles/injection.html">Dependency Injection</a> and ruby&rsquo;s <a href="https://bugs.ruby-lang.org/issues/5474">keyword arguments</a>, we can easily add on to the method without changing its apparent signature to old clients.</p>
+
+<h3 id="injecting-a-logger">Injecting a logger</h3>
+
+<p>First, we need to take care of the logger.</p>
+
+<pre><code class="language-ruby"># original
+def perform(payments, email)
+  # ...
+  SuckerPunch.logger.info &quot;#{self.class}: Compiling accounting report...&quot;
+  # ...
+end
+
+# refactored
+def perform(payments, email_address, log: SuckerPunch)
+  # ...
+  log.logger.info &quot;#{self.class}: Compiling accounting report...&quot;
+  # ...
+end
+</code></pre>
+
+<p>You&rsquo;ll notice that I&rsquo;ve changed a few things:</p>
+
+<ul>
+<li>I used a keyword argument <code>log</code> and assigned it a default value of SuckerPunch.</li>
+<li>I replaced all occurrences of <code>SuckerPunch</code> with <code>log</code></li>
+<li>I changed one of the parameter names from <code>email</code> to <code>email_address</code>. This isn&rsquo;t fully related to the refactoring of the logger object, but since I was already changing the method definition, I might as well make the var names more intention-revealing and less confusing.</li>
+</ul>
+
+<p>By using a keyword argument that has a default value, the refactored method is functionally equivalent to the original method. Older clients expecting to call the method without having to change their call signatures.</p>
+
+<p>Of course, it would have also been alright to not rely on a keyword argument and instead just put a positional argument that is assigned a default value. However, I felt that having three positional arguments (with one of them optional) was a bit too confusing. Having a keyword argument for the optional parameter reveals my intention that:</p>
+
+<ul>
+<li>I&rsquo;m passing an object that has a logger (I use <code>Rails</code> for my rake task)</li>
+<li>This parameter is optional since it looks different from the first two parameters.</li>
+</ul>
+
+<p>There are also multiple reasons why keywork arguments are better. Here&rsquo;s a <a href="https://www.youtube.com/watch?v=HQXVKHoUQxY">video of Jim Weirich</a> talking about the concept of <code>connascence</code>. I highly recommend you to watch this; it helped me a lot in putting a finger and naming a concept that I knew was there but couldn&rsquo;t quite grasp nor explain.</p>
+
+<h3 id="yielding-to-a-block">Yielding to a block</h3>
+
+<p>One of my favorite ways to &ldquo;open up&rdquo; a method for reuse is to yield to an optional block.</p>
+
+<pre><code class="language-ruby">yield(payment, count) if block_given?
+</code></pre>
+
+<p>If you need a refresher on ruby blocks and blocks, see an old <a href="/blog/2014/03/04/ruby-and-blocks/">post</a> of mine.</p>
+
+<p>By yielding to an optional block, I can do stuff like use a <a href="https://github.com/jfelchner/ruby-progressbar">progress bar</a>:</p>
+
+<pre><code class="language-ruby">progress = ProgressBar.create(
+  title: 'Payments',
+  total: nil,
+  format: '%a |%b&gt;&gt;%i| %p%% %t %c of %C %e'
+)
+
+EmailJob::Accounting.new.perform do |payment, count|
+  progress.total = count
+  progress.increment
+end
+</code></pre>
+
+<p>Or, during debugging I can also try and inspect each of the payment being interated on:</p>
+
+<pre><code class="language-ruby">EmailJob::Accounting.new.perform do |payment, count|
+  Rails.logger.debug { &quot;#{payment.inspect} out of #{count} items&quot; }
+end
+</code></pre>
+
+<p>All of this done without even touching the original object. As Sandi Metz has said:</p>
+
+<blockquote>
+<p>Don&rsquo;t write code that guesses the future, arrange code so you can adapt to the future when it arrives.</p>
+
+<p>&ndash; <cite><a href="https://twitter.com/sandimetz/status/441241600077725697">Sandi Metz (@sandimetz)</a></p>
+</blockquote>
+
+<p>In other words, there is no need to load up your objects with functionality that you think will be used, but most likely won&rsquo;t. Instead, write small objects that are flexible and composable such that when a new requirement comes a long, the code you&rsquo;ve written can be easily adaptable to the situation. Ruby blocks are a great way to &ldquo;open up&rdquo; an object to make them easier to accommodate feature additions or changes.</p>
+
+<h3 id="if-it-ain-t-broke-don-t-fix-it-yet">If it ain&rsquo;t broke, don&rsquo;t fix it (yet)</h3>
+
+<p>Of course, there are even better ways to refactor this method. You can extract out the reporting logic and build an assembler class that takes an input (<code>payments</code>) an output (an <code>email</code> object) and the logic to create the contents (the report generator than can maybe output an <code>IO</code> object or something that responds to <code>#result</code>).</p>
+
+<p>However, as I&rsquo;ve mentioned before this is a legacy app. This piece of code had been running in production for quite some time now without any problems. This is one of the very rare times when finance asks for a change in the running reports, and it&rsquo;s not even a change in logic &ndash; merely an additional way the results are delivered (regular intervals vs on-demand).</p>
+
+<p>Even though there are some tests that cover this method, it&rsquo;s not very comprehensive. We have very limited resources in my current team and we don&rsquo;t really have time (nor the business need) to do a full refactor (yet).</p>
+
+<p>I&rsquo;m not advocating to do hackjobs or cowboy code. However, these two small changes are all it takes to make the method flexible enough to finish a (relatively simple) feature, and there is a business decision to be made here. Some recommend to <a href="http://c2.com/cgi/wiki?WhenToStopRefactoring">refactor until it doesn&rsquo;t hurt anymore</a> and then move on to the next feature; I subscribe to this idea.</p>
+
+<p>My personal preference is that of the rule of second encounters: the first time you need to reference badly written or inflexible code, refactor it just enough so it&rsquo;s usable (in the hopes that you don&rsquo;t have to deal with it again). However, the second time you need to reference the same code, do the refactor because it is more likely that you&rsquo;ll need to reference the same code again in the future &ndash; it&rsquo;s already happened once, it can happen again.</p>
+
+<h3 id="final-form">Final form</h3>
+
+<p>Here is the refactored code, as well as the code that calls it:</p>
+
+<pre><code class="language-ruby">class EmailJob::Accounting &lt; BaseJob
+  include SuckerPunch::Job
+
+  def perform(payments, email_address=nil,
+    log: SuckerPunch,
+    filename: &quot;/tmp/accounting_report_#{Time.now.to_i}.csv
+  )
+
+    log.logger.info &quot;#{self.class}: Compiling accounting report...&quot;
+
+    CSV.open filename, 'w' do |csv|
+      csv &lt;&lt; %w(email first_name last_name order_date order_datetime order_number order_line_state tags
+      payment_amount payment_state payment_date ... ) do |payment|
+
+# ...
+
+      rescue Exception =&gt; e
+        log.logger.info &quot;#{self.class}: Payment id #{payment.id} crashed with error #{e.inspect}&quot;
+      end
+
+      row = [
+
+# ...
+
+      ]
+      csv &lt;&lt; row
+
+      yield(payment, count) if block_given?
+
+# ...
+
+    end
+
+    log.logger.info &quot;#{self.class}: Report compiled, will upload and email it&quot;
+    email(email_address, &quot;accounting report&quot;, File.open(filename)) if email_address
+  end
+end
+</code></pre>
+
+<pre><code class="language-ruby">payments = PaymentsQuery.all.includes(:order =&gt; [:customer, :tags])
+count = payments.count
+
+progress = ProgressBar.create(
+  title: 'Payment',
+  total: nil,
+  format: '%a |%b&gt;&gt;%i| %p%% %t %c of %C %e'
+)
+
+filename = &quot;report.csv&quot;
+EmailJob::Accounting.new.perform(payments, logger: Rails, filename: filename) do |payment, count|
+  progress.total = count
+  progress.increment
+end
+progress.finish
+
+uploader = Upcloudify::S3.new
+uploader.email([&quot;parasquid&quot;&quot;], filename, File.open(filename))
+</code></pre>
+
+<p>Not much has changed, but their flexibility is worlds apart, and it makes all the difference.</p>
+
+<h1 id="tl-dr">TL;DR</h1>
+
+<ul>
+<li>Use dependency injection and keyword arguments with default values to maintain the same signature to older clients, but allow you to change behavior as needed. In this case, I don&rsquo;t want to call <code>SuckerPunch</code> logger in my rake task.</li>
+<li>Use <code>yield</code> and <code>block_given?</code> to allow client code to pass in custom blocks, and expose objects to the block depending on your intentions. In this case, I want to use a progress bar and also inspect the currently iterated on object.</li>
+</ul>
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "parasquid";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "parasquid";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://life.beyondrails.com/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

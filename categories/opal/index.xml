@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Opal on Life Beyond Rails</title>
+    <link>http://life.beyondrails.com/categories/opal/index.xml</link>
+    <description>Recent content in Opal on Life Beyond Rails</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <atom:link href="http://life.beyondrails.com/categories/opal/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Opalbox—Run Ruby Code Inside Pages</title>
+      <link>http://life.beyondrails.com/blog/2016/01/03/opalboxrun-ruby-code-inside-pages/</link>
+      <pubDate>Sun, 03 Jan 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://life.beyondrails.com/blog/2016/01/03/opalboxrun-ruby-code-inside-pages/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://opalrb.org/&#34;&gt;Opal&lt;/a&gt; is a Ruby to JavaScript compiler, and &lt;a href=&#34;https://github.com/Angelmmiguel/opalbox-jquery&#34;&gt;OpalBox&lt;/a&gt; is a &lt;code&gt;jQuery&lt;/code&gt; plugin to easily create a textarea that can take ruby code and allow it to run.&lt;/p&gt;
+
+&lt;p&gt;I just added OpalBox to this blog and it&amp;rsquo;s been quite interesting. I&amp;rsquo;ve learned how to resize a &lt;code&gt;textarea&lt;/code&gt; based on its content (you need javascript to do that because &lt;code&gt;CSS&lt;/code&gt; just doesn&amp;rsquo;t cut it) and I&amp;rsquo;ve added in a shortcode.&lt;/p&gt;
+
+&lt;h3 id=&#34;update&#34;&gt;update:&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/Angelmmiguel/opalbox-jquery&#34;&gt;Angelmmiguel&lt;/a&gt; (the author of opalbox) has just released &lt;a href=&#34;https://github.com/Angelmmiguel/opalbox-jquery/issues/1&#34;&gt;0.1.0 that fixes the issue&lt;/a&gt; :)
+
+&lt;script&gt;
+$(function() {
+    $(&#39;.ruby-code&#39;).opalBox();
+  var $targets = $(&#34;.ruby-code textarea&#34;)
+  $targets.each(function() {
+    $(this).height(0).height(this.scrollHeight - $(this).css(&#34;font-size&#34;).replace(&#39;px&#39;,&#39;&#39;)).change();
+  })
+});
+&lt;/script&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s how it looks like:&lt;/p&gt;
+
+&lt;div class=&#34;ruby-code&#34;&gt;
+# this is ruby code
+# it is inside a text area so you can edit it and play around with it
+
+def square(x)
+  x ** 2
+end
+
+puts square(256)
+
+# click on run below to execute the code
+&lt;/div&gt;
+
+&lt;p&gt;I&amp;rsquo;ve edited one of my &lt;a href=&#34;http://life.beyondrails.com/blog/2014/03/04/ruby-and-blocks/&#34;&gt;past articles&lt;/a&gt; to use &lt;code&gt;OpalBox&lt;/code&gt; if you&amp;rsquo;re interested in how it looks like as a method for instruction.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s the javascript snippet that resizes the &lt;code&gt;textarea&lt;/code&gt; to fit its content:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;var $targets = $(&amp;quot;.ruby-code textarea&amp;quot;)
+$targets.each(function() {
+  $(this).height(0).height(this.scrollHeight - $(this).css(&amp;quot;font-size&amp;quot;).replace(&#39;px&#39;,&#39;&#39;)).change();
+})
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The &lt;code&gt;height&lt;/code&gt; is first set to &lt;code&gt;0&lt;/code&gt; because some browsers get confused with unconventional positions (negative margins, for example). It is then set to the &lt;code&gt;textarea&lt;/code&gt;&amp;rsquo;s &lt;code&gt;scrollHeight&lt;/code&gt;. I then subtract the &lt;code&gt;font-size&lt;/code&gt; of this element to remove the extra line at the end.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://gohugo.io/extras/shortcodes/&#34;&gt;Shortcodes in Hugo&lt;/a&gt; (the blog engine this site is running on) is quite simple to make. It&amp;rsquo;s just a &lt;code&gt;text&lt;/code&gt; snippet that you can call within your article. For example, the above &lt;code&gt;OpalBox&lt;/code&gt; looks like this:&lt;/p&gt;
+
+&lt;pre&gt;
+&amp;#123;&amp;#123;&amp;lt; rubycode &amp;gt;&amp;#125;&amp;#125;
+# this is ruby code
+# it is inside a text area so you can edit it and play around with it
+
+def square(x)
+  x ** 2
+end
+
+puts square(256)
+
+# click on run below to execute the code
+&amp;#123;&amp;#123;&amp;lt; /rubycode &amp;gt;&amp;#125;&amp;#125;
+&lt;/pre&gt;
+
+&lt;p&gt;While the shortcode file contents (&lt;code&gt;rubycode.html&lt;/code&gt;) look like this:&lt;/p&gt;
+
+&lt;pre&gt;
+&amp;lt;div class=&#34;ruby-code&#34;&amp;gt;&amp;#123;&amp;#123; .Inner &amp;#125;&amp;#125;&amp;lt;/div&amp;gt;
+&lt;/pre&gt;
+
+&lt;p&gt;I also have the &lt;code&gt;opalbox.html&lt;/code&gt; shortcode that I only include whenever the article contains an &lt;code&gt;OpalBox&lt;/code&gt;. It first runs the &lt;code&gt;.opalBox()&lt;/code&gt; function on all &lt;code&gt;div&lt;/code&gt; that have the class &lt;code&gt;.ruby-code&lt;/code&gt; and turn them into &lt;code&gt;textarea&lt;/code&gt;. Then the &lt;code&gt;textarea&lt;/code&gt; are resized to fit their contents.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-javascript&#34;&gt;$(function() {
+  $(&#39;.ruby-code&#39;).opalBox();
+  var $targets = $(&amp;quot;.ruby-code textarea&amp;quot;)
+  $targets.each(function() {
+    $(this).height(0).height(this.scrollHeight - $(this).css(&amp;quot;font-size&amp;quot;).replace(&#39;px&#39;,&#39;&#39;)).change();
+  })
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;what-i-like&#34;&gt;What I like&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;It&amp;rsquo;s great for tutorial articles that explain complicated concepts.&lt;/li&gt;
+&lt;li&gt;The reader can play and manipulate the code to confirm understanding.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;what-i-don-t-like&#34;&gt;What I don&amp;rsquo;t like&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;textarea&lt;/code&gt; disables syntax highlighting.&lt;/li&gt;
+&lt;li&gt;Long ruby code is not practical because it looks like a wall of text.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;references&#34;&gt;References:&lt;/h2&gt;
+
+&lt;p&gt;Initial change to the article to include opalbox: &lt;a href=&#34;https://github.com/parasquid/life.beyondrails.com/commit/996234fffc57a8e16ce7015abc00e3a374f00343&#34;&gt;https://github.com/parasquid/life.beyondrails.com/commit/996234fffc57a8e16ce7015abc00e3a374f00343&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Changing the divs into a shortcode: &lt;a href=&#34;https://github.com/parasquid/life.beyondrails.com/commit/20fe9761d285c448498ce5a1faef5f70edceed5a&#34;&gt;https://github.com/parasquid/life.beyondrails.com/commit/20fe9761d285c448498ce5a1faef5f70edceed5a&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

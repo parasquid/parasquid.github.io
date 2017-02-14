@@ -1,60 +1,388 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-      <title>Ruby on Life Beyond Rails </title>
-      <generator uri="https://hugo.spf13.com">Hugo</generator>
-    <link>http://life.beyondrails.com/categories/ruby/index.xml/</link>
+    <title>Ruby on Life Beyond Rails</title>
+    <link>http://life.beyondrails.com/categories/ruby/index.xml</link>
+    <description>Recent content in Ruby on Life Beyond Rails</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <atom:link href="http://life.beyondrails.com/categories/ruby/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Safely Passing Ruby Code in a Rake Task</title>
+      <link>http://life.beyondrails.com/blog/2015/12/04/safely-passing-ruby-code-in-a-rake-task/</link>
+      <pubDate>Fri, 04 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://life.beyondrails.com/blog/2015/12/04/safely-passing-ruby-code-in-a-rake-task/</guid>
+      <description>&lt;p&gt;I wanted to make a rake task that would accept something like &lt;code&gt;1.month&lt;/code&gt; or &lt;code&gt;1.day&lt;/code&gt; as one of it&amp;rsquo;s arguments. The immediate tool I reached for was &lt;code&gt;eval&lt;/code&gt; and it worked like a charm. However, &lt;a href=&#34;https://codeclimate.com&#34;&gt;Code Climate&lt;/a&gt; (the tool we use to check for static analysis) complains about &lt;code&gt;eval&lt;/code&gt; and understandably so; the use of &lt;code&gt;eval&lt;/code&gt; is a practice full of danger and security vulnerabilities.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m using it inside a rake task that is never exposed to third parties, and anyone malicious enough to run the rake task with a bad parameter to be eval&amp;rsquo;d would already have had access to the system anyway, and able to wreak even greater havoc than by running the malicious code through the rake task. I believe this is an accepted risk scenario, and &lt;a href=&#34;https://prezi.com/user/ypmnd6xz0d4h/&#34;&gt;Crystal&lt;/a&gt; (one of my colleagues who was reviewing my code) suggested that since I had a valid point, I can just turn off the Code Climate check for this particular instance.&lt;/p&gt;
+
+&lt;p&gt;I thought that was justified, but I also thought it was a slippery slope. I&amp;rsquo;m sure there are ways to pass in a string and have it dynamically interpreted, without having to expose the system to a security vulnerability.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;why-is-eval-so-dangerous&#34;&gt;Why is &lt;code&gt;eval&lt;/code&gt; so dangerous?&lt;/h1&gt;
+
+&lt;p&gt;Jimmy had a &lt;a href=&#34;https://www.facebook.com/download/858552380924696/Hacking%20Rails.pdf&#34;&gt;presentation on the YAML exploit&lt;/a&gt; and this is exactly what enables the exploit: a YAML payload is deserialized to an object that contains an &lt;code&gt;#eval&lt;/code&gt; statement and then executed.&lt;/p&gt;
+
+&lt;p&gt;There is a good &lt;a href=&#34;http://www.sitepoint.com/anatomy-of-an-exploit-an-in-depth-look-at-the-rails-yaml-vulnerability/&#34;&gt;Sitepoint article&lt;/a&gt; that goes in-depth into how the exploit works.&lt;/p&gt;
+
+&lt;h1 id=&#34;abv-always-be-validating&#34;&gt;ABV (Always Be Validating)&lt;/h1&gt;
+
+&lt;p&gt;One way to work around the danger is to validate the string being passed.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;args = { period: &amp;quot;1.day&amp;quot; } # this can be set through the rake task
+
+def permit?(operation)
+  permitted_operations = /^([1-9].(day|year|month|hour|minute)s?)$/
+  !permitted_operations.match(operation.to_s).nil?
+end
+
+period = eval(args[:period]) if permit?(args[:period])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here is the code I used to validate the parameters passed into eval. Since I know exactly what the format of the string would be, I can craft a simple regex to test for this.&lt;/p&gt;
+
+&lt;p&gt;However, since Code Climate does static analysis, it won&amp;rsquo;t give me cookie points for validating the input first before passing to eval. As long as there is a call to &lt;code&gt;Kernel#eval&lt;/code&gt; then the code climate checks will fail.&lt;/p&gt;
+
+&lt;h1 id=&#34;a-rose-by-any-other-name&#34;&gt;A rose by any other name&lt;/h1&gt;
+
+&lt;p&gt;We can instead use &lt;code&gt;#instance_eval&lt;/code&gt; which is mostly the same thing, but instead of evaluating the string in the current context, it evaluates the string within the context of the object instance you&amp;rsquo;re calling it in.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;class SandboxObject; end
+period = SandboxObject.new.instance_eval(args[:period]) if permit?(args[:period])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;#instance_eval&lt;/code&gt; not necessarily more secure, since you can still pass in stuff that can give remote access to an attacker if you don&amp;rsquo;t properly validate it. For example:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;class SandboxObject; end
+Sandbox.new.instance_eval(&amp;quot;system(&#39;cat /etc/passwd&#39;)&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;But since we&amp;rsquo;re now restricting the string evaluation to an instance of a sandbox object, you are able to sidestep a number of more common attacks such as redefining a method on a commonly used class.&lt;/p&gt;
+
+&lt;p&gt;Together with the input validation, this should be enough to mitigate against careless ruby code being passed in as input (and this also makes Code Climate happy and I get to have my pull request merged).&lt;/p&gt;
+
+&lt;h1 id=&#34;tl-dr&#34;&gt;TL;DR&lt;/h1&gt;
+
+&lt;p&gt;I lied; there is no perfect way have a third party pass in a string and safely &lt;code&gt;eval&lt;/code&gt; it. However, you can mitigate the damage with the following:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Validate your string parameters that are to be eval&amp;rsquo;d or executed.&lt;/li&gt;
+&lt;li&gt;Don&amp;rsquo;t turn off the code climate check; instead look for ways to approach what you want to do in a different way.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;updates&#34;&gt;Updates&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.facebook.com/ferngyi&#34;&gt;Looi&lt;/a&gt; made a good point on sidestepping the regex altogether:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def validated_period(args)
+  num, period = args.split(&#39;.&#39;)
+  allowed_periods = %w(second seconds hour hours day days month months)
+
+  if allowed_periods.include?(period) &amp;amp;&amp;amp; num.to_i &amp;gt; 0
+    num.to_i.public_send(period)
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.facebook.com/antonsen.espen&#34;&gt;Espen&lt;/a&gt; also makes a great point that the regex isn&amp;rsquo;t an issue, but the eval is and suggested to instead use something like the Chronic library or something like &lt;code&gt;.advance(period.to_sym =&amp;gt; i)&lt;/code&gt;.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Ruby Development in Windows Revisited</title>
+      <link>http://life.beyondrails.com/blog/2015/11/07/ruby-development-in-windows-revisited/</link>
+      <pubDate>Sat, 07 Nov 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://life.beyondrails.com/blog/2015/11/07/ruby-development-in-windows-revisited/</guid>
+      <description>&lt;p&gt;Some time ago I &lt;a href=&#34;http://life.beyondrails.com/blog/2014/03/09/ruby-development-in-windows/&#34;&gt;wrote about how I set up my machine&lt;/a&gt; so I can program hassle-free in ruby while running Windows. It was more of a reminder to myself than anything, if I ever needed to set things up the same way again.&lt;/p&gt;
+
+&lt;p&gt;Fast forward to 2015. When a colleague saw my workstation and realized I was running Windows, he was quite surprised and asked me how I was doing it. I thought of pointing him to my old blog post, but I felt that:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;It was outdated (the setup described was from 2012, written in 2014)&lt;/li&gt;
+&lt;li&gt;It was incomplete (it&amp;rsquo;s just a checklist of what I&amp;rsquo;ve installed)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I&amp;rsquo;ve improved on the whole setup since, and I thought it&amp;rsquo;s time to share the whole updated setup so that anyone else interested can benefit.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;the-magic-of-virtualization&#34;&gt;The Magic of Virtualization&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Pay no attention to that man behind the curtain!&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://en.wikiquote.org/wiki/The_Wizard_of_Oz_%281939_film%29#The_Wizard&#34;&gt;The Wizard of Oz (1939 film)&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;It&amp;rsquo;s probably a bit misleading to say I do my ruby development &lt;em&gt;exclusively&lt;/em&gt; in Windows. It&amp;rsquo;s not because of the graphical user interface or the hardware support; I think Windows 10 had really been a great improvement over the past Windows versions. Support for peripherals (like graphic cards, multi-monitor setups, or just &lt;a href=&#34;link to follow soon on hackworkplay.com&#34;&gt;recently&lt;/a&gt; 4k TV/monitors) is simply heaps better than that of Ubuntu.&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://life.beyondrails.com/images/IMG_20151109_002555_HDR.jpg&#34; /&gt;
     
     
+    &lt;figcaption&gt;
+        &lt;h4&gt;My home workstation: a 40&amp;#34; LG 4k display and a 1080p LG IPS display. The 1080p display is showing a webpage generated by a server running in the VM that is port forwarded to 1313. The 4k display is running sublime text and two instances of gnome-terminal. All three of these applications are using X11 forwarding.&lt;/h4&gt;
+        
+    &lt;/figcaption&gt;
     
-    <updated>Tue, 04 Mar 2014 00:00:00 UTC</updated>
+&lt;/figure&gt;
+
+
+&lt;p&gt;Rather, it&amp;rsquo;s because the Windows CLI is absolutely horrible. I&amp;rsquo;ve looked into some projects that attempt to alleviate the pain of the Windows CLI like &lt;a href=&#34;https://en.wikipedia.org/wiki/Windows_PowerShell&#34;&gt;PowerShell&lt;/a&gt; or &lt;a href=&#34;Console2&#34;&gt;Console2&lt;/a&gt; but for me, nothing still beats the power of a unix tty.&lt;/p&gt;
+
+&lt;p&gt;The easiest way to combine the two worlds is to run Ubuntu inside a virtual machine, and expose the tools I needed to Windows. I get the hardware compatibility and peripheral support of Windows, while getting the workflow efficiencies of unix.&lt;/p&gt;
+
+&lt;h2 id=&#34;write-once-run-anywhere&#34;&gt;Write Once, Run Anywhere&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Portability is for people who cannot write new programs.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.oreilly.com/openbook/opensources/book/appa.html&#34;&gt;Linus Torvalds (tongue in cheek)&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;I chose to use apps that have been &amp;ldquo;portabilized&amp;rdquo; because:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;I have many computers&lt;/li&gt;
+&lt;li&gt;I like using all of them&lt;/li&gt;
+&lt;li&gt;I prefer keeping my stuff synchronized&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I&amp;rsquo;m able to do this by using a portable versions of &lt;a href=&#34;http://www.vbox.me/&#34;&gt;VirtualBox&lt;/a&gt; and &lt;a href=&#34;http://mobaxterm.mobatek.net/download-home-edition.html&#34;&gt;MobaXterm&lt;/a&gt; (an all-in-one remote terminal that comes with an X11 server). I keep my portable MobaXterm in a Dropbox folder; this allows me to sync all of my settings and bookmarks across all my devices that have Dropbox installed. For Virtualbox, I keep the files in a USB 3.0 portable drive.&lt;/p&gt;
+
+&lt;p&gt;During the vbox setup, I prefer to separate my home drive and my os drive; this preference saved me a lot of time and effort in the recent past. Previously, I ran my vbox server with the full &lt;a href=&#34;https://ubuntugnome.org/&#34;&gt;Ubuntu Gnome&lt;/a&gt; gui (I use Ubuntu Gnome because they have the version of gnome-terminal that can reflow text, something that the Mac terminals have had since forever) full-screen. I&amp;rsquo;m now running a setup that is a basic ubuntu-server installation, with all my applications being X11 forwarded.&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://life.beyondrails.com/images/11123892_391902314330773_325601457_n.jpg&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;h4&gt;My old office Workstation. I used to run the Ubuntu Desktop Environment as a full-screen application in Windows.&lt;/h4&gt;
+        
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;Since I&amp;rsquo;ve separated out my os drive from my home drive, I can just create a new vbox with a fresh os drive and reuse the same home drive as before. All my local settings and repositories are immediately available.&lt;/p&gt;
+
+&lt;h2 id=&#34;setting-it-all-up&#34;&gt;Setting it all up&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;It takes these very simple-minded instructions&amp;ndash;&amp;ldquo;Go fetch a number, add it to this number, put the result there, perceive if it&amp;rsquo;s greater than this other number&amp;rsquo;&amp;ndash;but executes them at a rate of, let&amp;rsquo;s say, 1,000,000 per second. At 1,000,000 per second, the results appear to be magic.&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://web.archive.org/web/20110926012452/http://www.playboy.com/magazine/playboy-interview-steve-jobs/2&#34;&gt;Steve Jobs (playboy magazine interview, on &amp;ldquo;what a computer is&amp;rdquo;)&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;I&amp;rsquo;m using a &lt;a href=&#34;http://www.vbox.me/&#34;&gt;portable version of VirtualBox&lt;/a&gt; and if you&amp;rsquo;ve made any VMs with VirtualBox before, it&amp;rsquo;s mostly the same experience. Currently I&amp;rsquo;m running &lt;a href=&#34;http://www.ubuntu.com/download/server&#34;&gt;Ubuntu Server 15.10&lt;/a&gt; but there&amp;rsquo;s nothing preventing you from running a full blown Ubuntu with all the Desktop Environment bells and whistles. I just prefer a more clean and precise installation that allows me to choose the exact packages I want and need.&lt;/p&gt;
+
+&lt;h3 id=&#34;vm-creation&#34;&gt;VM Creation&lt;/h3&gt;
+
+&lt;p&gt;I separated out my &lt;code&gt;home&lt;/code&gt; and &lt;code&gt;os&lt;/code&gt; by installing them on different virtual hard drives. I gave the &lt;code&gt;os&lt;/code&gt; disk some 40GB of space that has fixed allocation, and the &lt;code&gt;home&lt;/code&gt; partition 80GB of space that has dynamic allocation. I figured that since the OS would be used a lot more than the user owned files, the tiny bit of extra performance I&amp;rsquo;ll get from pre-allocating the disk space on the physical hard drive would be worth it.&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;http://life.beyondrails.com/images/ubuntu-plus-x11-forwarding.png&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;h4&gt;Screenshot of my desktop running Windows and having an X11-forwarded gnome-terminal and sublime-text running inside a VM&lt;/h4&gt;
+        
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;I also gave the VM a ram size of 8GB. Since I&amp;rsquo;ll be installing ubuntu-server on the VM, 8GB is more than enough memory for my needs (since there&amp;rsquo;s no GUI or Desktop Environment). So far I haven&amp;rsquo;t had to increase the memory requirements, and I can comfortably run the VM alongside huge Excel sheets and some Steam games.&lt;/p&gt;
+
+&lt;p&gt;If I do need to increase the memory size, it&amp;rsquo;s just a matter of:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;shutting the VM down&lt;/li&gt;
+&lt;li&gt;changing the memory size in the settings&lt;/li&gt;
+&lt;li&gt;booting the VM back up&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;clipboard&#34;&gt;Clipboard&lt;/h3&gt;
+
+&lt;p&gt;I set the clipboard sharing to be Bidirectional; that allows me to copy and paste to the VM and to the host seamlessly, as though they&amp;rsquo;re all just normal native applications on the host. I disable Drag&amp;rsquo;n&amp;rsquo;Drop though; I never really found much use for it.&lt;/p&gt;
+
+&lt;h3 id=&#34;port-forwarding&#34;&gt;Port forwarding&lt;/h3&gt;
+
+&lt;p&gt;As a web (and Ruby on Rails) developer I use custom ports to run my webservers to preview my work. Common ports I use are &lt;code&gt;3000&lt;/code&gt; (rails), &lt;code&gt;1313&lt;/code&gt; (hugo), and &lt;code&gt;22&lt;/code&gt; (SSH). It&amp;rsquo;s very easy to add more port forwards and better still, it&amp;rsquo;s almost instantaneous. There really isn&amp;rsquo;t much issue if you don&amp;rsquo;t setup your port forwards at this point; you can always add more later.&lt;/p&gt;
+
+&lt;p&gt;If you&amp;rsquo;re running a full Desktop Environment, you can get away with not port-forwarding &lt;code&gt;22&lt;/code&gt; to the host. However, since I&amp;rsquo;ll be using X11 forwarding I need to have &lt;code&gt;22&lt;/code&gt; port-forwarded.&lt;/p&gt;
+
+&lt;h3 id=&#34;shared-folders&#34;&gt;Shared folders&lt;/h3&gt;
+
+&lt;p&gt;I like prefer my Dropbox folder to the VM instead of my full Documents folder. I feel that since I&amp;rsquo;m sharing files between two local machines anyway, I might as well share the files to all of my machines (through Dropbox).&lt;/p&gt;
+
+&lt;p&gt;VirtualBox makes it really easy to share folders between the host and the client.&lt;/p&gt;
+
+&lt;p&gt;Add yourself to the &lt;code&gt;vboxsf&lt;/code&gt; group to be able to access the shared folder without haveing superuser privileges:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo adduser `whoami` vboxsf
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then, you can either logout and login back again (which is annoying) or just force the OS to recognize the new members of the group:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo newgrp vboxsf
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You now have access to the shared folder in &lt;code&gt;/media/sf_Dropbox/&lt;/code&gt; (if you followed my preference of sharing the Dropbox folder; otherwise the folder name will be different). I like doing a symlink of that shared folder to my home:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo ln -s /media/sf_Dropbox/ ./
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;That just makes everything easier since I have the same folder structure in my &lt;a href=&#34;link to follow soon&#34;&gt;Dell XPS 13 (2015)&lt;/a&gt; that almost exclusively runs on Ubuntu Gnome&lt;/p&gt;
+
+&lt;h3 id=&#34;packages&#34;&gt;Packages&lt;/h3&gt;
+
+&lt;p&gt;Chosen for minimalist reasons (except for gnome-terminal, which was chosen because it does text reflow)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;xvfb&lt;/li&gt;
+&lt;li&gt;gnome-terminal&lt;/li&gt;
+&lt;li&gt;rox-filer&lt;/li&gt;
+&lt;li&gt;eog (eye of gnome)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Additional quality of life packages
+* sublime-text
+* gnome-tweak-tool&lt;/p&gt;
+
+&lt;h3 id=&#34;x11-forwarding&#34;&gt;X11 forwarding&lt;/h3&gt;
+
+&lt;p&gt;Here comes the magic where I get seamless interaction between the VM applications, and the host&amp;rsquo;s native applications. In a nutshell, I run an XServer in Windows (currently Cygwin, but XMing will also do) and have it display the application that&amp;rsquo;s running inside the VM.&lt;/p&gt;
+
+&lt;p&gt;Getting all the applications running would be a chore, so I turn to &lt;a href=&#34;http://mobaxterm.mobatek.net/download-home-edition.html&#34;&gt;MobaXterm&lt;/a&gt; to provide me with almost everything I need to do this setup. Instead of getting &lt;code&gt;PuTTY + XMing + configuration&lt;/code&gt; I just bookmark my SSH connection to the VM and that&amp;rsquo;s it.&lt;/p&gt;
+
+&lt;p&gt;Note that for this to work you&amp;rsquo;ll need to have the SSH port in your VM (&lt;code&gt;22&lt;/code&gt; in my case) forwarded to the host.&lt;/p&gt;
+
+&lt;h2 id=&#34;caveats&#34;&gt;Caveats&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Caveat emptor /ˌkævɛɑːt ˈɛmptɔr/ is Latin for &amp;ldquo;Let the buyer beware&amp;rdquo; (from caveat, &amp;ldquo;may he beware&amp;rdquo;, the subjunctive of cavere, &amp;ldquo;to beware&amp;rdquo; + emptor, &amp;ldquo;buyer&amp;rdquo;).&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Caveat_emptor&#34;&gt;Wikipedia&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Although I&amp;rsquo;m very happy with the setup and have been using this setup for both my work and home workstations for years now, there are still a number of niggling issues that I haven&amp;rsquo;t quite resolved yet due to lack of time or lack of knowledge.&lt;/p&gt;
+
+&lt;h3 id=&#34;response-lag&#34;&gt;Response lag&lt;/h3&gt;
+
+&lt;p&gt;Depending on the application,&lt;/p&gt;
+
+&lt;h3 id=&#34;multi-tasking-preview-in-windows-10&#34;&gt;Multi-tasking preview in Windows 10&lt;/h3&gt;
+
+&lt;h3 id=&#34;hardware-accelerated-opengl&#34;&gt;Hardware accelerated OpenGL&lt;/h3&gt;</description>
+    </item>
+    
+    <item>
+      <title>Ruby Development in Windows</title>
+      <link>http://life.beyondrails.com/blog/2014/03/09/ruby-development-in-windows/</link>
+      <pubDate>Sun, 09 Mar 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://life.beyondrails.com/blog/2014/03/09/ruby-development-in-windows/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;ve done the unthinkable and I have a confession to make.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve switched my development machines to Windows.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s the story of my heresy &amp;hellip; and my possible salvation.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;a-history-lesson&#34;&gt;A History Lesson&lt;/h3&gt;
+
+&lt;p&gt;A couple of years ago my bosses realized that me and my colleague had been using an underpowered machine (mine was my personal Macbook Air mid 2010 and my colleague was a Dell XPS 13) and had offered to get me a new development machine.&lt;/p&gt;
+
+&lt;p&gt;I would have wanted the latest and greatest, fully upgraded Macbook Pro but we had a budget. Actually we didn&amp;rsquo;t &amp;ndash; we were told that as one of the top value producers in the team, we can have (and should have) &lt;em&gt;any&lt;/em&gt; machine that we wanted &amp;ndash; but I didn&amp;rsquo;t want to push my luck. Besides, the servers I administer and target my development for are running Linux; I believe my development environment should closely match that of production to minimize bugs due to architectural mistmatches.&lt;/p&gt;
+
+&lt;p&gt;So I got quite a nice beastly desktop with a nice graphics card (an i7 Sandy Bridge and 16GB of ram, SSD and a terabyte 7200rpm disk drive). Since most of my colleagues used Macs, I hackintoshed.&lt;/p&gt;
+
+&lt;p&gt;It was smooth sailing but a bit inconvenient. I was stuck using 10.7 when everyone had upgraded to Mountain Lion. I had to decline all system updates and point patches. Then disaster struck, a driver was causing a kernel panic.&lt;/p&gt;
+
+&lt;p&gt;I switched fully to Ubuntu 12.04 for about half a year. It was an okay experience.&lt;/p&gt;
+
+&lt;p&gt;Then my colleague resigned. I cannibalized his desktop and found he ahd a really good graphics card (I couldn&amp;rsquo;t get that graphics card because it wasn&amp;rsquo;t hackintosh friendly). I installed it but my Ubuntu machine is having problems with my multi monitor setup with that card.&lt;/p&gt;
+
+&lt;h3 id=&#34;trying-out-windows&#34;&gt;Trying Out Windows&lt;/h3&gt;
+
+&lt;p&gt;So I decided to try out Windows. I thought I could still use cygwin, but it wasn&amp;rsquo;t an easy ride. After a full day of non-productivity just trying to get things running, I thought maybe I can try Virtualization.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s what I had:&lt;/p&gt;
+
+&lt;pre&gt;
+VirtualBox - Ubuntu 14.04
+Shared folders
+extension pack
+guest additions
+https://www.virtualbox.org/wiki/Downloads
+inconsolata
+&lt;/pre&gt;
+
+&lt;p&gt;In order to make sure I&amp;rsquo;m able to access the network share, I had to add myself to the &lt;code&gt;vboxsf&lt;/code&gt; group:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo adduser xxx vboxsf
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
     
     <item>
       <title>Ruby and Blocks</title>
       <link>http://life.beyondrails.com/blog/2014/03/04/ruby-and-blocks/</link>
-      <pubDate>Tue, 04 Mar 2014 00:00:00 UTC</pubDate>
+      <pubDate>Tue, 04 Mar 2014 00:00:00 +0000</pubDate>
       
       <guid>http://life.beyondrails.com/blog/2014/03/04/ruby-and-blocks/</guid>
-      <description>
+      <description>&lt;p&gt;One of the most often used and ironically least understood concepts in the Ruby programming language is the block. If you&amp;rsquo;ve used one of the Enumerable mixed-in objects, you&amp;rsquo;ve encountered the block syntax.&lt;/p&gt;
 
-&lt;p&gt;One of the most often used and ironically least understood concepts in the Ruby programming language is the block. If you&amp;rsquo;ve used one of the Enumerable mixed-in objects, you&amp;rsquo;ve encountered the block syntax.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+
+&lt;script&gt;
+$(function() {
+    $(&#39;.ruby-code&#39;).opalBox();
+  var $targets = $(&#34;.ruby-code textarea&#34;)
+  $targets.each(function() {
+    $(this).height(0).height(this.scrollHeight - $(this).css(&#34;font-size&#34;).replace(&#39;px&#39;,&#39;&#39;)).change();
+  })
+});
+&lt;/script&gt;
+
 
 &lt;p&gt;For example:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;array = [1, 2, 3, 4, 5]
+&lt;div class=&#34;ruby-code&#34;&gt;
+array = [1, 2, 3, 4, 5]
 
 # returns all the odd numbers of the array
 array.delete_if { |e| e.even? }
-
-#  =&amp;gt; [1, 3, 5]
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;p&gt;Or the more common:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;array = [1, 2, 3, 4, 5]
+&lt;div class=&#34;ruby-code&#34;&gt;
+array = [1, 2, 3, 4, 5]
 
 # prints out all of the array&#39;s elements
 array.each do |element|
   puts element
 end
-
-# 1
-# 2
-# 3
-# 4
-# 5
-#  =&amp;gt; [1, 2, 3, 4, 5]    
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;p&gt;Ruby blocks also enable a lot of the functional programming DSL such as:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;array = [1, 2, 3, 4, 5]
+&lt;div class=&#34;ruby-code&#34;&gt;
+array = [1, 2, 3, 4, 5]
 
 # returns the sum of the squares of each element of the array
 array.map { |e| e ** 2 }.reduce(:+)
-
-#  =&amp;gt; 55
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;p&gt;Robert Sosinski has written a really awesome &lt;a href=&#34;http://www.robertsosinski.com/2008/12/21/understanding-ruby-blocks-procs-and-lambdas/&#34;&gt;tutorial&lt;/a&gt; about ruby blocks and I&amp;rsquo;m encouraging you to go through it.&lt;/p&gt;
 
@@ -62,33 +390,27 @@ array.map { |e| e ** 2 }.reduce(:+)
 
 &lt;p&gt;In fact, blocks (and its related concepts Procs and lambdas) enable a very important programming concept: &lt;a href=&#34;http://en.wikipedia.org/wiki/Loose_coupling&#34;&gt;loose coupling.&lt;/a&gt; For instance, suppose you do:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;def print_name
-  puts &amp;quot;Hello there. I&#39;ve got your name:&amp;quot;
+&lt;div class=&#34;ruby-code&#34;&gt;
+def print_name
+  puts &#34;Hello there. I&#39;ve got your name:&#34;
   yield
 end
 
 print_name do
-  puts &amp;quot;Tristan&amp;quot;
+  puts &#34;Tristan&#34;
 end
-
-# Hello there. I&#39;ve got your name:
-# Tristan
-#  =&amp;gt; nil
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;p&gt;I could just have as easily done this:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;def print_name(name)
-  puts &amp;quot;Hello there. I&#39;ve got your name:&amp;quot;
+&lt;div class=&#34;ruby-code&#34;&gt;
+def print_name(name)
+  puts &#34;Hello there. I&#39;ve got your name:&#34;
   puts name
 end
 
-print_name(&amp;quot;Tristan&amp;quot;)
-
-# Hello there. I&#39;ve got your name:
-# Tristan
-#  =&amp;gt; nil
-&lt;/code&gt;&lt;/pre&gt;
+print_name(&#34;Tristan&#34;)
+&lt;/div&gt;
 
 &lt;p&gt;Which does exactly the same thing.&lt;/p&gt;
 
@@ -184,7 +506,7 @@ end
 
 &lt;hr /&gt;
 
-&lt;h3 id=&#34;toc_0&#34;&gt;Updates&lt;/h3&gt;
+&lt;h3 id=&#34;updates&#34;&gt;Updates&lt;/h3&gt;
 
 &lt;p&gt;I presented this topic to the KL Ruby Brigade meetup in Kuala Lumpur, Malaysia. There have been a few questions after the presentation and I&amp;rsquo;ll try to address them here:&lt;/p&gt;
 
@@ -204,7 +526,7 @@ end
 
 &lt;hr /&gt;
 
-&lt;h3 id=&#34;toc_1&#34;&gt;Further Reading&lt;/h3&gt;
+&lt;h3 id=&#34;further-reading&#34;&gt;Further Reading&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.robertsosinski.com/2008/12/21/understanding-ruby-blocks-procs-and-lambdas/&#34;&gt;http://www.robertsosinski.com/2008/12/21/understanding-ruby-blocks-procs-and-lambdas/&lt;/a&gt;&lt;/li&gt;
@@ -215,19 +537,20 @@ end
 &lt;li&gt;&lt;a href=&#34;https://github.com/mindvalley/code_kata&#34;&gt;https://github.com/mindvalley/code_kata&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/parasquid/snoopka&#34;&gt;https://github.com/parasquid/snoopka&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://stackoverflow.com/a/5587399&#34;&gt;http://stackoverflow.com/a/5587399&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+&lt;/ul&gt;</description>
     </item>
     
     <item>
       <title>Running PrivatePub/Faye Standalone in Heroku for Free</title>
       <link>http://life.beyondrails.com/blog/2013/05/25/running-privatepub/faye-standalone-in-heroku-for-free/</link>
-      <pubDate>Sat, 25 May 2013 00:00:00 UTC</pubDate>
+      <pubDate>Sat, 25 May 2013 00:00:00 +0000</pubDate>
       
       <guid>http://life.beyondrails.com/blog/2013/05/25/running-privatepub/faye-standalone-in-heroku-for-free/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://github.com/ryanb/private_pub&#34;&gt;PrivatePub&lt;/a&gt; is an awesome gem by the renowned Ryan Bates of &lt;a href=&#34;http://railscasts.com/&#34;&gt;Railscast&lt;/a&gt; fame. It provides an easy way to use Faye as a pubsub provider. Watch this &lt;a href=&#34;http://railscasts.com/episodes/316-private-pub&#34;&gt;episode&lt;/a&gt; to see it in action.&lt;/p&gt;
 
 &lt;p&gt;You don&amp;rsquo;t have to bundle the gem with a Rails application though; you can deploy PrivatePub standalone as a rack application in Heroku. This allows you to run PrivatePub in a web dyno instead of a worker, allowing for easier maintenance (separation of repositories/codebases) and as a side effect, save on hosting costs.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://www.heroku.com/&#34;&gt;Heroku&lt;/a&gt; is well known in the Ruby and Rails community for being the top-of-the-mind platform when it comes to cloud hosting. One of the biggest benefits of Heroku for developers is that they provide &amp;ndash; per application &amp;ndash; your &lt;a href=&#34;https://devcenter.heroku.com/categories/billing&#34;&gt;first web dyno&lt;/a&gt; for free. It&amp;rsquo;s great for trying out new ideas and services without having to shell out money for a hosting provider.&lt;/p&gt;
 
@@ -285,8 +608,7 @@ gem &#39;thin&#39;
 
 &lt;p&gt;The second line of the &lt;code&gt;Gemfile&lt;/code&gt; is a &lt;code&gt;bundler&lt;/code&gt; directive only available in version 1.2.0 and above. This is used by &lt;a href=&#34;https://devcenter.heroku.com/articles/ruby-versions&#34;&gt;Heroku&lt;/a&gt; (and even by &lt;a href=&#34;https://github.com/wayneeseguin/rvm/issues/1517#issuecomment-15007730&#34;&gt;rvm&lt;/a&gt;) to select the ruby version they will use for your environment. I prefer to make sure my deployment target mimics my development environment as much as possible so I throw that in there.&lt;/p&gt;
 
-&lt;p&gt;Another caveat: Heroku does not support WebSockets yet, so Faye will fallback to long-polling. This may or may not be a deal breaker, as this is in fact a desirable behavior &amp;ndash; long-polling ensures that your application is supported even by not-so-current browsers.&lt;/p&gt;
-</description>
+&lt;p&gt;Another caveat: Heroku does not support WebSockets yet, so Faye will fallback to long-polling. This may or may not be a deal breaker, as this is in fact a desirable behavior &amp;ndash; long-polling ensures that your application is supported even by not-so-current browsers.&lt;/p&gt;</description>
     </item>
     
   </channel>

@@ -1,56 +1,54 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-      <title>Ubuntu on Life Beyond Rails </title>
-      <generator uri="https://hugo.spf13.com">Hugo</generator>
-    <link>http://life.beyondrails.com/categories/ubuntu/index.xml/</link>
-    
-    
-    
-    <updated>Sun, 03 Aug 2014 00:00:00 UTC</updated>
+    <title>Ubuntu on Life Beyond Rails</title>
+    <link>http://life.beyondrails.com/categories/ubuntu/index.xml</link>
+    <description>Recent content in Ubuntu on Life Beyond Rails</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <atom:link href="http://life.beyondrails.com/categories/ubuntu/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Setup and Configuration of my Machines</title>
       <link>http://life.beyondrails.com/blog/2014/08/03/setup-and-configuration-of-my-machines/</link>
-      <pubDate>Sun, 03 Aug 2014 00:00:00 UTC</pubDate>
+      <pubDate>Sun, 03 Aug 2014 00:00:00 +0000</pubDate>
       
       <guid>http://life.beyondrails.com/blog/2014/08/03/setup-and-configuration-of-my-machines/</guid>
-      <description>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Work In Progress&lt;/p&gt;
 
-&lt;div class=&#34;info info&#34; data-title=&#34;Work In Progress&#34;&gt;
-  &lt;p&gt;I&amp;rsquo;m still in the middle of writing this article, and I probably will be always updating this.&lt;/p&gt;
-
-&lt;/div&gt;
+&lt;p&gt;I&amp;rsquo;m still in the middle of writing this article, and I probably will be always updating this.&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;p&gt;I&amp;rsquo;ve just recently (re)installed Linux on my Acer V5 122p. Had to fiddle around with UEFI settings thinking to preserve my Windows 8.1 partition, but eventually I had to bite the bullet. I wiped the whole partition clean and turned off UEFI so my installation would be a lot simpler.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;I ended up installing PeppermintOS which is a very lightweight distribution. After installing a few updates, the system was snappy and fast. I started to install the usual apps and configuration I normally use, when I realized I don&amp;rsquo;t have a document to use as a reference. I&amp;rsquo;ve been mostly doing stuff through memory and through Googling as soon as I encounter the problem or need.&lt;/p&gt;
 
 &lt;p&gt;Here&amp;rsquo;s the blogpost to rectify that, as well as give you a glimpse as to how I like my machine setup and configured :)&lt;/p&gt;
 
-&lt;h2 id=&#34;toc_0&#34;&gt;Setup natural scrolling&lt;/h2&gt;
+&lt;h2 id=&#34;setup-natural-scrolling&#34;&gt;Setup natural scrolling&lt;/h2&gt;
 
 &lt;p&gt;Ever since I got my Macbook Air 2010 upgraded to Lion, I&amp;rsquo;ve been a fan of what Apple called &amp;ldquo;natural scrolling.&amp;rdquo;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://www.andybarratt.co.uk/lion-like-scrolling-on-ubuntu-inverse-scrolling-on-linux&#34;&gt;http://www.andybarratt.co.uk/lion-like-scrolling-on-ubuntu-inverse-scrolling-on-linux&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;toc_1&#34;&gt;Setup Sublime Text&lt;/h2&gt;
+&lt;h2 id=&#34;setup-sublime-text&#34;&gt;Setup Sublime Text&lt;/h2&gt;
 
 &lt;p&gt;I know I should start learning Emacs, but Sublime Text (and before that, Textmate) had always been my editor of choice. That might change in the near future though :)&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://www.webupd8.org/20&#34;&gt;Ubuntu PPA&lt;/a&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;toc_2&#34;&gt;Sublime Text settings&lt;/h3&gt;
+&lt;h3 id=&#34;sublime-text-settings&#34;&gt;Sublime Text settings&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://sublime.wbond.net/installation&#34;&gt;Package control&lt;/a&gt;
 &amp;hellip;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;toc_3&#34;&gt;Key management&lt;/h2&gt;
+&lt;h2 id=&#34;key-management&#34;&gt;Key management&lt;/h2&gt;
 
-&lt;p&gt;Yes, I keep my private key in Dropbox. I know many people would say that this is a security risk (and it is) but the keys that I do keep in Dropbox are only those with access to non-critical remote systems that I own. I run some rtorrent download boxes as well as some application servers that I use for quickly testing out application ideas.&lt;/p&gt;
-</description>
+&lt;p&gt;Yes, I keep my private key in Dropbox. I know many people would say that this is a security risk (and it is) but the keys that I do keep in Dropbox are only those with access to non-critical remote systems that I own. I run some rtorrent download boxes as well as some application servers that I use for quickly testing out application ideas.&lt;/p&gt;</description>
     </item>
     
   </channel>

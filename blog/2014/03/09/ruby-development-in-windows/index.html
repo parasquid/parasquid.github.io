@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>Ruby Development in Windows &middot; </title>
+
+  
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/poole.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde-x.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/opalbox.min.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/opalbox-dark.min.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/styles.css">
+
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://life.beyondrails.com/touch-icon-144-precomposed.png">
+  <link href="http://life.beyondrails.com/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  
+
+  <script type="text/javascript" src="http://cdn.opalrb.org/opal/0.7.1/opal.min.js"></script>
+  <script type="text/javascript" src="http://cdn.opalrb.org/opal/0.7.1/opal-parser.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <script type="text/javascript" src="http://life.beyondrails.com/js/opalbox-jquery.min.js"></script>
+
+</head>
+<body class="theme-base-0b">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1></h1>
+      <p class="lead">Codesmithing by day. Airsculpting by night.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://life.beyondrails.com/">Blog Index</a></li>
+      
+      <li class="sidebar-nav-item"><a href="http://life.beyondrails.com/about/">About Me</a></li>
+      
+      <li class="sidebar-nav-item"><a href="http://life.beyondrails.com/zen/">Zen</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="https://github.com/parasquid"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      <a href="https://www.linkedin.com/in/parasquid"><i class="fa fa-linkedin-square fa-3x"></i></a>
+      <a href="https://plus.google.com/u/1/&#43;TristanGomez/posts"><i class="fa fa-google-plus-square fa-3x"></i></a>
+      <a href="https://www.facebook.com/parasquid"><i class="fa fa-facebook-square fa-3x"></i></a>
+      <a href="https://twitter.com/parasquid"><i class="fa fa-twitter-square fa-3x"></i></a>
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://life.beyondrails.com/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">Ruby Development in Windows</h1>
+    <span class="post-date">Mar 9, 2014 &middot; 2 minute read &middot; <a href="http://life.beyondrails.com/blog/2014/03/09/ruby-development-in-windows/#disqus_thread">Comments</a>
+    
+    <br/>
+    <a class="label" href="http://life.beyondrails.com/categories/ruby">ruby</a><a class="label" href="http://life.beyondrails.com/categories/windows">windows</a><a class="label" href="http://life.beyondrails.com/categories/virtualbox">virtualbox</a>
+    </span>
+    <p>I&rsquo;ve done the unthinkable and I have a confession to make.</p>
+
+<p>I&rsquo;ve switched my development machines to Windows.</p>
+
+<p>Here&rsquo;s the story of my heresy &hellip; and my possible salvation.</p>
+
+<p></p>
+
+<h3 id="a-history-lesson">A History Lesson</h3>
+
+<p>A couple of years ago my bosses realized that me and my colleague had been using an underpowered machine (mine was my personal Macbook Air mid 2010 and my colleague was a Dell XPS 13) and had offered to get me a new development machine.</p>
+
+<p>I would have wanted the latest and greatest, fully upgraded Macbook Pro but we had a budget. Actually we didn&rsquo;t &ndash; we were told that as one of the top value producers in the team, we can have (and should have) <em>any</em> machine that we wanted &ndash; but I didn&rsquo;t want to push my luck. Besides, the servers I administer and target my development for are running Linux; I believe my development environment should closely match that of production to minimize bugs due to architectural mistmatches.</p>
+
+<p>So I got quite a nice beastly desktop with a nice graphics card (an i7 Sandy Bridge and 16GB of ram, SSD and a terabyte 7200rpm disk drive). Since most of my colleagues used Macs, I hackintoshed.</p>
+
+<p>It was smooth sailing but a bit inconvenient. I was stuck using 10.7 when everyone had upgraded to Mountain Lion. I had to decline all system updates and point patches. Then disaster struck, a driver was causing a kernel panic.</p>
+
+<p>I switched fully to Ubuntu 12.04 for about half a year. It was an okay experience.</p>
+
+<p>Then my colleague resigned. I cannibalized his desktop and found he ahd a really good graphics card (I couldn&rsquo;t get that graphics card because it wasn&rsquo;t hackintosh friendly). I installed it but my Ubuntu machine is having problems with my multi monitor setup with that card.</p>
+
+<h3 id="trying-out-windows">Trying Out Windows</h3>
+
+<p>So I decided to try out Windows. I thought I could still use cygwin, but it wasn&rsquo;t an easy ride. After a full day of non-productivity just trying to get things running, I thought maybe I can try Virtualization.</p>
+
+<p>Here&rsquo;s what I had:</p>
+
+<pre>
+VirtualBox - Ubuntu 14.04
+Shared folders
+extension pack
+guest additions
+https://www.virtualbox.org/wiki/Downloads
+inconsolata
+</pre>
+
+<p>In order to make sure I&rsquo;m able to access the network share, I had to add myself to the <code>vboxsf</code> group:</p>
+
+<pre><code>sudo adduser xxx vboxsf
+</code></pre>
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "parasquid";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "parasquid";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://life.beyondrails.com/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

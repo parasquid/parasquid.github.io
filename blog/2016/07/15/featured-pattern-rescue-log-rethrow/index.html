@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>Featured Pattern: Rescue, Log, Rethrow &middot; </title>
+
+  
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/poole.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/poole-overrides.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde-overrides.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde-x.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/opalbox.min.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/opalbox-dark.min.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/styles.css">
+
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://life.beyondrails.com/touch-icon-144-precomposed.png">
+  <link href="http://life.beyondrails.com/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  
+
+  <script type="text/javascript" src="http://cdn.opalrb.org/opal/0.7.1/opal.min.js"></script>
+  <script type="text/javascript" src="http://cdn.opalrb.org/opal/0.7.1/opal-parser.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <script type="text/javascript" src="http://life.beyondrails.com/js/opalbox-jquery.min.js"></script>
+
+</head>
+<body class="theme-base-0b">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1></h1>
+      <p class="lead">Codesmithing by day. Airsculpting by night.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="http://life.beyondrails.com/">Blog Index</a></li>
+      
+      <li class="sidebar-nav-item"><a href="http://life.beyondrails.com/about/">About Me</a></li>
+      
+      <li class="sidebar-nav-item"><a href="http://life.beyondrails.com/zen/">Zen</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="https://github.com/parasquid"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      <a href="https://www.linkedin.com/in/parasquid"><i class="fa fa-linkedin-square fa-3x"></i></a>
+      <a href="https://plus.google.com/u/1/&#43;TristanGomez/posts"><i class="fa fa-google-plus-square fa-3x"></i></a>
+      <a href="https://www.facebook.com/parasquid"><i class="fa fa-facebook-square fa-3x"></i></a>
+      <a href="https://twitter.com/parasquid"><i class="fa fa-twitter-square fa-3x"></i></a>
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2017 <a href="http://life.beyondrails.com/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">Featured Pattern: Rescue, Log, Rethrow</h1>
+    <span class="post-date">Jul 15, 2016 &middot; 2 minute read &middot; <a href="http://life.beyondrails.com/blog/2016/07/15/featured-pattern-rescue-log-rethrow/#disqus_thread">Comments</a>
+    
+    <br/>
+    <a class="label" href="http://life.beyondrails.com/categories/featured">featured</a><a class="label" href="http://life.beyondrails.com/categories/pattern">pattern</a>
+    </span>
+    <p>Whenever you use a method that you know might throw an exception but shouldn&rsquo;t, the rescue-log-rethrow pattern is useful to figure out what happened while preserving the contracts implied in the code.
+</p>
+
+<p>For example, we were recently investigating a payload from our ecommerce provider that is throwing a <code>KeyError</code> exception. Official documentation doesn&rsquo;t provide any information about this, so we had to break out the debugger&rsquo;s favorite tool: the logger.</p>
+
+<p>Here&rsquo;s the original method:</p>
+
+<pre><code class="language-ruby">def initialize(account_id, api_response)
+  @account_id = account_id
+  @signature = api_response.fetch(&quot;signature&quot;)
+  @token = api_response.fetch(&quot;token&quot;)
+  @key = api_response.fetch(&quot;key&quot;)
+end
+</code></pre>
+
+<p>For some reason we were getting a 500 error and looking at the available logs:</p>
+
+<pre><code>status=500 error='KeyError: key not found: &quot;signature&quot;'
+</code></pre>
+
+<p>Here&rsquo;s the <code>rescue-log-rethrow</code> pattern in action:</p>
+
+<pre><code class="language-ruby">def initialize(account_id, api_response)
+  @account_id = account_id,
+  begin
+    @signature = api_response.fetch(&quot;signature&quot;)
+    @token = api_response.fetch(&quot;token&quot;)
+    @key = api_response.fetch(&quot;key&quot;)
+  rescue KeyError =&gt; e
+    logger.error &quot;response does not have the required key: #{response.inspect}&quot;
+    raise e
+  end
+end
+</code></pre>
+
+<p>In the end we found out that one of the environment variables necessary for connecting to the ecommerce platform was misconfigured and had to be properly set.</p>
+
+<p>Rethrowing the exception is important, because the original intention of the code was to enforce the contract that none of these keys should be <code>nil</code> (hence the <code>#fetch</code> method).</p>
+
+<p>Never swallow exceptions! Yes, even if you&rsquo;re logging them anyway. If the exception wasn&rsquo;t rethrown, it is possible that a response missing one of the necessary keys will trigger the rescue block and log the message. However, the object now has an undefined state. An object with an undefined state is a recipe for long hours debugging and trying to figure out where the bug might be hiding.</p>
+
+<p>Immediately rethrowing the exception after logging allows you to keep the context of the exception closer to its origin. This makes it so much easier to trace where the possible bug might have come from.</p>
+  </div>
+  <div id="disqus_thread"></div>
+</div>
+
+
+<script type="text/javascript">
+var disqus_shortname = "parasquid";
+(function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
+
+
+
+<script type="text/javascript">
+    var disqus_shortname = "parasquid";
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<script src="http://life.beyondrails.com/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

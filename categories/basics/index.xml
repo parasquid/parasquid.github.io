@@ -1,60 +1,61 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-      <title>Basics on Life Beyond Rails </title>
-      <generator uri="https://hugo.spf13.com">Hugo</generator>
-    <link>http://life.beyondrails.com/categories/basics/index.xml/</link>
-    
-    
-    
-    <updated>Tue, 04 Mar 2014 00:00:00 UTC</updated>
+    <title>Basics on Life Beyond Rails</title>
+    <link>http://life.beyondrails.com/categories/basics/index.xml</link>
+    <description>Recent content in Basics on Life Beyond Rails</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <atom:link href="http://life.beyondrails.com/categories/basics/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Ruby and Blocks</title>
       <link>http://life.beyondrails.com/blog/2014/03/04/ruby-and-blocks/</link>
-      <pubDate>Tue, 04 Mar 2014 00:00:00 UTC</pubDate>
+      <pubDate>Tue, 04 Mar 2014 00:00:00 +0000</pubDate>
       
       <guid>http://life.beyondrails.com/blog/2014/03/04/ruby-and-blocks/</guid>
-      <description>
+      <description>&lt;p&gt;One of the most often used and ironically least understood concepts in the Ruby programming language is the block. If you&amp;rsquo;ve used one of the Enumerable mixed-in objects, you&amp;rsquo;ve encountered the block syntax.&lt;/p&gt;
 
-&lt;p&gt;One of the most often used and ironically least understood concepts in the Ruby programming language is the block. If you&amp;rsquo;ve used one of the Enumerable mixed-in objects, you&amp;rsquo;ve encountered the block syntax.&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+
+&lt;script&gt;
+$(function() {
+    $(&#39;.ruby-code&#39;).opalBox();
+  var $targets = $(&#34;.ruby-code textarea&#34;)
+  $targets.each(function() {
+    $(this).height(0).height(this.scrollHeight - $(this).css(&#34;font-size&#34;).replace(&#39;px&#39;,&#39;&#39;)).change();
+  })
+});
+&lt;/script&gt;
+
 
 &lt;p&gt;For example:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;array = [1, 2, 3, 4, 5]
+&lt;div class=&#34;ruby-code&#34;&gt;
+array = [1, 2, 3, 4, 5]
 
 # returns all the odd numbers of the array
 array.delete_if { |e| e.even? }
-
-#  =&amp;gt; [1, 3, 5]
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;p&gt;Or the more common:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;array = [1, 2, 3, 4, 5]
+&lt;div class=&#34;ruby-code&#34;&gt;
+array = [1, 2, 3, 4, 5]
 
 # prints out all of the array&#39;s elements
 array.each do |element|
   puts element
 end
-
-# 1
-# 2
-# 3
-# 4
-# 5
-#  =&amp;gt; [1, 2, 3, 4, 5]    
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;p&gt;Ruby blocks also enable a lot of the functional programming DSL such as:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;array = [1, 2, 3, 4, 5]
+&lt;div class=&#34;ruby-code&#34;&gt;
+array = [1, 2, 3, 4, 5]
 
 # returns the sum of the squares of each element of the array
 array.map { |e| e ** 2 }.reduce(:+)
-
-#  =&amp;gt; 55
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;p&gt;Robert Sosinski has written a really awesome &lt;a href=&#34;http://www.robertsosinski.com/2008/12/21/understanding-ruby-blocks-procs-and-lambdas/&#34;&gt;tutorial&lt;/a&gt; about ruby blocks and I&amp;rsquo;m encouraging you to go through it.&lt;/p&gt;
 
@@ -62,33 +63,27 @@ array.map { |e| e ** 2 }.reduce(:+)
 
 &lt;p&gt;In fact, blocks (and its related concepts Procs and lambdas) enable a very important programming concept: &lt;a href=&#34;http://en.wikipedia.org/wiki/Loose_coupling&#34;&gt;loose coupling.&lt;/a&gt; For instance, suppose you do:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;def print_name
-  puts &amp;quot;Hello there. I&#39;ve got your name:&amp;quot;
+&lt;div class=&#34;ruby-code&#34;&gt;
+def print_name
+  puts &#34;Hello there. I&#39;ve got your name:&#34;
   yield
 end
 
 print_name do
-  puts &amp;quot;Tristan&amp;quot;
+  puts &#34;Tristan&#34;
 end
-
-# Hello there. I&#39;ve got your name:
-# Tristan
-#  =&amp;gt; nil
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 &lt;p&gt;I could just have as easily done this:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;def print_name(name)
-  puts &amp;quot;Hello there. I&#39;ve got your name:&amp;quot;
+&lt;div class=&#34;ruby-code&#34;&gt;
+def print_name(name)
+  puts &#34;Hello there. I&#39;ve got your name:&#34;
   puts name
 end
 
-print_name(&amp;quot;Tristan&amp;quot;)
-
-# Hello there. I&#39;ve got your name:
-# Tristan
-#  =&amp;gt; nil
-&lt;/code&gt;&lt;/pre&gt;
+print_name(&#34;Tristan&#34;)
+&lt;/div&gt;
 
 &lt;p&gt;Which does exactly the same thing.&lt;/p&gt;
 
@@ -184,7 +179,7 @@ end
 
 &lt;hr /&gt;
 
-&lt;h3 id=&#34;toc_0&#34;&gt;Updates&lt;/h3&gt;
+&lt;h3 id=&#34;updates&#34;&gt;Updates&lt;/h3&gt;
 
 &lt;p&gt;I presented this topic to the KL Ruby Brigade meetup in Kuala Lumpur, Malaysia. There have been a few questions after the presentation and I&amp;rsquo;ll try to address them here:&lt;/p&gt;
 
@@ -204,7 +199,7 @@ end
 
 &lt;hr /&gt;
 
-&lt;h3 id=&#34;toc_1&#34;&gt;Further Reading&lt;/h3&gt;
+&lt;h3 id=&#34;further-reading&#34;&gt;Further Reading&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.robertsosinski.com/2008/12/21/understanding-ruby-blocks-procs-and-lambdas/&#34;&gt;http://www.robertsosinski.com/2008/12/21/understanding-ruby-blocks-procs-and-lambdas/&lt;/a&gt;&lt;/li&gt;
@@ -215,8 +210,7 @@ end
 &lt;li&gt;&lt;a href=&#34;https://github.com/mindvalley/code_kata&#34;&gt;https://github.com/mindvalley/code_kata&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/parasquid/snoopka&#34;&gt;https://github.com/parasquid/snoopka&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://stackoverflow.com/a/5587399&#34;&gt;http://stackoverflow.com/a/5587399&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+&lt;/ul&gt;</description>
     </item>
     
   </channel>

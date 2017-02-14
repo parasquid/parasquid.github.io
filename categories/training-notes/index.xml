@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Training Notes on Life Beyond Rails</title>
+    <link>http://life.beyondrails.com/categories/training-notes/index.xml</link>
+    <description>Recent content in Training Notes on Life Beyond Rails</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <atom:link href="http://life.beyondrails.com/categories/training-notes/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Javascript Training at Mindvalley Day 2</title>
+      <link>http://life.beyondrails.com/blog/2016/03/18/javascript-training-at-mindvalley-day-2/</link>
+      <pubDate>Fri, 18 Mar 2016 15:54:40 +0800</pubDate>
+      
+      <guid>http://life.beyondrails.com/blog/2016/03/18/javascript-training-at-mindvalley-day-2/</guid>
+      <description>&lt;p&gt;We&amp;rsquo;ve commissioned &lt;a href=&#34;http://www.dekatku.com/&#34;&gt;Dekatku&lt;/a&gt; to train some developers here at &lt;a href=&#34;http://www.mindvalley.com/&#34;&gt;Mindvalley&lt;/a&gt; on Javascript, and it&amp;rsquo;s been a great experience so far! Today is Day 2 of the the training and we&amp;rsquo;ve covered some really deep topics.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve started &lt;a href=&#34;https://www.safaribooksonline.com/library/view/apprenticeship-patterns/9780596806842/ch02s02.html&#34;&gt;wearing my whitebelt&lt;/a&gt; again and I thought I&amp;rsquo;ll put up my thoughts and notes here for future reference.
+
+At the start of the session we had one hour to make a TODO application. The caveat being that we&amp;rsquo;re not allowed to use any libraries or frameworks; just pure javascript.&lt;/p&gt;
+
+&lt;p&gt;How did it go? I realized (yet again) that raw javascript is very verbose! I looked at the output of my code and there was so much &lt;code&gt;document.getElementById()&lt;/code&gt; calls everywhere.&lt;/p&gt;
+
+&lt;p&gt;I knew what to do, but I didn&amp;rsquo;t have the vocabulary to express it.&lt;/p&gt;
+
+&lt;p&gt;I found that it was good to go back to fundamentals and try to rebuild what you&amp;rsquo;ve been using utilizing only the basic building blocks of the technology. It gave me a better appreciation of the work that libraries and frameworks saved me, but more importantly: &lt;strong&gt;it gave me the confidence to walk by myself without a crutch&lt;/strong&gt;; whatever these libraries are doing isn&amp;rsquo;t magical anymore, and I can rebuild (or debug) them myself.&lt;/p&gt;
+
+&lt;p&gt;We then went on to the two different types of expressions in Javascript:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;expression&lt;/code&gt; =&amp;gt; produces a value&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;statement&lt;/code&gt; =&amp;gt; performs an action&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For some reason it reminded me of the &lt;a href=&#34;http://martinfowler.com/bliki/CommandQuerySeparation.html&#34;&gt;command/query separation&lt;/a&gt; by Bertrand Meyer.&lt;/p&gt;
+
+&lt;p&gt;Of course, what&amp;rsquo;s some Javascript without surprising behavior:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-Javascript&#34;&gt;{} + []
+//=&amp;gt; 0 but it&#39;s an [object Object] so it&#39;s true(thy)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Good piece of advice: &lt;strong&gt;deal with an exception, or throw it back out&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Some food for thought by Tim when I asked a question about whether you can catch hierarchichal errors:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;The answer is no, but yes.&amp;rdquo; &amp;ndash; Timothy&lt;/p&gt;
+
+&lt;p&gt;[Like everything else in Javascript, it would seem. &amp;ndash; Tristan]&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Fun facts:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;every function in javascript is variadic&lt;/li&gt;
+&lt;li&gt;javascript has a &amp;ldquo;moveable&amp;rdquo; &lt;code&gt;this&lt;/code&gt; (functions can be bound to any object)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;More syntactic sugar:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-Javascript&#34;&gt;x.foo(args) =&amp;gt; x.foo.call(x, args)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The &lt;code&gt;call&lt;/code&gt; function from &lt;code&gt;Function.prototype&lt;/code&gt; sounds very much like &lt;code&gt;#instance_exec&lt;/code&gt; from Ruby.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call&#34;&gt;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.bigbinary.com/2010/05/28/instance-exec-changing-self-and-parameters-to-proc.html&#34;&gt;http://blog.bigbinary.com/2010/05/28/instance-exec-changing-self-and-parameters-to-proc.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Words of warning: Don&amp;rsquo;t mess with the global scope. That&amp;rsquo;s why we have this pattern:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-Javascript&#34;&gt;(function(){})();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now we have lunch :)&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;After lunch, things get more exciting as we start diving deeper into the Javascript object model.&lt;/p&gt;
+
+&lt;p&gt;Javascript has no formal notion of classes and inheritance, but you can make it behave similar to that:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-Javascript&#34;&gt;function LifeForm() {
+  this.name = &amp;quot;&amp;quot;;
+  this.description = &amp;quot;&amp;quot;;
+  this.setName = function(name) {
+    this.name = name;
+  };
+  this.getName = function() {
+    return this.name;
+  };
+};
+var lifeForm = new LifeForm();
+
+function Human() {
+  LifeForm.call(this);
+  this.arms = 2;
+  this.legs = 2;
+};
+
+Human.prototype = Object.create(LifeForm.prototype);
+// =&amp;gt; this changes the class &amp;quot;definition&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;More words of wisdom:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Managing scope in OOJavasctipt is very important, especially in async code (which use callbacks a lot) &amp;ndash; Björn&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Surprising stuff: you can change an object&amp;rsquo;s prototype and it will change all objects derived from that prototype, even ones that&amp;rsquo;s already been created.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-Javascript&#34;&gt;var baz = function bar() { }
+Function.prototype.foo = function() {
+  console.log(&amp;quot;hello!&amp;quot;);
+}
+baz.foo();
+//=&amp;gt; hello
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This is very similar to how ruby works with &lt;code&gt;#class_eval&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-Ruby&#34;&gt;class Bar; end;
+Class.class_eval do
+  def foo
+    puts &amp;quot;hello&amp;quot;
+  end
+end
+Bar.foo #=&amp;gt; &amp;quot;hello&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Note that even though the class &lt;code&gt;Bar&lt;/code&gt; was created &lt;em&gt;before&lt;/em&gt; we reopened the class &lt;code&gt;Class&lt;/code&gt; (which in Ruby is similar to the prototype of the object &lt;code&gt;Function&lt;/code&gt;) it still managed to call the &lt;code&gt;#foo&lt;/code&gt; method.&lt;/p&gt;
+
+&lt;p&gt;What&amp;rsquo;s a class without Homework:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Using everything you&amp;rsquo;ve learnt today, create a set of classes which represent vehicles.&lt;/li&gt;
+&lt;li&gt;Must have 3 levels hierarchy.&lt;/li&gt;
+&lt;li&gt;Submit by Wednesday 23 March.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Super thanks to:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Björn Karge &lt;a href=&#34;https://www.linkedin.com/in/bjornkarge&#34;&gt;https://www.linkedin.com/in/bjornkarge&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Timothy Chandler &lt;a href=&#34;https://www.linkedin.com/in/timothy-chandler-7625b823&#34;&gt;https://www.linkedin.com/in/timothy-chandler-7625b823&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

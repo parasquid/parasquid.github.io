@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-      <title>Agile on Life Beyond Rails </title>
-      <generator uri="https://hugo.spf13.com">Hugo</generator>
-    <link>http://life.beyondrails.com/categories/agile/index.xml/</link>
-    
-    
-    
-    <updated>Mon, 15 Dec 2014 00:00:00 UTC</updated>
+    <title>Agile on Life Beyond Rails</title>
+    <link>http://life.beyondrails.com/categories/agile/index.xml</link>
+    <description>Recent content in Agile on Life Beyond Rails</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <atom:link href="http://life.beyondrails.com/categories/agile/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>The Tick-Tock Innovation Model Applied to Agile Methodology</title>
       <link>http://life.beyondrails.com/blog/2014/12/15/the-tick-tock-innovation-model-applied-to-agile-methodology/</link>
-      <pubDate>Mon, 15 Dec 2014 00:00:00 UTC</pubDate>
+      <pubDate>Mon, 15 Dec 2014 00:00:00 +0000</pubDate>
       
       <guid>http://life.beyondrails.com/blog/2014/12/15/the-tick-tock-innovation-model-applied-to-agile-methodology/</guid>
       <description>&lt;p&gt;You&amp;rsquo;ve probably heard of the &lt;a href=&#34;http://www.intel.com/content/www/us/en/silicon-innovations/intel-tick-tock-model-general.html&#34;&gt;tick-tock model that Intel is using&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;It&amp;rsquo;s a model where every 18 months, there&amp;rsquo;s a new focus on the chip architecture: the tick is a shrinking of the chip (which requires retrofitting their manufacturing process to support the smaller size) and the tock is an upgrade of the architecture itself, using the current manufacturing process.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
 
 &lt;p&gt;I&amp;rsquo;m trying out a similar model with my team. We&amp;rsquo;ve been very successful with our sprint goals so far, but one thing that I&amp;rsquo;ve seen is that the goals are decided just then and there. Tick-tock is a refinement of the sprint goal determination process.&lt;/p&gt;
 
@@ -25,8 +25,7 @@
 
 &lt;p&gt;From the retrospectives, I&amp;rsquo;ve seen that many of my team&amp;rsquo;s speedbumps (which deals mostly with legacy code) come from code that isn&amp;rsquo;t as good quality as we hoped. Every new feature and code that we write is already up to standards, but it&amp;rsquo;s the older code that keeps us from going forward as fast as we can.&lt;/p&gt;
 
-&lt;p&gt;Tick-tock will allow us to maintain an innovation cadence while making sure we start paying our debts before they overwhelm us.&lt;/p&gt;
-</description>
+&lt;p&gt;Tick-tock will allow us to maintain an innovation cadence while making sure we start paying our debts before they overwhelm us.&lt;/p&gt;</description>
     </item>
     
   </channel>

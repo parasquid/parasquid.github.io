@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pattern on Life Beyond Rails</title>
+    <link>http://life.beyondrails.com/categories/pattern/index.xml</link>
+    <description>Recent content in Pattern on Life Beyond Rails</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <atom:link href="http://life.beyondrails.com/categories/pattern/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Featured Pattern: Rescue, Log, Rethrow</title>
+      <link>http://life.beyondrails.com/blog/2016/07/15/featured-pattern-rescue-log-rethrow/</link>
+      <pubDate>Fri, 15 Jul 2016 15:16:02 +0800</pubDate>
+      
+      <guid>http://life.beyondrails.com/blog/2016/07/15/featured-pattern-rescue-log-rethrow/</guid>
+      <description>&lt;p&gt;Whenever you use a method that you know might throw an exception but shouldn&amp;rsquo;t, the rescue-log-rethrow pattern is useful to figure out what happened while preserving the contracts implied in the code.
+&lt;/p&gt;
+
+&lt;p&gt;For example, we were recently investigating a payload from our ecommerce provider that is throwing a &lt;code&gt;KeyError&lt;/code&gt; exception. Official documentation doesn&amp;rsquo;t provide any information about this, so we had to break out the debugger&amp;rsquo;s favorite tool: the logger.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s the original method:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;def initialize(account_id, api_response)
+  @account_id = account_id
+  @signature = api_response.fetch(&amp;quot;signature&amp;quot;)
+  @token = api_response.fetch(&amp;quot;token&amp;quot;)
+  @key = api_response.fetch(&amp;quot;key&amp;quot;)
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;For some reason we were getting a 500 error and looking at the available logs:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;status=500 error=&#39;KeyError: key not found: &amp;quot;signature&amp;quot;&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here&amp;rsquo;s the &lt;code&gt;rescue-log-rethrow&lt;/code&gt; pattern in action:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;def initialize(account_id, api_response)
+  @account_id = account_id,
+  begin
+    @signature = api_response.fetch(&amp;quot;signature&amp;quot;)
+    @token = api_response.fetch(&amp;quot;token&amp;quot;)
+    @key = api_response.fetch(&amp;quot;key&amp;quot;)
+  rescue KeyError =&amp;gt; e
+    logger.error &amp;quot;response does not have the required key: #{response.inspect}&amp;quot;
+    raise e
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In the end we found out that one of the environment variables necessary for connecting to the ecommerce platform was misconfigured and had to be properly set.&lt;/p&gt;
+
+&lt;p&gt;Rethrowing the exception is important, because the original intention of the code was to enforce the contract that none of these keys should be &lt;code&gt;nil&lt;/code&gt; (hence the &lt;code&gt;#fetch&lt;/code&gt; method).&lt;/p&gt;
+
+&lt;p&gt;Never swallow exceptions! Yes, even if you&amp;rsquo;re logging them anyway. If the exception wasn&amp;rsquo;t rethrown, it is possible that a response missing one of the necessary keys will trigger the rescue block and log the message. However, the object now has an undefined state. An object with an undefined state is a recipe for long hours debugging and trying to figure out where the bug might be hiding.&lt;/p&gt;
+
+&lt;p&gt;Immediately rethrowing the exception after logging allows you to keep the context of the exception closer to its origin. This makes it so much easier to trace where the possible bug might have come from.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

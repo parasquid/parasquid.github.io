@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
-  <title>Life Beyond Rails &middot; </title>
+  <title>Setting Up and Automating my Hugo Blog Deployment to Github Pages &middot; </title>
 
   
   <link rel="stylesheet" href="http://life.beyondrails.com/css/poole.css">
@@ -15,79 +15,102 @@
   <link rel="stylesheet" href="http://life.beyondrails.com/css/poole-overrides.css">
   <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde-overrides.css">
   <link rel="stylesheet" href="http://life.beyondrails.com/css/hyde-x.css">
-  <link rel="stylesheet" href="http://life.beyondrails.com/css/highlight/sunburst.css">
-  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
-
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/opalbox.min.css">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/opalbox-dark.min.css">
   <link rel="stylesheet" href="http://life.beyondrails.com/css/styles.css">
 
-  
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
-  <link href="/favicon.png" rel="icon">
+  <link rel="stylesheet" href="http://life.beyondrails.com/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
   
-  <link href="" rel="alternate" type="application/rss+xml" title="Life Beyond Rails &middot; " />
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://life.beyondrails.com/touch-icon-144-precomposed.png">
+  <link href="http://life.beyondrails.com/favicon.png" rel="icon">
+
+  
+  
+  
+  
 
   <meta name="description" content="">
   <meta name="keywords" content="">
   
+
+  <script type="text/javascript" src="http://cdn.opalrb.org/opal/0.7.1/opal.min.js"></script>
+  <script type="text/javascript" src="http://cdn.opalrb.org/opal/0.7.1/opal-parser.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <script type="text/javascript" src="http://life.beyondrails.com/js/opalbox-jquery.min.js"></script>
+
 </head>
 <body class="theme-base-0b">
-
 <div class="sidebar">
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
-      <img src="http://www.gravatar.com/avatar/e00d9254088a9db2e1875fc324402e2c?s=200" alt="gravatar">
+      
       <h1></h1>
       <p class="lead">Codesmithing by day. Airsculpting by night.</p>
     </div>
 
     <ul class="sidebar-nav">
-      <li class="sidebar-nav-item"><a href="http://life.beyondrails.com/">Blog</a></li>
+      <li class="sidebar-nav-item"><a href="http://life.beyondrails.com/">Blog Index</a></li>
       
       <li class="sidebar-nav-item"><a href="http://life.beyondrails.com/about/">About Me</a></li>
+      
+      <li class="sidebar-nav-item"><a href="http://life.beyondrails.com/zen/">Zen</a></li>
       
     </ul>
 
     <ul class="sidebar-nav">
-      <li class="sidebar-nav-item"><a href="https://github.com/parasquid">GitHub</a></li>
-      <li class="sidebar-nav-item"><a href="https://www.linkedin.com/in/parasquid">LinkedIn</a></li>
+      <li class="sidebar-nav-item">
+      <a href="https://github.com/parasquid"><i class="fa fa-github-square fa-3x"></i></a>
       
-      <li class="sidebar-nav-item"><a href="https://www.facebook.com/parasquid">Facebook</a></li>
-      <li class="sidebar-nav-item"><a href="https://twitter.com/parasquid">Twitter</a></li>
+      
+      <a href="https://www.linkedin.com/in/parasquid"><i class="fa fa-linkedin-square fa-3x"></i></a>
+      <a href="https://plus.google.com/u/1/&#43;TristanGomez/posts"><i class="fa fa-google-plus-square fa-3x"></i></a>
+      <a href="https://www.facebook.com/parasquid"><i class="fa fa-facebook-square fa-3x"></i></a>
+      <a href="https://twitter.com/parasquid"><i class="fa fa-twitter-square fa-3x"></i></a>
+      
+      
+      </li>
     </ul>
 
-    <p>Copyright &copy; 2014 <a href="http://life.beyondrails.com/license">License</a><br/>
-       Powered by <a href="http://hugo.spf13.com">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+    
+
+    <p>Copyright &copy; 2017 <a href="http://life.beyondrails.com/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
   </div>
 </div>
 
+
 <div class="content container">
   <div class="post">
-    <h1>Setting Up and Automating my Hugo Blog Deployment to Github Pages</h1>
+    <h1 class="post-title">Setting Up and Automating my Hugo Blog Deployment to Github Pages</h1>
     <span class="post-date">Dec 14, 2014 &middot; 5 minute read &middot; <a href="http://life.beyondrails.com/blog/2014/12/14/setting-up-and-automating-my-hugo-blog-deployment-to-github-pages/#disqus_thread">Comments</a>
     
     <br/>
-    
     <a class="label" href="http://life.beyondrails.com/categories/meta">meta</a>
     </span>
-    
+    <blockquote>
+<p>Update</p>
 
-<div class="info info" data-title="Work In Progress">
-  <p>I&rsquo;m still in the middle of writing this article, and I probably will be always updating this.</p>
-
-</div>
+<p>This is largely obsolete. I have setup a new <a href="/blog/2015/09/26/moving-hosts-from-github-pages-to-amazon-s3/">process</a> to deploy to Amazon S3 amd I recommend it over Github Pages.</p>
+</blockquote>
 
 <p>I&rsquo;m currently moving my blog posts (and collecting all my blog entries from various blogging platforms) and putting them into Hugo. In case you&rsquo;re wondering how I&rsquo;ve set mine up, here&rsquo;s a guide of what I&rsquo;ve done.</p>
 
-<h2 id="toc_0">Choosing the hosting platform</h2>
+<p></p>
 
-<h2 id="toc_1">Setting up the blog</h2>
+<h2 id="choosing-the-hosting-platform">Choosing the hosting platform</h2>
 
-<p>sudo aptitude install golang
-sudo aptitude install -y mercurial
-go get -v github.com/spf13/hugo</p>
+<h2 id="setting-up-the-blog">Setting up the blog</h2>
 
-<h2 id="toc_2">Setting up the github pages</h2>
+<ul>
+<li><code>sudo aptitude install golang</code></li>
+<li><code>sudo aptitude install -y mercurial</code></li>
+<li><code>go get -v github.com/spf13/hugo</code></li>
+</ul>
+
+<h2 id="setting-up-the-github-pages">Setting up the github pages</h2>
 
 <p>There&rsquo;s a really cool guide over at the official <a href="http://gohugo.io/tutorials/github_pages_blog/">Hugo documentation</a> and I advise everyone to check it out.</p>
 
@@ -128,14 +151,14 @@ touch public/CNAME
 echo &quot;life.beyondrails.com&quot; &gt; public/CNAME
 </code></pre>
 
-<h2 id="toc_3">Scripting the deployment</h2>
+<h2 id="scripting-the-deployment">Scripting the deployment</h2>
 
 <p>Again I refered back to the hugo documentation on <a href="http://gohugo.io/tutorials/github_pages_blog/">setting up hugo for guthub hosting</a> and I used it as the basis for my own deployment script.</p>
 
 <p>My workflow however is unlike the any of the trhee recommended workflows (more like a hybrid):</p>
 
 <ul>
-<li>I do use Github pages, but as a Personal/Organization page. That means my repository is at parasquid/parasquid.github.io</li>
+<li>I do use Github pages, but as a Personal/Organization page. That means my repository is at <code>parasquid/parasquid.github.io</code></li>
 <li>Instead of two repositories, I prefer to have a single repository containing both the source files and the cooked files.</li>
 <li>Because I&rsquo;m using Github Pages for Personal/Organization I need to have the cooked pages inside the master branch. I had to modify the deployment script a little bit to ensure that my sources remain in the source branch, the subtree is located at the master branch (prefixed with public), and that all the pushing and pulling are seamless so it&rsquo;s all automatic (and there&rsquo;s no need for manual merging).</li>
 </ul>
@@ -207,18 +230,17 @@ git subtree push --prefix=public\
 
 <p>Also, there will be times when the master branch just won&rsquo;t deploy because of merge conflicts (and there&rsquo;s no way to do a force push on <code>git subtree</code>). So far all I have to do is to run <code>deploy.sh</code> one more time and it&rsquo;s all cool.</p>
 
-<h2 id="toc_4">Porting old blog entries to hugo</h2>
+<h2 id="porting-old-blog-entries-to-hugo">Porting old blog entries to hugo</h2>
 
 <p>I&rsquo;ve blogged on and off for quite some time in various domains and platforms. There really isn&rsquo;t much I can do to automate the importing of the entries. Luckily I only have a handful of published posts, but I probably lost most of my drafts and idea dumps.</p>
 
-<h2 id="toc_5">Blogging workflow</h2>
+<h2 id="blogging-workflow">Blogging workflow</h2>
 
 <p>So now that everything&rsquo;s set and deployed, how do I continue writing?</p>
 
-<h2 id="toc_6">Questions?</h2>
+<h2 id="questions">Questions?</h2>
 
 <p>If any of the instructions above are confusing, feel free to comment and I&rsquo;ll try my best to answer the question in the comments as well as update the instructions :)</p>
-
   </div>
   <div id="disqus_thread"></div>
 </div>
@@ -249,22 +271,6 @@ var disqus_shortname = "parasquid";
 
 <script src="http://life.beyondrails.com/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
-
-<script>
-  var _gaq=[['_setAccount','UA-41391404-1'],['_trackPageview']];
-  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-  g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-  s.parentNode.insertBefore(g,s)}(document,'script'));
-</script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.2/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fitvids/1.1.0/jquery.fitvids.min.js"></script>
-<script>
-  $(document).ready(function(){
-    
-    $(".youtube-player").fitVids();
-  });
-</script>
-
 </body>
 </html>
+

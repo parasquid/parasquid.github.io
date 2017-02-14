@@ -1,0 +1,1216 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Til on Life Beyond Rails</title>
+    <link>http://life.beyondrails.com/categories/til/index.xml</link>
+    <description>Recent content in Til on Life Beyond Rails</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <atom:link href="http://life.beyondrails.com/categories/til/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>A Strange Case of Inheritance Behavior</title>
+      <link>http://life.beyondrails.com/blog/2016/04/14/a-strange-case-of-inheritance-behavior/</link>
+      <pubDate>Thu, 14 Apr 2016 20:27:59 +0800</pubDate>
+      
+      <guid>http://life.beyondrails.com/blog/2016/04/14/a-strange-case-of-inheritance-behavior/</guid>
+      <description>&lt;p&gt;While working some code to work with the Zuora SOAP API, I got bit by a strange case of inheritance behavior. It would seem that this is related to what &lt;code&gt;self&lt;/code&gt; is bound to during the execution of the statement. Here it is, distilled to its essentials:
+
+&lt;script&gt;
+$(function() {
+    $(&#39;.ruby-code&#39;).opalBox();
+  var $targets = $(&#34;.ruby-code textarea&#34;)
+  $targets.each(function() {
+    $(this).height(0).height(this.scrollHeight - $(this).css(&#34;font-size&#34;).replace(&#39;px&#39;,&#39;&#39;)).change();
+  })
+});
+&lt;/script&gt;
+&lt;/p&gt;
+
+&lt;div class=&#34;ruby-code&#34;&gt;
+class Parent
+  def self.foo
+    &#34;parent foo&#34;
+  end
+
+  def self.bar
+    puts &#34;parent bar&#34;
+    puts self.foo
+  end
+end
+
+class Child &lt; Parent
+  def self.foo
+    puts &#34;child foo&#34;
+  end
+
+  def self.bar
+    puts &#34;child bar&#34;
+    super
+  end
+end
+
+puts Child.bar
+&lt;/div&gt;
+
+&lt;p&gt;Intuition will tell you that when you call &lt;code&gt;Child.bar&lt;/code&gt;, since the method called &lt;code&gt;super&lt;/code&gt; you would remain in the &lt;code&gt;Parent&lt;/code&gt; context. So when the &lt;code&gt;Parent.bar&lt;/code&gt; method called &lt;code&gt;self.foo&lt;/code&gt; you would expect it to be kept in the same context.&lt;/p&gt;
+
+&lt;p&gt;This is in fact not the case; it is as if the binding of &lt;code&gt;self&lt;/code&gt; remains with the &lt;code&gt;Child&lt;/code&gt; class, that is why even if the &lt;code&gt;self.foo&lt;/code&gt; was called in the &lt;code&gt;Parent&lt;/code&gt; class the &lt;code&gt;Child.foo&lt;/code&gt; was called instead.&lt;/p&gt;
+
+&lt;p&gt;I asked my colleague &lt;a href=&#34;http://aaronmyatt.github.io/&#34;&gt;Aaron&lt;/a&gt; who was once a Python programmer to give me an equivalent Python code to run:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Parent(object):
+	def foo(self):
+		print(&amp;quot;Parent foo&amp;quot;)
+	def bar(self):
+		print(&amp;quot;Parent bar&amp;quot;)
+		return self.foo()
+
+​class Child(Parent):
+	def foo(self):
+		print(&amp;quot;Child foo&amp;quot;)
+	def bar(self):
+		print(&amp;quot;Child bar&amp;quot;)
+		return super(Child, self).bar()
+
+c = Child()
+print(c.bar())
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And the output was the same:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;Child bar
+Parent bar
+Child foo
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I&amp;rsquo;m not an expert Javascript programmer so I&amp;rsquo;m curious how an equivalent program would behave under Javascript.&lt;/p&gt;
+
+&lt;h3 id=&#34;update&#34;&gt;Update:&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.facebook.com/noob.kido&#34;&gt;Lee Siong Tai&lt;/a&gt; kindly provided me a fiddle here: &lt;a href=&#34;http://www.es6fiddle.net/in0c3zsi/&#34;&gt;http://www.es6fiddle.net/in0c3zsi/&lt;/a&gt; and interestingly, it shows the same behavior.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.facebook.com/jimmyngu&#34;&gt;Jimmy Ngu&lt;/a&gt; also has some interesting links, go check out our discussion at &lt;a href=&#34;https://www.facebook.com/groups/klxrb/permalink/792231597575468/&#34;&gt;https://www.facebook.com/groups/klxrb/permalink/792231597575468/&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Javascript Training at Mindvalley Day 2</title>
+      <link>http://life.beyondrails.com/blog/2016/03/18/javascript-training-at-mindvalley-day-2/</link>
+      <pubDate>Fri, 18 Mar 2016 15:54:40 +0800</pubDate>
+      
+      <guid>http://life.beyondrails.com/blog/2016/03/18/javascript-training-at-mindvalley-day-2/</guid>
+      <description>&lt;p&gt;We&amp;rsquo;ve commissioned &lt;a href=&#34;http://www.dekatku.com/&#34;&gt;Dekatku&lt;/a&gt; to train some developers here at &lt;a href=&#34;http://www.mindvalley.com/&#34;&gt;Mindvalley&lt;/a&gt; on Javascript, and it&amp;rsquo;s been a great experience so far! Today is Day 2 of the the training and we&amp;rsquo;ve covered some really deep topics.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve started &lt;a href=&#34;https://www.safaribooksonline.com/library/view/apprenticeship-patterns/9780596806842/ch02s02.html&#34;&gt;wearing my whitebelt&lt;/a&gt; again and I thought I&amp;rsquo;ll put up my thoughts and notes here for future reference.
+
+At the start of the session we had one hour to make a TODO application. The caveat being that we&amp;rsquo;re not allowed to use any libraries or frameworks; just pure javascript.&lt;/p&gt;
+
+&lt;p&gt;How did it go? I realized (yet again) that raw javascript is very verbose! I looked at the output of my code and there was so much &lt;code&gt;document.getElementById()&lt;/code&gt; calls everywhere.&lt;/p&gt;
+
+&lt;p&gt;I knew what to do, but I didn&amp;rsquo;t have the vocabulary to express it.&lt;/p&gt;
+
+&lt;p&gt;I found that it was good to go back to fundamentals and try to rebuild what you&amp;rsquo;ve been using utilizing only the basic building blocks of the technology. It gave me a better appreciation of the work that libraries and frameworks saved me, but more importantly: &lt;strong&gt;it gave me the confidence to walk by myself without a crutch&lt;/strong&gt;; whatever these libraries are doing isn&amp;rsquo;t magical anymore, and I can rebuild (or debug) them myself.&lt;/p&gt;
+
+&lt;p&gt;We then went on to the two different types of expressions in Javascript:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;expression&lt;/code&gt; =&amp;gt; produces a value&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;statement&lt;/code&gt; =&amp;gt; performs an action&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For some reason it reminded me of the &lt;a href=&#34;http://martinfowler.com/bliki/CommandQuerySeparation.html&#34;&gt;command/query separation&lt;/a&gt; by Bertrand Meyer.&lt;/p&gt;
+
+&lt;p&gt;Of course, what&amp;rsquo;s some Javascript without surprising behavior:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-Javascript&#34;&gt;{} + []
+//=&amp;gt; 0 but it&#39;s an [object Object] so it&#39;s true(thy)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Good piece of advice: &lt;strong&gt;deal with an exception, or throw it back out&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Some food for thought by Tim when I asked a question about whether you can catch hierarchichal errors:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;The answer is no, but yes.&amp;rdquo; &amp;ndash; Timothy&lt;/p&gt;
+
+&lt;p&gt;[Like everything else in Javascript, it would seem. &amp;ndash; Tristan]&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Fun facts:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;every function in javascript is variadic&lt;/li&gt;
+&lt;li&gt;javascript has a &amp;ldquo;moveable&amp;rdquo; &lt;code&gt;this&lt;/code&gt; (functions can be bound to any object)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;More syntactic sugar:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-Javascript&#34;&gt;x.foo(args) =&amp;gt; x.foo.call(x, args)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The &lt;code&gt;call&lt;/code&gt; function from &lt;code&gt;Function.prototype&lt;/code&gt; sounds very much like &lt;code&gt;#instance_exec&lt;/code&gt; from Ruby.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call&#34;&gt;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.bigbinary.com/2010/05/28/instance-exec-changing-self-and-parameters-to-proc.html&#34;&gt;http://blog.bigbinary.com/2010/05/28/instance-exec-changing-self-and-parameters-to-proc.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Words of warning: Don&amp;rsquo;t mess with the global scope. That&amp;rsquo;s why we have this pattern:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-Javascript&#34;&gt;(function(){})();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now we have lunch :)&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;After lunch, things get more exciting as we start diving deeper into the Javascript object model.&lt;/p&gt;
+
+&lt;p&gt;Javascript has no formal notion of classes and inheritance, but you can make it behave similar to that:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-Javascript&#34;&gt;function LifeForm() {
+  this.name = &amp;quot;&amp;quot;;
+  this.description = &amp;quot;&amp;quot;;
+  this.setName = function(name) {
+    this.name = name;
+  };
+  this.getName = function() {
+    return this.name;
+  };
+};
+var lifeForm = new LifeForm();
+
+function Human() {
+  LifeForm.call(this);
+  this.arms = 2;
+  this.legs = 2;
+};
+
+Human.prototype = Object.create(LifeForm.prototype);
+// =&amp;gt; this changes the class &amp;quot;definition&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;More words of wisdom:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Managing scope in OOJavasctipt is very important, especially in async code (which use callbacks a lot) &amp;ndash; Björn&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Surprising stuff: you can change an object&amp;rsquo;s prototype and it will change all objects derived from that prototype, even ones that&amp;rsquo;s already been created.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-Javascript&#34;&gt;var baz = function bar() { }
+Function.prototype.foo = function() {
+  console.log(&amp;quot;hello!&amp;quot;);
+}
+baz.foo();
+//=&amp;gt; hello
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This is very similar to how ruby works with &lt;code&gt;#class_eval&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-Ruby&#34;&gt;class Bar; end;
+Class.class_eval do
+  def foo
+    puts &amp;quot;hello&amp;quot;
+  end
+end
+Bar.foo #=&amp;gt; &amp;quot;hello&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Note that even though the class &lt;code&gt;Bar&lt;/code&gt; was created &lt;em&gt;before&lt;/em&gt; we reopened the class &lt;code&gt;Class&lt;/code&gt; (which in Ruby is similar to the prototype of the object &lt;code&gt;Function&lt;/code&gt;) it still managed to call the &lt;code&gt;#foo&lt;/code&gt; method.&lt;/p&gt;
+
+&lt;p&gt;What&amp;rsquo;s a class without Homework:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Using everything you&amp;rsquo;ve learnt today, create a set of classes which represent vehicles.&lt;/li&gt;
+&lt;li&gt;Must have 3 levels hierarchy.&lt;/li&gt;
+&lt;li&gt;Submit by Wednesday 23 March.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Super thanks to:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Björn Karge &lt;a href=&#34;https://www.linkedin.com/in/bjornkarge&#34;&gt;https://www.linkedin.com/in/bjornkarge&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Timothy Chandler &lt;a href=&#34;https://www.linkedin.com/in/timothy-chandler-7625b823&#34;&gt;https://www.linkedin.com/in/timothy-chandler-7625b823&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>String Interpolation with Templates Using String#</title>
+      <link>http://life.beyondrails.com/blog/2016/02/05/string-interpolation-with-templates-using-string/</link>
+      <pubDate>Fri, 05 Feb 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://life.beyondrails.com/blog/2016/02/05/string-interpolation-with-templates-using-string/</guid>
+      <description>&lt;p&gt;I was working on a feature for &lt;a href=&#34;https://github.com/parasquid/upcloudify&#34;&gt;upcloudify&lt;/a&gt; that will use Slack notifications instead of email notifications. One of the challenges I faced was how to build-in flexibility for generating messages. I would want that the user be able to provide their own custom notification message, but at the same time be able to provide placeholders for items like the S3 download link.
+
+&lt;script&gt;
+$(function() {
+    $(&#39;.ruby-code&#39;).opalBox();
+  var $targets = $(&#34;.ruby-code textarea&#34;)
+  $targets.each(function() {
+    $(this).height(0).height(this.scrollHeight - $(this).css(&#34;font-size&#34;).replace(&#39;px&#39;,&#39;&#39;)).change();
+  })
+});
+&lt;/script&gt;
+&lt;/p&gt;
+
+&lt;p&gt;I initially thought of using an &lt;code&gt;ERB&lt;/code&gt; template but then realized it will be far too overkill for this simple purpose. I actually just needed to have the caller be able to provide a template string, and then merge certain variables into this template string.&lt;/p&gt;
+
+&lt;p&gt;I started playing around with regexes when I came upon &lt;a href=&#34;http://ruby-doc.org/core-2.2.0/String.html#method-i-25&#34;&gt;String#%&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;From the documentation:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Format—Uses &lt;em&gt;str&lt;/em&gt; as a format specification, and returns the result of applying it to &lt;em&gt;arg&lt;/em&gt;. If the format specification contains more than one substitution, then &lt;em&gt;arg&lt;/em&gt; must be an &lt;code&gt;Array&lt;/code&gt; or &lt;code&gt;Hash&lt;/code&gt; containing the values to be substituted. See &lt;code&gt;Kernel::sprintf&lt;/code&gt; for details of the format string.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;&amp;quot;%05d&amp;quot; % 123                              #=&amp;gt; &amp;quot;00123&amp;quot;
+&amp;quot;%-5s: %08x&amp;quot; % [ &amp;quot;ID&amp;quot;, self.object_id ]   #=&amp;gt; &amp;quot;ID   : 200e14d6&amp;quot;
+&amp;quot;foo = %{foo}&amp;quot; % { :foo =&amp;gt; &#39;bar&#39; }        #=&amp;gt; &amp;quot;foo = bar&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I thought this was very cool. Let me show you what I mean:&lt;/p&gt;
+
+&lt;div class=&#34;ruby-code&#34;&gt;
+template = &#34;Hello %s!&#34;
+
+puts template % &#34;World&#34;
+&lt;/div&gt;
+
+&lt;p&gt;You can also use an array to feed the template:&lt;/p&gt;
+
+&lt;div class=&#34;ruby-code&#34;&gt;
+template = &#34;Because Oct %o = Dec %d&#34;
+
+puts &#34;Why do programmers always mix up Halloween and Christmas?&#34;
+puts template % [25, 25]
+&lt;/div&gt;
+
+&lt;p&gt;For an even better template that doesn&amp;rsquo;t depend on the order of the elements, you can feed in a &lt;code&gt;Hash&lt;/code&gt;:
+&lt;div class=&#34;ruby-code&#34;&gt;
+template = &#34;
+Q: What&#39;s the %{programming_paradigm} way to become wealthy?
+A: %{answer}&#34;
+
+puts template % {programming_paradigm: &#34;Object Oriented&#34;, answer: &#34;Inheritance&#34;}
+&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Sadly, OpalBox doesn&amp;rsquo;t seem to work well with this particular usage of &lt;code&gt;String#%&lt;/code&gt; since &lt;a href=&#34;https://github.com/opal/opal/issues/678&#34;&gt;Opal 0.7.1 has a bug&lt;/a&gt; where it doesn&amp;rsquo;t properly interpolate named parameters (I&amp;rsquo;ve already &lt;a href=&#34;https://github.com/Angelmmiguel/opalbox-jquery/issues/3&#34;&gt;reported this&lt;/a&gt; to the opalbox author). I will update this article whenever the issues have been ironed out.&lt;/p&gt;
+
+&lt;p&gt;Runnning the code in &lt;code&gt;IRB&lt;/code&gt; works however:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;puts template % {programming_paradigm: &amp;quot;Object Oriented&amp;quot;, answer: &amp;quot;Inheritance&amp;quot;}
+Q: What&#39;s the Object Oriented way to become wealthy?
+A: Inheritance
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The method is also written in C (at least for MRI) so it&amp;rsquo;s expected to be fast.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;puts Benchmark.measure { &amp;quot;Hello %s&amp;quot; % &amp;quot;World&amp;quot; * 6_000_000}
+  0.010000   0.040000   0.050000 (  0.051013)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In the end the code for the feature I was working on looked like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;# gem source
+def upload_and_notify(filename: nil, attachment: nil, message: &amp;quot;%s&amp;quot;)
+  raise ArgumentError &amp;quot;filename cannot be nil&amp;quot; unless filename
+  raise ArgumentError &amp;quot;attachment cannot be nil&amp;quot; unless attachment
+
+  expiration = (Date.today + 7).to_time
+  file = @uploader.upload(filename, attachment)
+  @notifier.notify(text: message % file.url(expiration))
+end
+
+# spec file
+context &amp;quot;the notification can merge the file url&amp;quot; do
+  When { expect(notifier).to receive(:notify).with({text: &amp;quot;your report &amp;lt;filename link&amp;gt;&amp;quot;}) }
+  Then {
+    expect {
+      instance.upload_and_notify(filename: &#39;abc&#39;, attachment: &#39;123&#39;, message: &amp;quot;your report &amp;lt;%s&amp;gt;&amp;quot;)
+    }.not_to raise_error
+  }
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;see-also&#34;&gt;See also:&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://ruby-doc.org/core-2.2.0/String.html#method-i-25&#34;&gt;http://ruby-doc.org/core-2.2.0/String.html#method-i-25&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://ruby-doc.org/core-2.2.0/Kernel.html#method-i-sprintf&#34;&gt;http://ruby-doc.org/core-2.2.0/Kernel.html#method-i-sprintf&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.revathskumar.com/2013/01/ruby-multiple-string-substitution-in-string-template.html&#34;&gt;http://blog.revathskumar.com/2013/01/ruby-multiple-string-substitution-in-string-template.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://davebaker.me/articles/tip-ruby-string-interpolation-with-hashes&#34;&gt;http://davebaker.me/articles/tip-ruby-string-interpolation-with-hashes&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;tldr&#34;&gt;TLDR;&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;String#%&lt;/code&gt; is a cool and flexible way to store a template in a string so you can defer the string interpolation.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Exploring Query Objects</title>
+      <link>http://life.beyondrails.com/blog/2015/12/18/exploring-query-objects/</link>
+      <pubDate>Fri, 18 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://life.beyondrails.com/blog/2015/12/18/exploring-query-objects/</guid>
+      <description>&lt;p&gt;A &lt;a href=&#34;http://blog.codeclimate.com/blog/2012/10/17/7-ways-to-decompose-fat-activerecord-models/&#34;&gt;CodeClimate Article&lt;/a&gt; gave a number of ways to decompose fat ActiveRecord models, and one of them was: &lt;strong&gt;Extract Query Objects&lt;/strong&gt;. I&amp;rsquo;ve been trying to explore and get myself familiar with a good standard of how to implement Query Objects, and here is my take.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ll be trying out a new format in these articles. I&amp;rsquo;ll be using something of a Q/A style similar to &lt;a href=&#34;https://en.wikipedia.org/wiki/Socratic_questioning&#34;&gt;Socratic Questioning&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;Here is one of the Query Objects I have in one of my production apps:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;module Subscription
+  module Calculations
+    class OrderLineQueries
+      extend Forwardable
+
+      def_delegators :relation, :map, :count, :to_sql
+
+      def initialize(relation = OrderLine.all)
+        @relation = relation
+      end
+
+      def is_cancelled
+        @relation = @relation.
+          where(&#39;order_lines.cancelled_at is not null&#39;)
+        self
+      end
+
+      def non_test_order_lines
+        @relation = @relation.
+          joins(:order).
+            where(
+              orders: {
+                test_transaction: false
+              }
+            )
+        self
+      end
+
+      def non_tax_payments
+        @relation = @relation.
+          joins(:order_line_transactions =&amp;gt; :payment).
+          joins(&amp;quot;LEFT OUTER JOIN tax_payments on payments.id = tax_payments.payment_id&amp;quot;).
+            where(&amp;quot;tax_payments.payment_id IS NULL&amp;quot;).
+            distinct
+        self
+      end
+
+      def created_before_reporting_range(time_range: nil)
+        raise ArgumentError, &amp;quot;time_range is required&amp;quot; unless !!time_range
+        @relation = @relation.
+          where(
+            &#39;order_lines.created_at &amp;lt;= ?&#39;, time_range.start_time
+          )
+        self
+      end
+
+      private
+
+      def relation
+        @relation
+      end
+    end
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;dl&gt;
+&lt;dt&gt;Why are you returning &lt;code&gt;self&lt;/code&gt;? It looks very strange.&lt;/dt&gt;
+&lt;dd&gt;I&amp;rsquo;m returning &lt;code&gt;self&lt;/code&gt; to allow method chaining. It is similar to &lt;a href=&#34;http://martinfowler.com/bliki/FluentInterface.html&#34;&gt;Fluent Interfaces&lt;/a&gt; but with a very tight focus on query building.&lt;/dd&gt;
+&lt;dt&gt;Since you&amp;rsquo;re returning self, that means you&amp;rsquo;re mutating the object when you&amp;rsquo;re chaining the methods. That means the object can&amp;rsquo;t be reused to create a different query, and you&amp;rsquo;ll need to start with a new object, right?&lt;/dt&gt;
+&lt;dd&gt;Yes, that is correct. It was a common mistake for me in the past to do something like this:&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;# NOTE: DON&#39;T DO THIS
+class OrderReporter
+  def initialize
+    @query = OrderLineQueries.new
+  end
+
+  def cancelled
+    @query.non_test_order_lines.is_cancelled
+  end
+
+  def test_orders_before_december_31_2015
+    @query.created_before_reporting_range(time_range: time_range.new(&amp;quot;&amp;lt;= Dec 31 2015&amp;quot;))
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;dl&gt;
+&lt;dd&gt;&lt;p&gt;It took some time to figure out that since I&amp;rsquo;ve been sharing &lt;code&gt;@query&lt;/code&gt; with two methods, &lt;code&gt;#cancelled&lt;/code&gt; is actually modifying the query object such that &lt;code&gt;#test_orders_before_december_31_2015&lt;/code&gt; won&amp;rsquo;t ever have test order lines in its resultset.&lt;/p&gt;&lt;/dd&gt;
+&lt;dd&gt;&lt;p&gt;Furthermore, the &lt;strong&gt;individual unit tests&lt;/strong&gt; for these methods are &lt;em&gt;green&lt;/em&gt;; the only way to expose the bug was to have &lt;strong&gt;both methods&lt;/strong&gt; called in a single test example. You can imagine how frustrating the debugging must have been.&lt;/p&gt;&lt;/dd&gt;
+&lt;dd&gt;&lt;p&gt;That&amp;rsquo;s a caveat that you&amp;rsquo;ll need to remember when using self-mutating objects like these.&lt;/p&gt;&lt;/dd&gt;
+&lt;dd&gt;&lt;p&gt;I did have an experiment where each method is immutable:&lt;/p&gt;&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;def paid(relation = Payment.all)
+  relation.
+    where(&amp;quot;payments.state = ?&amp;quot;, &amp;quot;paid&amp;quot;)
+end
+
+def paid_or_refunded(relation = Payment.all)
+  relation.
+    where(&amp;quot;payments.state&amp;quot; =&amp;gt; %w(paid refunded))
+end
+
+def non_declined(relation = Payment.all)
+  relation.
+    where(&amp;quot;payments.state != ?&amp;quot;, &amp;quot;declined&amp;quot;)
+end
+
+def non_shipping(relation = Payment.all)
+  relation.
+    where(&amp;quot;payments.reference_number NOT LIKE ?&amp;quot;, &amp;quot;-shipping&amp;quot;)
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;dl&gt;
+&lt;dd&gt;and you&amp;rsquo;d do a &lt;code&gt;golang&lt;/code&gt;-like composition when filtering the query:&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;def report
+  query = paid
+  query = non_declined(query)
+  query = non_shipping(query)
+  query
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;dl&gt;
+&lt;dd&gt;or something like:&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;def report
+  paid(non_declined(non_shipping))
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;dl&gt;
+&lt;dd&gt;but I never really got around to exploring this further (too many parentheses!!!) as the fluent interface looked so much nicer:&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;def report
+  paid.
+    non_declined.
+    non_shipping
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;dl&gt;
+&lt;dt&gt;What&amp;rsquo;s up with &lt;code&gt;Forwardable&lt;/code&gt;? If you want to call &lt;code&gt;ActiveRelation&lt;/code&gt; methods on the query object, why not just expose something like &lt;code&gt;#relation&lt;/code&gt; then you can call it with something like &lt;code&gt;query.is_cancelled.relation.to_sql&lt;/code&gt;&lt;/dt&gt;
+&lt;dd&gt;I did expose the internal &lt;code&gt;@relation&lt;/code&gt; object before to do exactly what you are suggesting, and it was all good for a while. Then something really terrible happened. I haven&amp;rsquo;t been working on the project for sometime so I wasn&amp;rsquo;t able to do much code review, and I was a bit aghast when I saw these:&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;query = ProductLinesQuery.new
+product_lines_with_paypal = query.with_paypal_or_paypal_express
+  .with_english_currency
+  .with_english_language
+  .relation.where(id: product_lines_id)  # wtf ...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;dl&gt;
+&lt;dd&gt;I felt it was an abuse of the exposed &lt;code&gt;relation&lt;/code&gt; attribute beause it completely undermines the point of the query object (which was to encapsulate queries). Using &lt;code&gt;Forwardable&lt;/code&gt; I can delegate specific methods to the internal &lt;code&gt;ActiveRelation&lt;/code&gt; object without having to expose the whole &lt;code&gt;ActiveRecord&lt;/code&gt; &lt;a href=&#34;http://tenderlovemaking.com/2014/06/02/yagni-methods-are-killing-me.html&#34;&gt;API footprint&lt;/a&gt;.&lt;/dd&gt;
+&lt;dt&gt;I see a lot of modules. Where do you put these query objects?&lt;/dt&gt;
+&lt;dd&gt;I used to put them in a folder named &lt;code&gt;app/queries&lt;/code&gt; but as the application grew (and the number of query objects also grew) I realized this isn&amp;rsquo;t the best way to organize the files. Now I put them just beside the files that use them.&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;pre&gt;&lt;code&gt;app
+ ├─ controllers
+ └─ models
+     ├─ subscription
+     │   ├─ calculations
+     │   │   ├─ customers.rb
+     │   │   └─ order_line_queries.rb
+     │   └─ calculators
+     └─ cohort
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;dl&gt;
+&lt;dt&gt;Hm, so you mean you have multiple folders of query objects? Isn&amp;rsquo;t that confusing? If you put them all in just one folder, then you know that all your queries are in one place.&lt;/dt&gt;
+&lt;dd&gt;On the contrary, putting the query object near the calling file makes it a lot less confusing. When I look at a folder structure, I know exactly what queries this particular object needs.&lt;/dd&gt;
+&lt;dt&gt;How about code reuse? Since you&amp;rsquo;re spreading all your query objects around, you&amp;rsquo;ll eventually have to duplicate code that does the same thing.&lt;/dt&gt;
+&lt;dd&gt;Surprisingly there are very few generic queries that I need to duplicate, because each of the querying logic I need are very specific to the task. However, there are indeed a few queries that are more used than others. I usually have them included as a module in the query object.&lt;/dd&gt;
+&lt;dt&gt;What&amp;rsquo;s up with the separate &lt;code&gt;customers.rb&lt;/code&gt;?&lt;/dt&gt;
+&lt;dd&gt;Oh that? I prefer my query objects to focus on &lt;strong&gt;composable&lt;/strong&gt; methods, while separating out another object that &lt;strong&gt;composes&lt;/strong&gt; these queries. It looks something like this:&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;module Subscription
+  module Calculations
+    class Customers
+      def initialize(start_date, end_date, bundle: nil)
+        @time_query = TimeQuery.new(start_date, end_date)
+        @bundle = bundle
+      end
+
+      def beginning
+        Calculations::OrderLineQueries.new.
+          non_test_order_lines.
+          money_received.
+          specific_bundle(ids: @bundle.id).
+          created_before_reporting_range(time_query: @time_query).
+          not_cancelled_or_cancelled_after_reporting_range(time_query: @time_query)
+      end
+
+      def second_payment
+        Calculations::OrderLineQueries.new.
+          non_test_order_lines.
+          money_received.
+          specific_bundle(ids: @bundle.id).
+          trial.
+
+          paid_payments.
+          non_tax_payments.
+          non_shipping_payments.
+
+          created_before_reporting_range(time_query: @time_query).
+          created_after_30_days_before_reporting_range(time_query: @time_query).
+          not_cancelled_or_cancelled_after_reporting_range(time_query: @time_query).
+          more_than_one_payment
+      end
+
+      def new_in_reporting_range
+        Calculations::OrderLineQueries.new.
+          non_test_order_lines.
+          money_received.
+          specific_bundle(ids: @bundle.id).
+          created_during_reporting_range(time_query: @time_query)
+      end
+    end
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;dl&gt;
+&lt;dd&gt;&lt;p&gt;Then the calculators in the &lt;code&gt;calculators&lt;/code&gt; folder use the methods in &lt;code&gt;customers.rb&lt;/code&gt; to further compose a full report.&lt;/p&gt;&lt;/dd&gt;
+&lt;dd&gt;&lt;p&gt;Bonus: whenever the feature requester asks me &amp;ldquo;what exactly goes on with each of these columns&amp;rdquo; I just point her to the github page for this file. The fluent interface is one way for me to easily explain what goes into calculating an entry, without having to resort to a detailed explanation.&lt;/p&gt;&lt;/dd&gt;
+&lt;dt&gt;Why don&amp;rsquo;t you just use scopes? They have almost the exact syntax that you&amp;rsquo;re proposing, and it&amp;rsquo;s built-in to Rails!&lt;/dt&gt;
+&lt;dd&gt;&lt;p&gt;Scopes are great when your project is still small, but eventually you&amp;rsquo;ll end up with a lot of scopes in your model. The &lt;a href=&#34;https://drive.google.com/file/d/0ByOwmqah_nuGNHEtcU5OekdDMkk/view&#34;&gt;Single Responsibility Principle&lt;/a&gt; says that there should only be one reason for an object to change, and putting these type of queries into the model as scopes violates that principle. The change in how a tax payment is queried is different from the change in how tax payments are calculated.&lt;/p&gt;&lt;/dd&gt;
+&lt;dd&gt;&lt;p&gt;Even if I don&amp;rsquo;t appeal to higher authority by mentioning SRP, separating the queries from the &lt;code&gt;ActiveRecord&lt;/code&gt; model is still a good idea. It just makes the whole thing easier to work with because I don&amp;rsquo;t have to scroll through a huge file with the scopes on the first half and the business logic on the second half.
+&lt;hr /&gt;&lt;/p&gt;&lt;/dd&gt;
+&lt;/dl&gt;
+
+&lt;p&gt;There you have it. I&amp;rsquo;m still exploring query objects and figuring out a more generalized solution that I can implement in all my projects. Feedback and comments are highly appreciated!&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Using Hash Fetch</title>
+      <link>http://life.beyondrails.com/blog/2015/12/11/using-hash-fetch/</link>
+      <pubDate>Fri, 11 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://life.beyondrails.com/blog/2015/12/11/using-hash-fetch/</guid>
+      <description>&lt;p&gt;I fat-finger my code &lt;strong&gt;a lot&lt;/strong&gt; and produce a lot of typos. I do test driven development so it&amp;rsquo;s not as bad, but what&amp;rsquo;s annoying is when I typo a hash key and the test blows up with a failure due to a &lt;code&gt;nil&lt;/code&gt; &amp;ndash; resulting in a very confusing error message.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;the-issue&#34;&gt;The issue&lt;/h1&gt;
+
+&lt;p&gt;One of my tests look like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;Given(:instance) { klass.new(payment: payment, signup: signup) }
+context &amp;quot;payment data&amp;quot; do
+  When(:line) { instance.payment_hash }
+  Then { line[:amount] == 99.0 }
+  Then { line[:shipment_address] == &amp;quot;999 papaya triangle windsor alabama 06040 united states&amp;quot; }
+  Then { line[:bundle_ids] == &amp;quot;88 44&amp;quot; }
+  Then { line[:bundle_names] == &amp;quot;test_bundle_88 test_bundle_44&amp;quot; }
+  Then { line[:payment_id] == 859017 }
+  Then { line[:payment_state] == &amp;quot;paid&amp;quot; }
+  Then { line[:payment_date] == &amp;quot;2015-11-11&amp;quot; }
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Can you see the typo?&lt;/p&gt;
+
+&lt;p&gt;I couldn&amp;rsquo;t &amp;ndash; not immediately. At least, not until I saw the code implementation:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;def payment_hash
+  {
+    amount: @payment.amount,
+    shipping_address: address_to_s(@payment.order.shipping_address),
+    bundle_ids: @payment.order_lines.map {|o| o.bundle.id}.join(&#39; &#39;),
+    bundle_names: @payment.order_lines.map {|o| o.bundle.name}.join(&#39; &#39;),
+    payment_id: @payment.id,
+    payment_state: @payment.state,
+    payment_date: date_to_excel_string(@payment.created_at),
+  }
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Can you see it now?&lt;/p&gt;
+
+&lt;h1 id=&#34;the-soultion&#34;&gt;The soultion&lt;/h1&gt;
+
+&lt;p&gt;I eventually figured out where the typo was, and was super annoyed that I changed all my hash key access for this test to &lt;code&gt;Hash#fetch&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;Given(:instance) { klass.new(payment: payment, signup: signup) }
+context &amp;quot;payment data&amp;quot; do
+  When(:line) { instance.payment_hash }
+  Then { line.fetch(:amount) == 99.0 }
+  Then { line.fetch(:shipping_address) == &amp;quot;999 papaya triangle windsor alabama 06040 united states&amp;quot; }
+  Then { line.fetch(:bundle_ids) == &amp;quot;88 44&amp;quot; }
+  Then { line.fetch(:bundle_names) == &amp;quot;test_bundle_88 test_bundle_44&amp;quot; }
+  Then { line.fetch(:payment_id) == 859017 }
+  Then { line.fetch(:payment_state) == &amp;quot;paid&amp;quot; }
+  Then { line.fetch(:payment_date) == &amp;quot;2015-11-11&amp;quot; }
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;Hash#fetch&lt;/code&gt; is way to get the value from a hash, given a hash key. It&amp;rsquo;s very similar to &lt;code&gt;#[]&lt;/code&gt; with some slight (and in this case, effective) differences.&lt;/p&gt;
+
+&lt;p&gt;From the &lt;a href=&#34;http://ruby-doc.org/core-2.2.0/Hash.html#method-i-fetch&#34;&gt;documentation&lt;/a&gt;:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;fetch(key [, default] ) → obj&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;fetch(key) {| key | block } → obj&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Returns a value from the hash for the given key. If the key can’t be found, there are several options: With no other arguments, it will raise an &lt;code&gt;KeyError&lt;/code&gt; exception; if default is given, then that will be returned; if the optional code block is specified, then that will be run and its result returned.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;h = { &amp;quot;a&amp;quot; =&amp;gt; 100, &amp;quot;b&amp;quot; =&amp;gt; 200 }
+h.fetch(&amp;quot;a&amp;quot;)                            #=&amp;gt; 100
+h.fetch(&amp;quot;z&amp;quot;, &amp;quot;go fish&amp;quot;)                 #=&amp;gt; &amp;quot;go fish&amp;quot;
+h.fetch(&amp;quot;z&amp;quot;) { |el| &amp;quot;go fish, #{el}&amp;quot;}   #=&amp;gt; &amp;quot;go fish, z&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;The following example shows that an exception is raised if the key is not found and a default value is not supplied.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;h = { &amp;quot;a&amp;quot; =&amp;gt; 100, &amp;quot;b&amp;quot; =&amp;gt; 200 }
+h.fetch(&amp;quot;z&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;produces:&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;prog.rb:2:in `fetch&#39;: key not found (KeyError)
+ from prog.rb:2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The last example is what I gain the most benefit from: it clarifies exactly where I went wrong. In the first code example I gave, the issue was I was using &lt;code&gt;shipment_address&lt;/code&gt; instead of &lt;code&gt;shipping_address&lt;/code&gt; and since they both &lt;strong&gt;looked almost the same&lt;/strong&gt; I initially thought that the value was indeed &lt;code&gt;nil&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;By using &lt;code&gt;Hash#fetch&lt;/code&gt; I completely sidestep the problem of confusing error messages and get a clearer one that tells me the key I&amp;rsquo;m trying to access does not actually exist.&lt;/p&gt;
+
+&lt;h1 id=&#34;faq&#34;&gt;FAQ&lt;/h1&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;You said you&amp;rsquo;re doing TDD, but I can see that the typo is in the middle of the test! If you&amp;rsquo;re really doing TDD then you should have caught the bug at the last line!!&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;It&amp;rsquo;s true, I caught the bug at the last line (and catching the typo was a lot easier because I knew exactly where to look). You&amp;rsquo;ll notice that the hash keys are alphabetically arranged; I moved the typo&amp;rsquo;d line in the middle as an artistic decision. As Mark Twain famously said: never let the truth get in the way of a good story. :P&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;How can this be used to avoid &lt;code&gt;&amp;amp;&amp;amp;&lt;/code&gt; when trying to access a deep nested hash like this:&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;hash = {foo:{bar: {baz: &amp;quot;hello world&amp;quot;}}}
+puts hash[:foo][:bar][:baz] if hash[:foo] &amp;amp;&amp;amp; hash[:foo][:bar]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can use the &lt;code&gt;default&lt;/code&gt; value option during the call:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;hash = {foo:{bar: {baz: &amp;quot;hello world&amp;quot;}}}
+puts hash.fetch(:foo, {}).fetch(:bar, {}).fetch(:baz, nil)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Or, if you&amp;rsquo;re using Ruby 2.3 you can use &lt;code&gt;Hash#dig&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;hash = {foo:{bar: {baz: &amp;quot;hello world&amp;quot;}}}
+puts hash.dig(:foo, :bar, :baz)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you&amp;rsquo;re not yet using Ruby 2.3 (which is true at the time of this post&amp;rsquo;s publication) then you can use a &lt;a href=&#34;https://github.com/Invoca/ruby_dig&#34;&gt;gem&lt;/a&gt; to add that method call.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ActiveRecord and Forty Two</title>
+      <link>http://life.beyondrails.com/blog/2015/12/06/activerecord-and-forty-two/</link>
+      <pubDate>Sun, 06 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://life.beyondrails.com/blog/2015/12/06/activerecord-and-forty-two/</guid>
+      <description>&lt;p&gt;I was making a gem to have Google Spreadsheets as the backing store for an &lt;code&gt;ActiveRecord&lt;/code&gt; adapter when I came upon this interesting method:&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;# Same as +first+ except returns only the fourth record.
+def fourth(*args)
+  @association.fourth(*args)
+end
+
+# Same as +first+ except returns only the fifth record.
+def fifth(*args)
+  @association.fifth(*args)
+end
+
+# Same as +first+ except returns only the forty second record.
+# Also known as accessing &amp;quot;the reddit&amp;quot;.
+def forty_two(*args)
+  @association.forty_two(*args)
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Today I learned that &lt;code&gt;ActiveRecord&lt;/code&gt; has methods first until fifth, and also forty_two.&lt;/p&gt;
+
+&lt;p&gt;It&amp;rsquo;s even in the &lt;a href=&#34;https://github.com/rails/rails/blob/master/guides/source/active_support_core_extensions.md#extensions-to-array&#34;&gt;documentation&lt;/a&gt;:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;The methods second, third, fourth, and fifth return the corresponding element (first is built-in). Thanks to social wisdom and positive constructiveness all around, forty_two is also available.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;It seems to have been added by &lt;a href=&#34;https://github.com/jeremy&#34;&gt;jeremy&lt;/a&gt; on March 21, 2009 puportedly to &amp;ldquo;&lt;a href=&#34;https://github.com/rails/rails/commit/83fd1ae122cf1ee4ea2c52e0bd963462163516ca&#34;&gt;Convert array extension modules to class reopens&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Safely Passing Ruby Code in a Rake Task</title>
+      <link>http://life.beyondrails.com/blog/2015/12/04/safely-passing-ruby-code-in-a-rake-task/</link>
+      <pubDate>Fri, 04 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://life.beyondrails.com/blog/2015/12/04/safely-passing-ruby-code-in-a-rake-task/</guid>
+      <description>&lt;p&gt;I wanted to make a rake task that would accept something like &lt;code&gt;1.month&lt;/code&gt; or &lt;code&gt;1.day&lt;/code&gt; as one of it&amp;rsquo;s arguments. The immediate tool I reached for was &lt;code&gt;eval&lt;/code&gt; and it worked like a charm. However, &lt;a href=&#34;https://codeclimate.com&#34;&gt;Code Climate&lt;/a&gt; (the tool we use to check for static analysis) complains about &lt;code&gt;eval&lt;/code&gt; and understandably so; the use of &lt;code&gt;eval&lt;/code&gt; is a practice full of danger and security vulnerabilities.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m using it inside a rake task that is never exposed to third parties, and anyone malicious enough to run the rake task with a bad parameter to be eval&amp;rsquo;d would already have had access to the system anyway, and able to wreak even greater havoc than by running the malicious code through the rake task. I believe this is an accepted risk scenario, and &lt;a href=&#34;https://prezi.com/user/ypmnd6xz0d4h/&#34;&gt;Crystal&lt;/a&gt; (one of my colleagues who was reviewing my code) suggested that since I had a valid point, I can just turn off the Code Climate check for this particular instance.&lt;/p&gt;
+
+&lt;p&gt;I thought that was justified, but I also thought it was a slippery slope. I&amp;rsquo;m sure there are ways to pass in a string and have it dynamically interpreted, without having to expose the system to a security vulnerability.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;why-is-eval-so-dangerous&#34;&gt;Why is &lt;code&gt;eval&lt;/code&gt; so dangerous?&lt;/h1&gt;
+
+&lt;p&gt;Jimmy had a &lt;a href=&#34;https://www.facebook.com/download/858552380924696/Hacking%20Rails.pdf&#34;&gt;presentation on the YAML exploit&lt;/a&gt; and this is exactly what enables the exploit: a YAML payload is deserialized to an object that contains an &lt;code&gt;#eval&lt;/code&gt; statement and then executed.&lt;/p&gt;
+
+&lt;p&gt;There is a good &lt;a href=&#34;http://www.sitepoint.com/anatomy-of-an-exploit-an-in-depth-look-at-the-rails-yaml-vulnerability/&#34;&gt;Sitepoint article&lt;/a&gt; that goes in-depth into how the exploit works.&lt;/p&gt;
+
+&lt;h1 id=&#34;abv-always-be-validating&#34;&gt;ABV (Always Be Validating)&lt;/h1&gt;
+
+&lt;p&gt;One way to work around the danger is to validate the string being passed.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;args = { period: &amp;quot;1.day&amp;quot; } # this can be set through the rake task
+
+def permit?(operation)
+  permitted_operations = /^([1-9].(day|year|month|hour|minute)s?)$/
+  !permitted_operations.match(operation.to_s).nil?
+end
+
+period = eval(args[:period]) if permit?(args[:period])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here is the code I used to validate the parameters passed into eval. Since I know exactly what the format of the string would be, I can craft a simple regex to test for this.&lt;/p&gt;
+
+&lt;p&gt;However, since Code Climate does static analysis, it won&amp;rsquo;t give me cookie points for validating the input first before passing to eval. As long as there is a call to &lt;code&gt;Kernel#eval&lt;/code&gt; then the code climate checks will fail.&lt;/p&gt;
+
+&lt;h1 id=&#34;a-rose-by-any-other-name&#34;&gt;A rose by any other name&lt;/h1&gt;
+
+&lt;p&gt;We can instead use &lt;code&gt;#instance_eval&lt;/code&gt; which is mostly the same thing, but instead of evaluating the string in the current context, it evaluates the string within the context of the object instance you&amp;rsquo;re calling it in.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;class SandboxObject; end
+period = SandboxObject.new.instance_eval(args[:period]) if permit?(args[:period])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;#instance_eval&lt;/code&gt; not necessarily more secure, since you can still pass in stuff that can give remote access to an attacker if you don&amp;rsquo;t properly validate it. For example:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;class SandboxObject; end
+Sandbox.new.instance_eval(&amp;quot;system(&#39;cat /etc/passwd&#39;)&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;But since we&amp;rsquo;re now restricting the string evaluation to an instance of a sandbox object, you are able to sidestep a number of more common attacks such as redefining a method on a commonly used class.&lt;/p&gt;
+
+&lt;p&gt;Together with the input validation, this should be enough to mitigate against careless ruby code being passed in as input (and this also makes Code Climate happy and I get to have my pull request merged).&lt;/p&gt;
+
+&lt;h1 id=&#34;tl-dr&#34;&gt;TL;DR&lt;/h1&gt;
+
+&lt;p&gt;I lied; there is no perfect way have a third party pass in a string and safely &lt;code&gt;eval&lt;/code&gt; it. However, you can mitigate the damage with the following:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Validate your string parameters that are to be eval&amp;rsquo;d or executed.&lt;/li&gt;
+&lt;li&gt;Don&amp;rsquo;t turn off the code climate check; instead look for ways to approach what you want to do in a different way.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;updates&#34;&gt;Updates&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.facebook.com/ferngyi&#34;&gt;Looi&lt;/a&gt; made a good point on sidestepping the regex altogether:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def validated_period(args)
+  num, period = args.split(&#39;.&#39;)
+  allowed_periods = %w(second seconds hour hours day days month months)
+
+  if allowed_periods.include?(period) &amp;amp;&amp;amp; num.to_i &amp;gt; 0
+    num.to_i.public_send(period)
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.facebook.com/antonsen.espen&#34;&gt;Espen&lt;/a&gt; also makes a great point that the regex isn&amp;rsquo;t an issue, but the eval is and suggested to instead use something like the Chronic library or something like &lt;code&gt;.advance(period.to_sym =&amp;gt; i)&lt;/code&gt;.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Codility - PermMissingElem</title>
+      <link>http://life.beyondrails.com/blog/2015/10/30/codility---permmissingelem/</link>
+      <pubDate>Fri, 30 Oct 2015 04:16:00 -0800</pubDate>
+      
+      <guid>http://life.beyondrails.com/blog/2015/10/30/codility---permmissingelem/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://codility.com/programmers/task/perm_missing_elem&#34;&gt;https://codility.com/programmers/task/perm_missing_elem&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;my-solution&#34;&gt;My solution&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;def solution(a)
+  return 1 if a.empty?
+
+  # edge case, N + 1 is missing
+  # but unlike the case below, we can immediately compute and return this
+  if a.length == 1
+    return 2 if a[0] == 1
+    return 1 if a[0] == 2
+  end
+
+  sorted = a.sort
+  sorted.each_index do |index|
+    return index + 1 if(sorted[index] != index + 1)
+  end
+
+  # edge case, N + 1 is missing
+  return a.length + 1
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;learning-points&#34;&gt;Learning points&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Edge cases are always tricky! Always get into the habit of asking: what can go wrong? Good questions to ask are: what about empty inputs, beginning/ending elements are missing.&lt;/li&gt;
+&lt;li&gt;I have a feeling that for the other languages, you need to implement your own sorting algorithm (like bubble sort).&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Codility - FrogJmp</title>
+      <link>http://life.beyondrails.com/blog/2015/10/30/codility---frogjmp/</link>
+      <pubDate>Fri, 30 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://life.beyondrails.com/blog/2015/10/30/codility---frogjmp/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://codility.com/programmers/task/frog_jmp&#34;&gt;https://codility.com/programmers/task/frog_jmp&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;my-solution&#34;&gt;My solution&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;def solution(x, y, d)
+  ((y - x).to_f / d).ceil
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;learning-points&#34;&gt;Learning points&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Paper and pencil (and algebra) helps. The equation is: &lt;code&gt;x + dn &amp;gt;= y&lt;/code&gt; After that it was just a matter of finding &lt;code&gt;n&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Integer division can be tricky. Convert to &lt;code&gt;float&lt;/code&gt; to retain precision, then convert back to &lt;code&gt;integer&lt;/code&gt; afterwards (if the situation requires it).&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;#to_i&lt;/code&gt; will chop off the decimal portion of the float; this may or may not be what you want.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;O(1)&lt;/code&gt; will usually mean there should be no loop used &amp;ndash; at all. It is a straightforward computation.&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Codility - TapeEquilibrium</title>
+      <link>http://life.beyondrails.com/blog/2015/10/30/codility---tapeequilibrium/</link>
+      <pubDate>Fri, 30 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://life.beyondrails.com/blog/2015/10/30/codility---tapeequilibrium/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://codility.com/programmers/task/tape_equilibrium&#34;&gt;https://codility.com/programmers/task/tape_equilibrium&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;my-solution&#34;&gt;My solution&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;def solution(a)
+  first_sum = a[0]
+  second_sum = a[1..-1].reduce(0, :+)
+  min_diff = (first_sum - second_sum).abs
+
+  a.each_index do |p|
+    next if p == 0
+    next if p == a.length - 1
+
+    first_sum = first_sum + a[p]
+    second_sum = second_sum - a[p]
+    diff = (first_sum - second_sum).abs
+    min_diff = diff if diff &amp;lt; min_diff
+  end
+
+  min_diff
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;learning-points&#34;&gt;Learning points&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Take note of the complexity and how additional magnitude might creep in (e.g. using &lt;code&gt;#reduce&lt;/code&gt; inside the &lt;code&gt;#each_index&lt;/code&gt; block).&lt;/li&gt;
+&lt;li&gt;Recomputing over and over is wasteful. Try to find ways to cache values and manipulate them within the complexity. In this case, the sums are cached and the element under the moving index added and subtracted accordingly. This avoids recomputing the &lt;code&gt;first_sum&lt;/code&gt; and the &lt;code&gt;second_sum&lt;/code&gt; for every loop iteration.&lt;/li&gt;
+&lt;li&gt;Take care of edge cases. In this case, since the &lt;code&gt;first_sum&lt;/code&gt; and the &lt;code&gt;second_sum&lt;/code&gt; had already been precomputed, we need to skip them during the loop iteration.&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Using Dependency Injection and yield to Refactor a Legacy App</title>
+      <link>http://life.beyondrails.com/blog/2015/10/28/using-dependency-injection-and-yield-to-refactor-a-legacy-app/</link>
+      <pubDate>Wed, 28 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://life.beyondrails.com/blog/2015/10/28/using-dependency-injection-and-yield-to-refactor-a-legacy-app/</guid>
+      <description>&lt;p&gt;I had to create an automated report for finance and accounting that will send particular columns and their data in a csv once a month.&lt;/p&gt;
+
+&lt;p&gt;Being the &lt;a href=&#34;http://threevirtues.com/&#34;&gt;lazy&lt;/a&gt; developer that I am, I tried looking for code that already existed. I was planning to wrap up that code in a rake task and use &lt;a href=&#34;https://github.com/javan/whenever&#34;&gt;whenever&lt;/a&gt; to schedule a cron job to send the report monthly.&lt;/p&gt;
+
+&lt;p&gt;While I was able to find pre-existing code that did what finance wanted (I checked with them as well if the output showed what they needed), the code itself wasn&amp;rsquo;t easily convertible to a rake task.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;original-code&#34;&gt;Original Code&lt;/h3&gt;
+
+&lt;p&gt;Let me show you what I mean. Here is the original code (with redactions):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;class EmailJob::Accounting &amp;lt; BaseJob
+  include SuckerPunch::Job
+
+  def perform(payments, email)
+    filename = &amp;quot;/tmp/accounting_report_#{Time.now.to_i}.csv&amp;quot;
+
+    SuckerPunch.logger.info &amp;quot;#{self.class}: Compiling accounting report...&amp;quot;
+
+    CSV.open filename, &#39;w&#39; do |csv|
+      csv &amp;lt;&amp;lt; %w(email first_name last_name order_date order_datetime order_number order_line_state tags
+      payment_amount payment_state payment_date ... ) do |payment|
+
+# ...
+
+      rescue Exception =&amp;gt; e
+        SuckerPunch.logger.info &amp;quot;#{self.class}: Payment id #{payment.id} crashed with error #{e.inspect}&amp;quot;
+      end
+
+      row = [
+
+# ...
+
+      ]
+      csv &amp;lt;&amp;lt; row
+
+# ...
+
+    end
+
+    SuckerPunch.logger.info &amp;quot;#{self.class}: Report compiled, will upload and email it&amp;quot;
+    email(email, &amp;quot;accounting report&amp;quot;, File.open(filename))
+  end
+ end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;There are a couple of things that make it quite difficult to reuse this method:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;There is a dependence on the &lt;code&gt;SuckerPunch&lt;/code&gt; class name (mostly used for the logger), which may be great on a worker context but does not make sense in a rake task.&lt;/li&gt;
+&lt;li&gt;It tries to do many things at once: create the report, save it to a file, and email someone with the attachment.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Like many legacy applications, this is already used in production so there really isn&amp;rsquo;t much leeway to refactor the method. However, using &lt;a href=&#34;http://www.martinfowler.com/articles/injection.html&#34;&gt;Dependency Injection&lt;/a&gt; and ruby&amp;rsquo;s &lt;a href=&#34;https://bugs.ruby-lang.org/issues/5474&#34;&gt;keyword arguments&lt;/a&gt;, we can easily add on to the method without changing its apparent signature to old clients.&lt;/p&gt;
+
+&lt;h3 id=&#34;injecting-a-logger&#34;&gt;Injecting a logger&lt;/h3&gt;
+
+&lt;p&gt;First, we need to take care of the logger.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;# original
+def perform(payments, email)
+  # ...
+  SuckerPunch.logger.info &amp;quot;#{self.class}: Compiling accounting report...&amp;quot;
+  # ...
+end
+
+# refactored
+def perform(payments, email_address, log: SuckerPunch)
+  # ...
+  log.logger.info &amp;quot;#{self.class}: Compiling accounting report...&amp;quot;
+  # ...
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You&amp;rsquo;ll notice that I&amp;rsquo;ve changed a few things:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;I used a keyword argument &lt;code&gt;log&lt;/code&gt; and assigned it a default value of SuckerPunch.&lt;/li&gt;
+&lt;li&gt;I replaced all occurrences of &lt;code&gt;SuckerPunch&lt;/code&gt; with &lt;code&gt;log&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;I changed one of the parameter names from &lt;code&gt;email&lt;/code&gt; to &lt;code&gt;email_address&lt;/code&gt;. This isn&amp;rsquo;t fully related to the refactoring of the logger object, but since I was already changing the method definition, I might as well make the var names more intention-revealing and less confusing.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;By using a keyword argument that has a default value, the refactored method is functionally equivalent to the original method. Older clients expecting to call the method without having to change their call signatures.&lt;/p&gt;
+
+&lt;p&gt;Of course, it would have also been alright to not rely on a keyword argument and instead just put a positional argument that is assigned a default value. However, I felt that having three positional arguments (with one of them optional) was a bit too confusing. Having a keyword argument for the optional parameter reveals my intention that:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;I&amp;rsquo;m passing an object that has a logger (I use &lt;code&gt;Rails&lt;/code&gt; for my rake task)&lt;/li&gt;
+&lt;li&gt;This parameter is optional since it looks different from the first two parameters.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;There are also multiple reasons why keywork arguments are better. Here&amp;rsquo;s a &lt;a href=&#34;https://www.youtube.com/watch?v=HQXVKHoUQxY&#34;&gt;video of Jim Weirich&lt;/a&gt; talking about the concept of &lt;code&gt;connascence&lt;/code&gt;. I highly recommend you to watch this; it helped me a lot in putting a finger and naming a concept that I knew was there but couldn&amp;rsquo;t quite grasp nor explain.&lt;/p&gt;
+
+&lt;h3 id=&#34;yielding-to-a-block&#34;&gt;Yielding to a block&lt;/h3&gt;
+
+&lt;p&gt;One of my favorite ways to &amp;ldquo;open up&amp;rdquo; a method for reuse is to yield to an optional block.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;yield(payment, count) if block_given?
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you need a refresher on ruby blocks and blocks, see an old &lt;a href=&#34;http://life.beyondrails.com/blog/2014/03/04/ruby-and-blocks/&#34;&gt;post&lt;/a&gt; of mine.&lt;/p&gt;
+
+&lt;p&gt;By yielding to an optional block, I can do stuff like use a &lt;a href=&#34;https://github.com/jfelchner/ruby-progressbar&#34;&gt;progress bar&lt;/a&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;progress = ProgressBar.create(
+  title: &#39;Payments&#39;,
+  total: nil,
+  format: &#39;%a |%b&amp;gt;&amp;gt;%i| %p%% %t %c of %C %e&#39;
+)
+
+EmailJob::Accounting.new.perform do |payment, count|
+  progress.total = count
+  progress.increment
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Or, during debugging I can also try and inspect each of the payment being interated on:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;EmailJob::Accounting.new.perform do |payment, count|
+  Rails.logger.debug { &amp;quot;#{payment.inspect} out of #{count} items&amp;quot; }
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;All of this done without even touching the original object. As Sandi Metz has said:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Don&amp;rsquo;t write code that guesses the future, arrange code so you can adapt to the future when it arrives.&lt;/p&gt;
+
+&lt;p&gt;&amp;ndash; &lt;cite&gt;&lt;a href=&#34;https://twitter.com/sandimetz/status/441241600077725697&#34;&gt;Sandi Metz (@sandimetz)&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;In other words, there is no need to load up your objects with functionality that you think will be used, but most likely won&amp;rsquo;t. Instead, write small objects that are flexible and composable such that when a new requirement comes a long, the code you&amp;rsquo;ve written can be easily adaptable to the situation. Ruby blocks are a great way to &amp;ldquo;open up&amp;rdquo; an object to make them easier to accommodate feature additions or changes.&lt;/p&gt;
+
+&lt;h3 id=&#34;if-it-ain-t-broke-don-t-fix-it-yet&#34;&gt;If it ain&amp;rsquo;t broke, don&amp;rsquo;t fix it (yet)&lt;/h3&gt;
+
+&lt;p&gt;Of course, there are even better ways to refactor this method. You can extract out the reporting logic and build an assembler class that takes an input (&lt;code&gt;payments&lt;/code&gt;) an output (an &lt;code&gt;email&lt;/code&gt; object) and the logic to create the contents (the report generator than can maybe output an &lt;code&gt;IO&lt;/code&gt; object or something that responds to &lt;code&gt;#result&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;However, as I&amp;rsquo;ve mentioned before this is a legacy app. This piece of code had been running in production for quite some time now without any problems. This is one of the very rare times when finance asks for a change in the running reports, and it&amp;rsquo;s not even a change in logic &amp;ndash; merely an additional way the results are delivered (regular intervals vs on-demand).&lt;/p&gt;
+
+&lt;p&gt;Even though there are some tests that cover this method, it&amp;rsquo;s not very comprehensive. We have very limited resources in my current team and we don&amp;rsquo;t really have time (nor the business need) to do a full refactor (yet).&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m not advocating to do hackjobs or cowboy code. However, these two small changes are all it takes to make the method flexible enough to finish a (relatively simple) feature, and there is a business decision to be made here. Some recommend to &lt;a href=&#34;http://c2.com/cgi/wiki?WhenToStopRefactoring&#34;&gt;refactor until it doesn&amp;rsquo;t hurt anymore&lt;/a&gt; and then move on to the next feature; I subscribe to this idea.&lt;/p&gt;
+
+&lt;p&gt;My personal preference is that of the rule of second encounters: the first time you need to reference badly written or inflexible code, refactor it just enough so it&amp;rsquo;s usable (in the hopes that you don&amp;rsquo;t have to deal with it again). However, the second time you need to reference the same code, do the refactor because it is more likely that you&amp;rsquo;ll need to reference the same code again in the future &amp;ndash; it&amp;rsquo;s already happened once, it can happen again.&lt;/p&gt;
+
+&lt;h3 id=&#34;final-form&#34;&gt;Final form&lt;/h3&gt;
+
+&lt;p&gt;Here is the refactored code, as well as the code that calls it:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;class EmailJob::Accounting &amp;lt; BaseJob
+  include SuckerPunch::Job
+
+  def perform(payments, email_address=nil,
+    log: SuckerPunch,
+    filename: &amp;quot;/tmp/accounting_report_#{Time.now.to_i}.csv
+  )
+
+    log.logger.info &amp;quot;#{self.class}: Compiling accounting report...&amp;quot;
+
+    CSV.open filename, &#39;w&#39; do |csv|
+      csv &amp;lt;&amp;lt; %w(email first_name last_name order_date order_datetime order_number order_line_state tags
+      payment_amount payment_state payment_date ... ) do |payment|
+
+# ...
+
+      rescue Exception =&amp;gt; e
+        log.logger.info &amp;quot;#{self.class}: Payment id #{payment.id} crashed with error #{e.inspect}&amp;quot;
+      end
+
+      row = [
+
+# ...
+
+      ]
+      csv &amp;lt;&amp;lt; row
+
+      yield(payment, count) if block_given?
+
+# ...
+
+    end
+
+    log.logger.info &amp;quot;#{self.class}: Report compiled, will upload and email it&amp;quot;
+    email(email_address, &amp;quot;accounting report&amp;quot;, File.open(filename)) if email_address
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;payments = PaymentsQuery.all.includes(:order =&amp;gt; [:customer, :tags])
+count = payments.count
+
+progress = ProgressBar.create(
+  title: &#39;Payment&#39;,
+  total: nil,
+  format: &#39;%a |%b&amp;gt;&amp;gt;%i| %p%% %t %c of %C %e&#39;
+)
+
+filename = &amp;quot;report.csv&amp;quot;
+EmailJob::Accounting.new.perform(payments, logger: Rails, filename: filename) do |payment, count|
+  progress.total = count
+  progress.increment
+end
+progress.finish
+
+uploader = Upcloudify::S3.new
+uploader.email([&amp;quot;parasquid&amp;quot;&amp;quot;], filename, File.open(filename))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Not much has changed, but their flexibility is worlds apart, and it makes all the difference.&lt;/p&gt;
+
+&lt;h1 id=&#34;tl-dr&#34;&gt;TL;DR&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Use dependency injection and keyword arguments with default values to maintain the same signature to older clients, but allow you to change behavior as needed. In this case, I don&amp;rsquo;t want to call &lt;code&gt;SuckerPunch&lt;/code&gt; logger in my rake task.&lt;/li&gt;
+&lt;li&gt;Use &lt;code&gt;yield&lt;/code&gt; and &lt;code&gt;block_given?&lt;/code&gt; to allow client code to pass in custom blocks, and expose objects to the block depending on your intentions. In this case, I want to use a progress bar and also inspect the currently iterated on object.&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Have Rails.logger Output Sent to the Console (surprise, created_at field is protected from mass-assignment)</title>
+      <link>http://life.beyondrails.com/blog/2015/09/29/have-rails.logger-output-sent-to-the-console-surprise-created_at-field-is-protected-from-mass-assignment/</link>
+      <pubDate>Tue, 29 Sep 2015 23:14:07 -0700</pubDate>
+      
+      <guid>http://life.beyondrails.com/blog/2015/09/29/have-rails.logger-output-sent-to-the-console-surprise-created_at-field-is-protected-from-mass-assignment/</guid>
+      <description>&lt;p&gt;While working on a feature, I was wondering why my test is returning 0 records when I&amp;rsquo;m quite sure the query was written properly (it&amp;rsquo;s just a very simple query regarding date range).&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;I suspected there was something wrong with the database query, so I looked for a way to redirect the logs that Rails produces into the console where I&amp;rsquo;m running rspec (and pry).&lt;/p&gt;
+
+&lt;p&gt;Surprisingly, it wasn&amp;rsquo;t that the query was wrong (it was just what I wanted). It was this:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;WARN &amp;ndash; : WARNING: Can&amp;rsquo;t mass-assign protected attributes for &lt;code&gt;OrderLine: created_at&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;It does make your tests look messy, so I would only recommend using this configuration just for the times when you want to know exactly what Rails is trying to do.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;# config/environments/test.rb
+
+config.logger = Logger.new(STDOUT)
+config.logger.level = Logger::DEBUG
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Note that this is on Rails 3. As the StackOverflow answer by tommes would explain, the configuration is slightly different for Rails 4. See more at &lt;a href=&#34;http://stackoverflow.com/questions/11770552/how-to-get-rails-logger-printing-to-the-console-stdout-when-running-rspec&#34;&gt;http://stackoverflow.com/questions/11770552/how-to-get-rails-logger-printing-to-the-console-stdout-when-running-rspec&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
